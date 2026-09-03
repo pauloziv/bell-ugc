@@ -8,7 +8,13 @@
 - **Tone**: Creative, energetic, confident, approachable — NOT corporate or sterile
 - **Key pages**: Single-page scrollable site with 9 sections (Hero, About, What is UGC, Content Style, Platforms, Cases, Process, Pricing, CTA)
 
-## Visual Direction — TWO BRANCHES
+## Visual Direction — LOCKED + COMPARISON
+
+**Canonical (approved):** Direction A — Bold Pop. Implement all product UI in this system.
+
+**Discarded:** Direction D — Candy Pastel. Do not generate or implement Candy Pastel.
+
+**Comparison only (not canonical):** Direction C — Cinematic. Dark editorial film look for Superdesign side-by-side with Bold Pop. Do not replace Bold Pop in code until the user picks it.
 
 ### Direction A: Bold Pop
 
@@ -62,7 +68,29 @@
 
 ---
 
-### Direction D: Candy Pastel
+### Direction C: Cinematic (comparison draft only)
+
+**Vibe**: Film still, editorial night, anamorphic heat. Same Bell UGC story. Not pastel. Not neo-brutal yellow blocks.
+
+**Color Palette**:
+- Background: #121018 (warm charcoal)
+- Primary accent: #E91E8C (keep Bold Pop magenta)
+- Secondary: #C9A227 (tungsten gold)
+- Surface: #1C1A24
+- Text: #F4F0E8
+- Muted: #9A9488
+
+**Typography**: Cabinet Grotesk display + Satoshi body. Wider tracking on captions. Letterbox bars.
+
+**Shape**: Soft film-frame radii, 21:9 hero crop, grain overlay (fixed, pointer-events-none), vertical 9:16 reel fan in content section.
+
+**Motion**: Slow dolly / opacity fades. No bouncy stickers. Content style section = fanned vertical reel players.
+
+---
+
+### Direction D: Candy Pastel — DISCARDED
+
+Do not use. Kept only as historical note.
 
 **Vibe**: Dreamy modern, soft power, feminine confidence without being girly — think Glossier meets Linear
 

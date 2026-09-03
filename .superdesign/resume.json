@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "targets": {
+    "/": {
+      "targetKind": "new-ui",
+      "projectId": "2fbb8413-0731-40e4-b959-54ef7de3a12d",
+      "activeDraftId": "5e05431e-7ef7-4b60-ba4b-22eab6a58a91",
+      "designSystemPath": ".superdesign/design-system.md",
+      "referenceIds": [
+        "fe4cd884-3f6f-44e0-9259-9edaf8cd7da8",
+        "881977d5-a90f-41be-a8bc-c3a6c644490f",
+        "1348c640-bfab-4814-b055-6e5ec090ec45"
+      ],
+      "contextFiles": [
+        ".superdesign/design-system.md",
+        "src/components/ContentStyle.tsx",
+        "src/components/ui/card-fan-carousel.tsx",
+        "src/app/globals.css"
+      ],
+      "fingerprints": {
+        ".superdesign/design-system.md": "db1819ea170008cbabeeb39f1e123e423311656d734e34c58a7a7b5bbfdd094e",
+        "src/components/ContentStyle.tsx": "b80572b34adbe3e34ab7aeb714191cbc2ce165b8c0de36865effee311aec9532",
+        "src/components/ui/card-fan-carousel.tsx": "a6c3d1e1c2d9dd0e94fa2735c5fc3a3c1f82a9b9d300938fe4854c567be8b90f",
+        "src/app/globals.css": "247050247b219420a4da848a4fe1b9741d4549d3cb1360bb4beebb56f14174b8"
+      },
+      "drafts": {
+        "5e05431e-7ef7-4b60-ba4b-22eab6a58a91": {
+          "title": "Bell UGC — Bold Pop Portfolio",
+          "visualDirection": "bold-pop",
+          "currentVersion": 1
+        },
+        "f8ebd6fd-1a18-48b7-87f2-e8350594f008": {
+          "title": "Bell UGC — Cinematic Portfolio",
+          "visualDirection": "cinematic",
+          "parentDraftId": "5e05431e-7ef7-4b60-ba4b-22eab6a58a91",
+          "currentVersion": 1
+        }
+      },
+      "updatedAt": "2026-09-03T16:55:00.000Z"
+    }
+  }
+}

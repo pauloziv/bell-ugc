@@ -1,75 +1,75 @@
-"use client";
-
-import ScrollReveal from "./ui/ScrollReveal";
-import MagneticButton from "./ui/MagneticButton";
-import BlobBackground from "./ui/BlobBackground";
-import { ArrowRight, InstagramLogo, EnvelopeSimple, WhatsappLogo } from "@phosphor-icons/react";
+import {
+  ChatCircle,
+  EnvelopeSimple,
+  InstagramLogo,
+  TiktokLogo,
+  YoutubeLogo,
+} from "@phosphor-icons/react/dist/ssr";
 
 export default function CTA() {
   return (
-    <section
-      id="contato"
-      className="relative py-28 md:py-40 bg-gradient-to-br from-magenta via-magenta to-[#c4167a] text-white overflow-hidden"
-    >
-      <BlobBackground className="opacity-30" />
-
-      <div className="relative z-10 max-w-[1400px] mx-auto px-4 md:px-8 text-center">
-        <ScrollReveal>
-          <span className="inline-block rounded-full bg-white/15 border border-white/15 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] font-body font-medium text-white/70 mb-8">
-            Bora?
-          </span>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.1}>
-          <h2 className="font-display font-black text-5xl md:text-7xl xl:text-8xl tracking-tighter leading-[0.9] mx-auto max-w-[14ch] mb-6">
-            Vamos criar juntos?
+    <>
+      <section
+        id="contato"
+        className="relative py-24 md:py-36 px-4 md:px-8 overflow-hidden"
+        style={{ background: "linear-gradient(135deg,#E91E8C 0%,#FFD23F 100%)" }}
+      >
+        <div className="absolute -top-20 -left-16 w-72 h-72 bg-white/20 blob blur-2xl pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-navy/10 blob-slow blur-2xl pointer-events-none" />
+        <div className="max-w-[1000px] mx-auto text-center relative z-10 reveal">
+          <h2 className="font-display font-extrabold text-5xl md:text-7xl tracking-tighter leading-[0.95] text-white mb-6">
+            Vamos Criar
+            <br />
+            Juntos?
           </h2>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.2}>
-          <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-[50ch] mx-auto mb-12">
-            Me conta sobre sua marca e o que voce precisa. Vou adorar entender como
-            posso ajudar a contar a sua historia.
+          <p className="text-lg text-white/90 max-w-[50ch] mx-auto mb-10 leading-relaxed">
+            Sua marca merece conteudo que gera conexao de verdade. Me chama e
+            vamos montar a proxima campanha.
           </p>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.3}>
-          <div className="flex flex-wrap justify-center gap-4 mb-16">
-            <MagneticButton
-              href="mailto:bell@ugc.com.br"
-              className="bg-white text-magenta shadow-[0_8px_30px_-5px_rgba(0,0,0,0.2)] hover:shadow-[0_12px_40px_-5px_rgba(0,0,0,0.3)]"
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+            <a
+              href="https://wa.me/5511999999999"
+              className="inline-flex items-center gap-2 bg-navy text-white font-medium px-8 py-4 rounded-full hover:scale-105 hover:-rotate-1 transition-transform duration-300 shadow-[0_8px_30px_-5px_rgba(26,26,46,0.4)]"
+            >
+              <ChatCircle weight="bold" size={20} />
+              Chamar no WhatsApp
+            </a>
+            <a
+              href="mailto:contato@bellugc.com.br"
+              className="inline-flex items-center gap-2 border-2 border-navy text-navy font-medium px-8 py-4 rounded-full hover:bg-navy hover:text-white transition-colors duration-300"
             >
               <EnvelopeSimple weight="bold" size={20} />
-              Me manda um email
-              <ArrowRight weight="bold" size={18} />
-            </MagneticButton>
+              Enviar E-mail
+            </a>
           </div>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.4}>
-          <div className="flex justify-center gap-6">
-            {[
-              { icon: InstagramLogo, label: "@bell.ugc", href: "#" },
-              { icon: WhatsappLogo, label: "WhatsApp", href: "#" },
-              { icon: EnvelopeSimple, label: "Email", href: "mailto:bell@ugc.com.br" },
-            ].map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                className="flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-300 text-sm"
-              >
-                <s.icon weight="bold" size={20} />
-                {s.label}
-              </a>
-            ))}
+          <div className="flex items-center justify-center gap-6">
+            <a
+              href="https://instagram.com/bellugc"
+              aria-label="Instagram"
+              className="w-14 h-14 bg-white/90 border-2 border-navy rounded-full flex items-center justify-center text-navy hover:bg-navy hover:text-white transition-colors"
+            >
+              <InstagramLogo weight="fill" size={24} />
+            </a>
+            <a
+              href="https://tiktok.com/@bellugc"
+              aria-label="TikTok"
+              className="w-14 h-14 bg-white/90 border-2 border-navy rounded-full flex items-center justify-center text-navy hover:bg-navy hover:text-white transition-colors"
+            >
+              <TiktokLogo weight="fill" size={24} />
+            </a>
+            <a
+              href="https://youtube.com/@bellugc"
+              aria-label="YouTube"
+              className="w-14 h-14 bg-white/90 border-2 border-navy rounded-full flex items-center justify-center text-navy hover:bg-navy hover:text-white transition-colors"
+            >
+              <YoutubeLogo weight="fill" size={24} />
+            </a>
           </div>
-        </ScrollReveal>
-
-        {/* Footer */}
-        <div className="mt-20 pt-8 border-t border-white/10 text-white/30 text-sm">
-          Bell UGC &copy; 2026. Feito com muito conteudo e cafe.
         </div>
-      </div>
-    </section>
+      </section>
+      <footer className="bg-navy text-white/60 py-8 px-4 md:px-8 text-center text-sm">
+        <p>© 2026 Bell UGC. Feito com criatividade e cafe. Todos os direitos reservados.</p>
+      </footer>
+    </>
   );
 }

@@ -20,16 +20,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <head>
-        <link
-          href="https://fonts.cdnfonts.com/css/cabinet-grotesk"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.cdnfonts.com/css/satoshi"
-          rel="stylesheet"
-        />
-      </head>
       <body className="font-body bg-offwhite text-navy">{children}</body>
     </html>
   );

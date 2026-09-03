@@ -1,73 +1,60 @@
-"use client";
-
-import ScrollReveal from "./ui/ScrollReveal";
-import { Sparkle, Heart } from "@phosphor-icons/react";
-
 export default function About() {
   return (
-    <section id="sobre" className="relative py-28 md:py-40">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-        <ScrollReveal>
-          <span className="inline-block rounded-full bg-yellow/20 border border-yellow/30 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] font-body font-medium text-navy/60 mb-6">
+    <section
+      id="sobre"
+      className="bg-navy text-white py-20 md:py-32 px-4 md:px-8 relative overflow-hidden"
+    >
+      <div className="absolute top-10 right-10 w-64 h-64 bg-magenta/20 blob blur-3xl pointer-events-none" />
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 items-center relative z-10">
+        <div className="lg:col-span-2 reveal">
+          <div className="relative w-full max-w-sm mx-auto aspect-square">
+            <div className="absolute inset-0 bg-yellow blob-slow" />
+            <img
+              src="https://picsum.photos/seed/bell-about-me/600/600"
+              alt="Bell sobre mim"
+              className="absolute inset-3 w-[calc(100%-1.5rem)] h-[calc(100%-1.5rem)] object-cover blob"
+            />
+            <div className="absolute -bottom-6 -right-6 bg-lime text-navy border-2 border-white rounded-2xl px-5 py-3 rotate-[-4deg] font-display font-bold floaty">
+              +3 anos criando
+            </div>
+          </div>
+        </div>
+        <div className="lg:col-span-3 reveal" style={{ animationDelay: ".1s" }}>
+          <span className="text-xs font-medium uppercase tracking-[0.2em] text-yellow">
             Sobre mim
           </span>
-        </ScrollReveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-16 items-center">
-          {/* Photo — 2 cols */}
-          <ScrollReveal className="md:col-span-2">
-            <div className="relative">
-              <div className="absolute -inset-3 rounded-[3rem] bg-gradient-to-br from-lime/30 to-yellow/30 -rotate-2" />
-              <div className="relative rounded-[2.5rem] overflow-hidden aspect-[3/4]">
-                <img
-                  src="https://picsum.photos/seed/bell-about/600/800"
-                  alt="Bell sorrindo"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              {/* Floating badge */}
-              <div className="absolute -bottom-4 -right-4 bg-magenta text-white rounded-[1.5rem] p-4 shadow-[0_12px_30px_-6px_rgba(233,30,140,0.3)] rotate-3">
-                <Heart weight="fill" size={28} />
-              </div>
+          <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight mt-3 mb-6">
+            Conteudo real, <span className="text-magenta">resultado real.</span>
+          </h2>
+          <p className="text-base md:text-lg text-white/80 leading-relaxed max-w-[65ch] mb-4">
+            Sou apaixonada por contar historias que conectam marcas a pessoas de
+            verdade. Ha anos crio conteudo autentico para redes sociais, unindo
+            criatividade, estrategia e uma boa dose de espontaneidade.
+          </p>
+          <p className="text-base md:text-lg text-white/80 leading-relaxed max-w-[65ch] mb-8">
+            Cada video que produzo carrega minha voz, meu jeito de contar
+            historias e a certeza de que o UGC nao e sobre perfeicao — e sobre
+            conexao.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <div className="bg-white/10 border border-white/20 rounded-2xl px-6 py-4">
+              <p className="font-display font-extrabold text-3xl text-yellow">120+</p>
+              <p className="text-xs uppercase tracking-wider text-white/60">
+                Videos entregues
+              </p>
             </div>
-          </ScrollReveal>
-
-          {/* Text — 3 cols */}
-          <div className="md:col-span-3 space-y-6">
-            <ScrollReveal delay={0.1}>
-              <h2 className="font-display font-black text-4xl md:text-6xl tracking-tighter leading-[0.95]">
-                Prazer, Bell <Sparkle weight="fill" className="inline text-yellow" size={32} />
-              </h2>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.2}>
-              <p className="text-lg text-muted leading-relaxed max-w-[55ch]">
-                Sou criadora de conteudo UGC apaixonada por transformar produtos em
-                historias autentiticas. Acredito que o melhor conteudo nasce quando a
-                marca encontra a voz certa — e essa voz sou eu.
+            <div className="bg-white/10 border border-white/20 rounded-2xl px-6 py-4">
+              <p className="font-display font-extrabold text-3xl text-lime">35+</p>
+              <p className="text-xs uppercase tracking-wider text-white/60">
+                Marcas parceiras
               </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.3}>
-              <p className="text-lg text-muted leading-relaxed max-w-[55ch]">
-                Com mais de 50 marcas atendidas e milhoes de views acumulados, crio
-                conteudo que conecta, engaja e converte. De unboxings a reviews, de
-                tutoriais a lifestyle — cada peca e pensada pra sua audiencia.
+            </div>
+            <div className="bg-white/10 border border-white/20 rounded-2xl px-6 py-4">
+              <p className="font-display font-extrabold text-3xl text-magenta">98%</p>
+              <p className="text-xs uppercase tracking-wider text-white/60">
+                Clientes satisfeitos
               </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.4}>
-              <div className="flex flex-wrap gap-3 pt-4">
-                {["50+ Marcas", "2M+ Views", "98% Aprovacao"].map((stat) => (
-                  <span
-                    key={stat}
-                    className="rounded-full bg-navy/5 px-5 py-2.5 text-sm font-display font-bold"
-                  >
-                    {stat}
-                  </span>
-                ))}
-              </div>
-            </ScrollReveal>
+            </div>
           </div>
         </div>
       </div>

@@ -1,101 +1,76 @@
-"use client";
-
-import { motion } from "framer-motion";
-import BlobBackground from "./ui/BlobBackground";
-import MagneticButton from "./ui/MagneticButton";
-import { ArrowRight, Star, VideoCamera, Lightning } from "@phosphor-icons/react";
-
-const STICKERS = [
-  { label: "UGC Creator", icon: Star, rotate: "-rotate-3", color: "bg-magenta text-white" },
-  { label: "Reels", icon: VideoCamera, rotate: "rotate-3", color: "bg-yellow text-navy" },
-  { label: "Content", icon: Lightning, rotate: "-rotate-2", color: "bg-lime text-navy" },
-];
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[100dvh] flex items-center overflow-hidden">
-      <BlobBackground />
+    <section
+      id="hero"
+      className="relative pt-32 md:pt-40 pb-20 md:pb-28 px-4 md:px-8 overflow-hidden min-h-[100dvh]"
+    >
+      <div className="absolute -top-20 -left-32 w-[420px] h-[420px] bg-yellow/50 blob blur-2xl pointer-events-none" />
+      <div className="absolute top-40 -right-20 w-[380px] h-[380px] bg-lime/40 blob-slow blur-2xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-4 md:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 items-center py-28 md:py-0">
-        {/* Left — Text */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-        >
-          <span className="inline-block rounded-full bg-magenta/10 border border-magenta/20 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] font-body font-medium text-magenta mb-6">
-            Portfolio 2026
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
+        <div className="reveal">
+          <span className="inline-block bg-lime border-2 border-navy rounded-full px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] mb-6 -rotate-2">
+            Disponivel para parcerias
           </span>
-
-          <h1 className="font-display font-black text-5xl md:text-7xl xl:text-8xl tracking-tighter leading-[0.9] mb-6">
+          <h1 className="font-display font-extrabold text-6xl md:text-7xl xl:text-8xl tracking-tighter leading-[0.92] mb-6">
             Oi, eu sou
             <br />
-            a <span className="text-magenta">Bell</span>
+            <span className="text-magenta">a Bell</span>
           </h1>
-
-          <p className="text-xl md:text-2xl font-body text-muted leading-relaxed max-w-[50ch] mb-10">
-            Criadora de conteudo UGC. Transformo marcas em historias que as pessoas
-            realmente querem assistir.
+          <p className="text-lg md:text-xl text-muted max-w-[42ch] leading-relaxed mb-8">
+            Criadora de Conteudo UGC — transformo produtos em historias autenticas
+            que vendem de verdade.
           </p>
-
-          <div className="flex flex-wrap gap-4">
-            <MagneticButton
+          <div className="flex flex-wrap items-center gap-4">
+            <a
               href="#contato"
-              className="bg-magenta text-white shadow-[0_8px_30px_-5px_rgba(233,30,140,0.4)] hover:shadow-[0_12px_40px_-5px_rgba(233,30,140,0.5)]"
+              className="inline-flex items-center gap-2 bg-magenta text-white font-medium px-8 py-4 rounded-full btn-shadow hover:scale-105 hover:-rotate-1 transition-transform duration-300"
             >
-              Vamos Conversar <ArrowRight weight="bold" size={20} />
-            </MagneticButton>
-
-            <MagneticButton
+              Vamos Conversar <ArrowUpRight weight="bold" size={20} />
+            </a>
+            <a
               href="#cases"
-              className="bg-navy/5 text-navy hover:bg-navy/10"
+              className="inline-flex items-center gap-2 border-2 border-navy font-medium px-8 py-4 rounded-full hover:bg-navy hover:text-white transition-colors duration-300"
             >
-              Ver Cases
-            </MagneticButton>
+              Ver Portfolio
+            </a>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Right — Photo placeholder + floating stickers */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
-          className="relative flex justify-center"
-        >
-          {/* Organic blob frame */}
-          <div className="relative w-[320px] h-[400px] md:w-[400px] md:h-[500px]">
-            <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-br from-magenta/20 via-yellow/20 to-lime/20 rotate-3" />
-            <div className="absolute inset-2 rounded-[2.5rem] bg-offwhite overflow-hidden">
-              <img
-                src="https://picsum.photos/seed/bell-ugc-hero/400/500"
-                alt="Bell — Criadora UGC"
-                className="w-full h-full object-cover"
-              />
+        <div className="relative reveal" style={{ animationDelay: ".15s" }}>
+          <div className="relative w-full max-w-md mx-auto aspect-[4/5]">
+            <div className="absolute inset-0 bg-magenta blob" />
+            <img
+              src="https://picsum.photos/seed/bell-hero-portrait/700/900"
+              alt="Bell, criadora UGC"
+              className="absolute inset-3 w-[calc(100%-1.5rem)] h-[calc(100%-1.5rem)] object-cover blob"
+              style={{ animationDelay: "-3s" }}
+            />
+            <div className="absolute -top-6 -left-8 bg-yellow border-2 border-navy rounded-2xl px-4 py-2 rotate-[-6deg] font-display font-bold text-sm floaty card-shadow">
+              UGC Creator
+            </div>
+            <div className="absolute top-1/3 -right-10 bg-white border-2 border-navy rounded-2xl px-4 py-2 rotate-[5deg] font-display font-bold text-sm floaty-delay card-shadow">
+              #Content
+            </div>
+            <div className="absolute -bottom-4 left-1/4 bg-lime border-2 border-navy rounded-2xl px-4 py-2 rotate-[3deg] font-display font-bold text-sm floaty card-shadow">
+              Reels
             </div>
           </div>
-
-          {/* Floating stickers */}
-          {STICKERS.map((s, i) => (
-            <motion.div
-              key={s.label}
-              className={`absolute ${s.color} ${s.rotate} rounded-full px-4 py-2 flex items-center gap-2 text-sm font-display font-bold shadow-[0_8px_20px_-4px_rgba(0,0,0,0.15)]`}
-              style={{
-                top: i === 0 ? "10%" : i === 1 ? "55%" : "80%",
-                left: i === 0 ? "-10%" : i === 1 ? "75%" : "-5%",
-              }}
-              animate={{ y: [0, -8, 0] }}
-              transition={{
-                duration: 3 + i * 0.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              <s.icon weight="bold" size={16} />
-              {s.label}
-            </motion.div>
-          ))}
-        </motion.div>
+        </div>
       </div>
+
+      <svg
+        className="wavy-divider mt-16 md:mt-24"
+        viewBox="0 0 1440 60"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z"
+          fill="#1A1A2E"
+        />
+      </svg>
     </section>
   );
 }

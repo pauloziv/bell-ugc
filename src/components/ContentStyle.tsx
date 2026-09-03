@@ -1,56 +1,105 @@
 "use client";
 
-import ScrollReveal from "./ui/ScrollReveal";
-import { motion } from "framer-motion";
+import SocialCards from "@/components/ui/card-fan-carousel";
 
-const TILES = [
-  { label: "Unboxing", span: "md:col-span-2 md:row-span-2", seed: "bell-unboxing", color: "from-magenta/80 to-magenta/40" },
-  { label: "Reviews", span: "md:col-span-1", seed: "bell-reviews", color: "from-yellow/80 to-yellow/40" },
-  { label: "Tutoriais", span: "md:col-span-1", seed: "bell-tutorial", color: "from-lime/80 to-lime/40" },
-  { label: "Lifestyle", span: "md:col-span-1", seed: "bell-lifestyle", color: "from-navy/80 to-navy/40" },
-  { label: "Antes e Depois", span: "md:col-span-1", seed: "bell-beforeafter", color: "from-magenta/60 to-yellow/60" },
+const VIDEO_BUCKET =
+  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample";
+
+const REEL_CARDS = [
+  {
+    imgUrl: "https://picsum.photos/seed/ugc-unboxing/540/960",
+    alt: "Unboxing de produto",
+    label: "Unboxing",
+    views: "47.2K views",
+    videoUrl: `${VIDEO_BUCKET}/ForBiggerBlazes.mp4`,
+  },
+  {
+    imgUrl: "https://picsum.photos/seed/ugc-reviews/540/960",
+    alt: "Review de skincare",
+    label: "Reviews",
+    views: "81.4K views",
+    videoUrl: `${VIDEO_BUCKET}/ForBiggerEscapes.mp4`,
+  },
+  {
+    imgUrl: "https://picsum.photos/seed/ugc-tutoriais/540/960",
+    alt: "Tutorial de aplicacao",
+    label: "Tutoriais",
+    views: "29.8K views",
+    videoUrl: `${VIDEO_BUCKET}/ForBiggerFun.mp4`,
+  },
+  {
+    imgUrl: "https://picsum.photos/seed/ugc-lifestyle/540/960",
+    alt: "Lifestyle cotidiano",
+    label: "Lifestyle",
+    views: "63.1K views",
+    videoUrl: `${VIDEO_BUCKET}/ForBiggerJoyrides.mp4`,
+  },
+  {
+    imgUrl: "https://picsum.photos/seed/ugc-antes-depois/540/960",
+    alt: "Antes e depois",
+    label: "Antes e Depois",
+    views: "112K views",
+    videoUrl: `${VIDEO_BUCKET}/ForBiggerMeltdowns.mp4`,
+  },
+  {
+    imgUrl: "https://picsum.photos/seed/ugc-tryon/540/960",
+    alt: "Try-on de look",
+    label: "Try-on",
+    views: "38.6K views",
+    videoUrl: `${VIDEO_BUCKET}/SubaruOutbackOnStreetAndDirt.mp4`,
+  },
+  {
+    imgUrl: "https://picsum.photos/seed/ugc-grwm/540/960",
+    alt: "Get ready with me",
+    label: "GRWM",
+    views: "54.9K views",
+    videoUrl: `${VIDEO_BUCKET}/TearsOfSteel.mp4`,
+  },
+  {
+    imgUrl: "https://picsum.photos/seed/ugc-hooks/540/960",
+    alt: "Hook de 3 segundos",
+    label: "Hooks",
+    views: "96.3K views",
+    videoUrl: `${VIDEO_BUCKET}/Sintel.mp4`,
+  },
+  {
+    imgUrl: "https://picsum.photos/seed/ugc-ads/540/960",
+    alt: "Peca para ads",
+    label: "Ads UGC",
+    views: "22.4K views",
+    videoUrl: `${VIDEO_BUCKET}/ElephantsDream.mp4`,
+  },
+  {
+    imgUrl: "https://picsum.photos/seed/ugc-bts/540/960",
+    alt: "Bastidores de gravacao",
+    label: "Bastidores",
+    views: "18.7K views",
+    videoUrl: `${VIDEO_BUCKET}/BigBuckBunny.mp4`,
+  },
 ];
 
 export default function ContentStyle() {
   return (
-    <section id="conteudo" className="py-28 md:py-40">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-        <ScrollReveal>
-          <span className="inline-block rounded-full bg-lime/15 border border-lime/25 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] font-body font-medium text-navy/60 mb-6">
-            Meu estilo
+    <section
+      id="estilo"
+      className="py-20 md:py-32 px-4 md:px-8 bg-[#FFF6F9] relative overflow-hidden"
+    >
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-yellow/40 blob blur-2xl pointer-events-none" />
+      <div className="max-w-[1400px] mx-auto relative z-10">
+        <div className="mb-8 reveal">
+          <span className="text-xs font-medium uppercase tracking-[0.2em] text-magenta">
+            Portfolio de conteudo
           </span>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.1}>
-          <h2 className="font-display font-black text-4xl md:text-6xl tracking-tighter leading-[0.95] max-w-[16ch] mb-16">
-            Conteudo que eu <span className="text-magenta">crio</span>
+          <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight mt-3">
+            Meu Estilo de <span className="text-magenta">Conteudo</span>
           </h2>
-        </ScrollReveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {TILES.map((tile, i) => (
-            <ScrollReveal key={tile.label} delay={0.1 * (i + 1)} className={tile.span}>
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 120, damping: 18 }}
-                className="relative rounded-[2rem] overflow-hidden aspect-square md:aspect-auto md:h-full min-h-[220px] group cursor-pointer"
-              >
-                <img
-                  src={`https://picsum.photos/seed/${tile.seed}/600/600`}
-                  alt={tile.label}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t ${tile.color} opacity-60`} />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <span className="font-display font-bold text-white text-xl md:text-2xl drop-shadow-lg">
-                    {tile.label}
-                  </span>
-                </div>
-              </motion.div>
-            </ScrollReveal>
-          ))}
+          <p className="text-muted mt-4 max-w-[50ch]">
+            Players verticais no formato Reels e TikTok. Clica no play pra abrir
+            grande e assistir.
+          </p>
         </div>
       </div>
+      <SocialCards cards={REEL_CARDS} />
     </section>
   );
 }

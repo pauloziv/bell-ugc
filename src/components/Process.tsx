@@ -1,51 +1,54 @@
-"use client";
-
-import ScrollReveal from "./ui/ScrollReveal";
-import { motion } from "framer-motion";
-import { ChatText, Notepad, FilmSlate, MagicWand, PaperPlaneTilt } from "@phosphor-icons/react";
-
 const STEPS = [
-  { num: "01", title: "Briefing", desc: "Entendo a marca, o produto e o objetivo da campanha.", icon: ChatText, color: "bg-magenta text-white" },
-  { num: "02", title: "Roteiro", desc: "Crio o roteiro com tom, gancho e CTA pensados na sua audiencia.", icon: Notepad, color: "bg-yellow text-navy" },
-  { num: "03", title: "Producao", desc: "Gravo com qualidade profissional no meu setup dedicado.", icon: FilmSlate, color: "bg-lime text-navy" },
-  { num: "04", title: "Edicao", desc: "Edito com cortes dinamicos, legendas e trilha que prende atencao.", icon: MagicWand, color: "bg-navy text-white" },
-  { num: "05", title: "Entrega", desc: "Entrego os arquivos finais prontos pra publicar.", icon: PaperPlaneTilt, color: "bg-magenta text-white" },
+  { num: "01", title: "Briefing", desc: "Entendo objetivos e voz da marca.", circle: "bg-magenta text-white" },
+  { num: "02", title: "Roteiro", desc: "Crio um roteiro autentico e estrategico.", circle: "bg-yellow" },
+  { num: "03", title: "Producao", desc: "Gravo com luz, som e estetica de qualidade.", circle: "bg-lime" },
+  { num: "04", title: "Edicao", desc: "Corto e finalizo no ritmo das plataformas.", circle: "bg-navy text-white" },
+  { num: "05", title: "Entrega", desc: "Envio os arquivos prontos para publicar.", circle: "bg-white text-magenta" },
 ];
 
 export default function Process() {
   return (
-    <section id="processo" className="py-28 md:py-40 bg-navy text-white overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-        <ScrollReveal>
-          <span className="inline-block rounded-full bg-white/10 border border-white/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] font-body font-medium text-white/50 mb-6">
-            Processo
+    <section id="processo" className="py-20 md:py-32 px-4 md:px-8 overflow-hidden">
+      <div className="max-w-[1400px] mx-auto">
+        <div className="mb-16 reveal">
+          <span className="text-xs font-medium uppercase tracking-[0.2em] text-magenta">
+            Como eu trabalho
           </span>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.1}>
-          <h2 className="font-display font-black text-4xl md:text-6xl tracking-tighter leading-[0.95] max-w-[18ch] mb-16">
-            Como eu <span className="text-magenta">trabalho</span>
+          <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight mt-3">
+            Processo <span className="text-magenta">Criativo</span>
           </h2>
-        </ScrollReveal>
-
-        {/* Horizontal scroll on mobile, grid on desktop */}
-        <div className="flex md:grid md:grid-cols-5 gap-4 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory">
-          {STEPS.map((step, i) => (
-            <ScrollReveal key={step.num} delay={0.1 * (i + 1)}>
-              <motion.div
-                whileHover={{ y: -6 }}
-                transition={{ type: "spring", stiffness: 120, damping: 18 }}
-                className="flex-shrink-0 w-[260px] md:w-auto snap-center rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-sm p-6 md:p-8"
+        </div>
+        <div className="relative">
+          <svg
+            className="hidden lg:block absolute top-10 left-0 w-full h-6"
+            viewBox="0 0 1300 24"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,12 C130,24 260,0 390,12 C520,24 650,0 780,12 C910,24 1040,0 1170,12 C1230,18 1270,6 1300,12"
+              stroke="#E91E8C"
+              strokeWidth="3"
+              fill="none"
+              strokeDasharray="10 8"
+            />
+          </svg>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
+            {STEPS.map((step, i) => (
+              <div
+                key={step.num}
+                className="reveal flex flex-col items-center text-center"
+                style={{ animationDelay: `${i * 0.08}s` }}
               >
-                <div className={`w-12 h-12 rounded-full ${step.color} flex items-center justify-center mb-4`}>
-                  <step.icon weight="bold" size={22} />
+                <div
+                  className={`w-20 h-20 border-2 border-navy rounded-full flex items-center justify-center font-display font-extrabold text-2xl mb-4 ${step.circle}`}
+                >
+                  {step.num}
                 </div>
-                <span className="font-display font-black text-3xl text-white/10 block mb-2">{step.num}</span>
-                <h3 className="font-display font-bold text-xl mb-2">{step.title}</h3>
-                <p className="text-sm text-white/50 leading-relaxed">{step.desc}</p>
-              </motion.div>
-            </ScrollReveal>
-          ))}
+                <h3 className="font-display font-bold text-lg mb-2">{step.title}</h3>
+                <p className="text-sm text-muted">{step.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

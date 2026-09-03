@@ -1,68 +1,61 @@
-"use client";
-
-import ScrollReveal from "./ui/ScrollReveal";
-import { motion } from "framer-motion";
-import { ShieldCheck, TrendUp, CurrencyDollar } from "@phosphor-icons/react";
+import { Sparkle, Handshake, TrendUp } from "@phosphor-icons/react/dist/ssr";
 
 const CARDS = [
   {
-    icon: ShieldCheck,
     title: "Autenticidade",
-    desc: "Conteudo real feito por pessoas reais. Sem scripts engessados, sem producoes artificiais — so verdade.",
-    accent: "border-magenta/30 hover:border-magenta/60",
-    iconBg: "bg-magenta/10 text-magenta",
+    desc: "Conteudo genuino que parece uma recomendacao de amiga, nao uma propaganda tradicional.",
+    icon: Sparkle,
+    box: "bg-yellow -rotate-3",
+    delay: undefined as string | undefined,
   },
   {
-    icon: TrendUp,
     title: "Engajamento",
-    desc: "UGC gera ate 6.9x mais engajamento que conteudo de marca tradicional. Pessoas confiam em pessoas.",
-    accent: "border-yellow/40 hover:border-yellow/70",
-    iconBg: "bg-yellow/20 text-navy",
+    desc: "Videos feitos para parar o scroll e gerar comentarios, salvamentos e compartilhamentos.",
+    icon: Handshake,
+    box: "bg-lime rotate-2",
+    delay: ".1s",
   },
   {
-    icon: CurrencyDollar,
     title: "Conversao",
-    desc: "Conteudo autentico converte 29% mais. Seu produto na mao de quem sabe contar historias que vendem.",
-    accent: "border-lime/40 hover:border-lime/70",
-    iconBg: "bg-lime/20 text-navy",
+    desc: "Conteudo pensado em cada etapa do funil, direto ao ponto e com CTA que converte.",
+    icon: TrendUp,
+    box: "bg-magenta text-white -rotate-2",
+    delay: ".2s",
   },
 ];
 
 export default function WhatIsUGC() {
   return (
-    <section id="ugc" className="relative py-28 md:py-40 bg-navy text-white overflow-hidden">
-      {/* Decorative blob */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-magenta/10 blur-[150px] pointer-events-none" />
-
-      <div className="relative z-10 max-w-[1400px] mx-auto px-4 md:px-8">
-        <ScrollReveal>
-          <span className="inline-block rounded-full bg-white/10 border border-white/10 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] font-body font-medium text-white/50 mb-6">
-            O que e UGC?
+    <section id="ugc" className="py-20 md:py-32 px-4 md:px-8 relative">
+      <div className="max-w-[1400px] mx-auto">
+        <div className="text-center mb-16 reveal">
+          <span className="text-xs font-medium uppercase tracking-[0.2em] text-magenta">
+            Entenda o conceito
           </span>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.1}>
-          <h2 className="font-display font-black text-4xl md:text-6xl tracking-tighter leading-[0.95] max-w-[18ch] mb-16">
-            Conteudo que parece <span className="text-magenta">conversa</span>,
-            nao propaganda
+          <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight mt-3">
+            O que e <span className="text-magenta">UGC?</span>
           </h2>
-        </ScrollReveal>
-
+          <p className="text-base md:text-lg text-muted max-w-[60ch] mx-auto mt-4 leading-relaxed">
+            Conteudo Gerado por Usuario (User Generated Content) e a forma mais
+            autentica de mostrar um produto — feito como se fosse um amigo
+            recomendando, nao um anuncio.
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {CARDS.map((card, i) => (
-            <ScrollReveal key={card.title} delay={0.15 * (i + 1)}>
-              <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ type: "spring", stiffness: 120, damping: 18 }}
-                className={`rounded-[2rem] border-2 ${card.accent} bg-white/5 backdrop-blur-sm p-8 md:p-10 transition-colors duration-500`}
+          {CARDS.map((card) => (
+            <div
+              key={card.title}
+              className="reveal bg-white border-2 border-navy rounded-[2.5rem] p-8 card-shadow hover:-translate-y-2 transition-transform duration-300"
+              style={card.delay ? { animationDelay: card.delay } : undefined}
+            >
+              <div
+                className={`w-16 h-16 border-2 border-navy rounded-2xl flex items-center justify-center mb-6 ${card.box}`}
               >
-                <div className={`w-14 h-14 rounded-[1.2rem] ${card.iconBg} flex items-center justify-center mb-6`}>
-                  <card.icon weight="bold" size={28} />
-                </div>
-                <h3 className="font-display font-bold text-2xl mb-3">{card.title}</h3>
-                <p className="text-white/60 leading-relaxed">{card.desc}</p>
-              </motion.div>
-            </ScrollReveal>
+                <card.icon weight="bold" size={28} />
+              </div>
+              <h3 className="font-display font-bold text-2xl mb-3">{card.title}</h3>
+              <p className="text-muted leading-relaxed">{card.desc}</p>
+            </div>
           ))}
         </div>
       </div>

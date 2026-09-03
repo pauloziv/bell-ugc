@@ -14,13 +14,49 @@
 
 @font-face {
   font-family: "Cabinet Grotesk";
-  src: url("https://fonts.cdnfonts.com/css/cabinet-grotesk");
+  src: url("/fonts/cabinet-grotesk-800.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/fonts/cabinet-grotesk-800.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/fonts/cabinet-grotesk-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Satoshi";
-  src: url("https://fonts.cdnfonts.com/css/satoshi");
+  src: url("/fonts/satoshi-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/satoshi-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -54,6 +90,195 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+}
+
+@keyframes blobmove {
+  0%,
+  100% {
+    border-radius: 42% 58% 65% 35% / 45% 45% 55% 55%;
+    transform: rotate(0deg) scale(1);
+  }
+  33% {
+    border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
+    transform: rotate(8deg) scale(1.05);
+  }
+  66% {
+    border-radius: 35% 65% 55% 45% / 60% 35% 65% 40%;
+    transform: rotate(-6deg) scale(0.98);
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.blob {
+  animation: blobmove 15s ease-in-out infinite;
+}
+
+.blob-slow {
+  animation: blobmove 20s ease-in-out infinite reverse;
+}
+
+.floaty {
+  animation: floaty 4s ease-in-out infinite;
+}
+
+.floaty-delay {
+  animation: floaty 4s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+.reveal {
+  animation: reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.wavy-divider {
+  width: 100%;
+  height: 60px;
+  display: block;
+}
+
+.card-shadow {
+  box-shadow: 0 20px 60px -15px rgba(233, 30, 140, 0.18);
+}
+
+.btn-shadow {
+  box-shadow: 0 8px 30px -5px rgba(233, 30, 140, 0.4);
+}
+
+.hard-shadow {
+  box-shadow: 8px 8px 0 0 var(--color-navy);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-offwhite);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-magenta);
+  border-radius: 10px;
+}
+
+.fan-layout {
+  height: 38rem;
+  min-height: 22rem;
+  touch-action: pan-y;
+}
+
+.fan-card {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: 12.5rem;
+  aspect-ratio: 9 / 16;
+  border-radius: 1.85rem;
+  overflow: hidden;
+  padding: 0.35rem;
+  background: #1a1a2e;
+  box-shadow:
+    0 24px 48px -18px rgba(233, 30, 140, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  will-change: transform;
+  transform-origin: center center;
+}
+
+@media (max-width: 1023px) {
+  .fan-layout {
+    height: 34rem;
+  }
+  .fan-card {
+    width: 10.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .fan-layout {
+    height: 28rem;
+  }
+  .fan-card {
+    width: 8.25rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .fan-layout {
+    height: 22rem;
+  }
+  .fan-card {
+    width: 6.5rem;
+  }
+}
+
+.fan-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  background: rgba(26, 26, 46, 0.78);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.fan-backdrop.is-open {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.fan-player-slot {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: min(22.5rem, calc(100vw - 2rem));
+  aspect-ratio: 9 / 16;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 56;
+}
+
+.fan-player {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 70;
+  width: min(22.5rem, calc(100vw - 2rem));
+  aspect-ratio: 9 / 16;
+  border-radius: 1.85rem;
+  overflow: hidden;
+  padding: 0.4rem;
+  background: #1a1a2e;
+  visibility: hidden;
+  pointer-events: none;
+  box-shadow:
+    0 28px 64px -18px rgba(233, 30, 140, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.fan-player.is-open {
+  visibility: visible;
+  pointer-events: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {

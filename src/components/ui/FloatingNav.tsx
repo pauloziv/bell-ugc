@@ -1,48 +1,70 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { List, X } from "@phosphor-icons/react";
+import { useState } from "react";
 
-const NAV_ITEMS = [
-  { label: "Sobre", href: "#sobre" },
-  { label: "UGC", href: "#ugc" },
-  { label: "Conteudo", href: "#conteudo" },
-  { label: "Cases", href: "#cases" },
-  { label: "Processo", href: "#processo" },
-  { label: "Pacotes", href: "#pacotes" },
-  { label: "Contato", href: "#contato" },
+const LINKS = [
+  { href: "#sobre", label: "Sobre" },
+  { href: "#ugc", label: "UGC" },
+  { href: "#estilo", label: "Estilo" },
+  { href: "#plataformas", label: "Plataformas" },
+  { href: "#cases", label: "Cases" },
+  { href: "#processo", label: "Processo" },
+  { href: "#pacotes", label: "Pacotes" },
 ];
 
 export default function FloatingNav() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setVisible(window.scrollY > 300);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [open, setOpen] = useState(false);
 
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.nav
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ type: "spring", stiffness: 120, damping: 18 }}
-          className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-1 rounded-full bg-navy/90 backdrop-blur-2xl border border-white/10 px-2 py-2 shadow-[0_12px_40px_-8px_rgba(26,26,46,0.4)]"
+    <nav className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-auto">
+      <div className="flex items-center justify-between md:justify-center gap-1 md:gap-2 bg-white/95 border-2 border-navy rounded-full px-3 md:px-6 py-2.5 md:py-3 shadow-[0_8px_30px_-5px_rgba(233,30,140,0.25)]">
+        <a
+          href="#hero"
+          className="font-display font-extrabold text-lg text-navy pr-2 md:pr-4 whitespace-nowrap"
         >
-          {NAV_ITEMS.map((item) => (
+          bell<span className="text-magenta">.</span>
+        </a>
+        <div className="hidden lg:flex items-center gap-1">
+          {LINKS.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="px-4 py-2 text-sm font-body font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]"
+              className="text-xs font-medium uppercase tracking-wider px-3 py-2 rounded-full hover:bg-yellow transition-colors whitespace-nowrap"
             >
               {item.label}
             </a>
           ))}
-        </motion.nav>
-      )}
-    </AnimatePresence>
+        </div>
+        <a
+          href="#contato"
+          className="bg-navy text-white text-xs font-medium uppercase tracking-wider px-4 md:px-5 py-2.5 rounded-full whitespace-nowrap hover:bg-magenta transition-colors"
+        >
+          Contato
+        </a>
+        <button
+          type="button"
+          className="lg:hidden w-10 h-10 rounded-full border-2 border-navy flex items-center justify-center"
+          aria-label={open ? "Fechar menu" : "Abrir menu"}
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X weight="bold" size={18} /> : <List weight="bold" size={18} />}
+        </button>
+      </div>
+      {open ? (
+        <div className="lg:hidden mt-2 rounded-[1.5rem] border-2 border-navy bg-white p-3 flex flex-col">
+          {LINKS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="px-4 py-3 rounded-full text-sm font-medium uppercase tracking-wider hover:bg-yellow"
+              onClick={() => setOpen(false)}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      ) : null}
+    </nav>
   );
 }

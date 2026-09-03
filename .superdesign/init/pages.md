@@ -1,0 +1,30 @@
+## /
+Entry: src/app/page.tsx
+Dependencies:
+- src/components/ui/FloatingNav.tsx
+- src/components/Hero.tsx
+  - src/components/ui/BlobBackground.tsx
+  - src/components/ui/MagneticButton.tsx
+- src/components/About.tsx
+  - src/components/ui/ScrollReveal.tsx
+- src/components/WhatIsUGC.tsx
+  - src/components/ui/ScrollReveal.tsx
+- src/components/ContentStyle.tsx
+  - src/components/ui/card-fan-carousel.tsx
+    - src/lib/gsap-register.ts
+- src/components/Platforms.tsx
+  - src/components/ui/ScrollReveal.tsx
+- src/components/Cases.tsx
+  - src/components/ui/ScrollReveal.tsx
+  - src/components/ui/MarqueeStrip.tsx
+- src/components/Process.tsx
+  - src/components/ui/ScrollReveal.tsx
+- src/components/Pricing.tsx
+  - src/components/ui/ScrollReveal.tsx
+  - src/components/ui/MagneticButton.tsx
+- src/components/CTA.tsx
+  - src/components/ui/ScrollReveal.tsx
+  - src/components/ui/MagneticButton.tsx
+  - src/components/ui/BlobBackground.tsx
+- src/app/globals.css
+- src/app/layout.tsx

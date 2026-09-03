@@ -1,62 +1,76 @@
-"use client";
-
-import ScrollReveal from "./ui/ScrollReveal";
-import MarqueeStrip from "./ui/MarqueeStrip";
-import { motion } from "framer-motion";
-
-const BRANDS = [
-  { name: "Natura", desc: "Campanha de skincare com 3 videos UGC", span: "md:col-span-2", seed: "natura-ugc" },
-  { name: "Boticario", desc: "Lancamento de perfume — unboxing + review", span: "md:col-span-1", seed: "boticario-ugc" },
-  { name: "Farm", desc: "Colecao verao — lifestyle e try-on", span: "md:col-span-1", seed: "farm-ugc" },
-  { name: "Havaianas", desc: "Serie de Reels para lancamento collab", span: "md:col-span-1", seed: "havaianas-ugc" },
-  { name: "Granado", desc: "Conteudo evergreen para e-commerce", span: "md:col-span-2", seed: "granado-ugc" },
+const CASES = [
+  {
+    name: "Natura",
+    desc: "Serie de reels para lancamento de linha de skincare, resultado: +40% engajamento.",
+    className: "md:col-span-2 bg-white min-h-[220px]",
+    nameClass: "text-3xl",
+    textClass: "text-muted",
+    delay: undefined as string | undefined,
+  },
+  {
+    name: "Boticario",
+    desc: "Unboxing e reviews de perfumaria sazonal.",
+    className: "bg-yellow min-h-[220px]",
+    nameClass: "text-2xl",
+    textClass: "text-navy/70",
+    delay: ".05s",
+  },
+  {
+    name: "Farm",
+    desc: "Lookbook lifestyle para colecao de verao.",
+    className: "bg-white min-h-[220px]",
+    nameClass: "text-2xl",
+    textClass: "text-muted",
+    delay: ".1s",
+  },
+  {
+    name: "Havaianas",
+    desc: "Campanha de verao com conteudo praiano autentico.",
+    className: "bg-white min-h-[220px]",
+    nameClass: "text-2xl",
+    textClass: "text-muted",
+    delay: ".15s",
+  },
+  {
+    name: "Granado",
+    desc: "Antes e depois de rotina de cuidados, alta taxa de conversao em link na bio.",
+    className: "md:col-span-2 bg-navy text-white min-h-[220px]",
+    nameClass: "text-3xl text-lime",
+    textClass: "text-white/70",
+    delay: ".2s",
+  },
 ];
 
 export default function Cases() {
   return (
-    <section id="cases" className="py-28 md:py-40">
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-        <ScrollReveal>
-          <span className="inline-block rounded-full bg-yellow/20 border border-yellow/30 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] font-body font-medium text-navy/60 mb-6">
-            Cases
+    <section
+      id="cases"
+      className="py-20 md:py-32 px-4 md:px-8 bg-[#FFF6F9] relative overflow-hidden"
+    >
+      <div className="absolute top-10 -right-24 w-80 h-80 bg-lime/30 blob-slow blur-2xl pointer-events-none" />
+      <div className="max-w-[1400px] mx-auto relative z-10">
+        <div className="mb-14 reveal">
+          <span className="text-xs font-medium uppercase tracking-[0.2em] text-magenta">
+            Quem confia em mim
           </span>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.1}>
-          <h2 className="font-display font-black text-4xl md:text-6xl tracking-tighter leading-[0.95] max-w-[16ch] mb-16">
-            Marcas que ja <span className="text-magenta">confiam</span> em mim
+          <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight mt-3">
+            Cases & <span className="text-magenta">Marcas</span>
           </h2>
-        </ScrollReveal>
-
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
-          {BRANDS.map((brand, i) => (
-            <ScrollReveal key={brand.name} delay={0.1 * (i + 1)} className={brand.span}>
-              <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ type: "spring", stiffness: 120, damping: 18 }}
-                className="relative rounded-[2rem] overflow-hidden bg-white border-2 border-navy/5 group cursor-pointer h-full"
-              >
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={`https://picsum.photos/seed/${brand.seed}/800/450`}
-                    alt={brand.name}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display font-bold text-xl mb-1">{brand.name}</h3>
-                  <p className="text-sm text-muted">{brand.desc}</p>
-                </div>
-              </motion.div>
-            </ScrollReveal>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
+          {CASES.map((item) => (
+            <div
+              key={item.name}
+              className={`reveal border-2 border-navy rounded-[2.5rem] p-8 card-shadow flex flex-col justify-between ${item.className}`}
+              style={item.delay ? { animationDelay: item.delay } : undefined}
+            >
+              <span className={`font-display font-extrabold ${item.nameClass}`}>
+                {item.name}
+              </span>
+              <p className={`mt-4 ${item.textClass}`}>{item.desc}</p>
+            </div>
           ))}
         </div>
-
-        <MarqueeStrip
-          items={["Natura", "Boticario", "Farm", "Havaianas", "Granado", "Quem Disse Berenice", "Sallve", "Baw"]}
-          className="py-8 border-y border-navy/5"
-        />
       </div>
     </section>
   );
