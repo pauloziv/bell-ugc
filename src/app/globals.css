@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-magenta: #E91E8C;
+  --color-yellow: #FFD23F;
+  --color-lime: #7BED4F;
+  --color-navy: #1A1A2E;
+  --color-offwhite: #FAFAFA;
+  --color-muted: #6B7280;
+
+  --font-display: "Cabinet Grotesk", system-ui, sans-serif;
+  --font-body: "Satoshi", system-ui, sans-serif;
+}
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("https://fonts.cdnfonts.com/css/cabinet-grotesk");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("https://fonts.cdnfonts.com/css/satoshi");
+  font-display: swap;
+}
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-offwhite);
+    color: var(--color-navy);
+  }
+
+  body {
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-magenta);
+    color: white;
+  }
+}
+
+@layer utilities {
+  .text-gradient-magenta {
+    background: linear-gradient(135deg, #E91E8C 0%, #FFD23F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
