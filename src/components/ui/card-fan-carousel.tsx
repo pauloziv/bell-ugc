@@ -4,6 +4,8 @@ import { useState, useRef, useCallback, useLayoutEffect, useSyncExternalStore } 
 import { Play, Heart, ChatCircle, ShareNetwork, X } from "@phosphor-icons/react";
 import { gsap, useGSAP, Observer, Flip, registerGsapPlugins } from "@/lib/gsap-register";
 
+registerGsapPlugins();
+
 export interface CardItem {
   imgUrl: string;
   alt?: string;
@@ -301,8 +303,8 @@ export default function SocialCards({ cards }: SocialCardsProps) {
   }, [playingIndex, closePlay, centerSlot]);
 
   useLayoutEffect(() => {
-    if (mounted) registerGsapPlugins();
-  }, [mounted]);
+    registerGsapPlugins();
+  }, []);
 
   useLayoutEffect(() => {
     cycleRef.current = cycle;
@@ -310,6 +312,7 @@ export default function SocialCards({ cards }: SocialCardsProps) {
 
   useGSAP(
     () => {
+      registerGsapPlugins();
       const container = containerRef.current;
       if (!container || !needsPagination) return;
 
@@ -330,6 +333,7 @@ export default function SocialCards({ cards }: SocialCardsProps) {
 
   useGSAP(
     (context, contextSafe) => {
+      registerGsapPlugins();
       if (!contextSafe) return;
       const container = containerRef.current;
       if (!container || !totalCards) return;
