@@ -175,23 +175,25 @@ export default function SocialCards({ cards }: SocialCardsProps) {
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
   const playingIndexRef = useRef<number | null>(null);
   const playerRef = useRef<HTMLDivElement>(null);
-  const playerSlotRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const closingRef = useRef(false);
   const hoverRef = useRef(false);
+  const snapFanRef = useRef<() => void>(() => {});
 
-  const resetPlayer = useCallback(() => {
-    const player = playerRef.current;
-    const slot = playerSlotRef.current;
-    if (player) {
-      gsap.killTweensOf(player);
-      gsap.set(player, { clearProps: "all" });
+  const closePlay = useCallback(() => {
+    if (closingRef.current) return;
+    closingRef.current = true;
+    const video = videoRef.current;
+    video?.pause();
+    if (video) {
+      video.removeAttribute("src");
+      video.load();
     }
-    if (slot) {
-      gsap.killTweensOf(slot);
-      gsap.set(slot, { clearProps: "all" });
-    }
+    playingIndexRef.current = null;
+    setPlayingIndex(null);
     document.body.style.overflow = "";
+    snapFanRef.current();
+    closingRef.current = false;
   }, []);
 
   const cycle = useCallback(
@@ -214,78 +216,27 @@ export default function SocialCards({ cards }: SocialCardsProps) {
     [totalCards, needsPagination],
   );
 
-  const centerSlot = useCallback(() => {
-    const slot = playerSlotRef.current;
-    if (!slot) return;
-    const maxW = Math.min(22.5 * 16, window.innerWidth - 32);
-    const maxH = window.innerHeight - 64;
-    const height = Math.min(maxW * (16 / 9), maxH);
-    const width = height * (9 / 16);
-    gsap.set(slot, {
-      left: (window.innerWidth - width) / 2,
-      top: (window.innerHeight - height) / 2,
-      width,
-      height,
-      x: 0,
-      y: 0,
-      margin: 0,
-    });
-  }, []);
-
-  const closePlay = useCallback(() => {
-    if (closingRef.current) return;
-    const video = videoRef.current;
-    video?.pause();
-    if (video) video.currentTime = 0;
-    closingRef.current = true;
-    playingIndexRef.current = null;
-    setPlayingIndex(null);
-    resetPlayer();
-    closingRef.current = false;
-  }, [resetPlayer]);
-
   const openPlay = useCallback((index: number) => {
     if (playingIndexRef.current !== null || closingRef.current) return;
     const url = cards[index]?.videoUrl;
     if (!url) return;
     playingIndexRef.current = index;
     setPlayingIndex(index);
-    const video = videoRef.current;
-    if (video) {
-      video.src = url;
-      video.playsInline = true;
-      void video.play().catch(() => {});
-    }
   }, [cards]);
 
   useLayoutEffect(() => {
     if (playingIndex === null) return;
-    const player = playerRef.current;
-    const slot = playerSlotRef.current;
     const video = videoRef.current;
-    if (!player) return;
+    const url = cards[playingIndex]?.videoUrl;
+    if (!video || !url) return;
 
     document.body.style.overflow = "hidden";
-    centerSlot();
-
-    if (slot) {
-      const box = slot.getBoundingClientRect();
-      gsap.set(player, {
-        left: box.left,
-        top: box.top,
-        width: box.width,
-        height: box.height,
-        x: 0,
-        y: 0,
-        rotation: 0,
-        scale: 1,
-      });
-    }
-
-    if (video) {
-      video.muted = false;
-      void video.play().catch(() => {});
-    }
+    video.playsInline = true;
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    video.src = url;
+    video.muted = false;
+    void video.play().catch(() => {});
 
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") closePlay();
@@ -294,7 +245,7 @@ export default function SocialCards({ cards }: SocialCardsProps) {
     return () => {
       window.removeEventListener("keydown", onKey);
     };
-  }, [playingIndex, closePlay, centerSlot]);
+  }, [playingIndex, closePlay, cards]);
 
   useLayoutEffect(() => {
     registerGsapPlugins();
@@ -377,6 +328,29 @@ export default function SocialCards({ cards }: SocialCardsProps) {
       });
 
       const origin = { xPercent: -50, yPercent: -50 };
+
+      snapFanRef.current = () => {
+        const mult = getResponsiveMultiplier(window.innerWidth);
+        const hM = getHeightMultiplier(window.innerWidth);
+        const map = getVisibleMap(centerIndex);
+        cardElements.forEach((card, cardIndex) => {
+          const slot = map.get(cardIndex);
+          if (slot === undefined) {
+            gsap.set(card, { autoAlpha: 0, zIndex: 0 });
+            return;
+          }
+          const { x, y, rot, scale, zIndex } = config(slot);
+          gsap.set(card, {
+            ...origin,
+            x: `${x * mult}rem`,
+            y: `${y * hM}rem`,
+            rotation: rot,
+            scale,
+            autoAlpha: 1,
+            zIndex,
+          });
+        });
+      };
 
       cardElements.forEach((card, cardIndex) => {
         const slot = visibleMap.get(cardIndex);
@@ -471,6 +445,7 @@ export default function SocialCards({ cards }: SocialCardsProps) {
       const centerSlot = visibleEntries.length >> 1;
 
       const updateHoverLayout = contextSafe((hoveredSlot: number | null) => {
+        if (playingIndexRef.current !== null) return;
         const mult = getResponsiveMultiplier(window.innerWidth);
         const hM = getHeightMultiplier(window.innerWidth);
 
@@ -529,7 +504,7 @@ export default function SocialCards({ cards }: SocialCardsProps) {
 
       const enterHandlers = visibleEntries.map(({ el, slot }) => {
         const handler = contextSafe(() => {
-          if (isAnimating.current) return;
+          if (isAnimating.current || playingIndexRef.current !== null) return;
           if (leaveTimer) {
             clearTimeout(leaveTimer);
             leaveTimer = null;
@@ -554,7 +529,8 @@ export default function SocialCards({ cards }: SocialCardsProps) {
       container.addEventListener("mouseleave", onMouseLeave);
 
       const onResize = contextSafe(() => {
-        if (!isAnimating.current) updateHoverLayout(activeSlot);
+        if (isAnimating.current || playingIndexRef.current !== null) return;
+        updateHoverLayout(activeSlot);
       });
       window.addEventListener("resize", onResize);
 
@@ -643,7 +619,6 @@ export default function SocialCards({ cards }: SocialCardsProps) {
                 onClick={closePlay}
                 aria-hidden={playingIndex === null}
               />
-              <div ref={playerSlotRef} className="fan-player-slot" aria-hidden />
               <div
                 ref={playerRef}
                 className={`fan-player ${playingIndex !== null ? "is-open" : ""}`}
@@ -654,8 +629,12 @@ export default function SocialCards({ cards }: SocialCardsProps) {
                     ? cards[playingIndex]?.label || "Reel"
                     : undefined
                 }
+                onClick={closePlay}
               >
-                <div className="relative h-full w-full">
+                <div
+                  className="fan-player-frame"
+                  onClick={(event) => event.stopPropagation()}
+                >
                   <video
                     ref={videoRef}
                     poster={

@@ -89,23 +89,25 @@ function MobileTalker({
     <motion.div
       aria-hidden="true"
       data-mobile-talker
-      className="pointer-events-none fixed right-0 z-40 flex items-end gap-1.5 pr-1 lg:hidden"
+      className="pointer-events-none fixed right-0 z-40 lg:hidden"
       style={{
         y: bob,
         opacity,
         bottom: "max(8px, env(safe-area-inset-bottom))",
       }}
     >
-      <span className="mb-[10.25rem] shrink-0 rounded-[1.15rem] rounded-br-md border-2 border-navy bg-lime px-2.5 py-1.5 text-left font-display text-xs font-bold leading-tight whitespace-nowrap text-navy card-shadow">
-        {line}
-      </span>
-      <Image
-        src="/images/creator-bel-fullbody.png"
-        alt=""
-        width={240}
-        height={360}
-        className="h-[13.5rem] w-[8.5rem] translate-x-5 object-contain object-bottom drop-shadow-[6px_10px_0_rgba(26,26,46,0.18)]"
-      />
+      <div className="relative h-[13.5rem] w-[9rem] translate-x-3">
+        <Image
+          src="/images/creator-bel-fullbody.png"
+          alt=""
+          width={240}
+          height={360}
+          className="h-full w-full object-contain object-bottom drop-shadow-[6px_10px_0_rgba(26,26,46,0.18)]"
+        />
+        <span className="absolute top-[1.2rem] right-[5.2rem] rounded-[1.15rem] rounded-br-md border-2 border-navy bg-lime px-2.5 py-1.5 text-left font-display text-xs font-bold leading-tight whitespace-nowrap text-navy card-shadow">
+          {line}
+        </span>
+      </div>
     </motion.div>
   );
 }
