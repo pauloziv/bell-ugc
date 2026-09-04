@@ -4,17 +4,17 @@ export default function About() {
   return (
     <section
       id="sobre"
-      className="bg-navy text-white py-20 md:py-32 px-4 md:px-8 relative overflow-hidden"
+      className="bg-navy text-white py-16 md:py-24 px-4 md:px-8 relative overflow-hidden"
     >
-      <div className="absolute top-10 right-10 w-64 h-64 bg-magenta/20 blob blur-3xl pointer-events-none" />
-      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 items-center relative z-10">
-        <div className="lg:col-span-2 reveal">
+      <div className="absolute top-8 right-8 w-32 h-32 bg-magenta/20 blob blur-xl pointer-events-none" />
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-5 gap-10 items-center relative z-10">
+        <div className="lg:col-span-2">
           <div className="relative w-full max-w-sm mx-auto aspect-square">
             <div className="absolute inset-0 bg-yellow blob-slow" />
             <div className="absolute inset-3 blob overflow-hidden">
               <Image
-                src="https://picsum.photos/seed/bell-about-me/600/600"
-                alt="Bell sobre mim"
+                src="/images/creator-bel-about.webp"
+                alt="Ilustracao estilizada da Creator Bel"
                 fill
                 sizes="(max-width: 1024px) 80vw, 24rem"
                 className="object-cover"
@@ -25,7 +25,7 @@ export default function About() {
             </div>
           </div>
         </div>
-        <div className="lg:col-span-3 reveal" style={{ animationDelay: ".1s" }}>
+        <div className="lg:col-span-3">
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-yellow">
             Sobre mim
           </span>

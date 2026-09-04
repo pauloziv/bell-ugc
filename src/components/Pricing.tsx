@@ -45,7 +45,7 @@ export default function Pricing() {
       id="pacotes"
       className="py-20 md:py-32 px-4 md:px-8 bg-navy relative overflow-hidden"
     >
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-magenta/20 blob blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-40 h-40 bg-magenta/20 blob blur-xl pointer-events-none" />
       <div className="max-w-[1400px] mx-auto relative z-10">
         <div className="mb-16 text-center reveal">
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-yellow">

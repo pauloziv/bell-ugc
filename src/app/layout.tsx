@@ -7,11 +7,11 @@ const SITE_URL = "https://bell-ugc.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Bell | Criadora de Conteudo UGC",
-    template: "%s | Bell UGC",
+    default: "Creator Bel | Criadora de Conteudo UGC",
+    template: "%s | Creator Bel",
   },
   description:
-    "Portfolio de Bell — criadora de conteudo UGC. Reels, TikTok e ads autenticos que conectam marcas com pessoas reais.",
+    "Portfolio de Creator Bel — criadora de conteudo UGC. Reels, TikTok e ads autenticos que conectam marcas com pessoas reais.",
   keywords: [
     "UGC",
     "criadora de conteudo",
@@ -19,22 +19,22 @@ export const metadata: Metadata = {
     "TikTok",
     "Instagram",
     "conteudo para marcas",
-    "Bell UGC",
+    "Creator Bel",
   ],
-  authors: [{ name: "Bell" }],
-  creator: "Bell",
+  authors: [{ name: "Creator Bel" }],
+  creator: "Creator Bel",
   openGraph: {
-    title: "Bell | Criadora de Conteudo UGC",
+    title: "Creator Bel | Criadora de Conteudo UGC",
     description:
       "Conteudo autentico que conecta marcas com pessoas reais.",
     type: "website",
     locale: "pt_BR",
     url: SITE_URL,
-    siteName: "Bell UGC",
+    siteName: "Creator Bel",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bell | Criadora de Conteudo UGC",
+    title: "Creator Bel | Criadora de Conteudo UGC",
     description:
       "Conteudo autentico que conecta marcas com pessoas reais.",
   },
@@ -56,15 +56,15 @@ export const viewport: Viewport = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Bell",
+  name: "Creator Bel",
   jobTitle: "Criadora de Conteudo UGC",
   url: SITE_URL,
   description:
     "Criadora de conteudo UGC para Instagram, TikTok e YouTube.",
   sameAs: [
-    "https://instagram.com/bellugc",
-    "https://tiktok.com/@bellugc",
-    "https://youtube.com/@bellugc",
+    "https://instagram.com/creatorbel",
+    "https://tiktok.com/@creatorbel",
+    "https://youtube.com/@creatorbel",
   ],
 };
 

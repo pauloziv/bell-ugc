@@ -2,6 +2,11 @@
 
 import { useEffect } from "react";
 
+function isInViewport(node: HTMLElement) {
+  const rect = node.getBoundingClientRect();
+  return rect.bottom > 0 && rect.top < window.innerHeight * 0.92;
+}
+
 export default function RevealObserver() {
   useEffect(() => {
     const nodes = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
@@ -21,10 +26,17 @@ export default function RevealObserver() {
           observer.unobserve(entry.target);
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.05, rootMargin: "0px 0px -4% 0px" },
     );
 
-    nodes.forEach((node) => observer.observe(node));
+    nodes.forEach((node) => {
+      if (isInViewport(node)) {
+        node.classList.add("is-in");
+        return;
+      }
+      observer.observe(node);
+    });
+
     return () => observer.disconnect();
   }, []);
 

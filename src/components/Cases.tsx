@@ -47,7 +47,7 @@ export default function Cases() {
       id="cases"
       className="py-20 md:py-32 px-4 md:px-8 bg-[#FFF6F9] relative overflow-hidden"
     >
-      <div className="absolute top-10 -right-24 w-80 h-80 bg-lime/30 blob-slow blur-2xl pointer-events-none" />
+      <div className="absolute top-10 -right-12 w-36 h-36 bg-lime/30 blob-slow blur-xl pointer-events-none" />
       <div className="max-w-[1400px] mx-auto relative z-10">
         <div className="mb-14 reveal">
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-magenta">

@@ -100,11 +100,11 @@
   }
   33% {
     border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
-    transform: rotate(8deg) scale(1.05);
+    transform: rotate(4deg) scale(1.02);
   }
   66% {
     border-radius: 35% 65% 55% 45% / 60% 35% 65% 40%;
-    transform: rotate(-6deg) scale(0.98);
+    transform: rotate(-3deg) scale(0.99);
   }
 }
 

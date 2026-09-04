@@ -15,8 +15,8 @@ export default function CTA() {
         className="relative py-24 md:py-36 px-4 md:px-8 overflow-hidden"
         style={{ background: "linear-gradient(135deg,#E91E8C 0%,#FFD23F 100%)" }}
       >
-        <div className="absolute -top-20 -left-16 w-72 h-72 bg-white/20 blob blur-2xl pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-navy/10 blob-slow blur-2xl pointer-events-none" />
+        <div className="absolute -top-10 -left-8 w-36 h-36 bg-white/20 blob blur-xl pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-40 h-40 bg-navy/10 blob-slow blur-xl pointer-events-none" />
         <div className="max-w-[1000px] mx-auto text-center relative z-10 reveal">
           <h2 className="font-display font-extrabold text-5xl md:text-7xl tracking-tighter leading-[0.95] text-white mb-6">
             Vamos Criar
@@ -36,7 +36,7 @@ export default function CTA() {
               Chamar no WhatsApp
             </MagneticButton>
             <MagneticButton
-              href="mailto:contato@bellugc.com.br"
+              href="mailto:contato@creatorbel.com.br"
               className="border-2 border-navy text-navy hover:bg-navy hover:text-white"
             >
               <EnvelopeSimple weight="bold" size={20} />
@@ -45,21 +45,21 @@ export default function CTA() {
           </div>
           <div className="flex items-center justify-center gap-6">
             <a
-              href="https://instagram.com/bellugc"
+              href="https://instagram.com/creatorbel"
               aria-label="Instagram"
               className="w-14 h-14 bg-white/90 border-2 border-navy rounded-full flex items-center justify-center text-navy hover:bg-navy hover:text-white transition-colors"
             >
               <InstagramLogo weight="fill" size={24} />
             </a>
             <a
-              href="https://tiktok.com/@bellugc"
+              href="https://tiktok.com/@creatorbel"
               aria-label="TikTok"
               className="w-14 h-14 bg-white/90 border-2 border-navy rounded-full flex items-center justify-center text-navy hover:bg-navy hover:text-white transition-colors"
             >
               <TiktokLogo weight="fill" size={24} />
             </a>
             <a
-              href="https://youtube.com/@bellugc"
+              href="https://youtube.com/@creatorbel"
               aria-label="YouTube"
               className="w-14 h-14 bg-white/90 border-2 border-navy rounded-full flex items-center justify-center text-navy hover:bg-navy hover:text-white transition-colors"
             >
@@ -69,7 +69,7 @@ export default function CTA() {
         </div>
       </section>
       <footer className="bg-navy text-white/60 py-8 px-4 md:px-8 text-center text-sm">
-        <p>© 2026 Bell UGC. Feito com criatividade e cafe. Todos os direitos reservados.</p>
+        <p>© 2026 Creator Bel. Feito com criatividade e cafe. Todos os direitos reservados.</p>
       </footer>
     </>
   );

@@ -23,7 +23,7 @@ export default function FloatingNav() {
           href="#hero"
           className="font-display font-extrabold text-lg text-navy pr-2 md:pr-4 whitespace-nowrap"
         >
-          bell<span className="text-magenta">.</span>
+          <span className="hidden sm:inline">creator </span>bel<span className="text-magenta">.</span>
         </a>
         <div className="hidden lg:flex items-center gap-1">
           {LINKS.map((item) => (

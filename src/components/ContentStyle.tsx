@@ -84,7 +84,7 @@ export default function ContentStyle() {
       id="estilo"
       className="py-20 md:py-32 px-4 md:px-8 bg-[#FFF6F9] relative overflow-hidden"
     >
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-yellow/40 blob blur-2xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-32 h-32 bg-yellow/40 blob blur-xl pointer-events-none" />
       <div className="max-w-[1400px] mx-auto relative z-10">
         <div className="mb-8 reveal">
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-magenta">
