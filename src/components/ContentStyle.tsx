@@ -1,82 +1,5 @@
-"use client";
-
 import SocialCards from "@/components/ui/card-fan-carousel";
-
-const VIDEO_BUCKET =
-  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample";
-
-const REEL_CARDS = [
-  {
-    imgUrl: "https://picsum.photos/seed/ugc-unboxing/540/960",
-    alt: "Unboxing de produto",
-    label: "Unboxing",
-    views: "47.2K views",
-    videoUrl: `${VIDEO_BUCKET}/ForBiggerBlazes.mp4`,
-  },
-  {
-    imgUrl: "https://picsum.photos/seed/ugc-reviews/540/960",
-    alt: "Review de skincare",
-    label: "Reviews",
-    views: "81.4K views",
-    videoUrl: `${VIDEO_BUCKET}/ForBiggerEscapes.mp4`,
-  },
-  {
-    imgUrl: "https://picsum.photos/seed/ugc-tutoriais/540/960",
-    alt: "Tutorial de aplicacao",
-    label: "Tutoriais",
-    views: "29.8K views",
-    videoUrl: `${VIDEO_BUCKET}/ForBiggerFun.mp4`,
-  },
-  {
-    imgUrl: "https://picsum.photos/seed/ugc-lifestyle/540/960",
-    alt: "Lifestyle cotidiano",
-    label: "Lifestyle",
-    views: "63.1K views",
-    videoUrl: `${VIDEO_BUCKET}/ForBiggerJoyrides.mp4`,
-  },
-  {
-    imgUrl: "https://picsum.photos/seed/ugc-antes-depois/540/960",
-    alt: "Antes e depois",
-    label: "Antes e Depois",
-    views: "112K views",
-    videoUrl: `${VIDEO_BUCKET}/ForBiggerMeltdowns.mp4`,
-  },
-  {
-    imgUrl: "https://picsum.photos/seed/ugc-tryon/540/960",
-    alt: "Try-on de look",
-    label: "Try-on",
-    views: "38.6K views",
-    videoUrl: `${VIDEO_BUCKET}/SubaruOutbackOnStreetAndDirt.mp4`,
-  },
-  {
-    imgUrl: "https://picsum.photos/seed/ugc-grwm/540/960",
-    alt: "Get ready with me",
-    label: "GRWM",
-    views: "54.9K views",
-    videoUrl: `${VIDEO_BUCKET}/TearsOfSteel.mp4`,
-  },
-  {
-    imgUrl: "https://picsum.photos/seed/ugc-hooks/540/960",
-    alt: "Hook de 3 segundos",
-    label: "Hooks",
-    views: "96.3K views",
-    videoUrl: `${VIDEO_BUCKET}/Sintel.mp4`,
-  },
-  {
-    imgUrl: "https://picsum.photos/seed/ugc-ads/540/960",
-    alt: "Peca para ads",
-    label: "Ads UGC",
-    views: "22.4K views",
-    videoUrl: `${VIDEO_BUCKET}/ElephantsDream.mp4`,
-  },
-  {
-    imgUrl: "https://picsum.photos/seed/ugc-bts/540/960",
-    alt: "Bastidores de gravacao",
-    label: "Bastidores",
-    views: "18.7K views",
-    videoUrl: `${VIDEO_BUCKET}/BigBuckBunny.mp4`,
-  },
-];
+import { REEL_CARDS } from "@/data/reels";
 
 export default function ContentStyle() {
   return (
@@ -86,7 +9,7 @@ export default function ContentStyle() {
     >
       <div className="absolute bottom-0 left-0 w-32 h-32 bg-yellow/40 blob blur-xl pointer-events-none" />
       <div className="max-w-[1400px] mx-auto relative z-10">
-        <div className="mb-8 reveal">
+        <div className="mb-8 reveal pr-[7.25rem] md:pr-0">
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-magenta">
             Portfolio de conteudo
           </span>

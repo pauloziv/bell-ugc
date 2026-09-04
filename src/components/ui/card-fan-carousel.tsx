@@ -11,6 +11,7 @@ import {
 import { createPortal } from "react-dom";
 import { Play, Heart, ChatCircle, ShareNetwork, X } from "@phosphor-icons/react";
 import { gsap, useGSAP, Observer, registerGsapPlugins } from "@/lib/gsap-register";
+import { parseYouTubeId, youtubeEmbedSrc } from "@/lib/youtube";
 
 registerGsapPlugins();
 
@@ -94,6 +95,7 @@ function ReelFrame({
       <img
         src={card.imgUrl}
         loading="lazy"
+        decoding="async"
         alt={card.alt || `Reel ${index + 1}`}
         className="absolute inset-0 w-full h-full object-cover"
       />
@@ -226,11 +228,28 @@ export default function SocialCards({ cards }: SocialCardsProps) {
 
   useLayoutEffect(() => {
     if (playingIndex === null) return;
-    const video = videoRef.current;
     const url = cards[playingIndex]?.videoUrl;
-    if (!video || !url) return;
+    if (!url) return;
 
     document.body.style.overflow = "hidden";
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closePlay();
+    };
+    window.addEventListener("keydown", onKey);
+
+    if (parseYouTubeId(url)) {
+      return () => {
+        window.removeEventListener("keydown", onKey);
+      };
+    }
+
+    const video = videoRef.current;
+    if (!video) {
+      return () => {
+        window.removeEventListener("keydown", onKey);
+      };
+    }
+
     video.playsInline = true;
     video.setAttribute("playsinline", "");
     video.setAttribute("webkit-playsinline", "");
@@ -238,10 +257,6 @@ export default function SocialCards({ cards }: SocialCardsProps) {
     video.muted = false;
     void video.play().catch(() => {});
 
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") closePlay();
-    };
-    window.addEventListener("keydown", onKey);
     return () => {
       window.removeEventListener("keydown", onKey);
     };
@@ -569,6 +584,11 @@ export default function SocialCards({ cards }: SocialCardsProps) {
     </svg>
   );
 
+  const playingYouTubeId =
+    playingIndex === null
+      ? null
+      : parseYouTubeId(cards[playingIndex]?.videoUrl ?? "");
+
   return (
     <section className="flex flex-col items-center w-full py-4 lg:py-8 px-0 relative">
       <div className="flex items-center justify-center w-full max-w-[90rem]">
@@ -635,17 +655,28 @@ export default function SocialCards({ cards }: SocialCardsProps) {
                   className="fan-player-frame"
                   onClick={(event) => event.stopPropagation()}
                 >
-                  <video
-                    ref={videoRef}
-                    poster={
-                      playingIndex !== null
-                        ? cards[playingIndex].imgUrl
-                        : undefined
-                    }
-                    playsInline
-                    controls
-                    className="h-full w-full rounded-[1.35rem] object-cover"
-                  />
+                  {playingYouTubeId ? (
+                    <iframe
+                      title={cards[playingIndex!].label || "Reel"}
+                      src={youtubeEmbedSrc(playingYouTubeId)}
+                      allow="autoplay; encrypted-media; picture-in-picture"
+                      allowFullScreen
+                      referrerPolicy="strict-origin-when-cross-origin"
+                    />
+                  ) : (
+                    <video
+                      ref={videoRef}
+                      preload="none"
+                      poster={
+                        playingIndex !== null
+                          ? cards[playingIndex].imgUrl
+                          : undefined
+                      }
+                      playsInline
+                      controls
+                      className="h-full w-full rounded-[1.35rem] object-cover"
+                    />
+                  )}
                   {playingIndex !== null ? (
                     <button
                       type="button"
