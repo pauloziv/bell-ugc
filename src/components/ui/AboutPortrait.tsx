@@ -42,7 +42,7 @@ export default function AboutPortrait() {
         />
       </div>
       <div className="absolute -right-6 -bottom-6 rotate-[-4deg] rounded-2xl border-2 border-white bg-lime px-5 py-3 font-display font-bold text-navy floaty">
-        +3 anos criando
+        +10 anos experiência
       </div>
     </motion.div>
   );

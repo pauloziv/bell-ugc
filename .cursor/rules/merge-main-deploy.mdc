@@ -1,0 +1,16 @@
+---
+description: Merge to main and deploy when tests pass
+alwaysApply: true
+---
+
+# Merge + deploy rule
+
+When lint, typecheck, production build, and CI are green on the working branch:
+
+1. Commit and push the working branch.
+2. Merge into `main` (`git push origin HEAD:main` or merge the PR).
+3. Confirm production deploy (Vercel follows `main`).
+
+Do **not** leave shippable work only on a feature branch. Tests OK = merge + deploy in the same turn.
+
+If CI is red, do not merge. Fix, push, re-run, then merge.

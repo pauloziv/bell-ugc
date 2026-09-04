@@ -83,7 +83,7 @@ export default function Hero() {
                 data-mobile-about-chip
                 className="rounded-full bg-lime px-3 py-1 font-display text-[11px] font-bold tracking-wide text-navy uppercase lg:hidden"
               >
-                +3 anos criando
+                +10 anos experiência
               </span>
             </div>
             <h2 className="mt-3 mb-6 font-display text-4xl font-extrabold tracking-tight md:text-6xl">
