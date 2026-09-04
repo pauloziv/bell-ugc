@@ -79,7 +79,10 @@ export default function Hero() {
               <span className="text-xs font-medium tracking-[0.2em] text-yellow uppercase">
                 Sobre mim
               </span>
-              <span className="rounded-full bg-lime px-3 py-1 font-display text-[11px] font-bold tracking-wide text-navy uppercase lg:hidden">
+              <span
+                data-mobile-about-chip
+                className="rounded-full bg-lime px-3 py-1 font-display text-[11px] font-bold tracking-wide text-navy uppercase lg:hidden"
+              >
                 +3 anos criando
               </span>
             </div>

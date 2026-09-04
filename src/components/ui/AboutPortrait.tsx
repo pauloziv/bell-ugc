@@ -28,6 +28,7 @@ export default function AboutPortrait() {
   return (
     <motion.div
       className="relative mx-auto hidden aspect-square w-full max-w-sm lg:block"
+      data-about-portrait
       style={reduced ? undefined : { opacity: fade, y: lift, scale: shrink }}
     >
       <div className="absolute inset-0 bg-yellow blob-slow" />

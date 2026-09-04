@@ -26,7 +26,7 @@ export default function HeroPortrait() {
 
   const { scrollYProgress } = useScroll({
     target: frameRef,
-    offset: ["start 0.82", "end 0.22"],
+    offset: ["start 0.56", "end 0.2"],
   });
 
   const flip = useTransform(scrollYProgress, [0.08, 0.78], [0, 180]);
@@ -44,6 +44,7 @@ export default function HeroPortrait() {
   return (
     <motion.div
       ref={frameRef}
+      data-hero-portrait
       className="relative mx-auto aspect-[4/5] w-full max-w-sm"
       style={live ? { scale: pop } : undefined}
     >
@@ -57,6 +58,7 @@ export default function HeroPortrait() {
 
       <div className="absolute inset-3 [perspective:1100px]">
         <motion.div
+          data-hero-flip
           className="relative h-full w-full [transform-style:preserve-3d]"
           style={live ? { rotateY: flip } : undefined}
         >

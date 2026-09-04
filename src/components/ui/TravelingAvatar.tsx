@@ -129,6 +129,7 @@ export default function TravelingAvatar() {
       <GhostOrb progress={scrollYProgress} lag={0.075} color="bg-magenta" size={size} />
       <motion.div
         aria-hidden="true"
+        data-traveling-avatar
         className="pointer-events-none fixed top-0 left-0 z-30 hidden lg:block"
         style={{ x, y, rotate, scale, opacity, width: size, height: size }}
       >
