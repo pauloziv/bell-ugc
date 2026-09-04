@@ -36,7 +36,7 @@ export default function CTA() {
               Chamar no WhatsApp
             </MagneticButton>
             <MagneticButton
-              href="mailto:contato@creatorbel.com.br"
+              href="mailto:contato@belconteudos.com"
               className="border-2 border-navy text-navy hover:bg-navy hover:text-white"
             >
               <EnvelopeSimple weight="bold" size={20} />
