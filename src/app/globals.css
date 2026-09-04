@@ -293,10 +293,10 @@
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -7px;
-  width: 11px;
-  height: 11px;
-  margin-left: -5.5px;
+  bottom: -6px;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
   background: #7bed4f;
   border-right: 2px solid #1a1a2e;
   border-bottom: 2px solid #1a1a2e;
