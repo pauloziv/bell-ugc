@@ -1,5 +1,6 @@
 import { Check } from "@phosphor-icons/react/dist/ssr";
 import TiltCard from "@/components/ui/TiltCard";
+import { whatsappUrl } from "@/lib/site";
 
 const PLANS = [
   {
@@ -11,6 +12,7 @@ const PLANS = [
     wrap: "bg-white rotate-[-2deg]",
     featured: false,
     delay: undefined as string | undefined,
+    wa: "Oi Bel! Quero o pacote Essencial (R$ 690): 2 videos UGC, 1 revisao, entrega em 5 dias. Vim pelo site belconteudos.com",
   },
   {
     name: "Profissional",
@@ -21,6 +23,7 @@ const PLANS = [
     wrap: "bg-magenta text-white md:scale-110 relative z-10",
     featured: true,
     delay: ".1s",
+    wa: "Oi Bel! Quero o pacote Profissional (R$ 1.290): 5 videos UGC, 2 revisoes, direitos de uso ads, entrega em 7 dias. Vim pelo site belconteudos.com",
   },
   {
     name: "Premium",
@@ -36,6 +39,7 @@ const PLANS = [
     wrap: "bg-white rotate-[2deg]",
     featured: false,
     delay: ".2s",
+    wa: "Oi Bel! Quero o pacote Premium (R$ 2.490/mes): 10 videos UGC/mes, revisoes ilimitadas, estrategia e prioridade na agenda. Vim pelo site belconteudos.com",
   },
 ];
 
@@ -92,7 +96,9 @@ export default function Pricing() {
                 ))}
               </ul>
               <a
-                href="#contato"
+                href={whatsappUrl(plan.wa)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={
                   plan.featured
                     ? "block text-center bg-white text-magenta rounded-full py-3 font-medium hover:bg-yellow hover:text-navy transition-colors"

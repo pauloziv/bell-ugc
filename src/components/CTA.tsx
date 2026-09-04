@@ -3,9 +3,16 @@ import {
   EnvelopeSimple,
   InstagramLogo,
   TiktokLogo,
-  YoutubeLogo,
 } from "@phosphor-icons/react/dist/ssr";
 import MagneticButton from "@/components/ui/MagneticButton";
+import {
+  EMAIL,
+  INSTAGRAM_HANDLE,
+  INSTAGRAM_URL,
+  TIKTOK_HANDLE,
+  TIKTOK_URL,
+  whatsappUrl,
+} from "@/lib/site";
 
 export default function CTA() {
   return (
@@ -29,14 +36,16 @@ export default function CTA() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <MagneticButton
-              href="https://wa.me/5511999999999"
+              href={whatsappUrl(
+                "Oi Bel! Vim pelo site belconteudos.com e quero criar juntos.",
+              )}
               className="bg-navy text-white hover:scale-105 hover:-rotate-1 shadow-[0_8px_30px_-5px_rgba(26,26,46,0.4)]"
             >
               <ChatCircle weight="bold" size={20} />
               Chamar no WhatsApp
             </MagneticButton>
             <MagneticButton
-              href="mailto:contato@belconteudos.com"
+              href={`mailto:${EMAIL}`}
               className="border-2 border-navy text-navy hover:bg-navy hover:text-white"
             >
               <EnvelopeSimple weight="bold" size={20} />
@@ -45,27 +54,21 @@ export default function CTA() {
           </div>
           <div className="flex items-center justify-center gap-6">
             <a
-              href="https://instagram.com/creatorbel"
-              aria-label="Instagram"
+              href={INSTAGRAM_URL}
+              aria-label={`Instagram ${INSTAGRAM_HANDLE}`}
               className="w-14 h-14 bg-white/90 border-2 border-navy rounded-full flex items-center justify-center text-navy hover:bg-navy hover:text-white transition-colors"
             >
               <InstagramLogo weight="fill" size={24} />
             </a>
             <a
-              href="https://tiktok.com/@creatorbel"
-              aria-label="TikTok"
+              href={TIKTOK_URL}
+              aria-label={`TikTok ${TIKTOK_HANDLE}`}
               className="w-14 h-14 bg-white/90 border-2 border-navy rounded-full flex items-center justify-center text-navy hover:bg-navy hover:text-white transition-colors"
             >
               <TiktokLogo weight="fill" size={24} />
             </a>
-            <a
-              href="https://youtube.com/@creatorbel"
-              aria-label="YouTube"
-              className="w-14 h-14 bg-white/90 border-2 border-navy rounded-full flex items-center justify-center text-navy hover:bg-navy hover:text-white transition-colors"
-            >
-              <YoutubeLogo weight="fill" size={24} />
-            </a>
           </div>
+          <p className="mt-4 text-sm text-navy/80 font-medium">{INSTAGRAM_HANDLE}</p>
         </div>
       </section>
       <footer className="bg-navy text-white/60 py-8 px-4 md:px-8 text-center text-sm">

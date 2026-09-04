@@ -59,11 +59,10 @@ const jsonLd = {
   jobTitle: "Criadora de Conteudo UGC",
   url: SITE_URL,
   description:
-    "Criadora de conteudo UGC para Instagram, TikTok e YouTube.",
+    "Criadora de conteudo UGC para Instagram e TikTok.",
   sameAs: [
-    "https://instagram.com/creatorbel",
-    "https://tiktok.com/@creatorbel",
-    "https://youtube.com/@creatorbel",
+    "https://instagram.com/bel.conteudos",
+    "https://tiktok.com/@bel.conteudos",
   ],
 };
 
