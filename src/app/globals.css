@@ -262,7 +262,7 @@
 }
 
 .fan-player {
-  position: fixed;
+  position: fixed !important;
   left: 0;
   top: 0;
   z-index: 70;
@@ -277,6 +277,17 @@
   box-shadow:
     0 28px 64px -18px rgba(233, 30, 140, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.fan-player:not(.is-open) {
+  width: 0 !important;
+  height: 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
 }
 
 .fan-player.is-open {

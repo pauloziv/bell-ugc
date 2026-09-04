@@ -11,7 +11,7 @@ export default function Hero() {
     <div>
       <section
         id="hero"
-        className="relative overflow-x-hidden pt-24 pb-0 px-4 md:pt-28 md:px-8"
+        className="relative overflow-x-hidden px-4 pt-24 pb-[9.75rem] md:px-8 md:pt-28 lg:pb-0"
       >
         <BlobBackground />
         <div className="pointer-events-none absolute -top-8 -left-12 h-40 w-40 bg-yellow/40 blob blur-xl" />
@@ -55,9 +55,10 @@ export default function Hero() {
         </div>
 
         <svg
-          className="wavy-divider relative z-10 mt-8 mb-[-1px] md:mt-10"
+          className="wavy-divider relative z-10 mt-10 mb-[-1px] hidden lg:block"
           viewBox="0 0 1440 60"
           preserveAspectRatio="none"
+          aria-hidden="true"
         >
           <path
             d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z"
@@ -70,8 +71,12 @@ export default function Hero() {
 
       <section
         id="sobre"
-        className="relative overflow-x-hidden bg-navy px-4 pt-8 pb-16 text-white md:px-8 md:pt-14 md:pb-24"
+        className="relative overflow-visible rounded-t-[2.75rem] bg-navy px-4 pt-[8.25rem] pb-12 text-white lg:overflow-x-hidden lg:rounded-none lg:px-8 lg:pt-14 lg:pb-24"
       >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-2.5 right-5 left-5 -z-0 h-8 rounded-t-[2.4rem] bg-magenta lg:hidden"
+        />
         <div className="pointer-events-none absolute top-8 right-8 h-32 w-32 bg-magenta/20 blob blur-xl" />
         <div className="relative z-10 mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-10 lg:grid-cols-5">
           <div className="hidden lg:col-span-2 lg:block">
@@ -89,7 +94,7 @@ export default function Hero() {
                 +10 anos experiência
               </span>
             </div>
-            <h2 className="mt-3 mb-6 font-display text-4xl font-extrabold tracking-tight md:text-6xl">
+            <h2 className="mt-3 mb-5 font-display text-4xl font-extrabold tracking-tight md:text-6xl">
               Conteudo real, <span className="text-magenta">resultado real.</span>
             </h2>
             <p className="mb-4 max-w-[65ch] text-base leading-relaxed text-white/80 md:text-lg">

@@ -14,6 +14,13 @@ import {
 import { useTrailRef } from "@/components/ui/trail-context";
 
 const STICKERS = ["oi!", "ugc", "reels", "bora!", "bel."];
+const LINES = [
+  "oi, marca!",
+  "bora criar?",
+  "ugc na veia",
+  "reels que vendem",
+  "me chama!",
+];
 
 function weaveX(p: number, width: number, size: number) {
   const pad = Math.max(32, width * 0.045);
@@ -68,45 +75,42 @@ function GhostOrb({
   );
 }
 
-function MobilePeek({
+function MobileTalker({
   progress,
-  sticker,
+  line,
 }: {
   progress: MotionValue<number>;
-  sticker: string;
+  line: string;
 }) {
-  const rotate = useTransform(progress, [0, 1], [16, -12]);
-  const bob = useTransform(progress, (p) => Math.sin(p * Math.PI * 7) * 8);
+  const rotate = useTransform(progress, [0, 1], [6, -8]);
+  const bob = useTransform(progress, (p) => Math.sin(p * Math.PI * 7) * 7);
   const opacity = useTransform(progress, [0, 0.05, 0.9, 1], [0, 1, 1, 0]);
 
   return (
     <motion.div
       aria-hidden="true"
-      data-mobile-peek
+      data-mobile-talker
       className="pointer-events-none fixed z-30 lg:hidden"
       style={{
-        right: -26,
-        bottom: "max(12px, env(safe-area-inset-bottom))",
-        width: 68,
-        height: 68,
+        right: -36,
+        bottom: "max(0px, env(safe-area-inset-bottom))",
+        width: 158,
+        height: 248,
         rotate,
         y: bob,
         opacity,
       }}
     >
-      <div className="absolute inset-0 bg-yellow blob-slow" />
-      <div className="absolute inset-[10%] overflow-hidden border-[3px] border-navy blob">
-        <Image
-          src="/images/creator-bel-about.jpg"
-          alt=""
-          fill
-          sizes="4.5rem"
-          className="object-cover"
-        />
-      </div>
-      <span className="absolute -left-11 top-1 min-w-[2.6rem] rounded-full border-2 border-navy bg-lime px-2 py-0.5 text-center font-display text-[10px] font-bold text-navy card-shadow rotate-[-12deg]">
-        {sticker}
+      <span className="absolute top-10 right-[6.4rem] w-max max-w-[7.6rem] rounded-[1.15rem] rounded-br-md border-2 border-navy bg-lime px-2.5 py-1.5 text-left font-display text-[11px] font-bold leading-tight text-navy card-shadow">
+        {line}
       </span>
+      <Image
+        src="/images/creator-bel-fullbody.png"
+        alt=""
+        fill
+        sizes="10rem"
+        className="object-contain object-bottom drop-shadow-[6px_10px_0_rgba(26,26,46,0.18)]"
+      />
     </motion.div>
   );
 }
@@ -117,6 +121,7 @@ export default function TravelingAvatar() {
   const fallbackRef = useRef<HTMLElement | null>(null);
   const [desktop, setDesktop] = useState(false);
   const [sticker, setSticker] = useState(STICKERS[0]);
+  const [line, setLine] = useState(LINES[0]);
   const [size, setSize] = useState(160);
 
   useEffect(() => {
@@ -162,12 +167,13 @@ export default function TravelingAvatar() {
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     const i = Math.min(STICKERS.length - 1, Math.floor(v * STICKERS.length));
     setSticker(STICKERS[i]);
+    setLine(LINES[i]);
   });
 
   if (reduced) return null;
 
   if (!desktop) {
-    return <MobilePeek progress={scrollYProgress} sticker={sticker} />;
+    return <MobileTalker progress={scrollYProgress} line={line} />;
   }
 
   return (

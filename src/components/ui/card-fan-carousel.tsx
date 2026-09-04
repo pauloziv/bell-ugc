@@ -1,6 +1,13 @@
 "use client";
 
-import { useState, useRef, useCallback, useLayoutEffect, useSyncExternalStore } from "react";
+import {
+  useState,
+  useRef,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useSyncExternalStore,
+} from "react";
 import { Play, Heart, ChatCircle, ShareNetwork, X } from "@phosphor-icons/react";
 import { gsap, useGSAP, Observer, Flip, registerGsapPlugins } from "@/lib/gsap-register";
 
@@ -170,10 +177,30 @@ export default function SocialCards({ cards }: SocialCardsProps) {
   const playerSlotRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const closingRef = useRef(false);
+  const hoverRef = useRef(false);
+
+  const resetPlayer = useCallback(() => {
+    const player = playerRef.current;
+    const slot = playerSlotRef.current;
+    if (player) {
+      gsap.killTweensOf(player);
+      gsap.set(player, { clearProps: "all" });
+    }
+    if (slot) {
+      gsap.killTweensOf(slot);
+      gsap.set(slot, { clearProps: "all" });
+    }
+    document.body.style.overflow = "";
+  }, []);
 
   const cycle = useCallback(
     (direction: "left" | "right") => {
-      if (isAnimating.current || !needsPagination || playingIndexRef.current !== null)
+      if (
+        isAnimating.current ||
+        !needsPagination ||
+        playingIndexRef.current !== null ||
+        hoverRef.current
+      )
         return;
       isAnimating.current = true;
       directionRef.current = direction;
@@ -221,8 +248,7 @@ export default function SocialCards({ cards }: SocialCardsProps) {
       closingRef.current = false;
       playingIndexRef.current = null;
       setPlayingIndex(null);
-      document.body.style.overflow = "";
-      if (player) gsap.set(player, { clearProps: "transform,width,height,top,left,x,y" });
+      resetPlayer();
     };
 
     if (!player || index === null) {
@@ -243,7 +269,7 @@ export default function SocialCards({ cards }: SocialCardsProps) {
       absolute: true,
       onComplete: finish,
     });
-  }, []);
+  }, [resetPlayer]);
 
   const openPlay = useCallback((index: number) => {
     if (playingIndexRef.current !== null || closingRef.current) return;
@@ -310,6 +336,19 @@ export default function SocialCards({ cards }: SocialCardsProps) {
     cycleRef.current = cycle;
   }, [cycle]);
 
+  useEffect(() => {
+    if (!needsPagination) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+    const id = window.setInterval(() => {
+      if (document.hidden) return;
+      cycleRef.current("right");
+    }, 3200);
+
+    return () => window.clearInterval(id);
+  }, [needsPagination]);
+
   useGSAP(
     () => {
       registerGsapPlugins();
@@ -356,6 +395,9 @@ export default function SocialCards({ cards }: SocialCardsProps) {
       const config = (slot: number) => getSlotConfig(slotCount, slot);
 
       if (isFirstMount) isAnimating.current = true;
+      const animWatchdog = window.setTimeout(() => {
+        isAnimating.current = false;
+      }, 2500);
 
       let completedCount = 0;
       const visibleCount = visibleMap.size;
@@ -552,6 +594,7 @@ export default function SocialCards({ cards }: SocialCardsProps) {
       window.addEventListener("resize", onResize);
 
       return () => {
+        window.clearTimeout(animWatchdog);
         enterHandlers.forEach(({ el, handler }) =>
           el.removeEventListener("mouseenter", handler),
         );
@@ -591,6 +634,12 @@ export default function SocialCards({ cards }: SocialCardsProps) {
         <div
           ref={containerRef}
           className="fan-layout flex relative justify-center items-center w-full max-w-[80rem]"
+          onMouseEnter={() => {
+            hoverRef.current = true;
+          }}
+          onMouseLeave={() => {
+            hoverRef.current = false;
+          }}
         >
           {mounted
             ? cards.map((card, index) => {
@@ -629,7 +678,7 @@ export default function SocialCards({ cards }: SocialCardsProps) {
       <div ref={playerSlotRef} className="fan-player-slot" aria-hidden />
       <div
         ref={playerRef}
-        className={`fan-player relative ${playingIndex !== null ? "is-open" : ""}`}
+        className={`fan-player ${playingIndex !== null ? "is-open" : ""}`}
         role={playingIndex !== null ? "dialog" : undefined}
         aria-modal={playingIndex !== null}
         aria-label={
@@ -638,23 +687,25 @@ export default function SocialCards({ cards }: SocialCardsProps) {
             : undefined
         }
       >
-        <video
-          ref={videoRef}
-          poster={playingIndex !== null ? cards[playingIndex].imgUrl : undefined}
-          playsInline
-          controls
-          className="w-full h-full object-cover rounded-[1.35rem]"
-        />
-        {playingIndex !== null ? (
-          <button
-            type="button"
-            onClick={closePlay}
-            aria-label="Fechar video"
-            className="absolute top-3 right-3 z-10 w-10 h-10 rounded-full bg-white/90 border-2 border-navy text-navy flex items-center justify-center"
-          >
-            <X weight="bold" size={18} />
-          </button>
-        ) : null}
+        <div className="relative h-full w-full">
+          <video
+            ref={videoRef}
+            poster={playingIndex !== null ? cards[playingIndex].imgUrl : undefined}
+            playsInline
+            controls
+            className="h-full w-full rounded-[1.35rem] object-cover"
+          />
+          {playingIndex !== null ? (
+            <button
+              type="button"
+              onClick={closePlay}
+              aria-label="Fechar video"
+              className="absolute top-3 right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 border-navy bg-white/90 text-navy"
+            >
+              <X weight="bold" size={18} />
+            </button>
+          ) : null}
+        </div>
       </div>
 
       {needsPagination && (
