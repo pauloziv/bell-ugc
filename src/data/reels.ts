@@ -66,6 +66,18 @@ export const REEL_CARDS: ReelCard[] = [
     ),
   },
   {
+    slug: "creamy",
+    imgUrl: "/images/reels/creamy.webp",
+    alt: "UGC para Creamy Skincare",
+    label: "Creamy",
+    views: "",
+    videoUrl: videoUrl(
+      "creamy",
+      "ForBiggerMeltdowns.mp4",
+      "https://youtube.com/shorts/A9SIIuvWORU",
+    ),
+  },
+  {
     slug: "antes-depois",
     imgUrl: picsumPoster("ugc-antes-depois"),
     alt: "Antes e depois",

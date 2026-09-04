@@ -26,6 +26,15 @@ const CASES: Brand[] = [
     blob: true,
   },
   {
+    name: "Creamy",
+    logo: "/images/brands/creamy.svg",
+    result: "Rotina de skincare",
+    desc: "Reel de ritual Creamy — textura, glow e conversa de pia. UGC real, sem cara de studio.",
+    tilt: "rotate-[-5deg]",
+    plate: "bg-[#F6AB9E]",
+    knockout: false,
+  },
+  {
     name: "Natura",
     logo: "/images/brands/natura.svg",
     result: "+40% engajamento",
