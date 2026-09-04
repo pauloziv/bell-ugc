@@ -1,7 +1,8 @@
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
-import Image from "next/image";
 import MagneticButton from "@/components/ui/MagneticButton";
 import BlobBackground from "@/components/ui/BlobBackground";
+import HeroPortrait from "@/components/ui/HeroPortrait";
+import AboutPortrait from "@/components/ui/AboutPortrait";
 import { whatsappUrl } from "@/lib/site";
 
 export default function Hero() {
@@ -9,23 +10,23 @@ export default function Hero() {
     <div>
       <section
         id="hero"
-        className="relative pt-24 md:pt-28 pb-0 px-4 md:px-8 overflow-hidden"
+        className="relative overflow-hidden pt-24 pb-0 px-4 md:pt-28 md:px-8"
       >
         <BlobBackground />
-        <div className="absolute -top-8 -left-12 w-40 h-40 bg-yellow/40 blob blur-xl pointer-events-none" />
-        <div className="absolute top-16 -right-8 w-36 h-36 bg-lime/30 blob-slow blur-xl pointer-events-none" />
+        <div className="pointer-events-none absolute -top-8 -left-12 h-40 w-40 bg-yellow/40 blob blur-xl" />
+        <div className="pointer-events-none absolute top-16 -right-8 h-36 w-36 bg-lime/30 blob-slow blur-xl" />
 
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-6 items-center relative z-10">
+        <div className="relative z-10 mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-6">
           <div className="reveal">
-            <span className="inline-block bg-lime border-2 border-navy rounded-full px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] mb-4 -rotate-2">
+            <span className="mb-4 inline-block -rotate-2 rounded-full border-2 border-navy bg-lime px-4 py-1.5 text-xs font-medium tracking-[0.2em] uppercase">
               Disponivel para parcerias
             </span>
-            <h1 className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl xl:text-8xl tracking-tighter leading-[0.92] mb-4">
+            <h1 className="mb-4 font-display text-5xl leading-[0.92] font-extrabold tracking-tighter sm:text-6xl md:text-7xl xl:text-8xl">
               Oi, eu sou
               <br />
               <span className="text-magenta">Creator Bel</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted max-w-[42ch] leading-relaxed mb-6">
+            <p className="mb-6 max-w-[42ch] text-lg leading-relaxed text-muted md:text-xl">
               Criadora de Conteudo UGC — transformo produtos em historias autenticas
               que vendem de verdade.
             </p>
@@ -48,33 +49,12 @@ export default function Hero() {
           </div>
 
           <div className="relative">
-            <div className="relative w-full max-w-sm mx-auto aspect-[4/5]">
-              <div className="absolute inset-0 bg-magenta blob" />
-              <div
-                className="absolute inset-3 blob overflow-hidden"
-                style={{ animationDelay: "-3s" }}
-              >
-                <Image
-                  src="/images/creator-bel-hero.jpg"
-                  alt="Creator Bel, criadora UGC"
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 90vw, 24rem"
-                  className="object-cover object-[center_18%]"
-                />
-              </div>
-              <div className="absolute top-1/3 -right-6 bg-white border-2 border-navy rounded-2xl px-4 py-2 rotate-[5deg] font-display font-bold text-sm floaty-delay card-shadow">
-                #Content
-              </div>
-              <div className="absolute -bottom-3 left-1/4 bg-lime border-2 border-navy rounded-2xl px-4 py-2 rotate-[3deg] font-display font-bold text-sm floaty card-shadow">
-                Reels
-              </div>
-            </div>
+            <HeroPortrait />
           </div>
         </div>
 
         <svg
-          className="wavy-divider mt-8 md:mt-10 mb-[-1px] relative z-10"
+          className="wavy-divider relative z-10 mt-8 mb-[-1px] md:mt-10"
           viewBox="0 0 1440 60"
           preserveAspectRatio="none"
         >
@@ -87,60 +67,54 @@ export default function Hero() {
 
       <section
         id="sobre"
-        className="bg-navy text-white pt-10 md:pt-14 pb-16 md:pb-24 px-4 md:px-8 relative overflow-hidden"
+        className="relative overflow-hidden bg-navy px-4 pt-10 pb-16 text-white md:px-8 md:pt-14 md:pb-24"
       >
-        <div className="absolute top-8 right-8 w-32 h-32 bg-magenta/20 blob blur-xl pointer-events-none" />
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-5 gap-10 items-center relative z-10">
-          <div className="lg:col-span-2">
-            <div className="relative w-full max-w-sm mx-auto aspect-square">
-              <div className="absolute inset-0 bg-yellow blob-slow" />
-              <div className="absolute inset-3 blob overflow-hidden">
-                <Image
-                  src="/images/creator-bel-about.jpg"
-                  alt="Ilustracao estilizada da Creator Bel"
-                  fill
-                  sizes="(max-width: 1024px) 80vw, 24rem"
-                  className="object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 bg-lime text-navy border-2 border-white rounded-2xl px-5 py-3 rotate-[-4deg] font-display font-bold floaty">
-                +3 anos criando
-              </div>
-            </div>
+        <div className="pointer-events-none absolute top-8 right-8 h-32 w-32 bg-magenta/20 blob blur-xl" />
+        <div className="relative z-10 mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-10 lg:grid-cols-5">
+          <div className="hidden lg:col-span-2 lg:block">
+            <AboutPortrait />
           </div>
           <div className="lg:col-span-3">
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-yellow">
-              Sobre mim
-            </span>
-            <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight mt-3 mb-6">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="text-xs font-medium tracking-[0.2em] text-yellow uppercase">
+                Sobre mim
+              </span>
+              <span
+                data-mobile-about-chip
+                className="rounded-full bg-lime px-3 py-1 font-display text-[11px] font-bold tracking-wide text-navy uppercase lg:hidden"
+              >
+                +3 anos criando
+              </span>
+            </div>
+            <h2 className="mt-3 mb-6 font-display text-4xl font-extrabold tracking-tight md:text-6xl">
               Conteudo real, <span className="text-magenta">resultado real.</span>
             </h2>
-            <p className="text-base md:text-lg text-white/80 leading-relaxed max-w-[65ch] mb-4">
+            <p className="mb-4 max-w-[65ch] text-base leading-relaxed text-white/80 md:text-lg">
               Sou apaixonada por contar historias que conectam marcas a pessoas de
               verdade. Ha anos crio conteudo autentico para redes sociais, unindo
               criatividade, estrategia e uma boa dose de espontaneidade.
             </p>
-            <p className="text-base md:text-lg text-white/80 leading-relaxed max-w-[65ch] mb-8">
+            <p className="mb-8 max-w-[65ch] text-base leading-relaxed text-white/80 md:text-lg">
               Cada video que produzo carrega minha voz, meu jeito de contar
               historias e a certeza de que o UGC nao e sobre perfeicao — e sobre
               conexao.
             </p>
             <div className="flex flex-wrap gap-4">
-              <div className="bg-white/10 border border-white/20 rounded-2xl px-6 py-4">
-                <p className="font-display font-extrabold text-3xl text-yellow">120+</p>
-                <p className="text-xs uppercase tracking-wider text-white/60">
+              <div className="rounded-2xl border border-white/20 bg-white/10 px-6 py-4">
+                <p className="font-display text-3xl font-extrabold text-yellow">120+</p>
+                <p className="text-xs tracking-wider text-white/60 uppercase">
                   Videos entregues
                 </p>
               </div>
-              <div className="bg-white/10 border border-white/20 rounded-2xl px-6 py-4">
-                <p className="font-display font-extrabold text-3xl text-lime">35+</p>
-                <p className="text-xs uppercase tracking-wider text-white/60">
+              <div className="rounded-2xl border border-white/20 bg-white/10 px-6 py-4">
+                <p className="font-display text-3xl font-extrabold text-lime">35+</p>
+                <p className="text-xs tracking-wider text-white/60 uppercase">
                   Marcas parceiras
                 </p>
               </div>
-              <div className="bg-white/10 border border-white/20 rounded-2xl px-6 py-4">
-                <p className="font-display font-extrabold text-3xl text-magenta">98%</p>
-                <p className="text-xs uppercase tracking-wider text-white/60">
+              <div className="rounded-2xl border border-white/20 bg-white/10 px-6 py-4">
+                <p className="font-display text-3xl font-extrabold text-magenta">98%</p>
+                <p className="text-xs tracking-wider text-white/60 uppercase">
                   Clientes satisfeitos
                 </p>
               </div>

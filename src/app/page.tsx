@@ -7,18 +7,24 @@ import Process from "@/components/Process";
 import Pricing from "@/components/Pricing";
 import CTA from "@/components/CTA";
 import FloatingNav from "@/components/ui/FloatingNav";
+import AvatarTrail from "@/components/ui/AvatarTrail";
+import { PortraitMotionRoot } from "@/components/ui/trail-context";
 
 export default function Home() {
   return (
     <>
       <FloatingNav />
-      <Hero />
-      <WhatIsUGC />
-      <ContentStyle />
-      <Platforms />
-      <Cases />
-      <Process />
-      <Pricing />
+      <PortraitMotionRoot>
+        <Hero />
+        <AvatarTrail>
+          <WhatIsUGC />
+          <ContentStyle />
+          <Platforms />
+          <Cases />
+          <Process />
+          <Pricing />
+        </AvatarTrail>
+      </PortraitMotionRoot>
       <CTA />
     </>
   );
