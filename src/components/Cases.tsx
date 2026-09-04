@@ -11,9 +11,20 @@ type Brand = {
   tilt: string;
   plate: string;
   knockout: boolean;
+  blob?: boolean;
 };
 
 const CASES: Brand[] = [
+  {
+    name: "Sander",
+    logo: "/images/brands/sander.png",
+    result: "Reel na sorveteria",
+    desc: "Casquinha de chocolate adoçada com stevia. UGC real, conversa de mãe — até o filho de 5 anos adorou.",
+    tilt: "rotate-[6deg]",
+    plate: "bg-yellow",
+    knockout: false,
+    blob: true,
+  },
   {
     name: "Natura",
     logo: "/images/brands/natura.svg",
@@ -71,8 +82,12 @@ function BrandMark({
   const [failed, setFailed] = useState(false);
   const imgClass =
     size === "spotlight"
-      ? "h-11 w-auto max-w-[240px] md:h-16 md:max-w-[300px] object-contain"
-      : "h-8 w-auto max-w-[150px] md:h-11 md:max-w-[200px] object-contain";
+      ? brand.blob
+        ? "h-14 w-auto max-w-[260px] md:h-[4.5rem] md:max-w-[320px] object-contain"
+        : "h-11 w-auto max-w-[240px] md:h-16 md:max-w-[300px] object-contain"
+      : brand.blob
+        ? "h-11 w-auto max-w-[180px] md:h-14 md:max-w-[220px] object-contain"
+        : "h-8 w-auto max-w-[150px] md:h-11 md:max-w-[200px] object-contain";
 
   if (failed) {
     return (

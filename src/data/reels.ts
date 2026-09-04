@@ -54,12 +54,16 @@ export const REEL_CARDS: ReelCard[] = [
     videoUrl: videoUrl("tutoriais", "ForBiggerFun.mp4"),
   },
   {
-    slug: "lifestyle",
-    imgUrl: picsumPoster("ugc-lifestyle"),
-    alt: "Lifestyle cotidiano",
-    label: "Lifestyle",
-    views: "63.1K views",
-    videoUrl: videoUrl("lifestyle", "ForBiggerJoyrides.mp4"),
+    slug: "sander",
+    imgUrl: "/images/reels/sander.webp",
+    alt: "UGC para Sander Sorvetes",
+    label: "Sander",
+    views: "",
+    videoUrl: videoUrl(
+      "sander",
+      "ForBiggerJoyrides.mp4",
+      "https://youtube.com/shorts/_4e_H7inmnA",
+    ),
   },
   {
     slug: "antes-depois",
