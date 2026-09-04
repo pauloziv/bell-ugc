@@ -12,7 +12,6 @@
     >Bel</text>
   </g>
   <g transform="rotate(10 168 64)">
-    <path fill="#7BED4F" stroke="#1A1A2E" stroke-width="4" stroke-linejoin="round" d="M118 58h-9l7 10 8-4v-6z"/>
     <rect x="116" y="42" width="86" height="36" rx="18" fill="#7BED4F" stroke="#1A1A2E" stroke-width="4"/>
     <text
       x="159"

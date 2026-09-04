@@ -19,7 +19,7 @@ export default function FloatingNav() {
 
   return (
     <nav className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-auto">
-      <div className="flex items-center justify-between md:justify-center gap-1 overflow-visible md:gap-2 bg-white/95 border-2 border-navy rounded-full px-3 md:px-6 py-2.5 md:py-3 shadow-[0_8px_30px_-5px_rgba(233,30,140,0.25)]">
+      <div className="flex items-center justify-between md:justify-center gap-1 overflow-visible md:gap-2 bg-white/95 border-2 border-navy rounded-full px-3 md:px-6 py-3 md:py-3.5 shadow-[0_8px_30px_-5px_rgba(233,30,140,0.25)]">
         <a
           href="#hero"
           aria-label="Bel UGC — início"

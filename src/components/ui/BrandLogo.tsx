@@ -26,10 +26,6 @@ export default function BrandLogo({
         }`}
       >
         <span
-          aria-hidden
-          className="absolute -bottom-[3px] -left-[4px] size-[7px] rotate-45 border-b-[2.5px] border-l-[2.5px] border-navy bg-lime"
-        />
-        <span
           className={`relative inline-flex items-center rounded-full border-[2.5px] border-navy bg-lime font-display leading-none font-extrabold tracking-[0.14em] text-navy shadow-[2px_2px_0_0_#1A1A2E] ${
             compact ? "px-[0.42rem] py-[0.2rem] text-[9px]" : "px-2 py-1 text-[11px]"
           }`}
