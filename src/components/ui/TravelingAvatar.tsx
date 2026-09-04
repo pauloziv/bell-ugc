@@ -96,7 +96,7 @@ function MobileTalker({
         bottom: "max(8px, env(safe-area-inset-bottom))",
       }}
     >
-      <span className="mb-28 shrink-0 rounded-[1.15rem] rounded-br-md border-2 border-navy bg-lime px-2.5 py-1.5 text-left font-display text-xs font-bold leading-tight whitespace-nowrap text-navy card-shadow">
+      <span className="mb-[10.25rem] shrink-0 rounded-[1.15rem] rounded-br-md border-2 border-navy bg-lime px-2.5 py-1.5 text-left font-display text-xs font-bold leading-tight whitespace-nowrap text-navy card-shadow">
         {line}
       </span>
       <Image
