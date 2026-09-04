@@ -12,7 +12,7 @@ export default function BlobBackground({ className = "" }: { className?: string 
           x: [0, 30, 0],
           y: [0, -20, 0],
         }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 15, repeat: Infinity, ease: [0.32, 0.72, 0, 1] }}
       />
       <motion.div
         className="absolute -bottom-40 -right-40 w-[600px] h-[600px] rounded-full bg-yellow/25 blur-[120px]"
@@ -21,7 +21,7 @@ export default function BlobBackground({ className = "" }: { className?: string 
           x: [0, -25, 0],
           y: [0, 25, 0],
         }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 18, repeat: Infinity, ease: [0.32, 0.72, 0, 1] }}
       />
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-lime/15 blur-[90px]"
@@ -29,7 +29,7 @@ export default function BlobBackground({ className = "" }: { className?: string 
           scale: [1, 1.1, 1],
           rotate: [0, 10, 0],
         }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 20, repeat: Infinity, ease: [0.32, 0.72, 0, 1] }}
       />
     </div>
   );

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <section
@@ -9,11 +11,15 @@ export default function About() {
         <div className="lg:col-span-2 reveal">
           <div className="relative w-full max-w-sm mx-auto aspect-square">
             <div className="absolute inset-0 bg-yellow blob-slow" />
-            <img
-              src="https://picsum.photos/seed/bell-about-me/600/600"
-              alt="Bell sobre mim"
-              className="absolute inset-3 w-[calc(100%-1.5rem)] h-[calc(100%-1.5rem)] object-cover blob"
-            />
+            <div className="absolute inset-3 blob overflow-hidden">
+              <Image
+                src="https://picsum.photos/seed/bell-about-me/600/600"
+                alt="Bell sobre mim"
+                fill
+                sizes="(max-width: 1024px) 80vw, 24rem"
+                className="object-cover"
+              />
+            </div>
             <div className="absolute -bottom-6 -right-6 bg-lime text-navy border-2 border-white rounded-2xl px-5 py-3 rotate-[-4deg] font-display font-bold floaty">
               +3 anos criando
             </div>

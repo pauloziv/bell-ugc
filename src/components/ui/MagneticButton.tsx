@@ -1,29 +1,29 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { useRef, type MouseEvent, type ReactNode } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function MagneticButton({
   children,
   className = "",
   href,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   href?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 120, damping: 18, mass: 0.4 });
+  const springY = useSpring(y, { stiffness: 120, damping: 18, mass: 0.4 });
 
-  const moveX = useTransform(x, [-100, 100], [-8, 8]);
-  const moveY = useTransform(y, [-100, 100], [-8, 8]);
-
-  function handleMouse(e: React.MouseEvent) {
+  function handleMouse(event: MouseEvent<HTMLDivElement>) {
+    if (window.matchMedia("(pointer: coarse)").matches) return;
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
-    x.set(e.clientX - rect.left - rect.width / 2);
-    y.set(e.clientY - rect.top - rect.height / 2);
+    x.set((event.clientX - rect.left - rect.width / 2) * 0.35);
+    y.set((event.clientY - rect.top - rect.height / 2) * 0.35);
   }
 
   function handleLeave() {
@@ -31,22 +31,39 @@ export default function MagneticButton({
     y.set(0);
   }
 
-  const Tag = href ? "a" : "button";
+  const inner = (
+    <span
+      className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-8 py-4 font-medium transition-transform duration-200 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy ${className}`}
+    >
+      {children}
+    </span>
+  );
+
+  const isExternal = Boolean(href?.startsWith("http"));
 
   return (
     <motion.div
       ref={ref}
       onMouseMove={handleMouse}
       onMouseLeave={handleLeave}
-      style={{ x: moveX, y: moveY }}
+      style={{ x: springX, y: springY }}
       className="inline-block"
     >
-      <Tag
-        {...(href ? { href } : {})}
-        className={`inline-flex items-center gap-2 rounded-full px-8 py-4 font-display font-bold text-lg transition-transform duration-200 active:scale-[0.97] ${className}`}
-      >
-        {children}
-      </Tag>
+      {href ? (
+        <a
+          href={href}
+          className="inline-block"
+          {...(isExternal
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
+        >
+          {inner}
+        </a>
+      ) : (
+        <button type="button" className="inline-block">
+          {inner}
+        </button>
+      )}
     </motion.div>
   );
 }

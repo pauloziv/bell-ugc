@@ -5,6 +5,7 @@ import {
   TiktokLogo,
   YoutubeLogo,
 } from "@phosphor-icons/react/dist/ssr";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 export default function CTA() {
   return (
@@ -27,20 +28,20 @@ export default function CTA() {
             vamos montar a proxima campanha.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-            <a
+            <MagneticButton
               href="https://wa.me/5511999999999"
-              className="inline-flex items-center gap-2 bg-navy text-white font-medium px-8 py-4 rounded-full hover:scale-105 hover:-rotate-1 transition-transform duration-300 shadow-[0_8px_30px_-5px_rgba(26,26,46,0.4)]"
+              className="bg-navy text-white hover:scale-105 hover:-rotate-1 shadow-[0_8px_30px_-5px_rgba(26,26,46,0.4)]"
             >
               <ChatCircle weight="bold" size={20} />
               Chamar no WhatsApp
-            </a>
-            <a
+            </MagneticButton>
+            <MagneticButton
               href="mailto:contato@bellugc.com.br"
-              className="inline-flex items-center gap-2 border-2 border-navy text-navy font-medium px-8 py-4 rounded-full hover:bg-navy hover:text-white transition-colors duration-300"
+              className="border-2 border-navy text-navy hover:bg-navy hover:text-white"
             >
               <EnvelopeSimple weight="bold" size={20} />
               Enviar E-mail
-            </a>
+            </MagneticButton>
           </div>
           <div className="flex items-center justify-center gap-6">
             <a

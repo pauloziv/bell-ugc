@@ -1,4 +1,7 @@
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import Image from "next/image";
+import MagneticButton from "@/components/ui/MagneticButton";
+import BlobBackground from "@/components/ui/BlobBackground";
 
 export default function Hero() {
   return (
@@ -6,6 +9,7 @@ export default function Hero() {
       id="hero"
       className="relative pt-32 md:pt-40 pb-20 md:pb-28 px-4 md:px-8 overflow-hidden min-h-[100dvh]"
     >
+      <BlobBackground />
       <div className="absolute -top-20 -left-32 w-[420px] h-[420px] bg-yellow/50 blob blur-2xl pointer-events-none" />
       <div className="absolute top-40 -right-20 w-[380px] h-[380px] bg-lime/40 blob-slow blur-2xl pointer-events-none" />
 
@@ -24,30 +28,37 @@ export default function Hero() {
             que vendem de verdade.
           </p>
           <div className="flex flex-wrap items-center gap-4">
-            <a
+            <MagneticButton
               href="#contato"
-              className="inline-flex items-center gap-2 bg-magenta text-white font-medium px-8 py-4 rounded-full btn-shadow hover:scale-105 hover:-rotate-1 transition-transform duration-300"
+              className="bg-magenta text-white btn-shadow hover:scale-105 hover:-rotate-1"
             >
               Vamos Conversar <ArrowUpRight weight="bold" size={20} />
-            </a>
-            <a
+            </MagneticButton>
+            <MagneticButton
               href="#cases"
-              className="inline-flex items-center gap-2 border-2 border-navy font-medium px-8 py-4 rounded-full hover:bg-navy hover:text-white transition-colors duration-300"
+              className="border-2 border-navy hover:bg-navy hover:text-white"
             >
               Ver Portfolio
-            </a>
+            </MagneticButton>
           </div>
         </div>
 
         <div className="relative reveal" style={{ animationDelay: ".15s" }}>
           <div className="relative w-full max-w-md mx-auto aspect-[4/5]">
             <div className="absolute inset-0 bg-magenta blob" />
-            <img
-              src="https://picsum.photos/seed/bell-hero-portrait/700/900"
-              alt="Bell, criadora UGC"
-              className="absolute inset-3 w-[calc(100%-1.5rem)] h-[calc(100%-1.5rem)] object-cover blob"
+            <div
+              className="absolute inset-3 blob overflow-hidden"
               style={{ animationDelay: "-3s" }}
-            />
+            >
+              <Image
+                src="https://picsum.photos/seed/bell-hero-portrait/700/900"
+                alt="Bell, criadora UGC"
+                fill
+                priority
+                sizes="(max-width: 1024px) 90vw, 28rem"
+                className="object-cover"
+              />
+            </div>
             <div className="absolute -top-6 -left-8 bg-yellow border-2 border-navy rounded-2xl px-4 py-2 rotate-[-6deg] font-display font-bold text-sm floaty card-shadow">
               UGC Creator
             </div>

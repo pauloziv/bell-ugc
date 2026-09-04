@@ -8,6 +8,18 @@ import Process from "@/components/Process";
 import Pricing from "@/components/Pricing";
 import CTA from "@/components/CTA";
 import FloatingNav from "@/components/ui/FloatingNav";
+import MarqueeStrip from "@/components/ui/MarqueeStrip";
+
+const BRANDS = [
+  "Natura",
+  "Boticario",
+  "Farm",
+  "Havaianas",
+  "Granado",
+  "Natura",
+  "Boticario",
+  "Farm",
+];
 
 export default function Home() {
   return (
@@ -19,6 +31,7 @@ export default function Home() {
       <ContentStyle />
       <Platforms />
       <Cases />
+      <MarqueeStrip items={BRANDS} />
       <Process />
       <Pricing />
       <CTA />

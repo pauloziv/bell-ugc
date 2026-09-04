@@ -1,4 +1,5 @@
 import { Check } from "@phosphor-icons/react/dist/ssr";
+import TiltCard from "@/components/ui/TiltCard";
 
 const PLANS = [
   {
@@ -56,11 +57,11 @@ export default function Pricing() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           {PLANS.map((plan) => (
-            <div
-              key={plan.name}
-              className={`reveal border-2 border-navy rounded-[2.5rem] p-8 md:p-10 hard-shadow hover:rotate-0 transition-transform duration-300 ${plan.wrap}`}
-              style={plan.delay ? { animationDelay: plan.delay } : undefined}
-            >
+            <TiltCard key={plan.name}>
+              <div
+                className={`reveal border-2 border-navy rounded-[2.5rem] p-8 md:p-10 hard-shadow hover:rotate-0 ${plan.wrap}`}
+                style={plan.delay ? { animationDelay: plan.delay } : undefined}
+              >
               {plan.featured ? (
                 <span className="absolute -top-4 right-8 bg-yellow text-navy text-xs font-medium uppercase tracking-wider px-4 py-1.5 rounded-full rotate-3">
                   Mais popular
@@ -100,7 +101,8 @@ export default function Pricing() {
               >
                 Escolher
               </a>
-            </div>
+              </div>
+            </TiltCard>
           ))}
         </div>
       </div>
