@@ -3,50 +3,91 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
-const CASES = [
+type Brand = {
+  name: string;
+  logo: string;
+  result: string;
+  desc: string;
+  tilt: string;
+};
+
+const CASES: Brand[] = [
   {
     name: "Natura",
-    mark: "natura",
+    logo: "/images/brands/natura.svg",
     result: "+40% engajamento",
     desc: "Serie de reels para lancamento de linha de skincare.",
-    stamp: "bg-[#FF6A00] text-white rotate-[-6deg]",
+    tilt: "rotate-[-6deg]",
   },
   {
     name: "O Boticario",
-    mark: "boticario",
+    logo: "/images/brands/boticario.svg",
     result: "Unboxing viral",
     desc: "Reviews de perfumaria sazonal com cheiro, textura e ritual.",
-    stamp: "bg-[#00A3A1] text-white rotate-[4deg]",
+    tilt: "rotate-[4deg]",
   },
   {
     name: "Farm",
-    mark: "FARM",
+    logo: "/images/brands/farm.svg",
     result: "Lookbook verao",
     desc: "Lifestyle colorido pra colecao de estacao.",
-    stamp: "bg-[#E31C79] text-white rotate-[-3deg]",
+    tilt: "rotate-[-3deg]",
   },
   {
     name: "Havaianas",
-    mark: "havaianas",
+    logo: "/images/brands/havaianas.svg",
     result: "Campanha de verao",
     desc: "Conteudo praiano autentico, pe na areia, sem pose de studio.",
-    stamp: "bg-[#0033A0] text-yellow rotate-[5deg]",
+    tilt: "rotate-[5deg]",
   },
   {
     name: "Granado",
-    mark: "GRANADO",
+    logo: "/images/brands/granado.svg",
     result: "Alta conversao",
     desc: "Antes e depois de rotina de cuidados, clique no link da bio.",
-    stamp: "bg-[#7A1F3D] text-white rotate-[-2deg]",
+    tilt: "rotate-[-2deg]",
   },
 ];
+
+function BrandMark({
+  brand,
+  size = "stamp",
+}: {
+  brand: Brand;
+  size?: "stamp" | "spotlight";
+}) {
+  const [failed, setFailed] = useState(false);
+  const imgClass =
+    size === "spotlight"
+      ? "h-10 w-auto max-w-[220px] md:h-14 md:max-w-[280px] object-contain"
+      : "h-7 w-auto max-w-[140px] md:h-9 md:max-w-[180px] object-contain";
+
+  if (failed) {
+    return (
+      <span className="font-display font-extrabold text-xl md:text-2xl tracking-tight text-navy">
+        {brand.name}
+      </span>
+    );
+  }
+
+  return (
+    // Local SVG/PNG wordmarks — <img> keeps vector fidelity without next/image config.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={brand.logo}
+      alt={brand.name}
+      className={imgClass}
+      onError={() => setFailed(true)}
+    />
+  );
+}
 
 function LogoStamp({
   brand,
   active,
   onPick,
 }: {
-  brand: (typeof CASES)[number];
+  brand: Brand;
   active: boolean;
   onPick: () => void;
 }) {
@@ -55,12 +96,13 @@ function LogoStamp({
       type="button"
       onClick={onPick}
       onMouseEnter={onPick}
-      className={`shrink-0 border-2 border-navy rounded-[1.6rem] px-8 py-5 font-display font-extrabold text-2xl md:text-3xl tracking-tight card-shadow transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${brand.stamp} ${
+      aria-label={brand.name}
+      aria-pressed={active}
+      className={`flex shrink-0 items-center justify-center border-2 border-navy rounded-[1.6rem] bg-white px-7 py-4 md:px-8 md:py-5 min-h-[4.5rem] min-w-[9.5rem] card-shadow transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${brand.tilt} ${
         active ? "scale-110 z-10" : "hover:scale-105"
       }`}
-      aria-pressed={active}
     >
-      {brand.mark}
+      <BrandMark brand={brand} />
     </button>
   );
 }
@@ -75,14 +117,14 @@ function StampRow({
   onPick: (name: string) => void;
 }) {
   const reduced = useReducedMotion();
-  const row = [...CASES, ...CASES, ...CASES];
+  const row = [...CASES, ...CASES];
 
   return (
     <div className="overflow-hidden py-2">
       <motion.div
-        className="flex gap-4 md:gap-6 w-max"
+        className="flex w-max gap-4 md:gap-6"
         animate={reduced ? undefined : { x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] }}
-        transition={{ x: { duration: 22, repeat: Infinity, ease: "linear" } }}
+        transition={{ x: { duration: 28, repeat: Infinity, ease: "linear" } }}
       >
         {row.map((brand, i) => (
           <LogoStamp
@@ -134,9 +176,9 @@ export default function Cases() {
 
         <div className="reveal mb-8 border-2 border-navy rounded-[2.5rem] bg-white p-6 md:p-10 hard-shadow min-h-[200px] flex flex-col md:flex-row md:items-center gap-6">
           <div
-            className={`self-start border-2 border-navy rounded-[1.6rem] px-8 py-5 font-display font-extrabold text-3xl md:text-5xl tracking-tight ${active.stamp}`}
+            className={`flex items-center justify-center self-start border-2 border-navy rounded-[1.6rem] bg-white px-8 py-6 min-h-[5.5rem] min-w-[10rem] ${active.tilt}`}
           >
-            {active.mark}
+            <BrandMark brand={active} size="spotlight" />
           </div>
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-magenta font-medium">

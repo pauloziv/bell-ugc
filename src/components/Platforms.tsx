@@ -1,46 +1,38 @@
 import {
   InstagramLogo,
   TiktokLogo,
-  YoutubeLogo,
 } from "@phosphor-icons/react/dist/ssr";
+import { INSTAGRAM_URL, TIKTOK_URL } from "@/lib/site";
+import { formatFollowerCount, getSocialStats } from "@/lib/social-stats";
 
-const PLATFORMS = [
-  {
-    name: "Instagram",
-    count: "45K",
-    desc: "Reels dinamicos, stories interativos e feed com estetica cuidada para engajar sua audiencia.",
-    icon: InstagramLogo,
-    iconClass: "text-magenta",
-    wrap: "bg-white rotate-[-1deg]",
-    delay: undefined as string | undefined,
-    countClass: "",
-    textClass: "text-muted",
-  },
-  {
-    name: "TikTok",
-    count: "120K",
-    desc: "Conteudo nativo, tendencias e trends adaptadas para maximo alcance organico.",
-    icon: TiktokLogo,
-    iconClass: "text-yellow",
-    wrap: "bg-navy text-white rotate-[1deg]",
-    delay: ".1s",
-    countClass: "",
-    textClass: "text-white/70",
-  },
-  {
-    name: "YouTube",
-    count: "18K",
-    desc: "Shorts e reviews aprofundados que constroem confianca de longo prazo com a marca.",
-    icon: YoutubeLogo,
-    iconClass: "text-lime",
-    wrap: "bg-white rotate-[-1deg]",
-    delay: ".2s",
-    countClass: "",
-    textClass: "text-muted",
-  },
-];
+export default async function Platforms() {
+  const stats = await getSocialStats();
 
-export default function Platforms() {
+  const platforms = [
+    {
+      name: "Instagram",
+      href: INSTAGRAM_URL,
+      handle: stats.instagram.handle,
+      count: formatFollowerCount(stats.instagram.followers),
+      desc: "Reels dinamicos, stories interativos e feed com estetica cuidada para engajar sua audiencia.",
+      icon: InstagramLogo,
+      iconClass: "text-magenta",
+      wrap: "bg-white rotate-[-1deg]",
+      textClass: "text-muted",
+    },
+    {
+      name: "TikTok",
+      href: TIKTOK_URL,
+      handle: stats.tiktok.handle,
+      count: formatFollowerCount(stats.tiktok.followers),
+      desc: "Conteudo nativo, tendencias e trends adaptadas para maximo alcance organico.",
+      icon: TiktokLogo,
+      iconClass: "text-yellow",
+      wrap: "bg-navy text-white rotate-[1deg]",
+      textClass: "text-white/70",
+    },
+  ] as const;
+
   return (
     <section id="plataformas" className="py-20 md:py-32 px-4 md:px-8">
       <div className="max-w-[1400px] mx-auto">
@@ -52,20 +44,30 @@ export default function Platforms() {
             Plataformas <span className="text-magenta">Foco</span>
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {PLATFORMS.map((p) => (
-            <div
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {platforms.map((p) => (
+            <a
               key={p.name}
+              href={p.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`reveal border-2 border-navy rounded-[2.5rem] p-8 hard-shadow hover:rotate-0 transition-transform duration-300 ${p.wrap}`}
-              style={p.delay ? { animationDelay: p.delay } : undefined}
             >
               <div className="flex items-center justify-between mb-6">
                 <p.icon weight="fill" size={36} className={p.iconClass} />
-                <span className="font-display font-extrabold text-3xl">{p.count}</span>
+                <span className="text-right">
+                  <span className="block font-display font-extrabold text-3xl leading-none">
+                    {p.count}
+                  </span>
+                  <span className="block mt-1 text-[11px] uppercase tracking-[0.18em]">
+                    seguidores
+                  </span>
+                </span>
               </div>
-              <h3 className="font-display font-bold text-xl mb-2">{p.name}</h3>
+              <h3 className="font-display font-bold text-xl mb-1">{p.name}</h3>
+              <p className={`text-sm font-medium mb-3 ${p.textClass}`}>{p.handle}</p>
               <p className={`leading-relaxed ${p.textClass}`}>{p.desc}</p>
-            </div>
+            </a>
           ))}
         </div>
       </div>
