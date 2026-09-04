@@ -3,6 +3,7 @@ import MagneticButton from "@/components/ui/MagneticButton";
 import BlobBackground from "@/components/ui/BlobBackground";
 import HeroPortrait from "@/components/ui/HeroPortrait";
 import AboutPortrait from "@/components/ui/AboutPortrait";
+import MobilePortraitDock from "@/components/ui/MobilePortraitDock";
 import { whatsappUrl } from "@/lib/site";
 
 export default function Hero() {
@@ -10,7 +11,7 @@ export default function Hero() {
     <div>
       <section
         id="hero"
-        className="relative overflow-hidden pt-24 pb-0 px-4 md:pt-28 md:px-8"
+        className="relative overflow-x-hidden pt-24 pb-0 px-4 md:pt-28 md:px-8"
       >
         <BlobBackground />
         <div className="pointer-events-none absolute -top-8 -left-12 h-40 w-40 bg-yellow/40 blob blur-xl" />
@@ -48,8 +49,8 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="relative">
-            <HeroPortrait />
+          <div className="relative hidden lg:block">
+            <HeroPortrait flipOnScroll={false} />
           </div>
         </div>
 
@@ -65,9 +66,11 @@ export default function Hero() {
         </svg>
       </section>
 
+      <MobilePortraitDock />
+
       <section
         id="sobre"
-        className="relative overflow-hidden bg-navy px-4 pt-10 pb-16 text-white md:px-8 md:pt-14 md:pb-24"
+        className="relative overflow-x-hidden bg-navy px-4 pt-8 pb-16 text-white md:px-8 md:pt-14 md:pb-24"
       >
         <div className="pointer-events-none absolute top-8 right-8 h-32 w-32 bg-magenta/20 blob blur-xl" />
         <div className="relative z-10 mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-10 lg:grid-cols-5">

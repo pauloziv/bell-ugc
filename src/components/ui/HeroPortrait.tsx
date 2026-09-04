@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
   motion,
@@ -10,35 +10,34 @@ import {
   useTransform,
 } from "framer-motion";
 
-export default function HeroPortrait() {
+export default function HeroPortrait({
+  flipOnScroll = true,
+}: {
+  flipOnScroll?: boolean;
+}) {
   const frameRef = useRef<HTMLDivElement>(null);
+  const sobreRef = useRef<HTMLElement | null>(null);
   const reduced = useReducedMotion();
-  const [mobile, setMobile] = useState(false);
   const [swapped, setSwapped] = useState(false);
+  const live = flipOnScroll && !reduced;
 
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 1023px)");
-    const sync = () => setMobile(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
+  useLayoutEffect(() => {
+    sobreRef.current = document.getElementById("sobre");
   }, []);
 
   const { scrollYProgress } = useScroll({
-    target: frameRef,
-    offset: ["start 0.56", "end 0.2"],
+    target: flipOnScroll ? sobreRef : frameRef,
+    offset: flipOnScroll ? ["start 0.92", "start 0.42"] : ["start end", "end start"],
   });
 
-  const flip = useTransform(scrollYProgress, [0.08, 0.78], [0, 180]);
-  const pop = useTransform(scrollYProgress, [0.08, 0.43, 0.78], [1, 0.9, 1.04]);
-  const magOp = useTransform(scrollYProgress, [0, 0.45, 0.8], [1, 0.35, 0]);
-  const yelOp = useTransform(scrollYProgress, [0, 0.45, 0.8], [0, 0.75, 1]);
-
-  const live = mobile && !reduced;
+  const flip = useTransform(scrollYProgress, [0.05, 0.72], [0, 180]);
+  const pop = useTransform(scrollYProgress, [0.05, 0.38, 0.72], [1, 0.94, 1.03]);
+  const magOp = useTransform(scrollYProgress, [0, 0.4, 0.75], [1, 0.35, 0]);
+  const yelOp = useTransform(scrollYProgress, [0, 0.4, 0.75], [0, 0.75, 1]);
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     if (!live) return;
-    setSwapped(v > 0.4);
+    setSwapped(v > 0.38);
   });
 
   return (
@@ -79,7 +78,7 @@ export default function HeroPortrait() {
             />
           </div>
           <div
-            className="absolute inset-0 overflow-hidden lg:hidden [border-radius:42%_58%_65%_35%/45%_45%_55%_55%]"
+            className="absolute inset-0 overflow-hidden [border-radius:42%_58%_65%_35%/45%_45%_55%_55%]"
             style={{
               transform: "rotateY(180deg)",
               backfaceVisibility: "hidden",
@@ -88,7 +87,7 @@ export default function HeroPortrait() {
           >
             <Image
               src="/images/creator-bel-about.jpg"
-              alt=""
+              alt="Ilustracao estilizada da Creator Bel"
               fill
               sizes="(max-width: 1024px) 90vw, 24rem"
               className="object-cover"
@@ -98,13 +97,13 @@ export default function HeroPortrait() {
       </div>
 
       <div
-        className={`absolute top-1/3 -right-6 rounded-2xl border-2 border-navy bg-white px-4 py-2 font-display text-sm font-bold card-shadow floaty-delay ${
+        className={`absolute top-1/3 -right-4 rounded-2xl border-2 border-navy bg-white px-3 py-1.5 font-display text-sm font-bold card-shadow floaty-delay ${
           swapped ? "-rotate-[8deg]" : "rotate-[5deg]"
         }`}
       >
         {swapped ? "avatar" : "#Content"}
       </div>
-      <div className="absolute -bottom-3 left-1/4 rotate-[3deg] rounded-2xl border-2 border-navy bg-lime px-4 py-2 font-display text-sm font-bold floaty card-shadow">
+      <div className="absolute -bottom-3 left-1/4 rotate-[3deg] rounded-2xl border-2 border-navy bg-lime px-3 py-1.5 font-display text-sm font-bold floaty card-shadow">
         {swapped ? "pop!" : "Reels"}
       </div>
     </motion.div>

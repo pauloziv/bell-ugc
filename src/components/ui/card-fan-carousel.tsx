@@ -33,20 +33,20 @@ const FAN_POSITIONS = [
 ];
 
 function getResponsiveMultiplier(width: number) {
-  if (width < 480) return 0.28;
-  if (width < 640) return 0.38;
-  if (width < 768) return 0.5;
-  if (width < 1024) return 0.75;
-  return 1.0;
+  if (width < 480) return 0.48;
+  if (width < 640) return 0.58;
+  if (width < 768) return 0.7;
+  if (width < 1024) return 0.88;
+  return 1.12;
 }
 
 function getHeightMultiplier(width: number) {
   let idealPx: number;
-  if (width < 480) idealPx = 22 * 16;
-  else if (width < 640) idealPx = 26 * 16;
-  else if (width < 768) idealPx = 28 * 16;
-  else if (width < 1024) idealPx = 34 * 16;
-  else idealPx = 38 * 16;
+  if (width < 480) idealPx = 30 * 16;
+  else if (width < 640) idealPx = 34 * 16;
+  else if (width < 768) idealPx = 36 * 16;
+  else if (width < 1024) idealPx = 40 * 16;
+  else idealPx = 44 * 16;
 
   const available = window.innerHeight * 0.7;
   if (available >= idealPx) return 1;

@@ -9,6 +9,8 @@ type Brand = {
   result: string;
   desc: string;
   tilt: string;
+  plate: string;
+  knockout: boolean;
 };
 
 const CASES: Brand[] = [
@@ -18,6 +20,8 @@ const CASES: Brand[] = [
     result: "+40% engajamento",
     desc: "Serie de reels para lancamento de linha de skincare.",
     tilt: "rotate-[-6deg]",
+    plate: "bg-[#FF6A00]",
+    knockout: true,
   },
   {
     name: "O Boticario",
@@ -25,6 +29,8 @@ const CASES: Brand[] = [
     result: "Unboxing viral",
     desc: "Reviews de perfumaria sazonal com cheiro, textura e ritual.",
     tilt: "rotate-[4deg]",
+    plate: "bg-[#00A3A1]",
+    knockout: true,
   },
   {
     name: "Farm",
@@ -32,6 +38,8 @@ const CASES: Brand[] = [
     result: "Lookbook verao",
     desc: "Lifestyle colorido pra colecao de estacao.",
     tilt: "rotate-[-3deg]",
+    plate: "bg-magenta",
+    knockout: true,
   },
   {
     name: "Havaianas",
@@ -39,6 +47,8 @@ const CASES: Brand[] = [
     result: "Campanha de verao",
     desc: "Conteudo praiano autentico, pe na areia, sem pose de studio.",
     tilt: "rotate-[5deg]",
+    plate: "bg-[#0033A0]",
+    knockout: false,
   },
   {
     name: "Granado",
@@ -46,6 +56,8 @@ const CASES: Brand[] = [
     result: "Alta conversao",
     desc: "Antes e depois de rotina de cuidados, clique no link da bio.",
     tilt: "rotate-[-2deg]",
+    plate: "bg-[#1A1A2E]",
+    knockout: false,
   },
 ];
 
@@ -59,24 +71,24 @@ function BrandMark({
   const [failed, setFailed] = useState(false);
   const imgClass =
     size === "spotlight"
-      ? "h-10 w-auto max-w-[220px] md:h-14 md:max-w-[280px] object-contain"
-      : "h-7 w-auto max-w-[140px] md:h-9 md:max-w-[180px] object-contain";
+      ? "h-11 w-auto max-w-[240px] md:h-16 md:max-w-[300px] object-contain"
+      : "h-8 w-auto max-w-[150px] md:h-11 md:max-w-[200px] object-contain";
 
   if (failed) {
     return (
-      <span className="font-display font-extrabold text-xl md:text-2xl tracking-tight text-navy">
+      <span className="font-display font-extrabold text-xl md:text-2xl tracking-tight text-white">
         {brand.name}
       </span>
     );
   }
 
   return (
-    // Local SVG/PNG wordmarks — <img> keeps vector fidelity without next/image config.
+    // Local SVG wordmarks — <img> keeps vector fidelity without next/image config.
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={brand.logo}
       alt={brand.name}
-      className={imgClass}
+      className={`${imgClass} ${brand.knockout ? "brightness-0 invert" : ""}`}
       onError={() => setFailed(true)}
     />
   );
@@ -98,7 +110,7 @@ function LogoStamp({
       onMouseEnter={onPick}
       aria-label={brand.name}
       aria-pressed={active}
-      className={`flex shrink-0 items-center justify-center border-2 border-navy rounded-[1.6rem] bg-white px-7 py-4 md:px-8 md:py-5 min-h-[4.5rem] min-w-[9.5rem] card-shadow transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${brand.tilt} ${
+      className={`flex shrink-0 items-center justify-center border-2 border-navy rounded-[1.6rem] px-7 py-4 md:px-9 md:py-5 min-h-[5rem] min-w-[10.5rem] card-shadow transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${brand.plate} ${brand.tilt} ${
         active ? "scale-110 z-10" : "hover:scale-105"
       }`}
     >
@@ -124,7 +136,7 @@ function StampRow({
       <motion.div
         className="flex w-max gap-4 md:gap-6"
         animate={reduced ? undefined : { x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] }}
-        transition={{ x: { duration: 28, repeat: Infinity, ease: "linear" } }}
+        transition={{ x: { duration: 26, repeat: Infinity, ease: "linear" } }}
       >
         {row.map((brand, i) => (
           <LogoStamp
@@ -156,10 +168,7 @@ export default function Cases() {
   }, [reduced]);
 
   return (
-    <section
-      id="cases"
-      className="py-16 md:py-24 bg-[#FFF6F9] relative overflow-hidden"
-    >
+    <section id="cases" className="py-16 md:py-24 bg-offwhite relative overflow-hidden">
       <div className="absolute top-10 -right-12 w-36 h-36 bg-lime/30 blob-slow blur-xl pointer-events-none" />
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 relative z-10">
         <div className="mb-8 md:mb-10 reveal">
@@ -174,26 +183,29 @@ export default function Cases() {
           </p>
         </div>
 
-        <div className="reveal mb-8 border-2 border-navy rounded-[2.5rem] bg-white p-6 md:p-10 hard-shadow min-h-[200px] flex flex-col md:flex-row md:items-center gap-6">
-          <div
-            className={`flex items-center justify-center self-start border-2 border-navy rounded-[1.6rem] bg-white px-8 py-6 min-h-[5.5rem] min-w-[10rem] ${active.tilt}`}
-          >
-            <BrandMark brand={active} size="spotlight" />
+        <div className="reveal border-2 border-navy rounded-[2.5rem] bg-white hard-shadow overflow-hidden">
+          <div className="min-h-[200px] flex flex-col md:flex-row md:items-center gap-6 p-6 md:p-10">
+            <div
+              className={`flex items-center justify-center self-start border-2 border-navy rounded-[1.6rem] px-8 py-6 min-h-[5.5rem] min-w-[10rem] ${active.plate} ${active.tilt}`}
+            >
+              <BrandMark brand={active} size="spotlight" />
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-magenta font-medium">
+                {active.result}
+              </p>
+              <h3 className="font-display font-bold text-2xl md:text-3xl mt-1">
+                {active.name}
+              </h3>
+              <p className="text-muted mt-2 max-w-[48ch]">{active.desc}</p>
+            </div>
           </div>
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-magenta font-medium">
-              {active.result}
-            </p>
-            <h3 className="font-display font-bold text-2xl md:text-3xl mt-1">
-              {active.name}
-            </h3>
-            <p className="text-muted mt-2 max-w-[48ch]">{active.desc}</p>
+          <div className="border-t-2 border-navy bg-white py-3">
+            <StampRow activeName={activeName} onPick={setActiveName} />
+            <StampRow reverse activeName={activeName} onPick={setActiveName} />
           </div>
         </div>
       </div>
-
-      <StampRow activeName={activeName} onPick={setActiveName} />
-      <StampRow reverse activeName={activeName} onPick={setActiveName} />
     </section>
   );
 }

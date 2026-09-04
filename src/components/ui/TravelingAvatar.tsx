@@ -68,6 +68,49 @@ function GhostOrb({
   );
 }
 
+function MobilePeek({
+  progress,
+  sticker,
+}: {
+  progress: MotionValue<number>;
+  sticker: string;
+}) {
+  const rotate = useTransform(progress, [0, 1], [16, -12]);
+  const bob = useTransform(progress, (p) => Math.sin(p * Math.PI * 7) * 8);
+  const opacity = useTransform(progress, [0, 0.05, 0.9, 1], [0, 1, 1, 0]);
+
+  return (
+    <motion.div
+      aria-hidden="true"
+      data-mobile-peek
+      className="pointer-events-none fixed z-30 lg:hidden"
+      style={{
+        right: -26,
+        bottom: "max(12px, env(safe-area-inset-bottom))",
+        width: 68,
+        height: 68,
+        rotate,
+        y: bob,
+        opacity,
+      }}
+    >
+      <div className="absolute inset-0 bg-yellow blob-slow" />
+      <div className="absolute inset-[10%] overflow-hidden border-[3px] border-navy blob">
+        <Image
+          src="/images/creator-bel-about.jpg"
+          alt=""
+          fill
+          sizes="4.5rem"
+          className="object-cover"
+        />
+      </div>
+      <span className="absolute -left-11 top-1 min-w-[2.6rem] rounded-full border-2 border-navy bg-lime px-2 py-0.5 text-center font-display text-[10px] font-bold text-navy card-shadow rotate-[-12deg]">
+        {sticker}
+      </span>
+    </motion.div>
+  );
+}
+
 export default function TravelingAvatar() {
   const reduced = useReducedMotion();
   const ctxRef = useTrailRef();
@@ -121,7 +164,11 @@ export default function TravelingAvatar() {
     setSticker(STICKERS[i]);
   });
 
-  if (reduced || !desktop) return null;
+  if (reduced) return null;
+
+  if (!desktop) {
+    return <MobilePeek progress={scrollYProgress} sticker={sticker} />;
+  }
 
   return (
     <>

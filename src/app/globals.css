@@ -187,8 +187,8 @@
 }
 
 .fan-layout {
-  height: 38rem;
-  min-height: 22rem;
+  height: 44rem;
+  min-height: 28rem;
   touch-action: pan-y;
 }
 
@@ -196,7 +196,7 @@
   position: absolute;
   left: 50%;
   top: 48%;
-  width: 12.5rem;
+  width: 15rem;
   aspect-ratio: 9 / 16;
   border-radius: 1.85rem;
   overflow: hidden;
@@ -211,28 +211,28 @@
 
 @media (max-width: 1023px) {
   .fan-layout {
-    height: 34rem;
+    height: 40rem;
   }
   .fan-card {
-    width: 10.5rem;
+    width: 13.25rem;
   }
 }
 
 @media (max-width: 767px) {
   .fan-layout {
-    height: 28rem;
+    height: 34rem;
   }
   .fan-card {
-    width: 8.25rem;
+    width: 11.25rem;
   }
 }
 
 @media (max-width: 479px) {
   .fan-layout {
-    height: 22rem;
+    height: 30rem;
   }
   .fan-card {
-    width: 6.5rem;
+    width: 10rem;
   }
 }
 
@@ -254,7 +254,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  width: min(22.5rem, calc(100vw - 2rem));
+  width: min(26rem, calc(100vw - 2rem));
   aspect-ratio: 9 / 16;
   visibility: hidden;
   pointer-events: none;
@@ -266,7 +266,7 @@
   left: 0;
   top: 0;
   z-index: 70;
-  width: min(22.5rem, calc(100vw - 2rem));
+  width: min(26rem, calc(100vw - 2rem));
   aspect-ratio: 9 / 16;
   border-radius: 1.85rem;
   overflow: hidden;
