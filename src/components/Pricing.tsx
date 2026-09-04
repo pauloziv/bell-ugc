@@ -47,7 +47,7 @@ export default function Pricing() {
   return (
     <section
       id="pacotes"
-      className="relative overflow-hidden bg-navy px-4 py-12 md:px-8 md:py-24"
+      className="relative overflow-hidden bg-navy px-4 py-10 md:px-8 md:py-24"
     >
       <div className="absolute bottom-0 right-0 w-40 h-40 bg-magenta/20 blob blur-xl pointer-events-none" />
       <div className="max-w-[1400px] mx-auto relative z-10">

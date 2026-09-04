@@ -26,7 +26,7 @@ const CARDS = [
 
 export default function WhatIsUGC() {
   return (
-    <section id="ugc" className="relative px-4 py-12 md:px-8 md:py-24">
+    <section id="ugc" className="relative px-4 py-10 md:px-8 md:py-24">
       <div className="max-w-[1400px] mx-auto">
         <div className="reveal mb-8 text-center md:mb-12">
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-magenta">

@@ -34,7 +34,7 @@ export default async function Platforms() {
   ] as const;
 
   return (
-    <section id="plataformas" className="px-4 py-12 md:px-8 md:py-24">
+    <section id="plataformas" className="px-4 py-10 md:px-8 md:py-24">
       <div className="max-w-[1400px] mx-auto">
         <div className="reveal mb-8 md:mb-12">
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-magenta">

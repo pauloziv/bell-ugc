@@ -90,25 +90,25 @@ function MobileTalker({
     <motion.div
       aria-hidden="true"
       data-mobile-talker
-      className="pointer-events-none fixed z-30 lg:hidden"
+      className="pointer-events-none fixed z-30 overflow-visible lg:hidden"
       style={{
-        right: -36,
+        right: -58,
         bottom: "max(0px, env(safe-area-inset-bottom))",
-        width: 158,
-        height: 248,
+        width: 132,
+        height: 210,
         rotate,
         y: bob,
         opacity,
       }}
     >
-      <span className="absolute top-10 right-[6.4rem] w-max max-w-[7.6rem] rounded-[1.15rem] rounded-br-md border-2 border-navy bg-lime px-2.5 py-1.5 text-left font-display text-[11px] font-bold leading-tight text-navy card-shadow">
+      <span className="absolute top-8 left-0 z-20 -translate-x-[calc(100%+6px)] w-max max-w-[7.2rem] rounded-[1.15rem] rounded-br-md border-2 border-navy bg-lime px-2.5 py-1.5 text-left font-display text-[11px] font-bold leading-tight text-navy card-shadow">
         {line}
       </span>
       <Image
         src="/images/creator-bel-fullbody.png"
         alt=""
         fill
-        sizes="10rem"
+        sizes="9rem"
         className="object-contain object-bottom drop-shadow-[6px_10px_0_rgba(26,26,46,0.18)]"
       />
     </motion.div>

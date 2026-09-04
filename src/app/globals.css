@@ -158,7 +158,13 @@
 .wavy-divider {
   width: 100%;
   height: 60px;
-  display: block;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .wavy-divider {
+    display: block;
+  }
 }
 
 .card-shadow {

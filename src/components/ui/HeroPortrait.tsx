@@ -34,7 +34,7 @@ export default function HeroPortrait({
   const { scrollYProgress } = useScroll({
     target: flipOnScroll ? sobreRef : frameRef,
     offset: flipOnScroll
-      ? ["start 0.88", "start 0.52"]
+      ? ["start 0.72", "start 0.42"]
       : ["start end", "end start"],
   });
 
