@@ -168,7 +168,7 @@ export default function Cases() {
   }, [reduced]);
 
   return (
-    <section id="cases" className="py-16 md:py-24 bg-offwhite relative overflow-hidden">
+    <section id="cases" className="relative overflow-hidden bg-offwhite py-12 md:py-24">
       <div className="absolute top-10 -right-12 w-36 h-36 bg-lime/30 blob-slow blur-xl pointer-events-none" />
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 relative z-10">
         <div className="mb-8 md:mb-10 reveal">

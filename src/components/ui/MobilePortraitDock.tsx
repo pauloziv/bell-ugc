@@ -6,9 +6,11 @@ export default function MobilePortraitDock() {
   return (
     <div
       data-mobile-portrait-dock
-      className="lg:hidden sticky top-[4.75rem] z-20 mx-auto w-[min(100%-2rem,18.5rem)]"
+      className="pointer-events-none relative z-20 h-0 lg:hidden"
     >
-      <HeroPortrait />
+      <div className="absolute left-1/2 top-0 w-[min(100%-2.5rem,15.5rem)] -translate-x-1/2 -translate-y-[58%]">
+        <HeroPortrait frame="circle" />
+      </div>
     </div>
   );
 }

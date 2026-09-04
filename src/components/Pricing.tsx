@@ -47,11 +47,11 @@ export default function Pricing() {
   return (
     <section
       id="pacotes"
-      className="py-20 md:py-32 px-4 md:px-8 bg-navy relative overflow-hidden"
+      className="relative overflow-hidden bg-navy px-4 py-12 md:px-8 md:py-24"
     >
       <div className="absolute bottom-0 right-0 w-40 h-40 bg-magenta/20 blob blur-xl pointer-events-none" />
       <div className="max-w-[1400px] mx-auto relative z-10">
-        <div className="mb-16 text-center reveal">
+        <div className="reveal mb-8 text-center md:mb-12">
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-yellow">
             Investimento
           </span>
