@@ -5,6 +5,7 @@ import {
   TiktokLogo,
 } from "@phosphor-icons/react/dist/ssr";
 import MagneticButton from "@/components/ui/MagneticButton";
+import BrandLogo from "@/components/ui/BrandLogo";
 import {
   EMAIL,
   INSTAGRAM_HANDLE,
@@ -71,8 +72,11 @@ export default function CTA() {
           <p className="mt-4 text-sm text-navy/80 font-medium">{INSTAGRAM_HANDLE}</p>
         </div>
       </section>
-      <footer className="bg-navy text-white/60 py-8 px-4 md:px-8 text-center text-sm">
-        <p>© 2026 Creator Bel. Feito com criatividade e cafe. Todos os direitos reservados.</p>
+      <footer className="bg-navy px-4 py-8 text-center text-sm text-white/60 md:px-8">
+        <div className="mb-4 flex justify-center">
+          <BrandLogo onDark />
+        </div>
+        <p>© 2026 Bel UGC. Feito com criatividade e cafe. Todos os direitos reservados.</p>
       </footer>
     </>
   );

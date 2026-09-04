@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 88" fill="none" role="img" aria-labelledby="belUgcTitle">
+  <title id="belUgcTitle">Bel UGC</title>
+  <g transform="rotate(-6 78 50)">
+    <text
+      x="18"
+      y="62"
+      fill="#1A1A2E"
+      font-family="Cabinet Grotesk, system-ui, sans-serif"
+      font-size="58"
+      font-weight="800"
+      letter-spacing="-0.06em"
+    >Bel</text>
+  </g>
+  <g transform="rotate(10 168 64)">
+    <path fill="#7BED4F" stroke="#1A1A2E" stroke-width="4" stroke-linejoin="round" d="M118 58h-9l7 10 8-4v-6z"/>
+    <rect x="116" y="42" width="86" height="36" rx="18" fill="#7BED4F" stroke="#1A1A2E" stroke-width="4"/>
+    <text
+      x="159"
+      y="66"
+      fill="#1A1A2E"
+      font-family="Cabinet Grotesk, system-ui, sans-serif"
+      font-size="18"
+      font-weight="800"
+      letter-spacing="0.16em"
+      text-anchor="middle"
+    >UGC</text>
+  </g>
+  <path fill="#E91E8C" stroke="#1A1A2E" stroke-width="2.2" stroke-linejoin="round" d="M18 72.2 21.1 80.4l8.7 1.05-6.45 5.95 1.8 8.55-7.15-4.65-7.15 4.65 1.8-8.55-6.45-5.95 8.7-1.05Z"/>
+  <path fill="#FFD23F" stroke="#1A1A2E" stroke-width="2" stroke-linejoin="round" d="M196 12.5 199.4 20.5 208 24 199.4 27.5 196 35.5 192.6 27.5 184 24 192.6 20.5Z"/>
+</svg>

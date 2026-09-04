@@ -2,6 +2,7 @@
 
 import { List, X } from "@phosphor-icons/react";
 import { useState } from "react";
+import BrandLogo from "@/components/ui/BrandLogo";
 
 const LINKS = [
   { href: "#sobre", label: "Sobre" },
@@ -18,12 +19,13 @@ export default function FloatingNav() {
 
   return (
     <nav className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] md:w-auto">
-      <div className="flex items-center justify-between md:justify-center gap-1 md:gap-2 bg-white/95 border-2 border-navy rounded-full px-3 md:px-6 py-2.5 md:py-3 shadow-[0_8px_30px_-5px_rgba(233,30,140,0.25)]">
+      <div className="flex items-center justify-between md:justify-center gap-1 overflow-visible md:gap-2 bg-white/95 border-2 border-navy rounded-full px-3 md:px-6 py-2.5 md:py-3 shadow-[0_8px_30px_-5px_rgba(233,30,140,0.25)]">
         <a
           href="#hero"
-          className="font-display font-extrabold text-lg text-navy pr-2 md:pr-4 whitespace-nowrap"
+          aria-label="Bel UGC — início"
+          className="flex items-center pr-1 md:pr-3"
         >
-          <span className="hidden sm:inline">creator </span>bel<span className="text-magenta">.</span>
+          <BrandLogo compact />
         </a>
         <div className="hidden lg:flex items-center gap-1">
           {LINKS.map((item) => (
