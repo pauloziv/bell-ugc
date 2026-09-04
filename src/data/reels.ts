@@ -13,7 +13,8 @@ const SAMPLE_BUCKET =
 /** Public CDN origin, no trailing slash. Example: https://media.belconteudos.com */
 const REELS_CDN = (process.env.NEXT_PUBLIC_REELS_CDN ?? "").replace(/\/$/, "");
 
-function videoUrl(slug: string, sampleFile: string) {
+function videoUrl(slug: string, sampleFile: string, youtubeUrl?: string) {
+  if (youtubeUrl) return youtubeUrl;
   if (REELS_CDN) return `${REELS_CDN}/${slug}.mp4`;
   return `${SAMPLE_BUCKET}/${sampleFile}`;
 }
@@ -23,10 +24,9 @@ function picsumPoster(seed: string) {
 }
 
 /**
- * Fan cards. MP4s never live in git.
- * 1. `./scripts/compress-reel.sh clip.mov unboxing` → poster + compressed mp4
- * 2. Upload mp4 to R2/Blob. Set NEXT_PUBLIC_REELS_CDN.
- * 3. Swap imgUrl to `/images/reels/{slug}.webp` once the poster is committed.
+ * Fan cards. Prefer unlisted YouTube / Shorts URLs (iframe only on play).
+ * Optional: mp4 on R2/Blob via NEXT_PUBLIC_REELS_CDN. Never commit mp4s.
+ * Posters: swap imgUrl to /images/reels/{slug}.webp when ready.
  */
 export const REEL_CARDS: ReelCard[] = [
   {

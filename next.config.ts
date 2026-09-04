@@ -24,6 +24,11 @@ const nextConfig: NextConfig = {
         hostname: "media.belconteudos.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
+        pathname: "/**",
+      },
     ],
   },
 };

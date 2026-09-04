@@ -96,7 +96,7 @@ function MobileTalker({
         bottom: "max(8px, env(safe-area-inset-bottom))",
       }}
     >
-      <div className="relative h-[13.5rem] w-[9rem] translate-x-3">
+      <div className="relative h-[13.5rem] w-[9rem] translate-x-3 overflow-visible">
         <Image
           src="/images/creator-bel-fullbody.png"
           alt=""
@@ -104,7 +104,7 @@ function MobileTalker({
           height={360}
           className="h-full w-full object-contain object-bottom drop-shadow-[6px_10px_0_rgba(26,26,46,0.18)]"
         />
-        <span className="absolute top-[0.7rem] right-[4.85rem] rounded-[1.15rem] rounded-br-md border-2 border-navy bg-lime px-2.5 py-1.5 text-left font-display text-xs font-bold leading-tight whitespace-nowrap text-navy card-shadow">
+        <span className="mobile-talk-bubble absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-[calc(100%+0.7rem)] rounded-[1.15rem] border-2 border-navy bg-lime px-2.5 py-1.5 text-center font-display text-xs font-bold leading-tight whitespace-nowrap text-navy card-shadow">
           {line}
         </span>
       </div>

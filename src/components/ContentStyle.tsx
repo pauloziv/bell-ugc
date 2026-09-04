@@ -9,7 +9,7 @@ export default function ContentStyle() {
     >
       <div className="absolute bottom-0 left-0 w-32 h-32 bg-yellow/40 blob blur-xl pointer-events-none" />
       <div className="max-w-[1400px] mx-auto relative z-10">
-        <div className="mb-8 reveal">
+        <div className="mb-8 reveal pr-[7.25rem] md:pr-0">
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-magenta">
             Portfolio de conteudo
           </span>
