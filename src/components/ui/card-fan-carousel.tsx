@@ -94,6 +94,7 @@ function ReelFrame({
       <img
         src={card.imgUrl}
         loading="lazy"
+        decoding="async"
         alt={card.alt || `Reel ${index + 1}`}
         className="absolute inset-0 w-full h-full object-cover"
       />
@@ -637,6 +638,7 @@ export default function SocialCards({ cards }: SocialCardsProps) {
                 >
                   <video
                     ref={videoRef}
+                    preload="none"
                     poster={
                       playingIndex !== null
                         ? cards[playingIndex].imgUrl
