@@ -9,7 +9,7 @@ export default function BrandLogo({
 }) {
   return (
     <span
-      className={`inline-flex items-center ${compact ? "gap-1" : "gap-1.5"}`}
+      className={`inline-flex items-center ${compact ? "gap-2.5" : "gap-3"}`}
     >
       <Star
         weight="fill"
@@ -18,14 +18,14 @@ export default function BrandLogo({
         aria-hidden
       />
       <span
-        className={`-rotate-[4deg] font-display leading-none font-extrabold tracking-tighter ${
+        className={`-rotate-[3deg] font-display leading-none font-extrabold tracking-tighter ${
           onDark ? "text-white" : "text-navy"
         } ${compact ? "text-[1.2rem]" : "text-[1.65rem]"}`}
       >
         Bel
       </span>
       <span
-        className={`rotate-[8deg] rounded-full border-[2.5px] border-navy bg-lime font-display leading-none font-extrabold tracking-[0.14em] text-navy shadow-[2px_2px_0_0_#1A1A2E] ${
+        className={`ml-1 origin-bottom-left rotate-[7deg] rounded-full border-[2.5px] border-navy bg-lime font-display leading-none font-extrabold tracking-[0.14em] text-navy shadow-[2px_2px_0_0_#1A1A2E] ${
           compact ? "px-[0.45rem] py-[0.22rem] text-[9px]" : "px-2 py-1 text-[11px]"
         }`}
       >

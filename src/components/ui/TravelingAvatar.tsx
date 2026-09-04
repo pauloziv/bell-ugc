@@ -104,7 +104,7 @@ function MobileTalker({
           height={360}
           className="h-full w-full object-contain object-bottom drop-shadow-[6px_10px_0_rgba(26,26,46,0.18)]"
         />
-        <span className="absolute top-[1.2rem] right-[5.2rem] rounded-[1.15rem] rounded-br-md border-2 border-navy bg-lime px-2.5 py-1.5 text-left font-display text-xs font-bold leading-tight whitespace-nowrap text-navy card-shadow">
+        <span className="absolute top-[0.7rem] right-[4.85rem] rounded-[1.15rem] rounded-br-md border-2 border-navy bg-lime px-2.5 py-1.5 text-left font-display text-xs font-bold leading-tight whitespace-nowrap text-navy card-shadow">
           {line}
         </span>
       </div>
