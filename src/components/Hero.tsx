@@ -53,18 +53,6 @@ export default function Hero() {
             <HeroPortrait flipOnScroll={false} />
           </div>
         </div>
-
-        <svg
-          className="wavy-divider relative z-10 mt-10 mb-[-1px] hidden lg:block"
-          viewBox="0 0 1440 60"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z"
-            fill="#1A1A2E"
-          />
-        </svg>
       </section>
 
       <MobilePortraitDock />
@@ -73,10 +61,6 @@ export default function Hero() {
         id="sobre"
         className="relative overflow-visible rounded-t-[2.75rem] bg-navy px-4 pt-[8.25rem] pb-8 text-white lg:overflow-x-hidden lg:rounded-none lg:px-8 lg:pt-14 lg:pb-24"
       >
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-2.5 right-5 left-5 -z-0 h-8 rounded-t-[2.4rem] bg-magenta lg:hidden"
-        />
         <div className="pointer-events-none absolute top-8 right-8 h-32 w-32 bg-magenta/20 blob blur-xl" />
         <div className="relative z-10 mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-10 lg:grid-cols-5">
           <div className="hidden lg:col-span-2 lg:block">

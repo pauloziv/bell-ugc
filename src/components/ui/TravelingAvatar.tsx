@@ -82,34 +82,29 @@ function MobileTalker({
   progress: MotionValue<number>;
   line: string;
 }) {
-  const rotate = useTransform(progress, [0, 1], [6, -8]);
-  const bob = useTransform(progress, (p) => Math.sin(p * Math.PI * 7) * 7);
+  const bob = useTransform(progress, (p) => Math.sin(p * Math.PI * 7) * 6);
   const opacity = useTransform(progress, [0, 0.05, 0.9, 1], [0, 1, 1, 0]);
 
   return (
     <motion.div
       aria-hidden="true"
       data-mobile-talker
-      className="pointer-events-none fixed z-30 overflow-visible lg:hidden"
+      className="pointer-events-none fixed right-0 z-40 flex items-end gap-1.5 pr-1 lg:hidden"
       style={{
-        right: -58,
-        bottom: "max(0px, env(safe-area-inset-bottom))",
-        width: 132,
-        height: 210,
-        rotate,
         y: bob,
         opacity,
+        bottom: "max(8px, env(safe-area-inset-bottom))",
       }}
     >
-      <span className="absolute top-8 left-0 z-20 -translate-x-[calc(100%+6px)] w-max max-w-[7.2rem] rounded-[1.15rem] rounded-br-md border-2 border-navy bg-lime px-2.5 py-1.5 text-left font-display text-[11px] font-bold leading-tight text-navy card-shadow">
+      <span className="mb-28 shrink-0 rounded-[1.15rem] rounded-br-md border-2 border-navy bg-lime px-2.5 py-1.5 text-left font-display text-xs font-bold leading-tight whitespace-nowrap text-navy card-shadow">
         {line}
       </span>
       <Image
         src="/images/creator-bel-fullbody.png"
         alt=""
-        fill
-        sizes="9rem"
-        className="object-contain object-bottom drop-shadow-[6px_10px_0_rgba(26,26,46,0.18)]"
+        width={240}
+        height={360}
+        className="h-[13.5rem] w-[8.5rem] translate-x-5 object-contain object-bottom drop-shadow-[6px_10px_0_rgba(26,26,46,0.18)]"
       />
     </motion.div>
   );

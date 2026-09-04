@@ -8,8 +8,9 @@ import {
   useLayoutEffect,
   useSyncExternalStore,
 } from "react";
+import { createPortal } from "react-dom";
 import { Play, Heart, ChatCircle, ShareNetwork, X } from "@phosphor-icons/react";
-import { gsap, useGSAP, Observer, Flip, registerGsapPlugins } from "@/lib/gsap-register";
+import { gsap, useGSAP, Observer, registerGsapPlugins } from "@/lib/gsap-register";
 
 registerGsapPlugins();
 
@@ -49,10 +50,10 @@ function getResponsiveMultiplier(width: number) {
 
 function getHeightMultiplier(width: number) {
   let idealPx: number;
-  if (width < 480) idealPx = 30 * 16;
-  else if (width < 640) idealPx = 34 * 16;
-  else if (width < 768) idealPx = 36 * 16;
-  else if (width < 1024) idealPx = 40 * 16;
+  if (width < 480) idealPx = 22 * 16;
+  else if (width < 640) idealPx = 26 * 16;
+  else if (width < 768) idealPx = 28 * 16;
+  else if (width < 1024) idealPx = 32 * 16;
   else idealPx = 44 * 16;
 
   const available = window.innerHeight * 0.7;
@@ -233,42 +234,14 @@ export default function SocialCards({ cards }: SocialCardsProps) {
 
   const closePlay = useCallback(() => {
     if (closingRef.current) return;
-    const index = playingIndexRef.current;
-    const player = playerRef.current;
     const video = videoRef.current;
-    const source =
-      index !== null
-        ? containerRef.current?.querySelectorAll<HTMLElement>(".fan-card")[index]
-        : undefined;
-
     video?.pause();
     if (video) video.currentTime = 0;
-
-    const finish = () => {
-      closingRef.current = false;
-      playingIndexRef.current = null;
-      setPlayingIndex(null);
-      resetPlayer();
-    };
-
-    if (!player || index === null) {
-      finish();
-      return;
-    }
-
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced || !source) {
-      finish();
-      return;
-    }
-
     closingRef.current = true;
-    Flip.fit(player, source, {
-      duration: 0.4,
-      ease: "power2.in",
-      absolute: true,
-      onComplete: finish,
-    });
+    playingIndexRef.current = null;
+    setPlayingIndex(null);
+    resetPlayer();
+    closingRef.current = false;
   }, [resetPlayer]);
 
   const openPlay = useCallback((index: number) => {
@@ -290,33 +263,28 @@ export default function SocialCards({ cards }: SocialCardsProps) {
     const player = playerRef.current;
     const slot = playerSlotRef.current;
     const video = videoRef.current;
-    const source =
-      containerRef.current?.querySelectorAll<HTMLElement>(".fan-card")[playingIndex];
     if (!player) return;
 
     document.body.style.overflow = "hidden";
     centerSlot();
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const playVideo = () => {
-      if (!video) return;
-      video.muted = false;
-      const attempt = video.play();
-      if (attempt) void attempt.catch(() => {});
-    };
-
-    if (reduced || !source || !slot) {
-      playVideo();
-    } else {
-      Flip.fit(player, source, { duration: 0, absolute: true });
-      requestAnimationFrame(() => {
-        Flip.fit(player, slot, {
-          duration: 0.55,
-          ease: "power2.inOut",
-          absolute: true,
-          onComplete: playVideo,
-        });
+    if (slot) {
+      const box = slot.getBoundingClientRect();
+      gsap.set(player, {
+        left: box.left,
+        top: box.top,
+        width: box.width,
+        height: box.height,
+        x: 0,
+        y: 0,
+        rotation: 0,
+        scale: 1,
       });
+    }
+
+    if (video) {
+      video.muted = false;
+      void video.play().catch(() => {});
     }
 
     const onKey = (event: KeyboardEvent) => {
@@ -431,18 +399,15 @@ export default function SocialCards({ cards }: SocialCardsProps) {
             onCardDone();
           } else if (isFirstMount) {
             gsap.set(card, {
-              ...origin,
-              x: 0,
-              y: `${12 * hMult}rem`,
-              rotation: 0,
-              scale: 0.5,
+              ...target,
               autoAlpha: 0,
+              scale: 0.82,
             });
             gsap.to(card, {
               ...target,
-              duration: 1.2,
+              duration: 0.7,
               ease: "bellFanIn",
-              delay: 0.2 + slot * 0.06,
+              delay: slot * 0.05,
               onComplete: onCardDone,
             });
           } else if (!wasVisible) {
@@ -670,43 +635,54 @@ export default function SocialCards({ cards }: SocialCardsProps) {
         </div>
       </div>
 
-      <div
-        className={`fan-backdrop ${playingIndex !== null ? "is-open" : ""}`}
-        onClick={closePlay}
-        aria-hidden={playingIndex === null}
-      />
-      <div ref={playerSlotRef} className="fan-player-slot" aria-hidden />
-      <div
-        ref={playerRef}
-        className={`fan-player ${playingIndex !== null ? "is-open" : ""}`}
-        role={playingIndex !== null ? "dialog" : undefined}
-        aria-modal={playingIndex !== null}
-        aria-label={
-          playingIndex !== null
-            ? cards[playingIndex]?.label || "Reel"
-            : undefined
-        }
-      >
-        <div className="relative h-full w-full">
-          <video
-            ref={videoRef}
-            poster={playingIndex !== null ? cards[playingIndex].imgUrl : undefined}
-            playsInline
-            controls
-            className="h-full w-full rounded-[1.35rem] object-cover"
-          />
-          {playingIndex !== null ? (
-            <button
-              type="button"
-              onClick={closePlay}
-              aria-label="Fechar video"
-              className="absolute top-3 right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 border-navy bg-white/90 text-navy"
-            >
-              <X weight="bold" size={18} />
-            </button>
-          ) : null}
-        </div>
-      </div>
+      {mounted
+        ? createPortal(
+            <>
+              <div
+                className={`fan-backdrop ${playingIndex !== null ? "is-open" : ""}`}
+                onClick={closePlay}
+                aria-hidden={playingIndex === null}
+              />
+              <div ref={playerSlotRef} className="fan-player-slot" aria-hidden />
+              <div
+                ref={playerRef}
+                className={`fan-player ${playingIndex !== null ? "is-open" : ""}`}
+                role={playingIndex !== null ? "dialog" : undefined}
+                aria-modal={playingIndex !== null}
+                aria-label={
+                  playingIndex !== null
+                    ? cards[playingIndex]?.label || "Reel"
+                    : undefined
+                }
+              >
+                <div className="relative h-full w-full">
+                  <video
+                    ref={videoRef}
+                    poster={
+                      playingIndex !== null
+                        ? cards[playingIndex].imgUrl
+                        : undefined
+                    }
+                    playsInline
+                    controls
+                    className="h-full w-full rounded-[1.35rem] object-cover"
+                  />
+                  {playingIndex !== null ? (
+                    <button
+                      type="button"
+                      onClick={closePlay}
+                      aria-label="Fechar video"
+                      className="absolute top-3 right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 border-navy bg-white/90 text-navy"
+                    >
+                      <X weight="bold" size={18} />
+                    </button>
+                  ) : null}
+                </div>
+              </div>
+            </>,
+            document.body,
+          )
+        : null}
 
       {needsPagination && (
         <div className="flex items-center justify-center gap-4 mt-4 md:mt-6">

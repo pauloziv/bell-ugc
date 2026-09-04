@@ -82,7 +82,7 @@ export default function ContentStyle() {
   return (
     <section
       id="estilo"
-      className="relative overflow-hidden bg-offwhite px-4 py-10 md:px-8 md:py-24"
+      className="relative overflow-x-hidden bg-offwhite px-4 py-10 md:px-8 md:py-24 scroll-mt-24"
     >
       <div className="absolute bottom-0 left-0 w-32 h-32 bg-yellow/40 blob blur-xl pointer-events-none" />
       <div className="max-w-[1400px] mx-auto relative z-10">
