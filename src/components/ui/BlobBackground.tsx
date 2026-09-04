@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function BlobBackground({ className = "" }: { className?: string }) {
   return (
-    <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
+    <div className={`pointer-events-none absolute inset-0 overflow-clip [&>*]:pointer-events-none ${className}`}>
       <motion.div
         className="absolute -top-16 -left-16 w-40 h-40 rounded-full bg-magenta/15 blur-2xl"
         animate={{

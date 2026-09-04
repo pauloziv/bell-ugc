@@ -70,11 +70,12 @@
     scroll-behavior: smooth;
     background-color: var(--color-offwhite);
     color: var(--color-navy);
+    overflow-x: clip;
   }
 
   body {
     font-family: var(--font-body);
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   ::selection {
