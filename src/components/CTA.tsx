@@ -1,6 +1,7 @@
 import {
   ChatCircle,
   EnvelopeSimple,
+  FilePdf,
   InstagramLogo,
   Sparkle,
   TiktokLogo,
@@ -13,6 +14,7 @@ import {
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
   MEDIA_KIT_HREF,
+  MEDIA_KIT_PDF,
   TIKTOK_HANDLE,
   TIKTOK_URL,
   whatsappUrl,
@@ -86,6 +88,13 @@ export default function CTA() {
         >
           <Sparkle weight="bold" size={18} />
           Ver media kit
+        </Link>
+        <Link
+          href={MEDIA_KIT_PDF}
+          className="ml-4 mt-3 inline-flex min-h-11 items-center gap-2 text-white/80 hover:text-white"
+        >
+          <FilePdf weight="bold" size={18} />
+          Baixar PDF
         </Link>
       </footer>
     </>

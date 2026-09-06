@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Play, Stamp } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 type CaseCard = {
   name: string;
@@ -51,12 +51,24 @@ const CASES: CaseCard[] = [
     kicker: "Spray no pulso",
     desc: "Body mist, cheiro e o “passa aqui”. Unboxing íntimo — banheiro real, sem pose de campanha.",
     sample: true,
-    plate: "bg-navy text-white",
+    plate: "bg-[#FFC1E3] text-navy",
     tilt: "rotate-3",
   },
 ];
 
-export default function KitCases() {
+export default function KitCases({
+  id = "cases",
+  eyebrow = "Quem confia em mim",
+  title,
+  subtitle,
+  reserveAvatar = false,
+}: {
+  id?: string;
+  eyebrow?: string;
+  title?: ReactNode;
+  subtitle?: string;
+  reserveAvatar?: boolean;
+}) {
   const [play, setPlay] = useState<string | null>(null);
   const reduced = useReducedMotion();
 
@@ -70,18 +82,27 @@ export default function KitCases() {
   }, [play]);
 
   return (
-    <section id="cases" className="relative overflow-hidden bg-offwhite px-4 py-16 scroll-mt-28 md:px-8 md:py-28">
+    <section
+      id={id}
+      className="relative overflow-hidden bg-offwhite px-4 py-16 scroll-mt-28 md:px-8 md:py-28"
+    >
       <div className="mx-auto max-w-[1400px]">
-        <span className="text-xs font-medium tracking-[0.2em] text-magenta uppercase">
-          Quem confia em mim
-        </span>
-        <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight md:text-6xl">
-          Marcas que <span className="text-magenta">já criaram</span> comigo
-        </h2>
-        <p className="mt-3 max-w-[52ch] text-muted">
-          Sander e Creamy são cases reais — toca no play. Alva e Névoa são
-          amostras de formato, com o chip Amostra.
-        </p>
+        <div className={reserveAvatar ? "pr-[7.25rem] md:pr-0" : undefined}>
+          <span className="text-xs font-medium tracking-[0.2em] text-magenta uppercase">
+            {eyebrow}
+          </span>
+          <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight md:text-6xl">
+            {title ?? (
+              <>
+                Marcas que <span className="text-magenta">já criaram</span> comigo
+              </>
+            )}
+          </h2>
+          <p className="mt-3 max-w-[52ch] text-muted">
+            {subtitle ??
+              "Sander e Creamy são cases reais — toca no play. Alva e Névoa são amostras de formato, com o chip Amostra."}
+          </p>
+        </div>
 
         <div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-6 md:grid md:grid-cols-4 md:overflow-visible md:pb-0">
           {CASES.map((c, i) => (

@@ -39,10 +39,15 @@ export default function MediaKit() {
         <div className="mb-4 flex justify-center">
           <BrandLogo onDark />
         </div>
-        <p>© 2026 Bel UGC. Media kit em HTML — PDF só depois da aprovação.</p>
-        <Link href="/" className="mt-3 inline-flex min-h-11 items-center text-white/80 hover:text-white">
-          Voltar ao site
-        </Link>
+        <p>© 2026 Bel UGC. Media kit HTML + PDF.</p>
+        <div className="mt-3 flex flex-wrap items-center justify-center gap-4">
+          <Link href="/" className="inline-flex min-h-11 items-center text-white/80 hover:text-white">
+            Voltar ao site
+          </Link>
+          <Link href="/bel-ugc-media-kit.pdf" className="inline-flex min-h-11 items-center text-white/80 hover:text-white">
+            Baixar PDF
+          </Link>
+        </div>
       </footer>
     </div>
   );

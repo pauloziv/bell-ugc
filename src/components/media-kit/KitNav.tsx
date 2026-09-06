@@ -56,7 +56,7 @@ export default function KitNav() {
           ))}
         </div>
         <span className="hidden rotate-[-4deg] rounded-full border-2 border-navy bg-lime px-3 py-1 font-display text-[10px] font-extrabold tracking-wide uppercase md:inline">
-          HTML · ainda não é PDF
+          HTML + PDF
         </span>
         <Link
           href="/"
