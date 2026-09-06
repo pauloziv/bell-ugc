@@ -70,7 +70,7 @@ export default function KitCases() {
   }, [play]);
 
   return (
-    <section id="cases" className="relative overflow-hidden bg-offwhite px-4 py-16 md:px-8 md:py-28">
+    <section id="cases" className="relative overflow-hidden bg-offwhite px-4 py-16 scroll-mt-28 md:px-8 md:py-28">
       <div className="mx-auto max-w-[1400px]">
         <span className="text-xs font-medium tracking-[0.2em] text-magenta uppercase">
           Quem confia em mim
@@ -117,7 +117,7 @@ export default function KitCases() {
                     </div>
                   )}
                   {c.sample ? (
-                    <span className="absolute top-3 left-3 z-10 inline-flex items-center gap-1 rounded-full border-2 border-navy bg-lime px-2.5 py-1 font-display text-[10px] font-extrabold text-navy uppercase">
+                    <span className="absolute top-3 left-3 z-10 inline-flex items-center gap-1 rounded-full border-2 border-navy bg-yellow px-2.5 py-1 font-display text-[10px] font-extrabold text-navy uppercase">
                       <Stamp weight="bold" size={12} />
                       Amostra
                     </span>

@@ -88,7 +88,7 @@ export default function Process() {
   };
 
   return (
-    <section id="processo" className="overflow-hidden px-4 py-10 md:px-8 md:py-24">
+    <section id="processo" className="overflow-hidden px-4 py-10 scroll-mt-28 md:px-8 md:py-24">
       <div className="mx-auto max-w-[1400px]">
         <div className="reveal mb-8 md:mb-12">
           <span className="text-xs font-medium tracking-[0.2em] text-magenta uppercase">

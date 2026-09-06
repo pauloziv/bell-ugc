@@ -16,7 +16,7 @@ export default function KitCta() {
   return (
     <section
       id="contato"
-      className="relative overflow-hidden px-4 py-24 md:px-8 md:py-36"
+      className="relative overflow-hidden px-4 py-24 scroll-mt-28 md:px-8 md:py-36"
       style={{ background: "linear-gradient(135deg,#E91E8C 0%,#FFD23F 100%)" }}
     >
       <div className="pointer-events-none absolute -top-10 -left-8 h-40 w-40 bg-white/25 blob blur-xl" />

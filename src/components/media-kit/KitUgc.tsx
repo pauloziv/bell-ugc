@@ -33,7 +33,7 @@ export default function KitUgc() {
   const reduced = useReducedMotion();
 
   return (
-    <section id="ugc" className="relative overflow-hidden bg-offwhite px-4 py-16 md:px-8 md:py-28">
+    <section id="ugc" className="relative overflow-hidden bg-offwhite px-4 py-16 scroll-mt-28 md:px-8 md:py-28">
       <div className="mx-auto max-w-[1400px]">
         <div className="text-center">
           <span className="text-xs font-medium tracking-[0.2em] text-magenta uppercase">

@@ -51,7 +51,7 @@ export default function KitSobre() {
   return (
     <section
       id="sobre"
-      className="relative overflow-hidden bg-navy px-4 py-16 text-white md:px-8 md:py-28"
+      className="relative overflow-hidden bg-navy px-4 py-16 text-white scroll-mt-28 md:px-8 md:py-28"
     >
       <div className="pointer-events-none absolute top-10 right-8 h-40 w-40 bg-magenta/25 blob blur-2xl" />
       <div className="relative z-10 mx-auto grid max-w-[1400px] items-center gap-12 lg:grid-cols-2">

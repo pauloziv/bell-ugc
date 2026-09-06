@@ -45,7 +45,7 @@ export default function KitCover() {
     <section
       id="capa"
       ref={root}
-      className="relative min-h-dvh overflow-hidden bg-navy pt-28 pb-10 text-white md:pt-32"
+      className="relative min-h-dvh overflow-hidden bg-navy pt-28 pb-10 text-white scroll-mt-0 md:pt-32"
     >
       <div className="pointer-events-none absolute -top-16 -left-10 h-56 w-56 bg-yellow/30 blob blur-2xl" />
       <div className="pointer-events-none absolute right-0 bottom-10 h-64 w-64 bg-magenta/25 blob-slow blur-2xl" />
