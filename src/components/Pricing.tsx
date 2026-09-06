@@ -4,42 +4,37 @@ import { whatsappUrl } from "@/lib/site";
 
 const PLANS = [
   {
-    name: "Essencial",
-    blurb: "Para comecar com o pe direito",
-    price: "R$ 690",
-    period: "/pacote",
-    features: ["2 videos UGC", "1 revisao", "Entrega em 5 dias"],
+    name: "Experimentar",
+    blurb: "Um vídeo pra testar o fit",
+    price: "R$ 200",
+    period: "/vídeo",
+    features: [
+      "1 vídeo UGC",
+      "Revisão",
+      "Direitos de uso em ads por 3 meses",
+      "Entrega em até 5 dias úteis",
+    ],
     wrap: "bg-white rotate-[-2deg]",
     featured: false,
     delay: undefined as string | undefined,
-    wa: "Oi Bel! Quero o pacote Essencial (R$ 690): 2 videos UGC, 1 revisao, entrega em 5 dias. Vim pelo site belconteudos.com",
+    wa: "Oi Bel! Quero o pacote Experimentar (R$ 200/vídeo): 1 vídeo UGC, revisão, direitos de uso em ads por 3 meses, entrega em até 5 dias úteis. Vim pelo site belconteudos.com",
   },
   {
-    name: "Profissional",
-    blurb: "O favorito das marcas em crescimento",
-    price: "R$ 1.290",
+    name: "Professional",
+    blurb: "Três vídeos com roteiro e prazo combinado",
+    price: "R$ 500",
     period: "/pacote",
-    features: ["5 videos UGC", "2 revisoes", "Direitos de uso ads", "Entrega em 7 dias"],
-    wrap: "bg-magenta text-white md:scale-110 relative z-10",
+    features: [
+      "3 vídeos UGC",
+      "Roteiro",
+      "1 revisão",
+      "Direito de uso em ads por 6 meses",
+      "Entrega em tempo personalizado",
+    ],
+    wrap: "bg-magenta text-white md:scale-[1.04] relative z-10",
     featured: true,
     delay: ".1s",
-    wa: "Oi Bel! Quero o pacote Profissional (R$ 1.290): 5 videos UGC, 2 revisoes, direitos de uso ads, entrega em 7 dias. Vim pelo site belconteudos.com",
-  },
-  {
-    name: "Premium",
-    blurb: "Parceria completa e continua",
-    price: "R$ 2.490",
-    period: "/mes",
-    features: [
-      "10 videos UGC/mes",
-      "Revisoes ilimitadas",
-      "Estrategia de conteudo",
-      "Prioridade na agenda",
-    ],
-    wrap: "bg-white rotate-[2deg]",
-    featured: false,
-    delay: ".2s",
-    wa: "Oi Bel! Quero o pacote Premium (R$ 2.490/mes): 10 videos UGC/mes, revisoes ilimitadas, estrategia e prioridade na agenda. Vim pelo site belconteudos.com",
+    wa: "Oi Bel! Quero o pacote Professional (R$ 500): 3 vídeos + roteiro + 1 revisão, direito de uso em ads por 6 meses, entrega em tempo personalizado. Vim pelo site belconteudos.com",
   },
 ];
 
@@ -59,7 +54,7 @@ export default function Pricing() {
             Pacotes
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+        <div className="mx-auto grid max-w-[920px] grid-cols-1 items-stretch gap-8 pt-6 md:grid-cols-2">
           {PLANS.map((plan) => (
             <TiltCard key={plan.name}>
               <div
@@ -85,11 +80,11 @@ export default function Pricing() {
               </p>
               <ul className="space-y-3 mb-8 text-sm">
                 {plan.features.map((f) => (
-                  <li key={f} className="flex items-center gap-2">
+                  <li key={f} className="flex items-start gap-2">
                     <Check
                       weight="bold"
                       size={16}
-                      className={plan.featured ? "text-yellow" : "text-magenta"}
+                      className={`mt-0.5 shrink-0 ${plan.featured ? "text-yellow" : "text-magenta"}`}
                     />
                     {f}
                   </li>
