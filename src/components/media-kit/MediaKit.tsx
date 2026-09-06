@@ -10,28 +10,18 @@ import KitCases from "@/components/media-kit/KitCases";
 import KitCta from "@/components/media-kit/KitCta";
 import BrandLogo from "@/components/ui/BrandLogo";
 import Link from "next/link";
+import { TAPE_COVER, TAPE_PROCESSO, TAPE_SOBRE } from "@/lib/kit-copy";
 
 export default function MediaKit() {
   return (
     <div className="bg-offwhite text-navy">
       <KitNav />
       <KitCover />
-      <KitTape
-        items={["Reels", "TikTok", "Ads", "UGC", "Matcha", "NY", "Stories"]}
-        bg="bg-yellow"
-      />
+      <KitTape items={TAPE_COVER} bg="bg-yellow" />
       <KitSobre />
-      <KitTape
-        items={["Não é anúncio", "É indicação", "Briefing a sério", "Prazo"]}
-        bg="bg-lime"
-        reverse
-      />
+      <KitTape items={TAPE_SOBRE} bg="bg-lime" reverse />
       <KitUgc />
-      <KitTape
-        items={["Briefing", "Roteiro", "Produção", "Edição", "Entrega"]}
-        bg="bg-magenta"
-        ink="text-white"
-      />
+      <KitTape items={TAPE_PROCESSO} bg="bg-magenta" ink="text-white" />
       <Process />
       <KitCases />
       <KitCta />

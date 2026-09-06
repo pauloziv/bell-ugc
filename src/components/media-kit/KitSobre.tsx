@@ -4,17 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 
-const NICHES = [
-  "moda",
-  "arquitetura",
-  "design",
-  "publicidade",
-  "estética",
-  "NY",
-  "mãe",
-  "briefing",
-  "empreendedorismo",
-];
+import { NICHES } from "@/lib/kit-copy";
 
 function Count({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -121,29 +111,29 @@ export default function KitSobre() {
             ))}
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <div className="min-w-[7.5rem] rounded-2xl border border-white/20 bg-white/10 px-5 py-4">
-              <p className="font-display text-3xl font-extrabold text-yellow">
+          <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-3">
+            <div className="rounded-2xl border border-white/20 bg-white/10 px-2 py-3 text-center sm:px-5 sm:py-4 sm:text-left">
+              <p className="font-display text-2xl font-extrabold text-yellow sm:text-3xl">
                 <Count to={120} suffix="+" />
               </p>
-              <p className="text-[10px] tracking-wider text-white/60 uppercase">
+              <p className="text-[10px] leading-tight tracking-wider text-white/60 uppercase sm:text-xs">
                 Vídeos entregues
               </p>
             </div>
-            <div className="min-w-[7.5rem] rounded-2xl border border-white/20 bg-white/10 px-5 py-4">
-              <p className="font-display text-3xl font-extrabold text-lime">
+            <div className="rounded-2xl border border-white/20 bg-white/10 px-2 py-3 text-center sm:px-5 sm:py-4 sm:text-left">
+              <p className="font-display text-2xl font-extrabold text-lime sm:text-3xl">
                 <Count to={35} suffix="+" />
               </p>
-              <p className="text-[10px] tracking-wider text-white/60 uppercase">
-                Marcas parceiras
+              <p className="text-[10px] leading-tight tracking-wider text-white/60 uppercase sm:text-xs">
+                Marcas
               </p>
             </div>
-            <div className="min-w-[7.5rem] rounded-2xl border border-white/20 bg-white/10 px-5 py-4">
-              <p className="font-display text-3xl font-extrabold text-magenta">
+            <div className="rounded-2xl border border-white/20 bg-white/10 px-2 py-3 text-center sm:px-5 sm:py-4 sm:text-left">
+              <p className="font-display text-2xl font-extrabold text-magenta sm:text-3xl">
                 <Count to={98} suffix="%" />
               </p>
-              <p className="text-[10px] tracking-wider text-white/60 uppercase">
-                Clientes satisfeitos
+              <p className="text-[10px] leading-tight tracking-wider text-white/60 uppercase sm:text-xs">
+                Satisfação
               </p>
             </div>
           </div>

@@ -4,7 +4,9 @@ import BlobBackground from "@/components/ui/BlobBackground";
 import HeroPortrait from "@/components/ui/HeroPortrait";
 import AboutPortrait from "@/components/ui/AboutPortrait";
 import MobilePortraitDock from "@/components/ui/MobilePortraitDock";
+import KitTape from "@/components/media-kit/KitTape";
 import { whatsappUrl } from "@/lib/site";
+import { NICHES, TAPE_COVER } from "@/lib/kit-copy";
 
 export default function Hero() {
   return (
@@ -57,6 +59,8 @@ export default function Hero() {
 
       <MobilePortraitDock />
 
+      <KitTape items={TAPE_COVER} bg="bg-yellow" />
+
       <section
         id="sobre"
         className="relative overflow-visible rounded-t-[2.75rem] bg-navy px-4 pt-[8.25rem] pb-8 text-white lg:overflow-x-clip lg:rounded-none lg:px-8 lg:pt-14 lg:pb-24"
@@ -97,29 +101,41 @@ export default function Hero() {
               Sou mãe, esposa e puxo a casa. Essa vivência vira conteúdo que
               conversa com o mesmo público.
             </p>
-            <p className="mb-8 max-w-[65ch] text-base leading-relaxed text-white/80 md:text-lg">
+            <p className="mb-6 max-w-[65ch] text-base leading-relaxed text-white/80 md:text-lg">
               Hoje transformo a bagagem em conteúdo, com olho no que o mundo está
               falando. Como já estive nos dois lados do briefing, sei fazer
               bonito e autêntico — e entregar o que a marca espera: prazo,
               briefing e roteiro a sério.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <div className="rounded-2xl border border-white/20 bg-white/10 px-6 py-4">
-                <p className="font-display text-3xl font-extrabold text-yellow">120+</p>
-                <p className="text-xs tracking-wider text-white/60 uppercase">
-                  Videos entregues
+            <div className="mb-6 flex flex-wrap gap-2">
+              {NICHES.map((n, i) => (
+                <span
+                  key={n}
+                  className={`rounded-full border-2 border-white/30 bg-white/10 px-3 py-1 text-xs font-medium tracking-wide uppercase ${
+                    i % 2 ? "rotate-3" : "-rotate-2"
+                  }`}
+                >
+                  {n}
+                </span>
+              ))}
+            </div>
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              <div className="rounded-2xl border border-white/20 bg-white/10 px-2 py-3 text-center sm:px-4 sm:py-4 sm:text-left">
+                <p className="font-display text-2xl font-extrabold text-yellow sm:text-3xl">120+</p>
+                <p className="text-[10px] leading-tight tracking-wider text-white/60 uppercase sm:text-xs">
+                  Vídeos entregues
                 </p>
               </div>
-              <div className="rounded-2xl border border-white/20 bg-white/10 px-6 py-4">
-                <p className="font-display text-3xl font-extrabold text-lime">35+</p>
-                <p className="text-xs tracking-wider text-white/60 uppercase">
-                  Marcas parceiras
+              <div className="rounded-2xl border border-white/20 bg-white/10 px-2 py-3 text-center sm:px-4 sm:py-4 sm:text-left">
+                <p className="font-display text-2xl font-extrabold text-lime sm:text-3xl">35+</p>
+                <p className="text-[10px] leading-tight tracking-wider text-white/60 uppercase sm:text-xs">
+                  Marcas
                 </p>
               </div>
-              <div className="rounded-2xl border border-white/20 bg-white/10 px-6 py-4">
-                <p className="font-display text-3xl font-extrabold text-magenta">98%</p>
-                <p className="text-xs tracking-wider text-white/60 uppercase">
-                  Clientes satisfeitos
+              <div className="rounded-2xl border border-white/20 bg-white/10 px-2 py-3 text-center sm:px-4 sm:py-4 sm:text-left">
+                <p className="font-display text-2xl font-extrabold text-magenta sm:text-3xl">98%</p>
+                <p className="text-[10px] leading-tight tracking-wider text-white/60 uppercase sm:text-xs">
+                  Satisfação
                 </p>
               </div>
             </div>

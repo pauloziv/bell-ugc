@@ -13,12 +13,12 @@ import {
 } from "framer-motion";
 import { useTrailRef } from "@/components/ui/trail-context";
 
-const STICKERS = ["oi!", "ugc", "reels", "bora!", "bel."];
+const STICKERS = ["oi!", "juro", "unbox", "review", "bel."];
 const LINES = [
   "oi, marca!",
-  "bora criar?",
-  "ugc na veia",
-  "reels que vendem",
+  "gente, juro",
+  "abre comigo",
+  "vou ser honesta",
   "me chama!",
 ];
 
