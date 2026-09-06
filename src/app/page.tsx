@@ -4,6 +4,7 @@ import ContentStyle from "@/components/ContentStyle";
 import Platforms from "@/components/Platforms";
 import Cases from "@/components/Cases";
 import Process from "@/components/Process";
+import Setup from "@/components/Setup";
 import Pricing from "@/components/Pricing";
 import CTA from "@/components/CTA";
 import FloatingNav from "@/components/ui/FloatingNav";
@@ -24,6 +25,7 @@ export default function Home() {
           <Platforms />
           <Cases />
           <Process />
+          <Setup />
           <Pricing />
         </AvatarTrail>
       </PortraitMotionRoot>
