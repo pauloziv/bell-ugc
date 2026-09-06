@@ -1,9 +1,5 @@
-import {
-  ArrowUpRight,
-  DeviceMobileCamera,
-  MicrophoneStage,
-  TreeEvergreen,
-} from "@phosphor-icons/react/dist/ssr";
+import Image from "next/image";
+import { ArrowUpRight, TreeEvergreen } from "@phosphor-icons/react/dist/ssr";
 
 const GEAR = [
   {
@@ -16,7 +12,8 @@ const GEAR = [
     onDark: true,
     chipClass: "bg-yellow text-navy",
     tagClass: "bg-magenta text-white",
-    visual: "phone" as const,
+    img: "/images/setup/iphone-17-pro-max.webp",
+    alt: "Desenho do iPhone 17 Pro Max Cosmic Orange",
   },
   {
     id: "ring",
@@ -28,7 +25,8 @@ const GEAR = [
     onDark: false,
     chipClass: "bg-navy text-white",
     tagClass: "bg-white text-navy",
-    visual: "ring" as const,
+    img: "/images/setup/ringlight.webp",
+    alt: "Desenho do ringlight de luxo",
   },
   {
     id: "lark",
@@ -40,7 +38,8 @@ const GEAR = [
     onDark: true,
     chipClass: "bg-white text-navy",
     tagClass: "bg-navy text-white",
-    visual: "mic" as const,
+    img: "/images/setup/lark-m2.webp",
+    alt: "Desenho do microfone Hollyland Lark M2",
   },
   {
     id: "green",
@@ -52,54 +51,27 @@ const GEAR = [
     onDark: false,
     chipClass: "bg-navy text-white",
     tagClass: "bg-white text-navy",
-    visual: "park" as const,
+    img: undefined,
+    alt: "",
   },
 ];
 
-function GearVisual({ kind }: { kind: (typeof GEAR)[number]["visual"] }) {
-  if (kind === "phone") {
+function GearVisual({
+  img,
+  alt,
+}: {
+  img?: string;
+  alt: string;
+}) {
+  if (img) {
     return (
-      <div
-        className="relative mx-auto h-36 w-[4.75rem] rounded-[1.35rem] border-[3px] border-white/90 bg-navy p-[5px] card-shadow"
-        aria-hidden="true"
-      >
-        <div className="relative h-full overflow-hidden rounded-[1.05rem] bg-gradient-to-b from-magenta to-yellow">
-          <div className="mx-auto mt-2 h-1.5 w-8 rounded-full bg-navy/50" />
-          <DeviceMobileCamera
-            weight="bold"
-            size={22}
-            className="absolute bottom-3 left-1/2 -translate-x-1/2 text-white"
-          />
-        </div>
-      </div>
-    );
-  }
-
-  if (kind === "ring") {
-    return (
-      <div className="relative mx-auto h-28 w-28" aria-hidden="true">
-        <div className="absolute inset-0 rounded-full border-[11px] border-white card-shadow" />
-        <div className="absolute inset-[11px] rounded-full border-[3px] border-navy/25" />
-        <div className="absolute inset-[28px] rounded-full bg-yellow" />
-        <div className="absolute inset-[36px] rounded-full bg-navy/10" />
-      </div>
-    );
-  }
-
-  if (kind === "mic") {
-    return (
-      <div className="flex items-end justify-center gap-1.5 pt-4" aria-hidden="true">
-        {[10, 18, 28, 16, 24, 12].map((h, i) => (
-          <span
-            key={i}
-            className="w-2 rounded-full bg-white/90"
-            style={{ height: `${h}px` }}
-          />
-        ))}
-        <MicrophoneStage
-          weight="bold"
-          size={28}
-          className="mb-1 ml-2 text-yellow"
+      <div className="relative mx-auto h-44 w-full max-w-[20rem] overflow-hidden rounded-[1.6rem] border-2 border-navy/20 bg-offwhite md:h-52">
+        <Image
+          src={img}
+          alt={alt}
+          fill
+          sizes="(max-width: 768px) 80vw, 22rem"
+          className="object-contain"
         />
       </div>
     );
@@ -153,7 +125,7 @@ export default function Setup() {
               className={`reveal relative overflow-hidden rounded-[2.5rem] border-2 border-navy p-7 hard-shadow transition-transform duration-300 hover:rotate-0 md:p-9 ${item.wrap}`}
             >
               <div className="mb-6">
-                <GearVisual kind={item.visual} />
+                <GearVisual img={item.img} alt={item.alt} />
               </div>
               <div className="mb-3 flex flex-wrap items-center gap-2">
                 <span
