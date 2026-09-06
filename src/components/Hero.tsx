@@ -78,18 +78,30 @@ export default function Hero() {
                 +10 anos experiência
               </span>
             </div>
-            <h2 className="mt-3 mb-5 font-display text-4xl font-extrabold tracking-tight md:text-6xl">
+            <h2 className="mt-3 mb-3 font-display text-4xl font-extrabold tracking-tight md:text-6xl">
               Conteudo real, <span className="text-magenta">resultado real.</span>
             </h2>
+            <p className="mb-5 font-display text-lg font-bold text-yellow md:text-xl">
+              Por que me encaixo em vários nichos?
+            </p>
             <p className="mb-4 max-w-[65ch] text-base leading-relaxed text-white/80 md:text-lg">
-              Sou apaixonada por contar historias que conectam marcas a pessoas de
-              verdade. Ha anos crio conteudo autentico para redes sociais, unindo
-              criatividade, estrategia e uma boa dose de espontaneidade.
+              Minha trajetória nunca coube numa linha reta. Acho que é isso que
+              deixa o olhar tão amplo.
+            </p>
+            <p className="mb-4 max-w-[65ch] text-base leading-relaxed text-white/80 md:text-lg">
+              Já passei por moda, arquitetura, design, publicidade, estética,
+              empreendedorismo e conteúdo. Morei em Nova York. Também atuei do
+              outro lado: quem contrata criador para marca.
+            </p>
+            <p className="mb-4 max-w-[65ch] text-base leading-relaxed text-white/80 md:text-lg">
+              Sou mãe, esposa e puxo a casa. Essa vivência vira conteúdo que
+              conversa com o mesmo público.
             </p>
             <p className="mb-8 max-w-[65ch] text-base leading-relaxed text-white/80 md:text-lg">
-              Cada video que produzo carrega minha voz, meu jeito de contar
-              historias e a certeza de que o UGC nao e sobre perfeicao — e sobre
-              conexao.
+              Hoje transformo a bagagem em conteúdo, com olho no que o mundo está
+              falando. Como já estive nos dois lados do briefing, sei fazer
+              bonito e autêntico — e entregar o que a marca espera: prazo,
+              briefing e roteiro a sério.
             </p>
             <div className="flex flex-wrap gap-4">
               <div className="rounded-2xl border border-white/20 bg-white/10 px-6 py-4">

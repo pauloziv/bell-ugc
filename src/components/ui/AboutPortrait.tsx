@@ -34,11 +34,11 @@ export default function AboutPortrait() {
       <div className="absolute inset-0 bg-yellow blob-slow" />
       <div className="absolute inset-3 overflow-hidden blob">
         <Image
-          src="/images/creator-bel-about.jpg"
-          alt="Ilustracao estilizada da Creator Bel"
+          src="/images/creator-bel-matcha.png"
+          alt="Bel na calçada com um matcha"
           fill
           sizes="24rem"
-          className="object-cover"
+          className="object-cover object-[center_40%]"
         />
       </div>
       <div className="absolute -right-6 -bottom-6 rotate-[-4deg] rounded-2xl border-2 border-white bg-lime px-5 py-3 font-display font-bold text-navy floaty">

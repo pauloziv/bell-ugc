@@ -119,11 +119,11 @@ export default function HeroPortrait({
             }}
           >
             <Image
-              src="/images/creator-bel-about.jpg"
-              alt="Ilustracao estilizada da Creator Bel"
+              src="/images/creator-bel-matcha.png"
+              alt="Bel na calçada com um matcha"
               fill
               sizes="(max-width: 1024px) 70vw, 24rem"
-              className="object-cover"
+              className="object-cover object-[center_40%]"
             />
           </div>
         </motion.div>
@@ -134,10 +134,10 @@ export default function HeroPortrait({
           swapped ? "-rotate-[8deg]" : "rotate-[5deg]"
         }`}
       >
-        {swapped ? "avatar" : "#Content"}
+        {swapped ? "sobre" : "#Content"}
       </div>
       <div className="absolute -bottom-2 left-1/2 z-10 -translate-x-1/2 rotate-[3deg] rounded-full border-2 border-navy bg-lime px-3 py-1 font-display text-sm font-bold floaty card-shadow">
-        {swapped ? "pop!" : "Reels"}
+        {swapped ? "matcha" : "Reels"}
       </div>
     </motion.div>
   );
