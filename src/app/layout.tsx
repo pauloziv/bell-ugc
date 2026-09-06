@@ -6,26 +6,26 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Creator Bel | Criadora de Conteudo UGC",
+    default: "Creator Bel | Criadora de Conteúdo UGC",
     template: "%s | Creator Bel",
   },
   description:
-    "Portfolio de Creator Bel — criadora de conteudo UGC. Reels, TikTok e ads autenticos que conectam marcas com pessoas reais.",
+    "Portfólio de Creator Bel — criadora de conteúdo UGC. Reels, TikTok e ads autênticos que conectam marcas com pessoas reais.",
   keywords: [
     "UGC",
-    "criadora de conteudo",
+    "criadora de conteúdo",
     "Reels",
     "TikTok",
     "Instagram",
-    "conteudo para marcas",
+    "conteúdo para marcas",
     "Creator Bel",
   ],
   authors: [{ name: "Creator Bel" }],
   creator: "Creator Bel",
   openGraph: {
-    title: "Creator Bel | Criadora de Conteudo UGC",
+    title: "Creator Bel | Criadora de Conteúdo UGC",
     description:
-      "Conteudo autentico que conecta marcas com pessoas reais.",
+      "Conteúdo autêntico que conecta marcas com pessoas reais.",
     type: "website",
     locale: "pt_BR",
     url: SITE_URL,
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Creator Bel | Criadora de Conteudo UGC",
+    title: "Creator Bel | Criadora de Conteúdo UGC",
     description:
-      "Conteudo autentico que conecta marcas com pessoas reais.",
+      "Conteúdo autêntico que conecta marcas com pessoas reais.",
   },
   robots: {
     index: true,
@@ -56,10 +56,10 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Creator Bel",
-  jobTitle: "Criadora de Conteudo UGC",
+  jobTitle: "Criadora de Conteúdo UGC",
   url: SITE_URL,
   description:
-    "Criadora de conteudo UGC para Instagram e TikTok.",
+    "Criadora de conteúdo UGC para Instagram e TikTok.",
   sameAs: [
     "https://instagram.com/bel.conteudos",
     "https://tiktok.com/@bel.conteudos",

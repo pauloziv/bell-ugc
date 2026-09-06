@@ -56,7 +56,7 @@ export default function HeroPortrait({
       data-hero-portrait
       data-hero-frame={frame}
       className={`relative mx-auto w-full ${
-        circle ? "aspect-square max-w-[15.5rem]" : "aspect-[4/5] max-w-sm"
+        circle ? "aspect-square max-w-[15.5rem] mb-8" : "aspect-[4/5] max-w-sm"
       }`}
       style={live ? { scale: pop } : undefined}
     >

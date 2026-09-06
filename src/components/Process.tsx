@@ -31,7 +31,7 @@ const STEPS: {
   {
     num: "02",
     title: "Roteiro",
-    desc: "Crio um roteiro autentico e estrategico.",
+    desc: "Crio um roteiro autêntico e estratégico.",
     circle: "bg-yellow",
     story: "bg-yellow text-navy",
     ink: "bg-navy",
@@ -39,8 +39,8 @@ const STEPS: {
   },
   {
     num: "03",
-    title: "Producao",
-    desc: "Gravo com luz, som e estetica de qualidade.",
+    title: "Produção",
+    desc: "Gravo com luz, som e estética de qualidade.",
     circle: "bg-lime",
     story: "bg-lime text-navy",
     ink: "bg-navy",
@@ -48,7 +48,7 @@ const STEPS: {
   },
   {
     num: "04",
-    title: "Edicao",
+    title: "Edição",
     desc: "Corto e finalizo no ritmo das plataformas.",
     circle: "bg-navy text-white",
     story: "bg-navy text-white",

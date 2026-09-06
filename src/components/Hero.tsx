@@ -13,7 +13,7 @@ export default function Hero() {
     <div>
       <section
         id="hero"
-        className="relative overflow-x-clip px-4 pt-24 pb-[8rem] md:px-8 md:pt-28 lg:pb-0"
+        className="relative overflow-x-clip px-4 pt-24 pb-8 md:px-8 md:pt-28 lg:pb-0"
       >
         <BlobBackground />
         <div className="pointer-events-none absolute -top-8 -left-12 h-40 w-40 bg-yellow/40 blob blur-xl" />
@@ -22,7 +22,7 @@ export default function Hero() {
         <div className="relative z-10 mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-6">
           <div className="reveal">
             <span className="mb-4 inline-block -rotate-2 rounded-full border-2 border-navy bg-lime px-4 py-1.5 text-xs font-medium tracking-[0.2em] uppercase">
-              Disponivel para parcerias
+              Disponível para parcerias
             </span>
             <h1 className="mb-4 font-display text-5xl leading-[0.92] font-extrabold tracking-tighter sm:text-6xl md:text-7xl xl:text-8xl">
               Oi, eu sou
@@ -30,10 +30,10 @@ export default function Hero() {
               <span className="text-magenta">Creator Bel</span>
             </h1>
             <p className="mb-6 max-w-[42ch] text-lg leading-relaxed text-muted md:text-xl">
-              Criadora de Conteudo UGC — transformo produtos em historias autenticas
+              Criadora de Conteúdo UGC — transformo produtos em histórias autênticas
               que vendem de verdade.
             </p>
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="relative z-20 flex flex-wrap items-center gap-4">
               <MagneticButton
                 href={whatsappUrl(
                   "Oi Bel! Vim pelo site belconteudos.com e quero falar sobre uma parceria UGC.",
@@ -46,7 +46,7 @@ export default function Hero() {
                 href="#cases"
                 className="border-2 border-navy hover:bg-navy hover:text-white"
               >
-                Ver Portfolio
+                Ver Portfólio
               </MagneticButton>
             </div>
           </div>
@@ -63,7 +63,7 @@ export default function Hero() {
 
       <section
         id="sobre"
-        className="relative overflow-visible rounded-t-[2.75rem] bg-navy px-4 pt-[8.25rem] pb-8 text-white lg:overflow-x-clip lg:rounded-none lg:px-8 lg:pt-14 lg:pb-24"
+        className="relative overflow-visible rounded-t-[2.75rem] bg-navy px-4 pt-10 pb-8 text-white lg:overflow-x-clip lg:rounded-none lg:px-8 lg:pt-14 lg:pb-24"
       >
         <div className="pointer-events-none absolute top-8 right-8 h-32 w-32 bg-magenta/20 blob blur-xl" />
         <div className="relative z-10 mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-10 lg:grid-cols-5">
@@ -83,7 +83,7 @@ export default function Hero() {
               </span>
             </div>
             <h2 className="mt-3 mb-3 font-display text-4xl font-extrabold tracking-tight md:text-6xl">
-              Conteudo real, <span className="text-magenta">resultado real.</span>
+              Conteúdo real, <span className="text-magenta">resultado real.</span>
             </h2>
             <p className="mb-5 font-display text-lg font-bold text-yellow md:text-xl">
               Por que me encaixo em vários nichos?

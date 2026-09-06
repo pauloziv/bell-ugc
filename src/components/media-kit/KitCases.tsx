@@ -74,11 +74,19 @@ export default function KitCases({
 
   useEffect(() => {
     if (!play) return;
+    const prevHtml = document.documentElement.style.overflow;
+    const prevBody = document.body.style.overflow;
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setPlay(null);
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      document.documentElement.style.overflow = prevHtml;
+      document.body.style.overflow = prevBody;
+      window.removeEventListener("keydown", onKey);
+    };
   }, [play]);
 
   return (
@@ -87,11 +95,17 @@ export default function KitCases({
       className="relative overflow-hidden bg-offwhite px-4 py-16 scroll-mt-28 md:px-8 md:py-28"
     >
       <div className="mx-auto max-w-[1400px]">
-        <div className={reserveAvatar ? "pr-[7.25rem] md:pr-0" : undefined}>
+        <div className={reserveAvatar ? "pr-12 md:pr-0" : undefined}>
           <span className="text-xs font-medium tracking-[0.2em] text-magenta uppercase">
             {eyebrow}
           </span>
-          <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight md:text-6xl">
+          <h2
+            className={
+              reserveAvatar
+                ? "mt-3 font-display text-[1.65rem] leading-none font-extrabold tracking-tighter whitespace-nowrap sm:text-4xl md:text-6xl"
+                : "mt-3 font-display text-4xl font-extrabold tracking-tight md:text-6xl"
+            }
+          >
             {title ?? (
               <>
                 Marcas que <span className="text-magenta">já criaram</span> comigo
@@ -104,11 +118,11 @@ export default function KitCases({
           </p>
         </div>
 
-        <div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-6 md:grid md:grid-cols-4 md:overflow-visible md:pb-0">
+        <div className="mt-10 grid grid-cols-2 gap-4 overflow-x-clip md:grid-cols-4 md:gap-5">
           {CASES.map((c, i) => (
             <motion.article
               key={c.name}
-              className={`w-[16.5rem] shrink-0 snap-center md:w-auto ${c.tilt}`}
+              className={`min-w-0 ${c.tilt}`}
               initial={reduced ? false : { y: 50, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -196,6 +210,8 @@ export default function KitCases({
               title="Case UGC"
               allow="autoplay; encrypted-media"
               allowFullScreen
+              className="h-full w-full border-0"
+              scrolling="no"
             />
           </div>
         </div>

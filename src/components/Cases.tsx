@@ -56,7 +56,7 @@ const CASES: Brand[] = [
     name: "Natura",
     logo: "/images/brands/natura.svg",
     result: "+40% engajamento",
-    desc: "Serie de reels para lancamento de linha de skincare.",
+    desc: "Série de reels para lançamento de linha de skincare.",
     tilt: "rotate-[-6deg]",
     plate: "bg-[#FF6A00]",
     knockout: true,
@@ -73,8 +73,8 @@ const CASES: Brand[] = [
   {
     name: "Farm",
     logo: "/images/brands/farm.svg",
-    result: "Lookbook verao",
-    desc: "Lifestyle colorido pra colecao de estacao.",
+    result: "Lookbook verão",
+    desc: "Lifestyle colorido pra coleção de estação.",
     tilt: "rotate-[-3deg]",
     plate: "bg-magenta",
     knockout: true,
@@ -83,7 +83,7 @@ const CASES: Brand[] = [
     name: "Havaianas",
     logo: "/images/brands/havaianas.svg",
     result: "Campanha de verao",
-    desc: "Conteudo praiano autentico, pe na areia, sem pose de studio.",
+    desc: "Conteúdo praiano autêntico, pé na areia, sem pose de studio.",
     tilt: "rotate-[5deg]",
     plate: "bg-[#0033A0]",
     knockout: false,
@@ -218,7 +218,7 @@ export default function Cases() {
             Quem confia em mim
           </span>
           <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight mt-3">
-            Marcas que <span className="text-magenta">ja criaram</span> comigo
+            Marcas que <span className="text-magenta">já criaram</span> comigo
           </h2>
           <p className="text-muted mt-3 max-w-[50ch]">
             Passa o mouse — ou toca — num logo. O case abre no palco.

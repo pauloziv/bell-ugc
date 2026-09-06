@@ -10,12 +10,12 @@ export default function WhatIsUGC() {
             Entenda o conceito
           </span>
           <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight md:text-6xl">
-            O que e <span className="text-magenta">UGC?</span>
+            O que é <span className="text-magenta">UGC?</span>
           </h2>
           <p className="mx-auto mt-4 max-w-[60ch] text-base leading-relaxed text-muted md:text-lg">
-            Conteudo Gerado por Usuario (User Generated Content) e a forma mais
-            autentica de mostrar um produto — feito como se fosse um amigo
-            recomendando, nao um anuncio.
+            Conteúdo Gerado por Usuário (User Generated Content) é a forma mais
+            autêntica de mostrar um produto — feito como se fosse um amigo
+            recomendando, não um anúncio.
           </p>
         </div>
         <UgcPillars />

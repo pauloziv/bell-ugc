@@ -28,7 +28,7 @@ const FORMATS = [
   },
   {
     kicker: "Unbox",
-    title: "abre comigo",
+    title: "Abre comigo (unboxing)",
     bubble: "chegou!!!",
     copy: "Papel, cheiro, textura. Sem mesa de estúdio.",
     bg: "bg-[#FFC1E3]",

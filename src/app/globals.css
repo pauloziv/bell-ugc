@@ -255,6 +255,7 @@
   padding: 1rem;
   visibility: hidden;
   pointer-events: none;
+  overscroll-behavior: none;
 }
 
 .fan-player:not(.is-open) {
@@ -287,6 +288,7 @@
   width: 100%;
   border: 0;
   border-radius: 1.35rem;
+  overflow: hidden;
 }
 
 @keyframes kit-wiggle {

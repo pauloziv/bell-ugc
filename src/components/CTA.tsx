@@ -37,8 +37,8 @@ export default function CTA() {
             Juntos?
           </h2>
           <p className="text-lg text-white/90 max-w-[50ch] mx-auto mb-10 leading-relaxed">
-            Sua marca merece conteudo que gera conexao de verdade. Me chama e
-            vamos montar a proxima campanha.
+            Sua marca merece conteúdo que gera conexão de verdade. Me chama e
+            vamos montar a próxima campanha.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <MagneticButton
@@ -81,7 +81,7 @@ export default function CTA() {
         <div className="mb-4 flex justify-center">
           <BrandLogo onDark />
         </div>
-        <p>© 2026 Bel UGC. Feito com criatividade e cafe. Todos os direitos reservados.</p>
+        <p>© 2026 Bel UGC. Feito com criatividade e café. Todos os direitos reservados.</p>
         <Link
           href={MEDIA_KIT_HREF}
           className="mt-3 inline-flex min-h-11 items-center gap-2 text-white/80 hover:text-white"
