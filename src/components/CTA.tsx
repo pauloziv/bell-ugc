@@ -1,6 +1,7 @@
 import {
   ChatCircle,
   EnvelopeSimple,
+  FilePdf,
   InstagramLogo,
   TiktokLogo,
 } from "@phosphor-icons/react/dist/ssr";
@@ -10,6 +11,7 @@ import {
   EMAIL,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
+  MEDIA_KIT_HREF,
   TIKTOK_HANDLE,
   TIKTOK_URL,
   whatsappUrl,
@@ -77,6 +79,13 @@ export default function CTA() {
           <BrandLogo onDark />
         </div>
         <p>© 2026 Bel UGC. Feito com criatividade e cafe. Todos os direitos reservados.</p>
+        <a
+          href={MEDIA_KIT_HREF}
+          className="mt-3 inline-flex min-h-11 items-center gap-2 text-white/80 hover:text-white"
+        >
+          <FilePdf weight="bold" size={18} />
+          Baixar media kit (PDF)
+        </a>
       </footer>
     </>
   );

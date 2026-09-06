@@ -5,6 +5,7 @@ export const INSTAGRAM_URL = "https://instagram.com/bel.conteudos";
 export const TIKTOK_URL = "https://tiktok.com/@bel.conteudos";
 export const INSTAGRAM_HANDLE = "@bel.conteudos";
 export const TIKTOK_HANDLE = "@bel.conteudos";
+export const MEDIA_KIT_HREF = "/bel-ugc-media-kit.pdf";
 
 export function whatsappUrl(text: string) {
   return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
