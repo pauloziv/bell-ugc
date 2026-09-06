@@ -289,6 +289,56 @@
   border-radius: 1.35rem;
 }
 
+@keyframes kit-wiggle {
+  0%,
+  100% {
+    transform: rotate(-3deg) translateY(0);
+  }
+  50% {
+    transform: rotate(4deg) translateY(-8px);
+  }
+}
+
+@keyframes kit-shine {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+  }
+}
+
+.kit-wiggle {
+  animation: kit-wiggle 2.8s ease-in-out infinite;
+}
+
+.kit-phone-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 60%
+  );
+  animation: kit-shine 3.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.kit-tape {
+  overflow: hidden;
+  border-top: 2.5px solid var(--color-navy);
+  border-bottom: 2.5px solid var(--color-navy);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kit-wiggle,
+  .kit-phone-shine::after {
+    animation: none;
+  }
+}
+
 .mobile-talk-bubble::after {
   content: "";
   position: absolute;

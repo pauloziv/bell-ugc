@@ -1,10 +1,11 @@
 import {
   ChatCircle,
   EnvelopeSimple,
-  FilePdf,
   InstagramLogo,
+  Sparkle,
   TiktokLogo,
 } from "@phosphor-icons/react/dist/ssr";
+import Link from "next/link";
 import MagneticButton from "@/components/ui/MagneticButton";
 import BrandLogo from "@/components/ui/BrandLogo";
 import {
@@ -79,13 +80,13 @@ export default function CTA() {
           <BrandLogo onDark />
         </div>
         <p>© 2026 Bel UGC. Feito com criatividade e cafe. Todos os direitos reservados.</p>
-        <a
+        <Link
           href={MEDIA_KIT_HREF}
           className="mt-3 inline-flex min-h-11 items-center gap-2 text-white/80 hover:text-white"
         >
-          <FilePdf weight="bold" size={18} />
-          Baixar media kit (PDF)
-        </a>
+          <Sparkle weight="bold" size={18} />
+          Ver media kit
+        </Link>
       </footer>
     </>
   );
