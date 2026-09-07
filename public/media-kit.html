@@ -113,13 +113,6 @@
         border-radius: 42% 58% 83% 17% / 73% 27% 73% 27%;
       }
 
-      .dot {
-        position: absolute;
-        pointer-events: none;
-        border: 3px solid var(--navy);
-        z-index: 1;
-      }
-
       .sticker {
         display: inline-flex;
         align-items: center;
@@ -143,6 +136,9 @@
       }
       .goo-alt {
         border-radius: 32% 68% 24% 76% / 66% 34% 66% 34%;
+      }
+      .hero-mask {
+        border-radius: 42% 58% 65% 35% / 45% 45% 55% 55%;
       }
 
       .foot {
@@ -198,29 +194,59 @@
         color: var(--magenta);
       }
 
-      .polaroid {
-        background: white;
-        border: 3px solid var(--navy);
-        padding: 3mm 3mm 7mm;
-        box-shadow: 6px 7px 0 0 var(--navy);
+      /* Shared frame: photo and illustration use the same blob language */
+      .goo-photo {
         position: relative;
-        z-index: 4;
+        overflow: hidden;
+        border: 3px solid var(--navy);
+        box-shadow: 7px 8px 0 0 var(--navy);
+        background: #eee;
+        z-index: 3;
       }
-      .polaroid img {
+      .goo-photo img {
         width: 100%;
-        height: 48mm;
+        height: 100%;
         object-fit: cover;
         display: block;
-        background: #eee;
       }
-      .polaroid figcaption {
-        font-family: "Cabinet Grotesk", system-ui, sans-serif;
-        font-weight: 800;
-        font-size: 9px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        text-align: center;
-        margin-top: 2mm;
+      .goo-photo .cap {
+        position: absolute;
+        left: 50%;
+        bottom: 4mm;
+        transform: translateX(-50%) rotate(-3deg);
+        z-index: 4;
+      }
+
+      .tape {
+        position: absolute;
+        height: 5.5mm;
+        background: var(--yellow);
+        border: 2.5px solid var(--navy);
+        z-index: 6;
+        pointer-events: none;
+      }
+
+      .play-dot {
+        position: absolute;
+        width: 11mm;
+        height: 11mm;
+        border-radius: 50%;
+        background: var(--lime);
+        border: 3px solid var(--navy);
+        box-shadow: 3px 3px 0 0 var(--navy);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+      }
+      .play-dot::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 3.2mm 0 3.2mm 5.2mm;
+        border-color: transparent transparent transparent var(--navy);
+        margin-left: 0.8mm;
       }
 
       .av-smile {
@@ -246,49 +272,58 @@
         position: relative;
         z-index: 2;
         display: grid;
-        grid-template-columns: 1.05fr 0.95fr;
+        grid-template-columns: 108mm 1fr;
         height: 100%;
-        padding: 14mm 14mm 16mm 18mm;
+        padding: 14mm 10mm 14mm 16mm;
         align-items: center;
-        gap: 8mm;
+        gap: 2mm;
       }
       .cover h1 {
-        font-size: 58px;
+        font-size: 54px;
         line-height: 0.86;
       }
       .cover p.lead {
-        font-size: 16px;
+        font-size: 15.5px;
         line-height: 1.4;
-        max-width: 34ch;
+        max-width: 32ch;
         margin: 5mm 0 0;
       }
-      .mascot {
+      .duo {
         position: relative;
-        width: 112mm;
-        margin-left: auto;
+        height: 172mm;
         z-index: 3;
       }
-      .mascot img.hero-illu {
+      .duo-illu {
+        position: absolute;
+        left: 0;
+        bottom: 2mm;
+        width: 92mm;
+        z-index: 2;
+      }
+      .duo-illu .plate {
+        position: absolute;
+        inset: 12mm 4mm 8mm 8mm;
+        background: var(--yellow);
+        z-index: 0;
+      }
+      .duo-illu img {
         width: 100%;
         height: auto;
         display: block;
         position: relative;
-        z-index: 2;
+        z-index: 1;
       }
-      .cover .polaroid {
+      .duo-real {
         position: absolute;
-        width: 46mm;
-        left: -4mm;
-        bottom: 10mm;
-        transform: rotate(-8deg);
-        z-index: 5;
-      }
-      .cover .polaroid img {
-        height: 52mm;
+        left: 40mm;
+        top: 4mm;
+        width: 78mm;
+        height: 118mm;
+        z-index: 4;
       }
       .float {
         position: absolute;
-        z-index: 6;
+        z-index: 7;
       }
 
       .sobre {
@@ -296,8 +331,8 @@
       }
       .sobre .inner {
         display: grid;
-        grid-template-columns: 108mm 1fr;
-        gap: 8mm;
+        grid-template-columns: 122mm 1fr;
+        gap: 7mm;
         padding: 12mm 14mm 14mm;
         height: 100%;
         align-items: center;
@@ -307,39 +342,30 @@
         height: 168mm;
         z-index: 3;
       }
-      .matcha {
+      .sobre-main {
         position: absolute;
-        inset: 8mm 10mm 18mm 4mm;
+        left: 2mm;
+        top: 14mm;
+        width: 88mm;
+        height: 138mm;
+        z-index: 2;
       }
-      .matcha img {
+      .sobre-salao {
         position: absolute;
-        inset: 7mm;
-        width: calc(100% - 14mm);
-        height: calc(100% - 14mm);
-        object-fit: cover;
-        border-radius: 78% 22% 64% 36% / 28% 72% 28% 72%;
-        border: 3px solid var(--navy);
-      }
-      .sobre .p-loja {
-        position: absolute;
-        width: 42mm;
-        left: 0;
-        bottom: 2mm;
-        transform: rotate(-7deg);
-      }
-      .sobre .p-loja img {
-        height: 50mm;
-      }
-      .sobre .p-salao {
-        position: absolute;
-        width: 36mm;
         right: 0;
-        top: 4mm;
-        transform: rotate(9deg);
-        padding: 2.4mm 2.4mm 6mm;
+        top: 2mm;
+        width: 50mm;
+        height: 64mm;
+        z-index: 4;
       }
-      .sobre .p-salao img {
-        height: 40mm;
+      .sobre-mascot {
+        position: absolute;
+        right: 2mm;
+        bottom: 4mm;
+        width: 48mm;
+        height: 56mm;
+        z-index: 5;
+        background: var(--yellow);
       }
       .sobre .copy {
         z-index: 8;
@@ -349,7 +375,7 @@
         font-size: 13px;
         line-height: 1.42;
         margin: 0 0 2.4mm;
-        max-width: 58ch;
+        max-width: 54ch;
         color: #2a2a40;
       }
       .stats {
@@ -387,42 +413,43 @@
       .talk-grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 6mm;
-        margin-top: 14mm;
+        gap: 5.5mm;
+        margin-top: 6mm;
       }
       .talk-card {
         position: relative;
         border: 3px solid var(--navy);
-        padding: 11mm 4.5mm 5mm;
-        min-height: 108mm;
+        border-radius: 12mm;
+        padding: 0 0 4.5mm;
         box-shadow: 7px 8px 0 0 var(--navy);
+        z-index: 3;
+        overflow: visible;
       }
-      .talk-av {
-        position: absolute;
-        top: -8mm;
-        left: 4mm;
-        width: 16mm;
-        height: 16mm;
+      .talk-phone {
+        height: 78mm;
+        margin: 3mm 3mm 0;
         border: 3px solid var(--navy);
+        border-radius: 9mm;
         overflow: hidden;
-        background: white;
-        box-shadow: 4px 4px 0 0 var(--navy);
+        position: relative;
+        background: #ddd;
       }
-      .talk-av.round {
-        border-radius: 50%;
-      }
-      .talk-av.sq {
-        border-radius: 5mm;
-      }
-      .talk-av img {
+      .talk-phone img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        display: block;
+      }
+      .talk-phone .bubble {
+        position: absolute;
+        left: 3mm;
+        bottom: 3mm;
+        margin: 0;
       }
       .talk-card .chip {
         position: absolute;
-        top: -3mm;
-        right: 3mm;
+        top: 1mm;
+        right: 2mm;
         transform: rotate(12deg);
         border: 2px solid var(--navy);
         border-radius: 999px;
@@ -432,6 +459,11 @@
         font-size: 10px;
         letter-spacing: 0.08em;
         text-transform: uppercase;
+        z-index: 4;
+        box-shadow: 3px 3px 0 0 var(--navy);
+      }
+      .talk-card .txt {
+        padding: 3.5mm 5mm 0;
       }
       .talk-card .mini {
         font-size: 9px;
@@ -441,9 +473,9 @@
         margin: 0;
       }
       .talk-card h4 {
-        font-size: 18px;
+        font-size: 16px;
         line-height: 1.05;
-        margin: 2mm 0 3mm;
+        margin: 1.4mm 0 0;
       }
       .bubble {
         display: inline-block;
@@ -455,11 +487,12 @@
         font-family: "Cabinet Grotesk", system-ui, sans-serif;
         font-weight: 800;
         font-size: 12px;
+        box-shadow: 3px 3px 0 0 var(--navy);
       }
       .talk-card p.body {
-        margin: 3mm 0 0;
-        font-size: 12px;
-        line-height: 1.4;
+        margin: 2mm 0 0;
+        font-size: 11.5px;
+        line-height: 1.35;
         color: #2a2a40;
       }
 
@@ -470,89 +503,97 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 8mm;
-        margin-top: 8mm;
+        margin-top: 7mm;
       }
       .card {
         background: white;
         border: 3px solid var(--navy);
-        padding: 7mm 6mm;
-        min-height: 82mm;
+        border-radius: 14mm;
+        padding: 0 0 6mm;
+        min-height: 86mm;
         box-shadow: 8px 9px 0 0 var(--navy);
         position: relative;
         z-index: 3;
+        overflow: hidden;
+      }
+      .card-pic {
+        width: calc(100% - 8mm);
+        height: 38mm;
+        margin: 4mm 4mm 3.5mm;
+        border: 3px solid var(--navy);
+        border-radius: 8mm;
+        overflow: hidden;
+        box-shadow: 4px 4px 0 0 var(--navy);
+      }
+      .card-pic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
       }
       .card h3 {
         font-size: 24px;
-        margin: 3mm 0 2mm;
+        margin: 0 6mm 2mm;
       }
       .card p {
         color: var(--muted);
         font-size: 13px;
         line-height: 1.4;
-        margin: 0;
-      }
-      .icon {
-        width: 18mm;
-        height: 18mm;
-        border: 3px solid var(--navy);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        margin: 0 6mm;
       }
 
       .proc {
         background: var(--yellow);
       }
-      .proc-top {
+      .proc-grid {
         display: grid;
-        grid-template-columns: 1fr 50mm;
-        gap: 8mm;
+        grid-template-columns: 1fr 72mm;
+        grid-template-rows: auto 1fr auto;
+        gap: 5mm 8mm;
+        height: 100%;
         align-items: start;
       }
-      .proc-pic {
-        width: 50mm;
-        transform: rotate(5deg);
-        z-index: 4;
-        margin-top: 2mm;
-      }
-      .proc-pic img {
-        height: 58mm;
+      .proc-goo {
+        grid-column: 2;
+        grid-row: 1 / 3;
+        height: 138mm;
+        width: 72mm;
       }
       .steps {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        gap: 4mm;
-        margin-top: 7mm;
+        gap: 3.5mm;
+        grid-column: 1;
       }
       .step {
         text-align: center;
       }
       .num {
-        width: 22mm;
-        height: 22mm;
-        margin: 0 auto 3mm;
+        width: 20mm;
+        height: 20mm;
+        margin: 0 auto 2.5mm;
         border: 3px solid var(--navy);
         display: flex;
         align-items: center;
         justify-content: center;
         font-family: "Cabinet Grotesk", system-ui, sans-serif;
         font-weight: 800;
-        font-size: 18px;
+        font-size: 16px;
         box-shadow: 4px 5px 0 0 var(--navy);
       }
       .step h3 {
-        font-size: 16px;
-        margin-bottom: 1.4mm;
+        font-size: 15px;
+        margin-bottom: 1.2mm;
       }
       .step p {
         color: #333;
-        font-size: 11.5px;
-        line-height: 1.35;
+        font-size: 11px;
+        line-height: 1.32;
         margin: 0;
       }
       .proc-banner {
-        margin-top: 7mm;
-        padding: 4.5mm 7mm;
+        grid-column: 1 / -1;
+        padding: 4.2mm 7mm;
         background: var(--pink);
         color: var(--navy);
         border: 3px solid var(--navy);
@@ -650,23 +691,35 @@
       }
       .cta .inner {
         height: 100%;
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 84mm 1fr;
         align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 16mm 18mm 16mm;
+        gap: 16mm;
+        padding: 14mm 16mm 16mm 14mm;
         position: relative;
         z-index: 2;
+        text-align: left;
+      }
+      .cta-face {
+        height: 154mm;
+        width: 84mm;
+      }
+      .cta-mascot {
+        position: absolute;
+        width: 34mm;
+        bottom: 10mm;
+        right: 4mm;
+        z-index: 5;
+        filter: drop-shadow(4px 5px 0 var(--navy));
       }
       .cta h2 {
-        font-size: 62px;
+        font-size: 52px;
         line-height: 0.9;
       }
       .cta p {
-        max-width: 46ch;
-        font-size: 16px;
-        margin: 5mm auto 7mm;
+        max-width: 36ch;
+        font-size: 15px;
+        margin: 4mm 0 6mm;
       }
       .contact {
         display: inline-flex;
@@ -676,35 +729,18 @@
         color: var(--navy);
         border: 3px solid var(--navy);
         border-radius: 70% 30% 60% 40% / 40% 70% 30% 60%;
-        padding: 4.4mm 9mm;
+        padding: 4.2mm 8mm;
         font-weight: 700;
-        font-size: 15px;
+        font-size: 14px;
         box-shadow: 5px 6px 0 0 var(--navy);
-        margin: 2mm;
-      }
-      .cta-av {
-        width: 22mm;
-        height: 22mm;
-        border-radius: 50%;
-        border: 3px solid var(--navy);
-        overflow: hidden;
-        box-shadow: 4px 4px 0 0 var(--navy);
-        margin: 0 auto 6mm;
-      }
-      .cta-av img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        margin: 1.5mm 1.5mm 0 0;
       }
     </style>
   </head>
   <body>
-    <!-- 1 COVER -->
+    <!-- 1 COVER: illustration + real share the same blob language -->
     <section class="sheet cover">
-      <div class="blob b1" style="width: 110mm; height: 110mm; background: #ffd23f; top: 6mm; left: 8mm"></div>
-      <div class="blob b2" style="width: 64mm; height: 64mm; background: #7bed4f; bottom: 18mm; right: 18mm"></div>
-      <div class="blob b3" style="width: 42mm; height: 42mm; background: #ff9ad4; top: 16mm; right: 96mm"></div>
-      <div class="dot goo" style="width: 12mm; height: 12mm; background: #e91e8c; top: 26mm; left: 124mm"></div>
+      <div class="blob b1" style="width: 88mm; height: 88mm; background: #ffd23f; top: 10mm; left: 4mm"></div>
       <div class="inner">
         <div class="safe">
           <div class="logo" style="margin-bottom: 7mm">
@@ -722,41 +758,44 @@
             belconteudos.com · @bel.conteudos
           </p>
         </div>
-        <div class="mascot">
-          <div class="blob b4" style="inset: 10mm -4mm 18mm 8mm; background: var(--yellow); position: absolute; z-index: 1"></div>
-          <img class="hero-illu" src="images/creator-bel-fullbody.png" alt="Creator Bel" />
-          <figure class="polaroid">
+        <div class="duo">
+          <div class="duo-illu">
+            <div class="plate b4"></div>
+            <img src="images/creator-bel-fullbody.png" alt="Creator Bel" />
+            <span class="float sticker pill" style="top: 22mm; left: -2mm; background: white; transform: rotate(-12deg)">#Content</span>
+          </div>
+          <figure class="goo-photo hero-mask duo-real">
             <img class="av-smile" src="images/kit/kit-smile.jpg" alt="Bel em um restaurante" />
-            <figcaption>Na vida real</figcaption>
           </figure>
-          <span class="float sticker pill" style="top: 14mm; right: 0; background: white; transform: rotate(10deg)">#Content</span>
-          <span class="float sticker goo" style="bottom: 28mm; right: 6mm; background: var(--magenta); color: white; transform: rotate(-12deg)">Reels</span>
+          <span class="tape" style="top: 10mm; left: 52mm; width: 28mm; transform: rotate(-26deg)"></span>
+          <span class="float sticker goo" style="top: 10mm; left: 88mm; background: var(--magenta); color: white; transform: rotate(8deg)">eu de verdade</span>
+          <span class="float sticker pill" style="bottom: 20mm; left: 58mm; background: var(--lime); transform: rotate(-8deg)">Reels</span>
         </div>
       </div>
       <div class="foot"><span>Media kit 2026</span><span>01 / 07</span></div>
     </section>
 
-    <!-- 2 SOBRE -->
+    <!-- 2 SOBRE: real photos live in the blob; mascot is the stamp -->
     <section class="sheet sobre">
-      <div class="blob b5" style="width: 28mm; height: 28mm; background: #ffc1e3; bottom: 16mm; left: 8mm"></div>
+      <div class="blob b5" style="width: 26mm; height: 26mm; background: #ffc1e3; bottom: 14mm; left: 6mm"></div>
       <div class="inner">
         <div class="photo-col">
-          <div class="matcha">
-            <div class="blob b1" style="inset: 0; background: var(--yellow); position: absolute"></div>
-            <img src="images/creator-bel-matcha.png" alt="Bel na calçada com um matcha" />
-          </div>
-          <figure class="polaroid p-salao">
-            <img class="av-salao" src="images/kit/kit-salao.jpg" alt="Bel no salão" />
-            <figcaption>Estética</figcaption>
-          </figure>
-          <figure class="polaroid p-loja">
+          <figure class="goo-photo goo sobre-main">
             <img class="av-loja" src="images/kit/kit-loja.jpg" alt="Bel em uma loja de moda" />
-            <figcaption>Moda</figcaption>
+            <span class="sticker pill cap" style="background: var(--yellow)">Moda</span>
           </figure>
+          <figure class="goo-photo goo-alt sobre-salao">
+            <img class="av-salao" src="images/kit/kit-salao.jpg" alt="Bel no salão" />
+            <span class="sticker pill cap" style="background: white; font-size: 10px; padding: 4px 10px">Estética</span>
+          </figure>
+          <figure class="goo-photo goo sobre-mascot">
+            <img src="images/creator-bel-matcha.png" alt="Bel ilustrada com matcha" style="object-position: 50% 20%" />
+          </figure>
+          <span class="tape" style="top: 28mm; left: 18mm; width: 22mm; transform: rotate(16deg)"></span>
         </div>
         <div class="copy safe">
           <span class="kicker">Sobre mim</span>
-          <h2 style="font-size: 36px; margin: 3mm 0 3mm; line-height: 0.94">
+          <h2 style="font-size: 34px; margin: 3mm 0 3mm; line-height: 0.94">
             Conteúdo real,<br /><span style="color: var(--magenta)">resultado real.</span>
           </h2>
           <p style="font-family: 'Cabinet Grotesk', system-ui; font-weight: 800; font-size: 15px; color: var(--navy)">
@@ -775,52 +814,68 @@
       <div class="foot"><span>Bel UGC · belconteudos.com</span><span>02 / 07</span></div>
     </section>
 
-    <!-- 3 COMO EU FALO -->
+    <!-- 3 COMO EU FALO: photo is the conversation, copy is the caption -->
     <section class="sheet fala">
-      <div class="blob b2" style="width: 56mm; height: 56mm; background: #ffd23f; top: -8mm; left: -6mm"></div>
-      <div class="blob b3" style="width: 48mm; height: 48mm; background: #ffc1e3; bottom: -6mm; right: -4mm"></div>
+      <div class="blob b2" style="width: 48mm; height: 48mm; background: #ffd23f; top: -10mm; left: -8mm"></div>
+      <div class="blob b3" style="width: 40mm; height: 40mm; background: #ffc1e3; bottom: -8mm; right: -6mm"></div>
       <div class="pad">
-        <div class="safe" style="max-width: 180mm">
+        <div class="safe" style="max-width: 190mm">
           <span class="kicker">Como eu falo</span>
-          <h2 style="font-size: 36px; margin: 2mm 0 2mm; line-height: 0.94">
+          <h2 style="font-size: 34px; margin: 2mm 0 2mm; line-height: 0.94">
             Exemplos de <span style="color: var(--magenta)">comunicação</span>
           </h2>
-          <p style="margin: 0; max-width: 62ch; color: var(--muted); font-size: 13.5px; line-height: 1.4">
+          <p style="margin: 0; max-width: 64ch; color: var(--muted); font-size: 13px; line-height: 1.4">
             O avatar entra na conversa. Oferta, recado, unbox, review — o tom muda, a Bel continua a mesma.
           </p>
         </div>
         <div class="talk-grid">
-          <article class="talk-card squish" style="background: var(--yellow); transform: rotate(-3deg)">
-            <div class="talk-av round"><img class="av-smile" src="images/kit/kit-smile.jpg" alt="" /></div>
+          <article class="talk-card" style="background: var(--yellow); transform: rotate(-2.4deg)">
             <span class="chip" style="background: white">ads</span>
-            <p class="mini">Anúncio</p>
-            <h4>OFERTA IMPERDÍVEL</h4>
-            <span class="bubble">link na bio?</span>
-            <p class="body">Gancho de oferta, mas falado como gente. Sem vinheta de shop.</p>
+            <div class="talk-phone">
+              <img class="av-smile" src="images/kit/kit-smile.jpg" alt="" />
+              <span class="bubble">link na bio?</span>
+            </div>
+            <div class="txt">
+              <p class="mini">Anúncio</p>
+              <h4>OFERTA IMPERDÍVEL</h4>
+              <p class="body">Gancho de oferta, mas falado como gente. Sem vinheta de shop.</p>
+            </div>
           </article>
-          <article class="talk-card goo" style="background: var(--lime); transform: rotate(2deg)">
-            <div class="talk-av round"><img class="av-loja" src="images/kit/kit-loja.jpg" alt="" /></div>
+          <article class="talk-card" style="background: var(--lime); transform: rotate(1.8deg)">
             <span class="chip" style="background: var(--yellow)">ugc</span>
-            <p class="mini">Recado de amiga</p>
-            <h4>gente, juro</h4>
-            <span class="bubble">você precisa ver</span>
-            <p class="body">Passei na sorveteria com o Pietro. Ele pediu de novo.</p>
+            <div class="talk-phone">
+              <img class="av-loja" src="images/kit/kit-loja.jpg" alt="" />
+              <span class="bubble">você precisa ver</span>
+            </div>
+            <div class="txt">
+              <p class="mini">Recado de amiga</p>
+              <h4>gente, juro</h4>
+              <p class="body">Passei na sorveteria com o Pietro. Ele pediu de novo.</p>
+            </div>
           </article>
-          <article class="talk-card squish" style="background: #ffc1e3; transform: rotate(-2deg)">
-            <div class="talk-av sq"><img class="av-beleza" src="images/kit/kit-beleza.jpg" alt="" /></div>
+          <article class="talk-card" style="background: #ffc1e3; transform: rotate(-1.6deg)">
             <span class="chip" style="background: var(--lime)">unbox</span>
-            <p class="mini">Unbox</p>
-            <h4>Abre comigo (unboxing)</h4>
-            <span class="bubble">chegou!!!</span>
-            <p class="body">Papel, cheiro, textura. Sem mesa de estúdio.</p>
+            <div class="talk-phone">
+              <img class="av-beleza" src="images/kit/kit-beleza.jpg" alt="" />
+              <span class="bubble">chegou!!!</span>
+            </div>
+            <div class="txt">
+              <p class="mini">Unbox</p>
+              <h4>Abre comigo</h4>
+              <p class="body">Papel, cheiro, textura. Sem mesa de estúdio.</p>
+            </div>
           </article>
-          <article class="talk-card goo-alt" style="background: white; transform: rotate(3deg)">
-            <div class="talk-av round"><img class="av-salao" src="images/kit/kit-salao.jpg" alt="" /></div>
+          <article class="talk-card" style="background: white; transform: rotate(2.2deg)">
             <span class="chip" style="background: #ffc1e3">review</span>
-            <p class="mini">Review sincero</p>
-            <h4>vou ser honesta</h4>
-            <span class="bubble">gostei disso</span>
-            <p class="body">Gostei. Disso aqui, não tanto. Aí você decide.</p>
+            <div class="talk-phone">
+              <img class="av-salao" src="images/kit/kit-salao.jpg" alt="" />
+              <span class="bubble">gostei disso</span>
+            </div>
+            <div class="txt">
+              <p class="mini">Review sincero</p>
+              <h4>vou ser honesta</h4>
+              <p class="body">Gostei. Disso aqui, não tanto. Aí você decide.</p>
+            </div>
           </article>
         </div>
       </div>
@@ -829,35 +884,29 @@
 
     <!-- 4 UGC -->
     <section class="sheet ugc">
-      <div class="blob b3" style="width: 56mm; height: 56mm; background: #ffd23f; top: -10mm; left: -8mm"></div>
-      <div class="blob b1" style="width: 48mm; height: 48mm; background: #ffc1e3; bottom: -8mm; right: -6mm"></div>
+      <div class="blob b3" style="width: 50mm; height: 50mm; background: #ffd23f; top: -12mm; left: -10mm"></div>
+      <div class="blob b1" style="width: 42mm; height: 42mm; background: #ffc1e3; bottom: -10mm; right: -8mm"></div>
       <div class="pad">
         <div class="safe" style="text-align: center">
           <span class="kicker">Entenda o conceito</span>
-          <h2 style="font-size: 42px; margin: 2mm 0 3mm">O que é <span style="color: var(--magenta)">UGC?</span></h2>
+          <h2 style="font-size: 40px; margin: 2mm 0 3mm">O que é <span style="color: var(--magenta)">UGC?</span></h2>
           <p style="max-width: 68ch; margin: 0 auto; color: var(--muted); font-size: 14px; line-height: 1.45">
             Conteúdo Gerado por Usuário. Não é anúncio de agência — é aquele recado no grupo da família, só que com roteiro.
           </p>
         </div>
         <div class="cards3">
-          <article class="card squish" style="transform: rotate(-3deg); background: var(--yellow)">
-            <div class="icon goo" style="background: white">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1A1A2E"><path d="M12 2.2 14.4 8.1 20.8 8.9 16 13.3 17.4 19.6 12 16.2 6.6 19.6 8 13.3 3.2 8.9 9.6 8.1Z"/></svg>
-            </div>
+          <article class="card" style="transform: rotate(-2.2deg); background: var(--yellow)">
+            <div class="card-pic"><img class="av-smile" src="images/kit/kit-smile.jpg" alt="" /></div>
             <h3>Autenticidade</h3>
             <p>Conteúdo genuíno que parece uma recomendação de amiga, não uma propaganda tradicional.</p>
           </article>
-          <article class="card goo" style="background: white; transform: rotate(2deg)">
-            <div class="icon squish" style="background: var(--lime)">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1A1A2E"><path d="M9.5 16.2 5.3 12l1.4-1.4 2.8 2.8 7.8-7.8L18.7 7z"/></svg>
-            </div>
+          <article class="card" style="background: white; transform: rotate(1.4deg)">
+            <div class="card-pic"><img class="av-loja" src="images/kit/kit-loja.jpg" alt="" /></div>
             <h3>Engajamento</h3>
             <p>Vídeos feitos para parar o scroll e gerar comentários, salvamentos e compartilhamentos.</p>
           </article>
-          <article class="card squish" style="transform: rotate(3deg); background: #ffc1e3">
-            <div class="icon goo-alt" style="background: #ff9ad4">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1A1A2E"><path d="M5 18 16.2 6.8H9V5h10v10h-1.8V7.8L6.4 19.6z"/></svg>
-            </div>
+          <article class="card" style="transform: rotate(2deg); background: #ffc1e3">
+            <div class="card-pic"><img class="av-beleza" src="images/kit/kit-beleza.jpg" alt="" /></div>
             <h3>Conversão</h3>
             <p>Conteúdo pensado em cada etapa do funil, direto ao ponto e com CTA que converte.</p>
           </article>
@@ -868,49 +917,49 @@
 
     <!-- 5 PROCESSO -->
     <section class="sheet proc">
-      <div class="blob b2" style="width: 36mm; height: 36mm; background: #7bed4f; bottom: 16mm; left: 10mm"></div>
+      <div class="blob b2" style="width: 32mm; height: 32mm; background: #7bed4f; bottom: 18mm; left: 8mm"></div>
       <div class="pad">
-        <div class="proc-top">
+        <div class="proc-grid">
           <div class="safe">
             <span class="kicker">Como eu trabalho</span>
-            <h2 style="font-size: 40px; margin: 2mm 0 2mm; line-height: 0.94">Processo <span style="color: var(--magenta)">Criativo</span></h2>
-            <p style="max-width: 46ch; font-size: 14px; margin: 0">Do briefing à entrega: prazo, roteiro e arquivo prontos para publicar. Luz, câmera e o telefone na mão — produção de verdade, não só ilustração.</p>
+            <h2 style="font-size: 38px; margin: 2mm 0 2mm; line-height: 0.94">Processo <span style="color: var(--magenta)">Criativo</span></h2>
+            <p style="max-width: 46ch; font-size: 14px; margin: 0">Do briefing à entrega: prazo, roteiro e arquivo prontos para publicar.</p>
           </div>
-          <figure class="polaroid proc-pic">
+          <figure class="goo-photo goo-alt proc-goo">
             <img class="av-estudio" src="images/kit/kit-estudio.jpg" alt="Bastidores de produção" />
-            <figcaption>Bastidores</figcaption>
+            <span class="sticker pill cap" style="background: var(--lime)">Bastidores</span>
           </figure>
-        </div>
-        <div class="steps">
-          <div class="step">
-            <div class="num goo" style="background: #ff9ad4; color: var(--navy)">01</div>
-            <h3>Briefing</h3>
-            <p>Entendo objetivos e voz da marca.</p>
+          <div class="steps">
+            <div class="step">
+              <div class="num goo" style="background: #ff9ad4; color: var(--navy)">01</div>
+              <h3>Briefing</h3>
+              <p>Entendo objetivos e voz da marca.</p>
+            </div>
+            <div class="step">
+              <div class="num squish" style="background: white">02</div>
+              <h3>Roteiro</h3>
+              <p>Crio um roteiro autêntico e estratégico.</p>
+            </div>
+            <div class="step">
+              <div class="num goo-alt" style="background: var(--lime)">03</div>
+              <h3>Produção</h3>
+              <p>Gravo com luz, som e estética de qualidade.</p>
+            </div>
+            <div class="step">
+              <div class="num squish" style="background: #ffc1e3">04</div>
+              <h3>Edição</h3>
+              <p>Corto e finalizo no ritmo das plataformas.</p>
+            </div>
+            <div class="step">
+              <div class="num goo" style="background: white">05</div>
+              <h3>Entrega</h3>
+              <p>Envio os arquivos prontos para publicar.</p>
+            </div>
           </div>
-          <div class="step">
-            <div class="num squish" style="background: white">02</div>
-            <h3>Roteiro</h3>
-            <p>Crio um roteiro autêntico e estratégico.</p>
+          <div class="proc-banner">
+            <span>Prazo, briefing e roteiro a sério — arquivo pronto pra ads.</span>
+            <span class="sticker pill" style="background: var(--lime); font-size: 11px; box-shadow: 3px 3px 0 var(--navy)">5 etapas · 1 criadora</span>
           </div>
-          <div class="step">
-            <div class="num goo-alt" style="background: var(--lime)">03</div>
-            <h3>Produção</h3>
-            <p>Gravo com luz, som e estética de qualidade.</p>
-          </div>
-          <div class="step">
-            <div class="num squish" style="background: #ffc1e3">04</div>
-            <h3>Edição</h3>
-            <p>Corto e finalizo no ritmo das plataformas.</p>
-          </div>
-          <div class="step">
-            <div class="num goo" style="background: white">05</div>
-            <h3>Entrega</h3>
-            <p>Envio os arquivos prontos para publicar.</p>
-          </div>
-        </div>
-        <div class="proc-banner">
-          <span>Prazo, briefing e roteiro a sério — arquivo pronto pra ads.</span>
-          <span class="sticker pill" style="background: var(--lime); font-size: 11px; box-shadow: 3px 3px 0 var(--navy)">5 etapas · 1 criadora</span>
         </div>
       </div>
       <div class="foot"><span>Bel UGC · belconteudos.com</span><span>05 / 07</span></div>
@@ -918,7 +967,7 @@
 
     <!-- 6 MARCAS -->
     <section class="sheet cases-page">
-      <div class="blob b1" style="width: 48mm; height: 48mm; background: #ffd23f; top: -12mm; left: 40%"></div>
+      <div class="blob b1" style="width: 44mm; height: 44mm; background: #ffd23f; top: -12mm; left: 42%"></div>
       <div class="pad">
         <div class="safe">
           <span class="kicker">Quem confia em mim</span>
@@ -944,33 +993,37 @@
           </div>
         </div>
         <div class="phones">
-          <article class="phone" style="transform: rotate(-3deg)">
+          <article class="phone" style="transform: rotate(-2.6deg)">
             <div class="bezel squish" style="background: var(--yellow)">
               <img src="images/reels/sander.webp" alt="Sander" />
+              <span class="play-dot" style="right: 3mm; bottom: 3mm"></span>
             </div>
             <p class="mini">Reel na sorveteria</p>
             <h3>Sander</h3>
             <p>Casquinha de chocolate adoçada com stevia. UGC real, conversa de mãe.</p>
           </article>
-          <article class="phone" style="transform: rotate(2.4deg)">
+          <article class="phone" style="transform: rotate(2deg)">
             <div class="bezel goo" style="background: #f6ab9e">
               <img src="images/reels/creamy.webp" alt="Creamy" />
+              <span class="play-dot" style="right: 3mm; bottom: 3mm"></span>
             </div>
             <p class="mini">Rotina de skincare</p>
             <h3>Creamy</h3>
             <p>Ritual Creamy — textura, glow e conversa de pia. Sem cara de studio.</p>
           </article>
-          <article class="phone" style="transform: rotate(-2deg)">
+          <article class="phone" style="transform: rotate(-1.8deg)">
             <div class="bezel squish">
               <img class="av-beleza" src="images/kit/kit-beleza.jpg" alt="Ritual de beleza na loja" />
+              <span class="play-dot" style="right: 3mm; bottom: 3mm"></span>
             </div>
             <p class="mini">Unbox na gôndola</p>
             <h3>Beleza real</h3>
             <p>Teste de produto na loja. Cheiro, textura, sem mesa de estúdio.</p>
           </article>
-          <article class="phone" style="transform: rotate(3deg)">
+          <article class="phone" style="transform: rotate(2.4deg)">
             <div class="bezel goo-alt">
               <img class="av-salao" src="images/kit/kit-salao.jpg" alt="Resultado no salão" />
+              <span class="play-dot" style="right: 3mm; bottom: 3mm"></span>
             </div>
             <p class="mini">Transformação</p>
             <h3>Estética</h3>
@@ -981,29 +1034,31 @@
       <div class="foot"><span>Bel UGC · belconteudos.com</span><span>06 / 07</span></div>
     </section>
 
-    <!-- 7 CTA -->
+    <!-- 7 CTA: face in the blob, mascot as stamp -->
     <section class="sheet cta">
-      <div class="blob b2" style="width: 70mm; height: 70mm; background: #fff6e4; top: 10mm; left: 10mm"></div>
-      <div class="blob b3" style="width: 62mm; height: 62mm; background: #ffd23f; bottom: 12mm; right: 10mm"></div>
-      <figure class="polaroid" style="position: absolute; top: 12mm; left: 12mm; width: 38mm; transform: rotate(-8deg); z-index: 3">
-        <img class="av-loja" src="images/kit/kit-loja.jpg" alt="Look na loja" />
-        <figcaption>Look real</figcaption>
-      </figure>
+      <div class="blob b3" style="width: 56mm; height: 56mm; background: #ffd23f; bottom: 10mm; right: 8mm"></div>
       <div class="inner">
-        <div class="cta-av"><img class="av-smile" src="images/kit/kit-smile.jpg" alt="" /></div>
-        <div class="logo" style="margin-bottom: 6mm">
-          <span class="bel">Bel</span>
-          <span class="ugc">UGC</span>
+        <div style="position: relative">
+          <figure class="goo-photo hero-mask cta-face">
+            <img class="av-smile" src="images/kit/kit-smile.jpg" alt="Bel" />
+          </figure>
+          <img class="cta-mascot" src="images/creator-bel-fullbody.png" alt="" />
         </div>
-        <h2>Vamos Criar<br />Juntos?</h2>
-        <p>Sua marca merece conteúdo que gera conexão de verdade. Me chama e vamos montar a próxima campanha.</p>
-        <div>
-          <span class="contact" style="transform: rotate(-3deg)">WhatsApp +55 11 96382-6929</span>
-          <span class="contact goo" style="transform: rotate(4deg); background: var(--lime)">@bel.conteudos</span>
+        <div class="safe">
+          <div class="logo" style="margin-bottom: 6mm">
+            <span class="bel">Bel</span>
+            <span class="ugc">UGC</span>
+          </div>
+          <h2>Vamos Criar<br />Juntos?</h2>
+          <p>Sua marca merece conteúdo que gera conexão de verdade. Me chama e vamos montar a próxima campanha.</p>
+          <div>
+            <span class="contact" style="transform: rotate(-3deg)">WhatsApp +55 11 96382-6929</span>
+            <span class="contact goo" style="transform: rotate(4deg); background: var(--lime)">@bel.conteudos</span>
+          </div>
+          <p style="margin-top: 7mm; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; font-size: 12px">
+            belconteudos.com · Instagram · TikTok
+          </p>
         </div>
-        <p style="margin-top: 8mm; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; font-size: 12px">
-          belconteudos.com · Instagram · TikTok
-        </p>
       </div>
       <div class="foot"><span>© 2026 Bel UGC</span><span>07 / 07</span></div>
     </section>
