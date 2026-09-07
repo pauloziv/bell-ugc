@@ -3,7 +3,6 @@ import {
   EnvelopeSimple,
   FilePdf,
   InstagramLogo,
-  Sparkle,
   TiktokLogo,
 } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
@@ -13,7 +12,6 @@ import {
   EMAIL,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
-  MEDIA_KIT_HREF,
   MEDIA_KIT_PDF,
   TIKTOK_HANDLE,
   TIKTOK_URL,
@@ -81,15 +79,8 @@ export default function CTA() {
         </div>
         <p>© 2026 Bel UGC. Feito com criatividade e café. Todos os direitos reservados.</p>
         <Link
-          href={MEDIA_KIT_HREF}
-          className="mt-3 inline-flex min-h-11 items-center gap-2 text-white/80 hover:text-white"
-        >
-          <Sparkle weight="bold" size={18} />
-          Ver media kit
-        </Link>
-        <Link
           href={MEDIA_KIT_PDF}
-          className="ml-4 mt-3 inline-flex min-h-11 items-center gap-2 text-white/80 hover:text-white"
+          className="mt-3 inline-flex min-h-11 items-center gap-2 text-white/80 hover:text-white"
         >
           <FilePdf weight="bold" size={18} />
           Baixar PDF

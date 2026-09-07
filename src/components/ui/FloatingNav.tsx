@@ -2,7 +2,6 @@
 
 import { List, X } from "@phosphor-icons/react";
 import { useState } from "react";
-import Link from "next/link";
 import BrandLogo from "@/components/ui/BrandLogo";
 
 const LINKS = [
@@ -13,7 +12,6 @@ const LINKS = [
   { href: "#cases", label: "Cases" },
   { href: "#processo", label: "Processo" },
   { href: "#pacotes", label: "Pacotes" },
-  { href: "/media-kit", label: "Kit" },
 ];
 
 export default function FloatingNav() {
@@ -30,25 +28,15 @@ export default function FloatingNav() {
           <BrandLogo compact />
         </a>
         <div className="hidden lg:flex items-center gap-1">
-          {LINKS.map((item) =>
-            item.href.startsWith("/") ? (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-xs font-medium uppercase tracking-wider px-3 py-2 rounded-full hover:bg-yellow transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy"
-              >
-                {item.label}
-              </Link>
-            ) : (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-xs font-medium uppercase tracking-wider px-3 py-2 rounded-full hover:bg-yellow transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy"
-              >
-                {item.label}
-              </a>
-            ),
-          )}
+          {LINKS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="text-xs font-medium uppercase tracking-wider px-3 py-2 rounded-full hover:bg-yellow transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy"
+            >
+              {item.label}
+            </a>
+          ))}
         </div>
         <a
           href="#contato"
@@ -68,27 +56,16 @@ export default function FloatingNav() {
       </div>
       {open ? (
         <div className="lg:hidden mt-2 rounded-[1.5rem] border-2 border-navy bg-white p-3 flex flex-col">
-          {LINKS.map((item) =>
-            item.href.startsWith("/") ? (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="px-4 py-3 rounded-full text-sm font-medium uppercase tracking-wider hover:bg-yellow"
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ) : (
-              <a
-                key={item.href}
-                href={item.href}
-                className="px-4 py-3 rounded-full text-sm font-medium uppercase tracking-wider hover:bg-yellow"
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </a>
-            ),
-          )}
+          {LINKS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="px-4 py-3 rounded-full text-sm font-medium uppercase tracking-wider hover:bg-yellow"
+              onClick={() => setOpen(false)}
+            >
+              {item.label}
+            </a>
+          ))}
         </div>
       ) : null}
     </nav>

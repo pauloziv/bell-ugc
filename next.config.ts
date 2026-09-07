@@ -2,6 +2,11 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   transpilePackages: ["gsap", "@gsap/react"],
+  async redirects() {
+    return [
+      { source: "/media-kit", destination: "/", permanent: true },
+    ];
+  },
   images: {
     remotePatterns: [
       {
