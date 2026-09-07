@@ -219,11 +219,23 @@
 
       .tape {
         position: absolute;
-        height: 5.5mm;
+        min-height: 7mm;
+        padding: 1.2mm 3mm;
         background: var(--yellow);
         border: 2.5px solid var(--navy);
         z-index: 6;
         pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Cabinet Grotesk", system-ui, sans-serif;
+        font-weight: 800;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--navy);
+        white-space: nowrap;
+        box-shadow: 3px 3px 0 0 var(--navy);
       }
 
       .play-dot {
@@ -272,54 +284,64 @@
         position: relative;
         z-index: 2;
         display: grid;
-        grid-template-columns: 108mm 1fr;
+        grid-template-columns: 88mm minmax(0, 1fr) 78mm;
         height: 100%;
-        padding: 14mm 10mm 14mm 16mm;
+        padding: 12mm 10mm 14mm 10mm;
         align-items: center;
-        gap: 2mm;
+        gap: 6mm;
       }
       .cover h1 {
-        font-size: 54px;
+        font-size: 50px;
         line-height: 0.86;
       }
       .cover p.lead {
-        font-size: 15.5px;
+        font-size: 15px;
         line-height: 1.4;
-        max-width: 32ch;
+        max-width: 34ch;
         margin: 5mm 0 0;
       }
-      .duo {
+      .duo-real-wrap {
         position: relative;
-        height: 172mm;
+        width: 88mm;
+        height: 168mm;
         z-index: 3;
+        justify-self: start;
+      }
+      .duo-real-wrap .plate {
+        position: absolute;
+        inset: 0;
+        background: var(--yellow);
+        border: 3px solid var(--navy);
+        z-index: 0;
+        box-shadow: 7px 8px 0 0 var(--navy);
+      }
+      .duo-real {
+        position: absolute;
+        inset: 7mm 6mm 9mm 6mm;
+        width: auto;
+        height: auto;
+        z-index: 2;
+        box-shadow: none;
       }
       .duo-illu {
-        position: absolute;
-        left: 0;
-        bottom: 2mm;
-        width: 92mm;
+        position: relative;
+        width: 78mm;
+        height: 168mm;
         z-index: 2;
-      }
-      .duo-illu .plate {
-        position: absolute;
-        inset: 12mm 4mm 8mm 8mm;
-        background: var(--yellow);
-        z-index: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
       }
       .duo-illu img {
         width: 100%;
         height: auto;
+        max-height: 168mm;
+        object-fit: contain;
+        object-position: bottom center;
         display: block;
         position: relative;
         z-index: 1;
-      }
-      .duo-real {
-        position: absolute;
-        left: 40mm;
-        top: 4mm;
-        width: 78mm;
-        height: 118mm;
-        z-index: 4;
+        filter: drop-shadow(5px 6px 0 var(--navy));
       }
       .float {
         position: absolute;
@@ -547,53 +569,117 @@
       }
       .proc-grid {
         display: grid;
-        grid-template-columns: 1fr 72mm;
-        grid-template-rows: auto 1fr auto;
-        gap: 5mm 8mm;
+        grid-template-columns: 1fr 68mm;
+        grid-template-rows: auto 1fr auto auto;
+        gap: 3.2mm 6mm;
         height: 100%;
         align-items: start;
+      }
+      .proc-grid > .safe {
+        grid-column: 1;
+        grid-row: 1;
       }
       .proc-goo {
         grid-column: 2;
         grid-row: 1 / 3;
-        height: 138mm;
-        width: 72mm;
+        height: 102mm;
+        width: 68mm;
       }
       .steps {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 3.5mm;
+        grid-template-columns: 1fr;
+        gap: 2.4mm;
         grid-column: 1;
       }
       .step {
-        text-align: center;
+        text-align: left;
+        display: grid;
+        grid-template-columns: 14mm 1fr;
+        gap: 3mm;
+        align-items: center;
+        background: rgba(255, 246, 228, 0.72);
+        border: 3px solid var(--navy);
+        border-radius: 8mm;
+        padding: 1.8mm 3mm;
+        box-shadow: 3px 3px 0 0 var(--navy);
+      }
+      .proc-extras {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 4mm;
+      }
+      .proc-extra {
+        background: white;
+        border: 3px solid var(--navy);
+        border-radius: 8mm;
+        padding: 3mm 4mm;
+        box-shadow: 4px 4px 0 0 var(--navy);
+      }
+      .proc-extra b {
+        display: block;
+        font-family: "Cabinet Grotesk", system-ui, sans-serif;
+        font-size: 14px;
+        margin-bottom: 0.8mm;
+      }
+      .proc-extra p {
+        margin: 0;
+        font-size: 11.5px;
+        line-height: 1.3;
+        color: #333;
+      }
+      .proc-extra img {
+        height: 12mm;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+        display: block;
+        margin: 0 0 1.2mm;
+      }
+      .proc-extra .label {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--magenta);
+        margin: 0 0 1mm;
+      }
+      .steps {
+        grid-row: 2;
+      }
+      .proc-extras {
+        grid-row: 3;
+      }
+      .proc-banner {
+        grid-row: 4;
       }
       .num {
-        width: 20mm;
-        height: 20mm;
-        margin: 0 auto 2.5mm;
+        width: 14mm;
+        height: 14mm;
+        margin: 0;
         border: 3px solid var(--navy);
         display: flex;
         align-items: center;
         justify-content: center;
         font-family: "Cabinet Grotesk", system-ui, sans-serif;
         font-weight: 800;
-        font-size: 16px;
-        box-shadow: 4px 5px 0 0 var(--navy);
+        font-size: 13px;
+        box-shadow: 3px 3px 0 0 var(--navy);
+        flex-shrink: 0;
       }
       .step h3 {
-        font-size: 15px;
-        margin-bottom: 1.2mm;
+        font-size: 14px;
+        margin-bottom: 0.4mm;
       }
       .step p {
         color: #333;
         font-size: 11px;
-        line-height: 1.32;
+        line-height: 1.28;
         margin: 0;
       }
       .proc-banner {
         grid-column: 1 / -1;
-        padding: 4.2mm 7mm;
+        padding: 3.6mm 6mm;
         background: var(--pink);
         color: var(--navy);
         border: 3px solid var(--navy);
@@ -692,34 +778,53 @@
       .cta .inner {
         height: 100%;
         display: grid;
-        grid-template-columns: 84mm 1fr;
+        grid-template-columns: 72mm minmax(0, 1fr) 50mm;
         align-items: center;
-        gap: 16mm;
-        padding: 14mm 16mm 16mm 14mm;
+        gap: 8mm;
+        padding: 12mm 12mm 14mm 12mm;
         position: relative;
         z-index: 2;
         text-align: left;
       }
       .cta-face {
-        height: 154mm;
-        width: 84mm;
+        height: 158mm;
+        width: 72mm;
+      }
+      .cta-copy {
+        position: relative;
+        padding-right: 0;
+        z-index: 8;
       }
       .cta-mascot {
-        position: absolute;
-        width: 34mm;
-        bottom: 10mm;
-        right: 4mm;
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 50mm;
+        justify-self: end;
+        align-self: end;
+        margin-bottom: 8mm;
         z-index: 5;
         filter: drop-shadow(4px 5px 0 var(--navy));
+        pointer-events: none;
       }
       .cta h2 {
-        font-size: 52px;
+        font-size: 40px;
         line-height: 0.9;
       }
       .cta p {
-        max-width: 36ch;
-        font-size: 15px;
-        margin: 4mm 0 6mm;
+        max-width: 38ch;
+        font-size: 14px;
+        margin: 3.5mm 0 4mm;
+      }
+      .contacts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2.4mm;
+        max-width: 120mm;
+      }
+      a.contact {
+        text-decoration: none;
+        color: var(--navy);
       }
       .contact {
         display: inline-flex;
@@ -729,19 +834,57 @@
         color: var(--navy);
         border: 3px solid var(--navy);
         border-radius: 70% 30% 60% 40% / 40% 70% 30% 60%;
-        padding: 4.2mm 8mm;
+        padding: 2.8mm 5mm;
         font-weight: 700;
-        font-size: 14px;
+        font-size: 12px;
         box-shadow: 5px 6px 0 0 var(--navy);
-        margin: 1.5mm 1.5mm 0 0;
+        margin: 0;
+      }
+      .site-card {
+        display: block;
+        margin-top: 5.5mm;
+        background: var(--yellow);
+        border: 3px solid var(--navy);
+        border-radius: 10mm;
+        padding: 4mm 5mm;
+        box-shadow: 6px 6px 0 0 var(--navy);
+        text-decoration: none;
+        color: var(--navy);
+        max-width: 52ch;
+        transform: rotate(-1.2deg);
+      }
+      .site-card .label {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--magenta);
+      }
+      .site-card strong {
+        display: block;
+        font-family: "Cabinet Grotesk", system-ui, sans-serif;
+        font-size: 18px;
+        letter-spacing: -0.04em;
+        margin: 1mm 0 1.5mm;
+      }
+      .site-card p {
+        margin: 0;
+        font-size: 13px;
+        max-width: none;
       }
     </style>
   </head>
   <body>
-    <!-- 1 COVER: illustration + real share the same blob language -->
+    <!-- 1 COVER: real photo in the yellow, opposite the illustration -->
     <section class="sheet cover">
-      <div class="blob b1" style="width: 88mm; height: 88mm; background: #ffd23f; top: 10mm; left: 4mm"></div>
       <div class="inner">
+        <div class="duo-real-wrap">
+          <div class="plate blob b1"></div>
+          <figure class="goo-photo hero-mask duo-real">
+            <img class="av-smile" src="images/kit/kit-smile.jpg" alt="Bel" />
+          </figure>
+          <span class="float sticker goo" style="top: 10mm; right: -3mm; background: var(--magenta); color: white; transform: rotate(8deg)">eu de verdade</span>
+        </div>
         <div class="safe">
           <div class="logo" style="margin-bottom: 7mm">
             <span class="bel">Bel</span>
@@ -758,18 +901,10 @@
             belconteudos.com · @bel.conteudos
           </p>
         </div>
-        <div class="duo">
-          <div class="duo-illu">
-            <div class="plate b4"></div>
-            <img src="images/creator-bel-fullbody.png" alt="Creator Bel" />
-            <span class="float sticker pill" style="top: 22mm; left: -2mm; background: white; transform: rotate(-12deg)">#Content</span>
-          </div>
-          <figure class="goo-photo hero-mask duo-real">
-            <img class="av-smile" src="images/kit/kit-smile.jpg" alt="Bel em um restaurante" />
-          </figure>
-          <span class="tape" style="top: 10mm; left: 52mm; width: 28mm; transform: rotate(-26deg)"></span>
-          <span class="float sticker goo" style="top: 10mm; left: 88mm; background: var(--magenta); color: white; transform: rotate(8deg)">eu de verdade</span>
-          <span class="float sticker pill" style="bottom: 20mm; left: 58mm; background: var(--lime); transform: rotate(-8deg)">Reels</span>
+        <div class="duo-illu">
+          <img src="images/creator-bel-fullbody.png" alt="Creator Bel" />
+          <span class="float sticker pill" style="top: 18mm; left: -4mm; background: white; transform: rotate(-12deg)">#Content</span>
+          <span class="float sticker pill" style="bottom: 18mm; right: -2mm; background: var(--lime); transform: rotate(-8deg)">Reels</span>
         </div>
       </div>
       <div class="foot"><span>Media kit 2026</span><span>01 / 07</span></div>
@@ -791,7 +926,7 @@
           <figure class="goo-photo goo sobre-mascot">
             <img src="images/creator-bel-matcha.png" alt="Bel ilustrada com matcha" style="object-position: 50% 20%" />
           </figure>
-          <span class="tape" style="top: 28mm; left: 18mm; width: 22mm; transform: rotate(16deg)"></span>
+          <span class="tape" style="top: 26mm; left: 10mm; transform: rotate(16deg)">PROVADOR</span>
         </div>
         <div class="copy safe">
           <span class="kicker">Sobre mim</span>
@@ -825,7 +960,7 @@
             Exemplos de <span style="color: var(--magenta)">comunicação</span>
           </h2>
           <p style="margin: 0; max-width: 64ch; color: var(--muted); font-size: 13px; line-height: 1.4">
-            O avatar entra na conversa. Oferta, recado, unbox, review — o tom muda, a Bel continua a mesma.
+            O avatar entra na conversa. Oferta, recado, unboxing, review — o tom muda, a Bel continua a mesma.
           </p>
         </div>
         <div class="talk-grid">
@@ -854,13 +989,13 @@
             </div>
           </article>
           <article class="talk-card" style="background: #ffc1e3; transform: rotate(-1.6deg)">
-            <span class="chip" style="background: var(--lime)">unbox</span>
+            <span class="chip" style="background: var(--lime)">UNBOXING</span>
             <div class="talk-phone">
               <img class="av-beleza" src="images/kit/kit-beleza.jpg" alt="" />
               <span class="bubble">chegou!!!</span>
             </div>
             <div class="txt">
-              <p class="mini">Unbox</p>
+              <p class="mini">Unboxing</p>
               <h4>Abre comigo</h4>
               <p class="body">Papel, cheiro, textura. Sem mesa de estúdio.</p>
             </div>
@@ -932,32 +1067,62 @@
           <div class="steps">
             <div class="step">
               <div class="num goo" style="background: #ff9ad4; color: var(--navy)">01</div>
-              <h3>Briefing</h3>
-              <p>Entendo objetivos e voz da marca.</p>
+              <div>
+                <h3>Briefing</h3>
+                <p>Você me passa o produto, o tom e o recado. Eu devolvo o ângulo — o que a câmera mostra e o que a Bel fala.</p>
+              </div>
             </div>
             <div class="step">
               <div class="num squish" style="background: white">02</div>
-              <h3>Roteiro</h3>
-              <p>Crio um roteiro autêntico e estratégico.</p>
+              <div>
+                <h3>Roteiro</h3>
+                <p>Gancho nos 3 segundos, prova no meio, CTA no fim. Sem enrolação. Sem texto de anúncio.</p>
+              </div>
             </div>
             <div class="step">
               <div class="num goo-alt" style="background: var(--lime)">03</div>
-              <h3>Produção</h3>
-              <p>Gravo com luz, som e estética de qualidade.</p>
+              <div>
+                <h3>Produção</h3>
+                <p>iPhone 17 Pro Max em 4K, microfone externo, ring light e ambiente real. Luz de verdade, não filtro.</p>
+              </div>
             </div>
             <div class="step">
               <div class="num squish" style="background: #ffc1e3">04</div>
-              <h3>Edição</h3>
-              <p>Corto e finalizo no ritmo das plataformas.</p>
+              <div>
+                <h3>Edição</h3>
+                <p>Corte, ritmo e texto na tela. Entrego o arquivo pronto pra Reels, TikTok ou ads.</p>
+              </div>
             </div>
             <div class="step">
               <div class="num goo" style="background: white">05</div>
-              <h3>Entrega</h3>
-              <p>Envio os arquivos prontos para publicar.</p>
+              <div>
+                <h3>Entrega</h3>
+                <p>Arquivo bruto + editado. Direitos de uso comercial inclusos. Sem taxa extra pra anúncio pago.</p>
+              </div>
+            </div>
+          </div>
+          <div class="proc-extras">
+            <div class="proc-extra">
+              <p class="label">Câmera</p>
+              <img src="images/setup/iphone-17-pro-max.webp" alt="iPhone 17 Pro Max" />
+              <b>iPhone 17 Pro Max</b>
+              <p>4K, cor e estabilidade. A câmera que a campanha pede — no bolso, não no aluguel de estúdio.</p>
+            </div>
+            <div class="proc-extra">
+              <p class="label">Áudio</p>
+              <img src="images/setup/lark-m2.webp" alt="Hollyland Lark M2" />
+              <b>Hollyland Lark M2</b>
+              <p>Lapela de verdade. Voz nítida na rua, na pia ou no vento — o que o algoritmo escuta primeiro.</p>
+            </div>
+            <div class="proc-extra">
+              <p class="label">Luz</p>
+              <img src="images/setup/ringlight.webp" alt="Ringlight" />
+              <b>Ring light de luxo</b>
+              <p>Pele com glow, produto nítido, sombra no lugar. Zero cara de lâmpada de teto.</p>
             </div>
           </div>
           <div class="proc-banner">
-            <span>Prazo, briefing e roteiro a sério — arquivo pronto pra ads.</span>
+            <span>Briefing alinhado → roteiro → filmagem → edição → arquivo na sua mão. Direitos comerciais inclusos.</span>
             <span class="sticker pill" style="background: var(--lime); font-size: 11px; box-shadow: 3px 3px 0 var(--navy)">5 etapas · 1 criadora</span>
           </div>
         </div>
@@ -1016,7 +1181,7 @@
               <img class="av-beleza" src="images/kit/kit-beleza.jpg" alt="Ritual de beleza na loja" />
               <span class="play-dot" style="right: 3mm; bottom: 3mm"></span>
             </div>
-            <p class="mini">Unbox na gôndola</p>
+            <p class="mini">Unboxing na gôndola</p>
             <h3>Beleza real</h3>
             <p>Teste de produto na loja. Cheiro, textura, sem mesa de estúdio.</p>
           </article>
@@ -1034,31 +1199,33 @@
       <div class="foot"><span>Bel UGC · belconteudos.com</span><span>06 / 07</span></div>
     </section>
 
-    <!-- 7 CTA: face in the blob, mascot as stamp -->
+    <!-- 7 CTA: photo left, copy center, avatar on the other side -->
     <section class="sheet cta">
       <div class="blob b3" style="width: 56mm; height: 56mm; background: #ffd23f; bottom: 10mm; right: 8mm"></div>
       <div class="inner">
-        <div style="position: relative">
-          <figure class="goo-photo hero-mask cta-face">
-            <img class="av-smile" src="images/kit/kit-smile.jpg" alt="Bel" />
-          </figure>
-          <img class="cta-mascot" src="images/creator-bel-fullbody.png" alt="" />
-        </div>
-        <div class="safe">
-          <div class="logo" style="margin-bottom: 6mm">
+        <figure class="goo-photo hero-mask cta-face">
+          <img class="av-smile" src="images/kit/kit-smile.jpg" alt="Bel" />
+        </figure>
+        <div class="cta-copy safe">
+          <div class="logo" style="margin-bottom: 5mm">
             <span class="bel">Bel</span>
             <span class="ugc">UGC</span>
           </div>
           <h2>Vamos Criar<br />Juntos?</h2>
           <p>Sua marca merece conteúdo que gera conexão de verdade. Me chama e vamos montar a próxima campanha.</p>
-          <div>
-            <span class="contact" style="transform: rotate(-3deg)">WhatsApp +55 11 96382-6929</span>
-            <span class="contact goo" style="transform: rotate(4deg); background: var(--lime)">@bel.conteudos</span>
+          <div class="contacts">
+            <a class="contact" href="https://wa.me/5511963826929?text=Oi%20Bel!%20Vi%20o%20media%20kit%20e%20quero%20criar%20juntos.">WhatsApp · 11 96382-6929</a>
+            <a class="contact goo" style="background: var(--lime)" href="https://instagram.com/bel.conteudos">Instagram · @bel.conteudos</a>
+            <a class="contact" style="background: white" href="https://tiktok.com/@bel.conteudos">TikTok · @bel.conteudos</a>
+            <a class="contact goo-alt" style="background: var(--pink)" href="https://www.belconteudos.com/">Site · belconteudos.com</a>
           </div>
-          <p style="margin-top: 7mm; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; font-size: 12px">
-            belconteudos.com · Instagram · TikTok
-          </p>
+          <a class="site-card" href="https://www.belconteudos.com/">
+            <span class="label">No site</span>
+            <strong>Todos os vídeos, valores e detalhes</strong>
+            <p>O media kit é o recado. Em belconteudos.com você vê o trabalho completo, os pacotes e como a gente começa.</p>
+          </a>
         </div>
+        <img class="cta-mascot" src="images/creator-bel-fullbody.png" alt="" />
       </div>
       <div class="foot"><span>© 2026 Bel UGC</span><span>07 / 07</span></div>
     </section>

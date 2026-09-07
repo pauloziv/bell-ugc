@@ -27,14 +27,14 @@ const FORMATS = [
     stickerBg: "bg-yellow",
   },
   {
-    kicker: "Unbox",
+    kicker: "Unboxing",
     title: "Abre comigo (unboxing)",
     bubble: "chegou!!!",
     copy: "Papel, cheiro, textura. Sem mesa de estúdio.",
     bg: "bg-[#FFC1E3]",
     tilt: "-rotate-2",
     avatar: "/images/creator-bel-fullbody.png",
-    sticker: "unbox",
+    sticker: "unboxing",
     stickerBg: "bg-lime",
     contain: true,
   },
@@ -64,7 +64,7 @@ export default function UgcFormats() {
           Exemplos de <span className="text-magenta">comunicação</span>
         </h3>
         <p className="mt-3 max-w-[52ch] pr-[7.25rem] text-muted md:pr-0">
-          O avatar entra na conversa. Oferta, recado, unbox, review — o tom muda, a Bel continua a mesma.
+          O avatar entra na conversa. Oferta, recado, unboxing, review — o tom muda, a Bel continua a mesma.
         </p>
       </div>
 
