@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Play, Stamp } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "framer-motion";
+import { createPortal } from "react-dom";
 import { useEffect, useState, type ReactNode } from "react";
 import { parseYouTubeId, youtubeEmbedSrc } from "@/lib/youtube";
 
@@ -94,7 +95,7 @@ export default function KitCases({
   return (
     <section
       id={id}
-      className="relative overflow-x-clip px-4 py-10 scroll-mt-28 md:px-8 md:py-24"
+      className="relative px-4 py-10 scroll-mt-28 md:px-8 md:py-24"
     >
       <div className="pointer-events-none absolute -top-8 -left-12 h-40 w-40 bg-yellow/40 blob blur-xl" />
       <div className="pointer-events-none absolute top-20 -right-10 h-36 w-36 bg-magenta/20 blob-slow blur-xl" />
@@ -117,7 +118,7 @@ export default function KitCases({
           </p>
         </div>
 
-        <div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pt-6 pb-10 [-ms-overflow-style:none] [scrollbar-width:none] md:grid md:grid-cols-4 md:overflow-visible md:pt-8 md:pb-6 [&::-webkit-scrollbar]:hidden">
+        <div className="kit-phone-row mt-10 flex snap-x snap-mandatory gap-5 pt-6 pb-10 md:grid md:grid-cols-4 md:overflow-visible md:overscroll-auto md:pt-8 md:pb-6">
           {CASES.map((c, i) => (
             <motion.article
               key={c.name}
@@ -189,34 +190,46 @@ export default function KitCases({
         </div>
       </div>
 
-      {play && playId ? (
-        <div className="fan-player is-open" role="dialog" aria-modal="true">
-          <button
-            type="button"
-            className="fan-backdrop is-open"
-            aria-label="Fechar vídeo"
-            onClick={() => setPlay(null)}
-          />
-          <div className="fan-player-frame relative z-10">
-            <button
-              type="button"
-              className="absolute -top-3 -right-3 z-20 flex h-11 w-11 items-center justify-center rounded-full border-2 border-navy bg-white text-navy"
-              aria-label="Fechar vídeo"
-              onClick={() => setPlay(null)}
-            >
-              <span className="font-display text-lg font-extrabold">×</span>
-            </button>
-            <iframe
-              src={youtubeEmbedSrc(playId)}
-              title="Case UGC"
-              allow="autoplay; encrypted-media; picture-in-picture"
-              allowFullScreen
-              referrerPolicy="strict-origin-when-cross-origin"
-              className="h-full w-full border-0"
-            />
-          </div>
-        </div>
-      ) : null}
+      {play && playId
+        ? createPortal(
+            <>
+              <button
+                type="button"
+                className="fan-backdrop is-open"
+                aria-label="Fechar vídeo"
+                onClick={() => setPlay(null)}
+              />
+              <div
+                className="fan-player is-open"
+                role="dialog"
+                aria-modal="true"
+                onClick={() => setPlay(null)}
+              >
+                <div
+                  className="fan-player-frame"
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  <button
+                    type="button"
+                    className="absolute top-3 right-3 z-20 flex h-11 w-11 items-center justify-center rounded-full border-2 border-navy bg-white text-navy"
+                    aria-label="Fechar vídeo"
+                    onClick={() => setPlay(null)}
+                  >
+                    <span className="font-display text-lg font-extrabold">×</span>
+                  </button>
+                  <iframe
+                    src={youtubeEmbedSrc(playId)}
+                    title="Case UGC"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowFullScreen
+                    referrerPolicy="strict-origin-when-cross-origin"
+                  />
+                </div>
+              </div>
+            </>,
+            document.body,
+          )
+        : null}
     </section>
   );
 }

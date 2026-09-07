@@ -68,7 +68,7 @@ export default function UgcFormats() {
         </p>
       </div>
 
-      <div className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto pt-12 pb-10 md:grid md:grid-cols-4 md:overflow-visible md:pb-4">
+      <div className="kit-phone-row mt-10 flex snap-x snap-mandatory gap-6 pt-12 pb-10 md:grid md:grid-cols-4 md:overflow-visible md:overscroll-auto md:pb-4">
         {FORMATS.map((f, i) => (
           <motion.article
             key={f.title}

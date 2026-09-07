@@ -289,6 +289,21 @@
   border: 0;
   border-radius: 1.35rem;
   overflow: hidden;
+  background: #111;
+}
+
+.kit-phone-row {
+  overflow-x: auto;
+  overflow-y: clip;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: auto;
+  touch-action: pan-x pan-y;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.kit-phone-row::-webkit-scrollbar {
+  display: none;
 }
 
 @keyframes kit-wiggle {
