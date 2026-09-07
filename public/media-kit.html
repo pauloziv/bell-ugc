@@ -264,6 +264,9 @@
       .av-smile {
         object-position: 50% 18%;
       }
+      .av-hero {
+        object-position: 50% 18%;
+      }
       .av-loja {
         object-position: 50% 8%;
       }
@@ -382,12 +385,16 @@
       }
       .sobre-mascot {
         position: absolute;
-        right: 2mm;
-        bottom: 4mm;
-        width: 48mm;
-        height: 56mm;
+        right: 0;
+        bottom: 2mm;
+        width: 56mm;
+        height: 64mm;
         z-index: 5;
         background: var(--yellow);
+      }
+      .sobre-mascot img {
+        object-fit: contain;
+        object-position: center bottom;
       }
       .sobre .copy {
         z-index: 8;
@@ -922,7 +929,7 @@
         <div class="duo-real-wrap">
           <div class="plate blob b1"></div>
           <figure class="goo-photo hero-mask duo-real">
-            <img class="av-smile" src="images/kit/kit-smile.jpg" alt="Bel" />
+            <img class="av-hero" src="images/creator-bel-hero.jpg" alt="Creator Bel" />
           </figure>
           <span class="float sticker goo" style="top: 10mm; right: -3mm; background: var(--magenta); color: white; transform: rotate(8deg)">eu de verdade</span>
         </div>
@@ -965,7 +972,7 @@
             <span class="sticker pill cap" style="background: white; font-size: 10px; padding: 4px 10px">Estética</span>
           </figure>
           <figure class="goo-photo goo sobre-mascot">
-            <img src="images/creator-bel-matcha.png" alt="Bel ilustrada com matcha" style="object-position: 50% 20%" />
+            <img src="images/familia-avatar.webp" alt="Bel, o Pietro e a família" />
           </figure>
           <span class="tape" style="top: 26mm; left: 10mm; transform: rotate(16deg)">PROVADOR</span>
         </div>
