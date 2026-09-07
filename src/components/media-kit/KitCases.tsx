@@ -44,8 +44,8 @@ const CASES: CaseCard[] = [
   {
     name: "Skelt",
     kicker: "Protetor solar · capa cinema",
-    desc: "Praia, spray na pele, UGC real. Capa em 16:9 letterbox — teste do recorte cinematográfico.",
-    poster: "/images/reels/skelt.webp",
+    desc: "Bel + Skelt na praia. Capa cinema, frasco Summer Vibes, UGC de verão.",
+    poster: "/images/reels/skelt-cinema.webp",
     logo: "/images/brands/skelt.svg",
     plate: "bg-[#121018]",
     video: "https://www.youtube.com/embed/DhSDg0Jk1jY",
@@ -118,7 +118,7 @@ export default function KitCases({
           </h2>
           <p className="mt-3 max-w-[52ch] text-muted">
             {subtitle ??
-              "Sander, Creamy e Skelt são cases reais — toca no play. Skelt está com capa cinema. Névoa é amostra de formato."}
+              "Sander, Creamy e Skelt são cases reais — toca no play. Skelt tem capa cinema da Bel. Névoa é amostra de formato."}
           </p>
         </div>
 
@@ -150,10 +150,17 @@ export default function KitCases({
                   {c.poster ? (
                     <Image
                       src={c.poster}
-                      alt={c.name}
+                      alt={
+                        c.look === "cinematic"
+                          ? "Capa cinema Bel + Skelt"
+                          : c.name
+                      }
                       fill
                       sizes="280px"
-                      className="object-cover"
+                      unoptimized={c.look === "cinematic"}
+                      className={
+                        c.look === "cinematic" ? "object-contain" : "object-cover"
+                      }
                     />
                   ) : (
                     <div

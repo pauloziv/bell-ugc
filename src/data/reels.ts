@@ -55,7 +55,7 @@ export const REEL_CARDS: ReelCard[] = [
   },
   {
     slug: "skelt",
-    imgUrl: "/images/reels/skelt.webp",
+    imgUrl: "/images/reels/skelt-cinema.webp",
     alt: "UGC para Skelt protetor solar",
     label: "Skelt",
     views: "",

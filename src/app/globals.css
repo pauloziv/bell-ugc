@@ -363,10 +363,12 @@
 }
 
 .cine-phone {
-  border-radius: 1.15rem;
-  border: 1px solid rgba(201, 162, 39, 0.45);
+  border-radius: 0.4rem;
+  border: 2px solid #c9a227;
   background: #121018;
-  box-shadow: 0 28px 56px -24px rgba(0, 0, 0, 0.65);
+  box-shadow:
+    0 28px 56px -24px rgba(0, 0, 0, 0.65),
+    inset 0 0 0 1px rgba(18, 16, 24, 0.8);
 }
 
 .cine-grain {
