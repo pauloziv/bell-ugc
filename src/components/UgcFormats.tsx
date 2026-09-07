@@ -56,14 +56,14 @@ export default function UgcFormats() {
 
   return (
     <div className="relative mt-16 md:mt-20">
-      <div className="pr-[7.25rem] md:pr-0">
+      <div>
         <span className="text-xs font-medium tracking-[0.2em] text-magenta uppercase">
           Como eu falo
         </span>
         <h3 className="headline-1 mt-2 font-display font-extrabold">
           Exemplos de <span className="text-magenta">comunicação</span>
         </h3>
-        <p className="mt-3 max-w-[52ch] text-muted">
+        <p className="mt-3 max-w-[52ch] pr-[7.25rem] text-muted md:pr-0">
           O avatar entra na conversa. Oferta, recado, unbox, review — o tom muda, a Bel continua a mesma.
         </p>
       </div>

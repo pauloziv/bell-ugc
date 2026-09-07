@@ -325,7 +325,7 @@
   white-space: nowrap;
   line-height: 0.95;
   letter-spacing: -0.055em;
-  font-size: clamp(1.35rem, 7vw + 0.2rem, 4.5rem);
+  font-size: clamp(1.2rem, 6.3vw + 0.15rem, 4.5rem);
 }
 
 .headline-card {
@@ -355,35 +355,35 @@
 }
 
 .kit-fan-card:nth-child(1) {
-  --fan-x: -28%;
+  --fan-x: -32%;
   --fan-y: 9%;
   --fan-r: -16deg;
   --fan-s: 0.9;
-  --fan-z: 1;
+  --fan-z: 3;
 }
 
 .kit-fan-card:nth-child(2) {
-  --fan-x: -10%;
+  --fan-x: -12%;
   --fan-y: 2%;
   --fan-r: -6deg;
+  --fan-s: 0.97;
+  --fan-z: 4;
+}
+
+.kit-fan-card:nth-child(3) {
+  --fan-x: 12%;
+  --fan-y: 2%;
+  --fan-r: 6deg;
   --fan-s: 0.97;
   --fan-z: 2;
 }
 
-.kit-fan-card:nth-child(3) {
-  --fan-x: 10%;
-  --fan-y: 2%;
-  --fan-r: 6deg;
-  --fan-s: 0.97;
-  --fan-z: 3;
-}
-
 .kit-fan-card:nth-child(4) {
-  --fan-x: 28%;
+  --fan-x: 32%;
   --fan-y: 9%;
   --fan-r: 16deg;
   --fan-s: 0.9;
-  --fan-z: 4;
+  --fan-z: 1;
 }
 
 @media (hover: hover) and (pointer: fine) {

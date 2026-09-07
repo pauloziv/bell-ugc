@@ -24,10 +24,8 @@ export default function Hero() {
             <span className="mb-4 inline-block -rotate-2 rounded-full border-2 border-navy bg-lime px-4 py-1.5 text-xs font-medium tracking-[0.2em] uppercase">
               Disponível para parcerias
             </span>
-            <h1 className="mb-4 font-display text-5xl leading-[0.92] font-extrabold tracking-tighter sm:text-6xl md:text-7xl xl:text-8xl">
-              Oi, eu sou
-              <br />
-              <span className="text-magenta">Creator Bel</span>
+            <h1 className="headline-1-lg mb-4 font-display font-extrabold">
+              Oi, eu sou <span className="text-magenta">Creator Bel</span>
             </h1>
             <p className="mb-6 max-w-[42ch] text-lg leading-relaxed text-muted md:text-xl">
               Criadora de Conteúdo UGC — transformo produtos em histórias autênticas
