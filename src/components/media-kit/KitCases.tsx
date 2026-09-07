@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Play, Stamp } from "@phosphor-icons/react";
+import { Play } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "framer-motion";
 import { createPortal } from "react-dom";
 import { useEffect, useState, type ReactNode } from "react";
@@ -11,8 +11,8 @@ type CaseCard = {
   name: string;
   kicker: string;
   desc: string;
-  sample?: boolean;
   poster?: string;
+  posterAlt?: string;
   plate: string;
   video?: string;
   logo?: string;
@@ -44,8 +44,9 @@ const CASES: CaseCard[] = [
   {
     name: "Skelt",
     kicker: "Protetor solar · capa cinema",
-    desc: "Bel + Skelt na praia. Capa cinema, frasco Summer Vibes, UGC de verão.",
-    poster: "/images/reels/skelt-cinema.webp",
+    desc: "Bel de verdade na capa — foto dela, praia cinema, frasco Summer Vibes.",
+    poster: "/images/reels/skelt-bel.webp",
+    posterAlt: "Capa cinema: foto da Bel com Skelt na praia",
     logo: "/images/brands/skelt.svg",
     plate: "bg-[#121018]",
     video: "https://www.youtube.com/embed/DhSDg0Jk1jY",
@@ -53,11 +54,14 @@ const CASES: CaseCard[] = [
     look: "cinematic",
   },
   {
-    name: "Névoa",
-    kicker: "Spray no pulso",
-    desc: "Body mist, cheiro e o “passa aqui”. Unboxing íntimo — banheiro real, sem pose de campanha.",
-    sample: true,
-    plate: "bg-[#FFC1E3] text-navy",
+    name: "Eduardo Ferrari",
+    kicker: "Salão · corte que dura",
+    desc: "Loiro, camadas e conversa de cadeira. UGC real no salão — toca no play.",
+    poster: "/images/reels/ferrari.webp",
+    posterAlt: "Bel no Salão Eduardo Ferrari",
+    logo: "/images/brands/eduardo-ferrari.svg",
+    plate: "bg-[#F4E4C1]",
+    video: "https://www.youtube.com/embed/vcGhZnzwMe4",
     tilt: "rotate-3",
   },
 ];
@@ -118,7 +122,7 @@ export default function KitCases({
           </h2>
           <p className="mt-3 max-w-[52ch] text-muted">
             {subtitle ??
-              "Sander, Creamy e Skelt são cases reais — toca no play. Skelt tem capa cinema da Bel. Névoa é amostra de formato."}
+              "Sander, Creamy, Skelt e Eduardo Ferrari são cases reais — toca no play. Skelt é capa cinema com foto da Bel."}
           </p>
         </div>
 
@@ -150,11 +154,7 @@ export default function KitCases({
                   {c.poster ? (
                     <Image
                       src={c.poster}
-                      alt={
-                        c.look === "cinematic"
-                          ? "Capa cinema Bel + Skelt"
-                          : c.name
-                      }
+                      alt={c.posterAlt ?? c.name}
                       fill
                       sizes="280px"
                       unoptimized={c.look === "cinematic"}
@@ -174,12 +174,6 @@ export default function KitCases({
                       </span>
                     </div>
                   )}
-                  {c.sample ? (
-                    <span className="absolute top-3 left-3 z-10 inline-flex items-center gap-1 rounded-full border-2 border-navy bg-yellow px-2.5 py-1 font-display text-[10px] font-extrabold text-navy uppercase">
-                      <Stamp weight="bold" size={12} />
-                      Amostra
-                    </span>
-                  ) : null}
                   {c.look === "cinematic" ? <span className="cine-grain" aria-hidden /> : null}
                   {c.video ? (
                     <button

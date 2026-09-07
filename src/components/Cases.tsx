@@ -44,6 +44,15 @@ const CASES: Brand[] = [
     knockout: false,
   },
   {
+    name: "Eduardo Ferrari",
+    logo: "/images/brands/eduardo-ferrari.svg",
+    result: "Corte no salão",
+    desc: "Loiro, camadas e conversa de cadeira. UGC real no Salão Eduardo Ferrari.",
+    tilt: "rotate-[-3deg]",
+    plate: "bg-[#F4E4C1]",
+    knockout: false,
+  },
+  {
     name: "Dove",
     logo: "/images/brands/dove.png",
     result: "Cuidado real",

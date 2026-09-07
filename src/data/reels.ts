@@ -55,7 +55,7 @@ export const REEL_CARDS: ReelCard[] = [
   },
   {
     slug: "skelt",
-    imgUrl: "/images/reels/skelt-cinema.webp",
+    imgUrl: "/images/reels/skelt-bel.webp",
     alt: "UGC para Skelt protetor solar",
     label: "Skelt",
     views: "",
@@ -63,6 +63,18 @@ export const REEL_CARDS: ReelCard[] = [
       "skelt",
       "ForBiggerJoyrides.mp4",
       "https://youtube.com/shorts/DhSDg0Jk1jY",
+    ),
+  },
+  {
+    slug: "ferrari",
+    imgUrl: "/images/reels/ferrari.webp",
+    alt: "UGC no Salão Eduardo Ferrari",
+    label: "Eduardo Ferrari",
+    views: "",
+    videoUrl: videoUrl(
+      "ferrari",
+      "ForBiggerJoyrides.mp4",
+      "https://youtube.com/shorts/vcGhZnzwMe4",
     ),
   },
   {
