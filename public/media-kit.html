@@ -521,26 +521,38 @@
       .ugc {
         background: var(--mint);
       }
+      .ugc .pad {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
       .cards3 {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
         gap: 8mm;
-        margin-top: 7mm;
+        margin-top: 4mm;
+        flex: 1;
+        min-height: 132mm;
+        align-items: stretch;
       }
       .card {
         background: white;
         border: 3px solid var(--navy);
         border-radius: 14mm;
-        padding: 0 0 6mm;
-        min-height: 86mm;
+        padding: 0 0 5mm;
+        height: 100%;
         box-shadow: 8px 9px 0 0 var(--navy);
         position: relative;
         z-index: 3;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
       }
       .card-pic {
         width: calc(100% - 8mm);
-        height: 38mm;
+        flex: 1;
+        min-height: 96mm;
         margin: 4mm 4mm 3.5mm;
         border: 3px solid var(--navy);
         border-radius: 8mm;
@@ -773,104 +785,131 @@
       }
 
       .cta {
-        background: linear-gradient(118deg, #ffd23f 0%, #ffb4de 38%, #c8ff8a 72%, #7bed4f 100%);
+        background: var(--cream);
       }
       .cta .inner {
         height: 100%;
         display: grid;
-        grid-template-columns: 72mm minmax(0, 1fr) 50mm;
+        grid-template-columns: 92mm minmax(0, 1fr);
         align-items: center;
-        gap: 8mm;
-        padding: 12mm 12mm 14mm 12mm;
+        column-gap: 14mm;
+        padding: 12mm 16mm 14mm 12mm;
         position: relative;
         z-index: 2;
         text-align: left;
       }
+      .cta .inner > * {
+        min-width: 0;
+      }
       .cta-face {
-        height: 158mm;
-        width: 72mm;
+        height: 168mm;
+        width: 88mm;
+        max-width: 88mm;
+        justify-self: start;
+        z-index: 2;
       }
       .cta-copy {
         position: relative;
-        padding-right: 0;
+        padding: 2mm 38mm 4mm 2mm;
         z-index: 8;
       }
       .cta-mascot {
-        position: relative;
-        top: auto;
-        right: auto;
-        width: 50mm;
-        justify-self: end;
-        align-self: end;
-        margin-bottom: 8mm;
-        z-index: 5;
-        filter: drop-shadow(4px 5px 0 var(--navy));
+        position: absolute;
+        right: 0;
+        top: 4mm;
+        bottom: auto;
+        width: 32mm;
+        height: auto;
+        max-height: 78mm;
+        object-fit: contain;
+        object-position: bottom center;
+        z-index: 4;
+        filter: drop-shadow(3px 4px 0 var(--navy));
         pointer-events: none;
       }
       .cta h2 {
-        font-size: 40px;
-        line-height: 0.9;
+        font-size: 48px;
+        line-height: 0.88;
+        margin: 2mm 0 3mm;
       }
-      .cta p {
-        max-width: 38ch;
-        font-size: 14px;
-        margin: 3.5mm 0 4mm;
+      .cta .lead {
+        max-width: 28ch;
+        font-size: 15px;
+        line-height: 1.35;
+        margin: 0 0 6mm;
       }
-      .contacts {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2.4mm;
-        max-width: 120mm;
-      }
-      a.contact {
-        text-decoration: none;
-        color: var(--navy);
-      }
-      .contact {
+      .cta-wa {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        background: white;
+        background: var(--lime);
         color: var(--navy);
+        text-decoration: none;
         border: 3px solid var(--navy);
-        border-radius: 70% 30% 60% 40% / 40% 70% 30% 60%;
-        padding: 2.8mm 5mm;
-        font-weight: 700;
-        font-size: 12px;
+        border-radius: 999px;
+        padding: 3.4mm 6.5mm;
+        font-family: "Cabinet Grotesk", system-ui, sans-serif;
+        font-weight: 800;
+        font-size: 15px;
         box-shadow: 5px 6px 0 0 var(--navy);
-        margin: 0;
       }
-      .site-card {
-        display: block;
-        margin-top: 5.5mm;
-        background: var(--yellow);
-        border: 3px solid var(--navy);
-        border-radius: 10mm;
-        padding: 4mm 5mm;
-        box-shadow: 6px 6px 0 0 var(--navy);
+      .cta-dir {
+        display: grid;
+        max-width: 92mm;
+        margin-top: 9mm;
+      }
+      .cta-dir a {
+        display: grid;
+        grid-template-columns: 28mm 1fr;
+        align-items: baseline;
+        gap: 3mm;
+        padding: 3.2mm 0;
+        border-top: 2.5px solid var(--navy);
         text-decoration: none;
         color: var(--navy);
-        max-width: 52ch;
-        transform: rotate(-1.2deg);
       }
-      .site-card .label {
-        font-size: 9px;
+      .cta-dir a:last-child {
+        border-bottom: 2.5px solid var(--navy);
+      }
+      .cta-dir span {
+        font-size: 10px;
         font-weight: 700;
         letter-spacing: 0.16em;
         text-transform: uppercase;
         color: var(--magenta);
       }
-      .site-card strong {
+      .cta-dir b {
+        font-family: "Cabinet Grotesk", system-ui, sans-serif;
+        font-weight: 800;
+        font-size: 16px;
+        letter-spacing: -0.04em;
+      }
+      .cta-note {
+        display: block;
+        margin-top: 8mm;
+        max-width: 36ch;
+        background: var(--yellow);
+        border: 3px solid var(--navy);
+        border-radius: 8mm;
+        padding: 3.6mm 5mm;
+        text-decoration: none;
+        color: var(--navy);
+        box-shadow: 4px 5px 0 0 var(--navy);
+      }
+      .cta-note .label {
+        display: block;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--magenta);
+        margin-bottom: 1mm;
+      }
+      .cta-note strong {
         display: block;
         font-family: "Cabinet Grotesk", system-ui, sans-serif;
         font-size: 18px;
         letter-spacing: -0.04em;
-        margin: 1mm 0 1.5mm;
-      }
-      .site-card p {
-        margin: 0;
-        font-size: 13px;
-        max-width: none;
+        line-height: 1.1;
       }
     </style>
   </head>
@@ -1024,23 +1063,23 @@
       <div class="pad">
         <div class="safe" style="text-align: center">
           <span class="kicker">Entenda o conceito</span>
-          <h2 style="font-size: 40px; margin: 2mm 0 3mm">O que é <span style="color: var(--magenta)">UGC?</span></h2>
+          <h2 style="font-size: 34px; margin: 1.5mm 0 2mm">O que é <span style="color: var(--magenta)">UGC?</span></h2>
           <p style="max-width: 68ch; margin: 0 auto; color: var(--muted); font-size: 14px; line-height: 1.45">
             Conteúdo Gerado por Usuário. Não é anúncio de agência — é aquele recado no grupo da família, só que com roteiro.
           </p>
         </div>
         <div class="cards3">
-          <article class="card" style="transform: rotate(-2.2deg); background: var(--yellow)">
+          <article class="card" style="transform: rotate(-1.1deg); background: var(--yellow)">
             <div class="card-pic"><img class="av-smile" src="images/kit/kit-smile.jpg" alt="" /></div>
             <h3>Autenticidade</h3>
             <p>Conteúdo genuíno que parece uma recomendação de amiga, não uma propaganda tradicional.</p>
           </article>
-          <article class="card" style="background: white; transform: rotate(1.4deg)">
+          <article class="card" style="background: white; transform: rotate(0.7deg)">
             <div class="card-pic"><img class="av-loja" src="images/kit/kit-loja.jpg" alt="" /></div>
             <h3>Engajamento</h3>
             <p>Vídeos feitos para parar o scroll e gerar comentários, salvamentos e compartilhamentos.</p>
           </article>
-          <article class="card" style="transform: rotate(2deg); background: #ffc1e3">
+          <article class="card" style="transform: rotate(1.1deg); background: #ffc1e3">
             <div class="card-pic"><img class="av-beleza" src="images/kit/kit-beleza.jpg" alt="" /></div>
             <h3>Conversão</h3>
             <p>Conteúdo pensado em cada etapa do funil, direto ao ponto e com CTA que converte.</p>
@@ -1199,33 +1238,30 @@
       <div class="foot"><span>Bel UGC · belconteudos.com</span><span>06 / 07</span></div>
     </section>
 
-    <!-- 7 CTA: photo left, copy center, avatar on the other side -->
+    <!-- 7 CTA: photo left, recado right, avatar as stamp -->
     <section class="sheet cta">
-      <div class="blob b3" style="width: 56mm; height: 56mm; background: #ffd23f; bottom: 10mm; right: 8mm"></div>
+      <div class="blob b3" style="width: 48mm; height: 48mm; background: #ffd23f; bottom: 12mm; right: 10mm"></div>
+      <div class="blob b2" style="width: 28mm; height: 28mm; background: #7bed4f; top: 10mm; right: 28mm"></div>
       <div class="inner">
         <figure class="goo-photo hero-mask cta-face">
           <img class="av-smile" src="images/kit/kit-smile.jpg" alt="Bel" />
         </figure>
         <div class="cta-copy safe">
-          <div class="logo" style="margin-bottom: 5mm">
-            <span class="bel">Bel</span>
-            <span class="ugc">UGC</span>
+          <img class="cta-mascot" src="images/creator-bel-fullbody.png" alt="" />
+          <span class="kicker">Disponível para parcerias</span>
+          <h2>Me chama.</h2>
+          <p class="lead">Manda o produto. Eu devolvo o ângulo. Sem reunião de uma hora.</p>
+          <a class="cta-wa" href="https://wa.me/5511963826929?text=Oi%20Bel!%20Vi%20o%20media%20kit%20e%20quero%20criar%20juntos.">WhatsApp · 11 96382-6929</a>
+          <div class="cta-dir">
+            <a href="https://instagram.com/bel.conteudos"><span>Instagram</span><b>@bel.conteudos</b></a>
+            <a href="https://tiktok.com/@bel.conteudos"><span>TikTok</span><b>@bel.conteudos</b></a>
+            <a href="https://www.belconteudos.com/"><span>Site</span><b>belconteudos.com</b></a>
           </div>
-          <h2>Vamos Criar<br />Juntos?</h2>
-          <p>Sua marca merece conteúdo que gera conexão de verdade. Me chama e vamos montar a próxima campanha.</p>
-          <div class="contacts">
-            <a class="contact" href="https://wa.me/5511963826929?text=Oi%20Bel!%20Vi%20o%20media%20kit%20e%20quero%20criar%20juntos.">WhatsApp · 11 96382-6929</a>
-            <a class="contact goo" style="background: var(--lime)" href="https://instagram.com/bel.conteudos">Instagram · @bel.conteudos</a>
-            <a class="contact" style="background: white" href="https://tiktok.com/@bel.conteudos">TikTok · @bel.conteudos</a>
-            <a class="contact goo-alt" style="background: var(--pink)" href="https://www.belconteudos.com/">Site · belconteudos.com</a>
-          </div>
-          <a class="site-card" href="https://www.belconteudos.com/">
+          <a class="cta-note" href="https://www.belconteudos.com/">
             <span class="label">No site</span>
-            <strong>Todos os vídeos, valores e detalhes</strong>
-            <p>O media kit é o recado. Em belconteudos.com você vê o trabalho completo, os pacotes e como a gente começa.</p>
+            <strong>Todos os vídeos, valores e detalhes.</strong>
           </a>
         </div>
-        <img class="cta-mascot" src="images/creator-bel-fullbody.png" alt="" />
       </div>
       <div class="foot"><span>© 2026 Bel UGC</span><span>07 / 07</span></div>
     </section>
