@@ -94,7 +94,7 @@ export default function Process() {
           <span className="text-xs font-medium tracking-[0.2em] text-magenta uppercase">
             Como eu trabalho
           </span>
-          <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight md:text-6xl">
+          <h2 className="headline-1 mt-3 font-display font-extrabold">
             Processo <span className="text-magenta">Criativo</span>
           </h2>
         </div>
@@ -154,7 +154,7 @@ export default function Process() {
                     <p className="font-display text-5xl font-extrabold tracking-tighter">
                       {step.num}
                     </p>
-                    <h3 className="mt-2 font-display text-3xl font-extrabold">
+                    <h3 className="headline-card mt-2 font-display text-3xl font-extrabold">
                       {step.title}
                     </h3>
                     <p className="mt-3 max-w-[22ch] text-sm leading-relaxed opacity-90">
@@ -232,7 +232,7 @@ export default function Process() {
                   >
                     {item.num}
                   </motion.div>
-                  <h3 className="mb-2 font-display text-lg font-bold">{item.title}</h3>
+                  <h3 className="headline-card mb-2 font-display text-lg font-bold">{item.title}</h3>
                   <p className="text-sm text-muted">{item.desc}</p>
                   <span
                     className={`mt-3 h-1.5 rounded-full transition-all duration-300 ${

@@ -108,9 +108,8 @@ export default function Setup() {
               VIP set
             </span>
           </div>
-          <h2 className="mt-3 max-w-[18ch] font-display text-4xl font-extrabold tracking-tight md:text-6xl">
-            Kit de última geração.{" "}
-            <span className="text-magenta">Sem cara de improviso.</span>
+          <h2 className="headline-1 mt-3 font-display font-extrabold">
+            Kit sem cara de <span className="text-magenta">improviso.</span>
           </h2>
           <p className="mt-4 max-w-[54ch] text-base leading-relaxed text-muted md:text-lg">
             Imagem, luz, áudio e cenário no nível de campanha. A marca não aluga
@@ -139,7 +138,7 @@ export default function Setup() {
                   {item.tag}
                 </span>
               </div>
-              <h3 className="font-display text-2xl font-extrabold tracking-tight md:text-3xl">
+              <h3 className="headline-card font-display text-[clamp(1.05rem,4.2vw,1.875rem)] font-extrabold tracking-tight">
                 {item.name}
               </h3>
               <p

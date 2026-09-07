@@ -40,7 +40,7 @@ export default async function Platforms() {
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-magenta">
             Onde eu crio
           </span>
-          <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight mt-3">
+          <h2 className="headline-1 font-display font-extrabold mt-3">
             Plataformas <span className="text-magenta">Foco</span>
           </h2>
         </div>

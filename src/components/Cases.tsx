@@ -217,7 +217,7 @@ export default function Cases() {
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-magenta">
             Quem confia em mim
           </span>
-          <h2 className="font-display font-extrabold text-4xl md:text-6xl tracking-tight mt-3">
+          <h2 className="headline-1 font-display font-extrabold mt-3">
             Marcas que <span className="text-magenta">já criaram</span> comigo
           </h2>
           <p className="text-muted mt-3 max-w-[50ch]">
@@ -236,7 +236,7 @@ export default function Cases() {
               <p className="text-xs uppercase tracking-[0.2em] text-magenta font-medium">
                 {active.result}
               </p>
-              <h3 className="font-display font-bold text-2xl md:text-3xl mt-1">
+              <h3 className="headline-card font-display font-bold text-2xl md:text-3xl mt-1">
                 {active.name}
               </h3>
               <p className="text-muted mt-2 max-w-[48ch]">{active.desc}</p>

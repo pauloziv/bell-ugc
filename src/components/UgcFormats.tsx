@@ -60,7 +60,7 @@ export default function UgcFormats() {
         <span className="text-xs font-medium tracking-[0.2em] text-magenta uppercase">
           Como eu falo
         </span>
-        <h3 className="mt-2 font-display text-3xl font-extrabold tracking-tight md:text-5xl">
+        <h3 className="headline-1 mt-2 font-display font-extrabold">
           Exemplos de <span className="text-magenta">comunicação</span>
         </h3>
         <p className="mt-3 max-w-[52ch] text-muted">
@@ -100,7 +100,7 @@ export default function UgcFormats() {
               {f.sticker}
             </span>
             <p className="text-[10px] font-medium tracking-[0.18em] uppercase">{f.kicker}</p>
-            <h4 className="mt-2 font-display text-xl leading-[0.95] font-extrabold tracking-tight">
+            <h4 className="headline-card mt-2 font-display text-[clamp(1rem,4.1vw,1.25rem)] font-extrabold tracking-tight">
               {f.title}
             </h4>
             <p className="mt-3 inline-block -rotate-2 rounded-[1.1rem] border-2 border-navy bg-white px-2.5 py-1 font-display text-sm font-bold">

@@ -13,7 +13,7 @@ export default function KitUgc() {
           <span className="text-xs font-medium tracking-[0.2em] text-magenta uppercase">
             Entenda o conceito
           </span>
-          <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight md:text-6xl">
+          <h2 className="headline-1 mt-3 font-display font-extrabold">
             O que é <span className="text-magenta">UGC?</span>
           </h2>
           <p className="mx-auto mt-4 max-w-[58ch] text-muted">

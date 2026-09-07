@@ -47,7 +47,7 @@ export default function UgcPillars() {
           >
             <card.icon weight="bold" size={28} />
           </div>
-          <h3 className="mb-3 font-display text-2xl font-extrabold">{card.title}</h3>
+          <h3 className="headline-card mb-3 font-display text-2xl font-extrabold">{card.title}</h3>
           <p className="leading-relaxed text-muted">{card.desc}</p>
         </motion.article>
       ))}

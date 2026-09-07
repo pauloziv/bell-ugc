@@ -31,10 +31,8 @@ export default function CTA() {
         <div className="absolute -top-10 -left-8 w-36 h-36 bg-white/20 blob blur-xl pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-40 h-40 bg-navy/10 blob-slow blur-xl pointer-events-none" />
         <div className="max-w-[1000px] mx-auto text-center relative z-10 reveal">
-          <h2 className="font-display font-extrabold text-5xl md:text-7xl tracking-tighter leading-[0.95] text-white mb-6">
-            Vamos Criar
-            <br />
-            Juntos?
+          <h2 className="headline-1-lg font-display font-extrabold text-white mb-6">
+            Vamos Criar Juntos?
           </h2>
           <p className="text-lg text-white/90 max-w-[50ch] mx-auto mb-10 leading-relaxed">
             Sua marca merece conteúdo que gera conexão de verdade. Me chama e

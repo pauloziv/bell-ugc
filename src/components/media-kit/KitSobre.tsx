@@ -73,9 +73,8 @@ export default function KitSobre() {
           <span className="text-xs font-medium tracking-[0.2em] text-yellow uppercase">
             Sobre mim
           </span>
-          <h2 className="mt-3 font-display text-4xl leading-[0.95] font-extrabold tracking-tight md:text-6xl">
-            Conteúdo real,{" "}
-            <span className="text-magenta">resultado real.</span>
+          <h2 className="headline-1 mt-3 font-display font-extrabold">
+            Conteúdo real, <span className="text-magenta">resultado real.</span>
           </h2>
           <p className="mt-4 font-display text-lg font-bold text-yellow md:text-xl">
             Por que me encaixo em vários nichos?

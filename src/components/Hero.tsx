@@ -13,7 +13,7 @@ export default function Hero() {
     <div>
       <section
         id="hero"
-        className="relative overflow-x-clip px-4 pt-24 pb-8 md:px-8 md:pt-28 lg:pb-0"
+        className="relative overflow-x-clip px-4 pt-24 pb-3 md:px-8 md:pt-28 lg:pb-0"
       >
         <BlobBackground />
         <div className="pointer-events-none absolute -top-8 -left-12 h-40 w-40 bg-yellow/40 blob blur-xl" />
@@ -82,7 +82,7 @@ export default function Hero() {
                 +10 anos experiência
               </span>
             </div>
-            <h2 className="mt-3 mb-3 font-display text-4xl font-extrabold tracking-tight md:text-6xl">
+            <h2 className="headline-1 mt-3 mb-3 font-display font-extrabold">
               Conteúdo real, <span className="text-magenta">resultado real.</span>
             </h2>
             <p className="mb-5 font-display text-lg font-bold text-yellow md:text-xl">

@@ -25,10 +25,8 @@ export default function KitCta() {
         <div className="mb-8 flex justify-center">
           <BrandLogo onDark />
         </div>
-        <h2 className="font-display text-5xl leading-[0.92] font-extrabold tracking-tighter text-white md:text-7xl">
-          Vamos Criar
-          <br />
-          Juntos?
+        <h2 className="headline-1-lg font-display font-extrabold text-white">
+          Vamos Criar Juntos?
         </h2>
         <p className="mx-auto mt-6 max-w-[46ch] text-lg text-white/92">
           Sua marca merece conteúdo que gera conexão de verdade. Me chama e
