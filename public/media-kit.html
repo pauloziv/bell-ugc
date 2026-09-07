@@ -265,7 +265,7 @@
         object-position: 50% 18%;
       }
       .av-hero {
-        object-position: 50% 18%;
+        object-position: 50% 46%;
       }
       .av-loja {
         object-position: 50% 8%;
@@ -320,11 +320,17 @@
       }
       .duo-real {
         position: absolute;
-        inset: 7mm 6mm 9mm 6mm;
+        inset: 5mm 4.5mm 7mm 4.5mm;
         width: auto;
         height: auto;
         z-index: 2;
         box-shadow: none;
+        background: var(--yellow);
+        border-width: 2.5px;
+      }
+      .duo-real img {
+        object-fit: contain;
+        object-position: 50% 46%;
       }
       .duo-illu {
         position: relative;
@@ -928,7 +934,7 @@
       <div class="inner">
         <div class="duo-real-wrap">
           <div class="plate blob b1"></div>
-          <figure class="goo-photo hero-mask duo-real">
+          <figure class="goo-photo blob b1 duo-real">
             <img class="av-hero" src="images/creator-bel-hero.jpg" alt="Creator Bel" />
           </figure>
           <span class="float sticker goo" style="top: 10mm; right: -3mm; background: var(--magenta); color: white; transform: rotate(8deg)">eu de verdade</span>
