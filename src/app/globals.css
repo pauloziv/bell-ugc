@@ -362,6 +362,23 @@
   pointer-events: none;
 }
 
+.cine-phone {
+  border-radius: 1.15rem;
+  border: 1px solid rgba(201, 162, 39, 0.45);
+  background: #121018;
+  box-shadow: 0 28px 56px -24px rgba(0, 0, 0, 0.65);
+}
+
+.cine-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.9'/%3E%3C/svg%3E");
+}
+
 .kit-tape {
   overflow: hidden;
   border-top: 2.5px solid var(--color-navy);

@@ -10,7 +10,7 @@ export default function ContentStyle() {
           Meu Estilo de <span className="text-magenta">Conteúdo</span>
         </>
       }
-      subtitle="Players verticais no formato Reels e TikTok. Clica no play pra abrir grande e assistir."
+      subtitle="Players verticais no formato Reels e TikTok. Skelt entra com capa cinema — clica no play pra assistir."
       reserveAvatar
     />
   );

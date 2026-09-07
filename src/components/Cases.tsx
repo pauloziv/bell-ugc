@@ -35,6 +35,15 @@ const CASES: Brand[] = [
     knockout: false,
   },
   {
+    name: "Skelt",
+    logo: "/images/brands/skelt.svg",
+    result: "Protetor solar na praia",
+    desc: "Spray na pele, sol de verdade, UGC de verão. Capa em formato cinema neste case.",
+    tilt: "rotate-[2deg]",
+    plate: "bg-[#F9DCDC]",
+    knockout: false,
+  },
+  {
     name: "Dove",
     logo: "/images/brands/dove.png",
     result: "Cuidado real",

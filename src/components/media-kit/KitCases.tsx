@@ -17,6 +17,7 @@ type CaseCard = {
   video?: string;
   logo?: string;
   tilt: string;
+  look?: "pop" | "cinematic";
 };
 
 const CASES: CaseCard[] = [
@@ -41,12 +42,15 @@ const CASES: CaseCard[] = [
     tilt: "rotate-2",
   },
   {
-    name: "Alva",
-    kicker: "Ritual da manhã",
-    desc: "Chá na varanda, luz boa, conversa lenta. UGC de bem-estar que cabe no stories e no ads.",
-    sample: true,
-    plate: "bg-lime",
-    tilt: "rotate-[-2deg]",
+    name: "Skelt",
+    kicker: "Protetor solar · capa cinema",
+    desc: "Praia, spray na pele, UGC real. Capa em 16:9 letterbox — teste do recorte cinematográfico.",
+    poster: "/images/reels/skelt.webp",
+    logo: "/images/brands/skelt.svg",
+    plate: "bg-[#121018]",
+    video: "https://www.youtube.com/embed/DhSDg0Jk1jY",
+    tilt: "rotate-0",
+    look: "cinematic",
   },
   {
     name: "Névoa",
@@ -114,7 +118,7 @@ export default function KitCases({
           </h2>
           <p className="mt-3 max-w-[52ch] text-muted">
             {subtitle ??
-              "Sander e Creamy são cases reais — toca no play. Alva e Névoa são amostras de formato, com o chip Amostra."}
+              "Sander, Creamy e Skelt são cases reais — toca no play. Skelt está com capa cinema. Névoa é amostra de formato."}
           </p>
         </div>
 
@@ -129,8 +133,20 @@ export default function KitCases({
               transition={{ delay: i * 0.08, type: "spring", stiffness: 200, damping: 18 }}
               whileHover={reduced ? undefined : { y: -10, rotate: 0 }}
             >
-              <div className="overflow-hidden rounded-[2rem] border-[3px] border-navy bg-navy hard-shadow">
-                <div className="relative aspect-[9/16] overflow-hidden kit-phone-shine">
+              <div
+                className={
+                  c.look === "cinematic"
+                    ? "cine-phone overflow-hidden"
+                    : "overflow-hidden rounded-[2rem] border-[3px] border-navy bg-navy hard-shadow"
+                }
+              >
+                <div
+                  className={
+                    c.look === "cinematic"
+                      ? "relative aspect-[9/16] overflow-hidden bg-[#121018]"
+                      : "relative aspect-[9/16] overflow-hidden kit-phone-shine"
+                  }
+                >
                   {c.poster ? (
                     <Image
                       src={c.poster}
@@ -157,14 +173,25 @@ export default function KitCases({
                       Amostra
                     </span>
                   ) : null}
+                  {c.look === "cinematic" ? <span className="cine-grain" aria-hidden /> : null}
                   {c.video ? (
                     <button
                       type="button"
                       onClick={() => setPlay(c.video ?? null)}
-                      className="absolute inset-0 z-10 flex items-center justify-center bg-navy/20"
+                      className={
+                        c.look === "cinematic"
+                          ? "absolute inset-0 z-10 flex items-center justify-center bg-black/15"
+                          : "absolute inset-0 z-10 flex items-center justify-center bg-navy/20"
+                      }
                       aria-label={`Assistir case ${c.name}`}
                     >
-                      <span className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-navy bg-lime text-navy shadow-[4px_4px_0_0_#1A1A2E]">
+                      <span
+                        className={
+                          c.look === "cinematic"
+                            ? "flex h-14 w-14 items-center justify-center rounded-full border border-[#C9A227]/80 bg-white/10 text-[#F4F0E8] backdrop-blur-sm"
+                            : "flex h-14 w-14 items-center justify-center rounded-full border-2 border-navy bg-lime text-navy shadow-[4px_4px_0_0_#1A1A2E]"
+                        }
+                      >
                         <Play weight="fill" size={22} />
                       </span>
                     </button>
@@ -177,7 +204,11 @@ export default function KitCases({
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={c.logo} alt="" className="mb-2 h-7 w-auto object-contain" />
                 ) : null}
-                <p className="text-[10px] font-medium tracking-[0.18em] text-magenta uppercase">
+                <p
+                  className={`text-[10px] font-medium tracking-[0.18em] uppercase ${
+                    c.look === "cinematic" ? "text-[#C9A227]" : "text-magenta"
+                  }`}
+                >
                   {c.kicker}
                 </p>
                 <h3 className="headline-card font-display text-2xl font-extrabold">

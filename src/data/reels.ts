@@ -54,6 +54,18 @@ export const REEL_CARDS: ReelCard[] = [
     videoUrl: videoUrl("tutoriais", "ForBiggerFun.mp4"),
   },
   {
+    slug: "skelt",
+    imgUrl: "/images/reels/skelt.webp",
+    alt: "UGC para Skelt protetor solar",
+    label: "Skelt",
+    views: "",
+    videoUrl: videoUrl(
+      "skelt",
+      "ForBiggerJoyrides.mp4",
+      "https://youtube.com/shorts/DhSDg0Jk1jY",
+    ),
+  },
+  {
     slug: "sander",
     imgUrl: "/images/reels/sander.webp",
     alt: "UGC para Sander Sorvetes",
