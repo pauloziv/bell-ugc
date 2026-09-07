@@ -1,13 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import {
-  ChatCircle,
-  Heart,
-  Play,
-  ShareNetwork,
-  Stamp,
-} from "@phosphor-icons/react";
+import { Play, Stamp } from "@phosphor-icons/react";
+import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState, type ReactNode } from "react";
 import { parseYouTubeId, youtubeEmbedSrc } from "@/lib/youtube";
 
@@ -20,6 +15,7 @@ type CaseCard = {
   plate: string;
   video?: string;
   logo?: string;
+  tilt: string;
 };
 
 const CASES: CaseCard[] = [
@@ -31,6 +27,7 @@ const CASES: CaseCard[] = [
     logo: "/images/brands/sander.png",
     plate: "bg-yellow",
     video: "https://www.youtube.com/embed/_4e_H7inmnA",
+    tilt: "-rotate-3",
   },
   {
     name: "Creamy",
@@ -40,6 +37,7 @@ const CASES: CaseCard[] = [
     logo: "/images/brands/creamy.svg",
     plate: "bg-[#F6AB9E]",
     video: "https://www.youtube.com/embed/A9SIIuvWORU",
+    tilt: "rotate-2",
   },
   {
     name: "Alva",
@@ -47,6 +45,7 @@ const CASES: CaseCard[] = [
     desc: "Chá na varanda, luz boa, conversa lenta. UGC de bem-estar que cabe no stories e no ads.",
     sample: true,
     plate: "bg-lime",
+    tilt: "rotate-[-2deg]",
   },
   {
     name: "Névoa",
@@ -54,6 +53,7 @@ const CASES: CaseCard[] = [
     desc: "Body mist, cheiro e o “passa aqui”. Unboxing íntimo — banheiro real, sem pose de campanha.",
     sample: true,
     plate: "bg-[#FFC1E3] text-navy",
+    tilt: "rotate-3",
   },
 ];
 
@@ -71,6 +71,7 @@ export default function KitCases({
   reserveAvatar?: boolean;
 }) {
   const [play, setPlay] = useState<string | null>(null);
+  const reduced = useReducedMotion();
   const playId = play ? parseYouTubeId(play) : null;
 
   useEffect(() => {
@@ -93,9 +94,12 @@ export default function KitCases({
   return (
     <section
       id={id}
-      className="relative bg-offwhite px-4 py-16 scroll-mt-28 md:px-8 md:py-28"
+      className="relative overflow-x-clip px-4 py-10 scroll-mt-28 md:px-8 md:py-24"
     >
-      <div className="mx-auto max-w-[1400px]">
+      <div className="pointer-events-none absolute -top-8 -left-12 h-40 w-40 bg-yellow/40 blob blur-xl" />
+      <div className="pointer-events-none absolute top-20 -right-10 h-36 w-36 bg-magenta/20 blob-slow blur-xl" />
+
+      <div className="relative z-10 mx-auto max-w-[1400px]">
         <div className={reserveAvatar ? "pr-12 md:pr-0" : undefined}>
           <span className="text-xs font-medium tracking-[0.2em] text-magenta uppercase">
             {eyebrow}
@@ -113,90 +117,74 @@ export default function KitCases({
           </p>
         </div>
 
-        <div className="kit-fan mt-8 md:mt-10">
-          {CASES.map((c) => (
-            <article key={c.name} className="kit-fan-card">
-              <div className="h-full overflow-hidden rounded-[1.85rem] border-[3px] border-navy bg-navy p-[0.35rem] hard-shadow">
-                <div className="relative h-full overflow-hidden rounded-[1.35rem] kit-phone-shine">
+        <div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pt-6 pb-10 [-ms-overflow-style:none] [scrollbar-width:none] md:grid md:grid-cols-4 md:overflow-visible md:pt-8 md:pb-6 [&::-webkit-scrollbar]:hidden">
+          {CASES.map((c, i) => (
+            <motion.article
+              key={c.name}
+              className={`w-[16.5rem] shrink-0 snap-center md:w-auto ${c.tilt}`}
+              initial={reduced ? false : { y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ delay: i * 0.08, type: "spring", stiffness: 200, damping: 18 }}
+              whileHover={reduced ? undefined : { y: -10, rotate: 0 }}
+            >
+              <div className="overflow-hidden rounded-[2rem] border-[3px] border-navy bg-navy hard-shadow">
+                <div className="relative aspect-[9/16] overflow-hidden kit-phone-shine">
                   {c.poster ? (
                     <Image
                       src={c.poster}
                       alt={c.name}
                       fill
-                      sizes="(max-width: 768px) 12rem, 16rem"
+                      sizes="280px"
                       className="object-cover"
                     />
                   ) : (
                     <div
                       className={`flex h-full flex-col items-center justify-center gap-3 ${c.plate}`}
                     >
-                      <span className="font-display text-3xl font-extrabold tracking-tighter">
+                      <span className="font-display text-4xl font-extrabold tracking-tighter">
                         {c.name}
                       </span>
-                      <span className="headline-card px-2 text-[10px] tracking-[0.18em] uppercase opacity-70">
+                      <span className="text-xs tracking-[0.18em] uppercase opacity-70">
                         {c.kicker}
                       </span>
                     </div>
                   )}
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-navy/25" />
                   {c.sample ? (
-                    <span className="absolute top-3 left-3 z-10 inline-flex items-center gap-1 rounded-full border-2 border-navy bg-yellow px-2 py-0.5 font-display text-[10px] font-extrabold text-navy uppercase">
-                      <Stamp weight="bold" size={11} />
+                    <span className="absolute top-3 left-3 z-10 inline-flex items-center gap-1 rounded-full border-2 border-navy bg-yellow px-2.5 py-1 font-display text-[10px] font-extrabold text-navy uppercase">
+                      <Stamp weight="bold" size={12} />
                       Amostra
                     </span>
-                  ) : (
-                    <div className="pointer-events-none absolute top-3 right-12 left-3 flex items-center justify-between text-[10px] tracking-wide text-white/80">
-                      <span>0:12</span>
-                      <span className="h-1.5 w-1.5 rounded-full bg-lime" />
-                    </div>
-                  )}
+                  ) : null}
                   {c.video ? (
                     <button
                       type="button"
                       onClick={() => setPlay(c.video ?? null)}
-                      className="absolute inset-0 z-10 flex items-center justify-center"
+                      className="absolute inset-0 z-10 flex items-center justify-center bg-navy/20"
                       aria-label={`Assistir case ${c.name}`}
                     >
-                      <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/25 bg-white/15 text-white backdrop-blur-sm">
-                        <Play weight="fill" size={22} className="ml-0.5" />
+                      <span className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-navy bg-lime text-navy shadow-[4px_4px_0_0_#1A1A2E]">
+                        <Play weight="fill" size={22} />
                       </span>
                     </button>
                   ) : null}
-                  <div className="pointer-events-none absolute right-2.5 bottom-16 z-10 flex flex-col items-center gap-3 text-white">
-                    <Heart weight="fill" size={20} />
-                    <ChatCircle weight="bold" size={20} />
-                    <ShareNetwork weight="bold" size={18} />
-                  </div>
-                  <div className="pointer-events-none absolute right-10 bottom-3 left-3 z-10">
-                    <span className="headline-card block font-display text-sm font-bold text-white [text-shadow:0_1px_8px_rgba(26,26,46,0.45)]">
-                      {c.name}
-                    </span>
-                    <span className="mt-0.5 block text-[11px] text-white/70">
-                      {c.kicker}
-                    </span>
-                  </div>
                 </div>
               </div>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-8 grid grid-cols-2 gap-4 md:mt-10 md:grid-cols-4 md:gap-5">
-          {CASES.map((c) => (
-            <div key={`${c.name}-copy`}>
-              {c.logo ? (
-                // Local brand marks
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={c.logo} alt="" className="mb-2 h-7 w-auto object-contain" />
-              ) : null}
-              <p className="text-[10px] font-medium tracking-[0.18em] text-magenta uppercase">
-                {c.kicker}
-              </p>
-              <h3 className="headline-card font-display text-2xl font-extrabold">
-                {c.name}
-              </h3>
-              <p className="mt-1 text-sm leading-relaxed text-muted">{c.desc}</p>
-            </div>
+              <div className="mt-4">
+                {c.logo ? (
+                  // Local brand marks
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={c.logo} alt="" className="mb-2 h-7 w-auto object-contain" />
+                ) : null}
+                <p className="text-[10px] font-medium tracking-[0.18em] text-magenta uppercase">
+                  {c.kicker}
+                </p>
+                <h3 className="headline-card font-display text-2xl font-extrabold">
+                  {c.name}
+                </h3>
+                <p className="mt-1 text-sm leading-relaxed text-muted">{c.desc}</p>
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>

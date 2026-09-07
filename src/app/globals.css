@@ -333,114 +333,6 @@
   line-height: 1;
 }
 
-.kit-fan {
-  position: relative;
-  isolation: isolate;
-  height: 23rem;
-}
-
-.kit-fan-card {
-  position: absolute;
-  left: 50%;
-  top: 52%;
-  z-index: var(--fan-z, 1);
-  width: 9.75rem;
-  aspect-ratio: 9 / 16;
-  transform-origin: center 72%;
-  transform: translate(-50%, -50%) translateX(var(--fan-x)) translateY(var(--fan-y))
-    rotate(var(--fan-r)) scale(var(--fan-s));
-  transition:
-    transform 0.45s cubic-bezier(0.32, 0.72, 0, 1),
-    z-index 0s;
-}
-
-.kit-fan-card:nth-child(1) {
-  --fan-x: -32%;
-  --fan-y: 9%;
-  --fan-r: -16deg;
-  --fan-s: 0.9;
-  --fan-z: 3;
-}
-
-.kit-fan-card:nth-child(2) {
-  --fan-x: -12%;
-  --fan-y: 2%;
-  --fan-r: -6deg;
-  --fan-s: 0.97;
-  --fan-z: 4;
-}
-
-.kit-fan-card:nth-child(3) {
-  --fan-x: 12%;
-  --fan-y: 2%;
-  --fan-r: 6deg;
-  --fan-s: 0.97;
-  --fan-z: 2;
-}
-
-.kit-fan-card:nth-child(4) {
-  --fan-x: 32%;
-  --fan-y: 9%;
-  --fan-r: 16deg;
-  --fan-s: 0.9;
-  --fan-z: 1;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .kit-fan-card:hover,
-  .kit-fan-card:focus-within {
-    --fan-r: 0deg;
-    --fan-s: 1.08;
-    --fan-y: -7%;
-    z-index: 40;
-  }
-}
-
-@media (min-width: 640px) {
-  .kit-fan {
-    height: 28rem;
-  }
-  .kit-fan-card {
-    width: 11.5rem;
-  }
-  .kit-fan-card:nth-child(1) {
-    --fan-x: -36%;
-  }
-  .kit-fan-card:nth-child(4) {
-    --fan-x: 36%;
-  }
-}
-
-@media (min-width: 768px) {
-  .kit-fan {
-    height: 34rem;
-  }
-  .kit-fan-card {
-    width: 13.5rem;
-  }
-  .kit-fan-card:nth-child(1) {
-    --fan-x: -42%;
-  }
-  .kit-fan-card:nth-child(2) {
-    --fan-x: -14%;
-  }
-  .kit-fan-card:nth-child(3) {
-    --fan-x: 14%;
-  }
-  .kit-fan-card:nth-child(4) {
-    --fan-x: 42%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .kit-fan {
-    height: 42rem;
-  }
-  .kit-fan-card {
-    width: 16rem;
-  }
-}
-
 .kit-phone-shine::after {
   content: "";
   position: absolute;
@@ -465,9 +357,6 @@
   .kit-wiggle,
   .kit-phone-shine::after {
     animation: none;
-  }
-  .kit-fan-card {
-    transition: none;
   }
 }
 
