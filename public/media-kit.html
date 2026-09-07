@@ -287,7 +287,7 @@
         position: relative;
         z-index: 2;
         display: grid;
-        grid-template-columns: 88mm minmax(0, 1fr) 78mm;
+        grid-template-columns: 96mm minmax(0, 1fr) 74mm;
         height: 100%;
         padding: 12mm 10mm 14mm 10mm;
         align-items: center;
@@ -305,7 +305,7 @@
       }
       .duo-real-wrap {
         position: relative;
-        width: 88mm;
+        width: 94mm;
         height: 168mm;
         z-index: 3;
         justify-self: start;
@@ -317,20 +317,29 @@
         border: 3px solid var(--navy);
         z-index: 0;
         box-shadow: 7px 8px 0 0 var(--navy);
+        border-radius: 22mm;
       }
       .duo-real {
         position: absolute;
-        inset: 5mm 4.5mm 7mm 4.5mm;
-        width: auto;
-        height: auto;
+        top: 5mm;
+        left: 5mm;
+        width: 84mm;
+        height: 156mm;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 3px solid var(--navy);
+        background: #1a1a2e;
+        border-radius: 18mm;
         z-index: 2;
         box-shadow: none;
-        background: var(--yellow);
-        border-width: 2.5px;
       }
       .duo-real img {
-        object-fit: contain;
-        object-position: 50% 46%;
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: 18% 16%;
       }
       .duo-illu {
         position: relative;
@@ -933,9 +942,9 @@
     <section class="sheet cover">
       <div class="inner">
         <div class="duo-real-wrap">
-          <div class="plate blob b1"></div>
-          <figure class="goo-photo blob b1 duo-real">
-            <img class="av-hero" src="images/creator-bel-hero.jpg" alt="Creator Bel" />
+          <div class="plate"></div>
+          <figure class="duo-real">
+            <img src="images/creator-bel-hero.jpg" alt="Creator Bel" />
           </figure>
           <span class="float sticker goo" style="top: 10mm; right: -3mm; background: var(--magenta); color: white; transform: rotate(8deg)">eu de verdade</span>
         </div>
