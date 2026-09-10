@@ -51,7 +51,7 @@ export default function CTA() {
               className="border-2 border-navy text-navy hover:bg-navy hover:text-white"
             >
               <EnvelopeSimple weight="bold" size={20} />
-              Enviar E-mail
+              {EMAIL}
             </MagneticButton>
           </div>
           <div className="flex items-center justify-center gap-6">
@@ -78,13 +78,21 @@ export default function CTA() {
           <BrandLogo onDark />
         </div>
         <p>© 2026 Bel UGC. Feito com criatividade e café. Todos os direitos reservados.</p>
-        <Link
-          href={MEDIA_KIT_PDF}
-          className="mt-3 inline-flex min-h-11 items-center gap-2 text-white/80 hover:text-white"
-        >
-          <FilePdf weight="bold" size={18} />
-          Baixar PDF
-        </Link>
+        <div className="mt-3 flex flex-col items-center gap-1">
+          <a
+            href={`mailto:${EMAIL}`}
+            className="inline-flex min-h-11 items-center text-white/80 hover:text-white"
+          >
+            {EMAIL}
+          </a>
+          <Link
+            href={MEDIA_KIT_PDF}
+            className="inline-flex min-h-11 items-center gap-2 text-white/80 hover:text-white"
+          >
+            <FilePdf weight="bold" size={18} />
+            Baixar PDF
+          </Link>
+        </div>
       </footer>
     </>
   );

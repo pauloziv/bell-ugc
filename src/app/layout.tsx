@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import RevealObserver from "@/components/ui/RevealObserver";
-import { SITE_URL } from "@/lib/site";
+import { EMAIL, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -65,6 +65,7 @@ const jsonLd = {
   name: "Creator Bel",
   jobTitle: "Criadora de Conteúdo UGC",
   url: SITE_URL,
+  email: EMAIL,
   description:
     "Criadora de conteúdo UGC para Instagram e TikTok.",
   sameAs: [
