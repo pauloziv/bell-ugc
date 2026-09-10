@@ -329,6 +329,19 @@
   animation: kit-wiggle 2.8s ease-in-out infinite;
 }
 
+@keyframes ken {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.ken {
+  animation: ken 6s linear infinite alternate;
+}
+
 .headline-1 {
   white-space: nowrap;
   line-height: 1;
@@ -389,7 +402,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .kit-wiggle,
-  .kit-phone-shine::after {
+  .kit-phone-shine::after,
+  .ken {
     animation: none;
   }
 }

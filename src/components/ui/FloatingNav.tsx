@@ -12,6 +12,7 @@ const LINKS = [
   { href: "#cases", label: "Cases" },
   { href: "#processo", label: "Processo" },
   { href: "#pacotes", label: "Pacotes" },
+  { href: "/mini-portfolio", label: "IG" },
 ];
 
 export default function FloatingNav() {

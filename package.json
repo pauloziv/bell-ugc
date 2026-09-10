@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/check-ig-portfolio.mjs && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:ig-portfolio": "node scripts/check-ig-portfolio.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

@@ -27,6 +27,11 @@
 .DS_Store
 *.pem
 
+# Motion Canvas local render
+/ig-mini-portfolio/node_modules/
+/ig-mini-portfolio/output/
+/ig-mini-portfolio/screenshots/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

@@ -71,6 +71,12 @@ export default function CTA() {
             </a>
           </div>
           <p className="mt-4 text-sm text-navy/80 font-medium">{INSTAGRAM_HANDLE}</p>
+          <Link
+            href="/mini-portfolio"
+            className="mt-5 inline-flex min-h-11 items-center rounded-full border-2 border-navy bg-white/90 px-5 font-display text-sm font-bold text-navy hover:bg-navy hover:text-white"
+          >
+            Mini portfólio Instagram
+          </Link>
         </div>
       </section>
       <footer className="bg-navy px-4 py-8 text-center text-sm text-white/60 md:px-8">
