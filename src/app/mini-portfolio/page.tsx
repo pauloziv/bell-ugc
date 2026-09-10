@@ -3,11 +3,21 @@ import {existsSync} from "node:fs";
 import path from "node:path";
 import IgMiniPortfolio from "@/components/ig-portfolio/IgMiniPortfolio";
 import {IG_SLIDES} from "@/data/ig-mini-portfolio";
+import {SITE_URL} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Mini portfólio Instagram",
   description:
     "10 cards em vídeo 4:5 — mini portfólio UGC da Creator Bel para o feed.",
+  alternates: {
+    canonical: `${SITE_URL}/mini-portfolio`,
+  },
+  openGraph: {
+    url: `${SITE_URL}/mini-portfolio`,
+    title: "Mini portfólio Instagram | Creator Bel",
+    description:
+      "10 cards em vídeo 4:5 — mini portfólio UGC da Creator Bel para o feed.",
+  },
 };
 
 export default function MiniPortfolioPage() {
