@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   title: "Mini portfólio Instagram",
   description:
     "Mini portfólio UGC no feed: capa, marcas, trabalhos no celular. Sem tarifário.",
+  robots: {
+    index: false,
+    follow: false,
+  },
   alternates: {
     canonical: `${SITE_URL}/mini-portfolio`,
   },
