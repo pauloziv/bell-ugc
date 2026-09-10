@@ -3,8 +3,8 @@
  * Render 10 Instagram 4:5 MP4s from Motion Canvas.
  * Requires: vite on :9000, Chrome, ffmpeg, @motion-canvas/ffmpeg.
  */
-import {spawn} from "node:child_process";
-import {existsSync, mkdirSync, readdirSync, statSync} from "node:fs";
+import {spawn, execFileSync} from "node:child_process";
+import {existsSync, mkdirSync, readdirSync, unlinkSync} from "node:fs";
 import path from "node:path";
 import {fileURLToPath} from "node:url";
 
@@ -51,6 +51,7 @@ const chrome = spawn(
     "--headless=new",
     "--disable-gpu",
     "--no-sandbox",
+    "--user-data-dir=/tmp/chrome-mc-render",
     "--window-size=1280,900",
     "http://127.0.0.1:9000",
   ],
@@ -92,8 +93,10 @@ try {
 
   mkdirSync(outDir, {recursive: true});
   mkdirSync(destDir, {recursive: true});
+  for (const f of readdirSync(outDir)) {
+    if (f.endsWith(".mp4")) unlinkSync(path.join(outDir, f));
+  }
 
-  const before = new Set(existsSync(outDir) ? readdirSync(outDir) : []);
   await json("http://127.0.0.1:9000/__agent/render", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
@@ -101,17 +104,22 @@ try {
   });
 
   const mp4 = await waitFor(async () => {
-    const files = readdirSync(outDir).filter(
-      (f) => f.endsWith(".mp4") && !before.has(f) && !f.startsWith("card-"),
-    );
+    const files = readdirSync(outDir).filter((f) => f.endsWith(".mp4") && !f.startsWith("card-"));
     if (!files.length) return null;
     const full = path.join(outDir, files[0]);
-    const size = statSync(full).size;
-    if (size < 500_000) return null;
-    await sleep(4000);
-    if (statSync(full).size !== size) return null;
-    return files[0];
-  }, "ffmpeg mp4", 300);
+    try {
+      const out = execFileSync(
+        "ffprobe",
+        ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", full],
+        {encoding: "utf8"},
+      );
+      const duration = Number(out.trim());
+      if (Number.isFinite(duration) && duration >= 59) return files[0];
+    } catch {
+      return null;
+    }
+    return null;
+  }, "ffmpeg mp4", 400);
 
   const full = path.join(outDir, mp4);
   await new Promise((resolve, reject) => {

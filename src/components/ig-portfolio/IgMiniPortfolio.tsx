@@ -7,7 +7,6 @@ import {AnimatePresence, motion, useReducedMotion} from "framer-motion";
 import {ArrowLeft, CaretLeft, CaretRight, Copy, DownloadSimple} from "@phosphor-icons/react";
 import {IG_PORTFOLIO_CAPTION, IG_SLIDES, type IgSlide} from "@/data/ig-mini-portfolio";
 import {INSTAGRAM_HANDLE, SITE_URL, whatsappUrl} from "@/lib/site";
-import {NICHES} from "@/lib/kit-copy";
 import BrandLogo from "@/components/ui/BrandLogo";
 
 const BRANDS = [
@@ -26,272 +25,227 @@ const FORMATS = [
   {k: "Review", t: "vou ser honesta", bg: "bg-white"},
 ];
 
-const STEPS = [
-  {n: "01", t: "Briefing", d: "Objetivo e voz da marca", bg: "bg-magenta text-white"},
-  {n: "02", t: "Roteiro", d: "Autêntico e estratégico", bg: "bg-yellow"},
-  {n: "03", t: "Produção", d: "Luz, som, estética", bg: "bg-lime"},
-  {n: "04", t: "Edição", d: "Ritmo de plataforma", bg: "bg-white"},
-  {n: "05", t: "Entrega", d: "Arquivo pronto pra publicar", bg: "bg-yellow"},
-];
-
 function Chrome({index, onDark}: {index: number; onDark?: boolean}) {
   return (
-    <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-center justify-between px-5 pt-5">
-      <span className={onDark ? "scale-90 origin-left" : "scale-90 origin-left"}>
-        <BrandLogo compact onDark={onDark} />
-      </span>
-      <span
-        className={`font-body text-[11px] font-bold tracking-[0.18em] ${onDark ? "text-white" : "text-navy"}`}
-      >
-        {String(index).padStart(2, "0")} / 10
+    <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-center justify-between px-4 pt-4">
+      <BrandLogo compact onDark={onDark} />
+      <span className="rounded-xl border-4 border-navy bg-lime px-3 py-1 font-display text-lg font-extrabold text-navy">
+        {String(index).padStart(2, "0")}
       </span>
     </div>
   );
 }
 
-function Dots({index}: {index: number}) {
+function TypePlate({
+  lines,
+  fill = "bg-yellow",
+  ink = "text-navy",
+  rotate = "-rotate-2",
+}: {
+  lines: string[];
+  fill?: string;
+  ink?: string;
+  rotate?: string;
+}) {
   return (
-    <div className="absolute inset-x-0 bottom-4 z-20 flex justify-center gap-1.5">
-      {IG_SLIDES.map((s, i) => (
-        <span
-          key={s.id}
-          className={`h-2.5 rounded-full border-2 border-navy ${
-            i === index ? "w-4 bg-lime" : "w-2.5 bg-white/40"
-          }`}
-        />
-      ))}
+    <div
+      className={`absolute bottom-7 left-4 right-4 z-10 ${rotate} rounded-[1.4rem] border-[6px] border-navy px-5 py-4 hard-shadow ${fill} ${ink}`}
+    >
+      <h2 className="font-display text-[clamp(2.2rem,10vw,3.6rem)] font-extrabold leading-[0.88] tracking-tight">
+        {lines.map((line) => (
+          <span key={line} className="block">
+            {line}
+          </span>
+        ))}
+      </h2>
     </div>
   );
 }
 
-function SlideFace({slide, index}: {slide: IgSlide; index: number}) {
+function SlideFace({slide}: {slide: IgSlide}) {
   switch (slide.id) {
     case "01-cover":
       return (
-        <div className="relative h-full w-full bg-navy text-white">
+        <div className="relative h-full w-full bg-navy">
           <Image
             src="/images/ig-portfolio/bel-geladeira-lata.jpg"
             alt="Bel na geladeira com lata"
             fill
             priority
             sizes="(max-width: 768px) 90vw, 420px"
-            className="object-cover object-[center_20%] ken"
+            className="object-cover object-[center_18%] ken"
           />
-          <div className="absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-t from-navy via-navy/95 to-transparent" />
           <Chrome index={1} onDark />
-          <div className="absolute top-[18%] right-5 z-10 w-[28%] rotate-[8deg] overflow-hidden rounded-[1rem] border-4 border-navy bg-white card-shadow">
-            <Image
-              src="/images/ig-portfolio/bel-geladeira-costas.jpg"
-              alt=""
-              width={200}
-              height={268}
-              className="h-auto w-full"
-            />
-          </div>
-          <span className="absolute top-[46%] left-5 z-10 -rotate-[8deg] rounded-full border-2 border-navy bg-lime px-3 py-1 font-display text-xs font-extrabold text-navy">
-            disponível
+          <span className="absolute top-[42%] left-4 z-10 -rotate-[8deg] rounded-full border-4 border-navy bg-lime px-4 py-2 font-display text-sm font-extrabold text-navy">
+            é indicação
           </span>
-          <div className="absolute inset-x-0 bottom-14 z-10 px-6 text-center">
-            <h2 className="font-display text-[clamp(2rem,8vw,3.4rem)] font-extrabold leading-[0.95] tracking-tight">
-              Vamos criar juntas?
-            </h2>
-            <p className="mt-3 text-sm font-medium text-yellow">Creator Bel · UGC que vende de verdade</p>
-            <p className="mt-4 text-[10px] font-bold tracking-[0.28em] text-white/70 uppercase">desliza</p>
-          </div>
-          <Dots index={index} />
+          <TypePlate lines={["NÃO É", "ANÚNCIO."]} />
         </div>
       );
     case "02-quem":
       return (
-        <div className="relative h-full w-full bg-offwhite px-6 pt-20 pb-12">
-          <Chrome index={2} />
-          <div className="flex items-center gap-4">
-            <div className="relative h-36 w-36 shrink-0 overflow-hidden rounded-full border-[5px] border-navy">
-              <Image src="/images/creator-bel-about.jpg" alt="Creator Bel" fill className="object-cover" />
-            </div>
-            <h2 className="font-display text-3xl font-extrabold leading-tight tracking-tight">
-              Oi, eu sou
-              <br />
-              Creator Bel
-            </h2>
-          </div>
-          <p className="mt-6 text-sm leading-relaxed text-muted">
-            Criadora de conteúdo UGC. Transformo produto em indicação — moda, casa, estética, NY, mãe. Já estive dos dois lados do briefing.
-          </p>
-          <div className="mt-8 grid grid-cols-3 gap-2">
-            {[
-              {n: "120+", l: "vídeos", bg: "bg-yellow"},
-              {n: "35+", l: "marcas", bg: "bg-lime"},
-              {n: "98%", l: "satisfação", bg: "bg-magenta text-white"},
-            ].map((s) => (
-              <div
-                key={s.l}
-                className={`rounded-[1.4rem] border-2 border-navy px-2 py-4 text-center ${s.bg}`}
-              >
-                <p className="font-display text-2xl font-extrabold">{s.n}</p>
-                <p className="text-[10px] font-bold tracking-wider uppercase">{s.l}</p>
-              </div>
-            ))}
-          </div>
-          <Dots index={index} />
+        <div className="relative h-full w-full bg-navy">
+          <Image
+            src="/images/creator-bel-hero.jpg"
+            alt="Creator Bel"
+            fill
+            sizes="(max-width: 768px) 90vw, 420px"
+            className="object-cover object-[center_12%] ken"
+          />
+          <Chrome index={2} onDark />
+          <span className="absolute top-[38%] right-4 z-10 rotate-6 rounded-full border-4 border-navy bg-magenta px-4 py-2 font-display text-sm font-extrabold text-white">
+            Creator Bel
+          </span>
+          <TypePlate lines={["RECADO", "DE AMIGA."]} fill="bg-lime" rotate="-rotate-3" />
         </div>
       );
     case "03-nichos":
       return (
-        <div className="relative h-full w-full bg-yellow px-6 pt-20 pb-12">
+        <div className="relative h-full w-full overflow-hidden bg-yellow">
+          <Image
+            src="/images/creator-bel-matcha.png"
+            alt=""
+            width={520}
+            height={520}
+            className="absolute -right-16 top-24 h-[70%] w-auto max-w-none"
+          />
           <Chrome index={3} />
-          <p className="text-center text-[11px] font-bold tracking-[0.2em] uppercase">Por que vários nichos?</p>
-          <h2 className="mt-3 text-center font-display text-[2rem] font-extrabold leading-tight">
-            Olhar amplo. Entrega cirúrgica.
-          </h2>
-          <div className="mt-8 flex flex-wrap justify-center gap-2">
-            {NICHES.map((n, i) => (
-              <span
-                key={n}
-                className={`rounded-full border-2 border-navy px-4 py-2 font-display text-sm font-extrabold ${
-                  i % 3 === 0 ? "bg-white" : i % 3 === 1 ? "bg-lime" : "bg-magenta text-white"
-                } ${i % 2 ? "rotate-3" : "-rotate-2"}`}
-              >
-                {n}
-              </span>
-            ))}
+          <div className="relative z-10 px-5 pt-20">
+            <p className="font-display text-[3.1rem] font-extrabold leading-[0.85] tracking-tight">
+              MODA
+              <br />
+              NY
+              <br />
+              MÃE
+            </p>
           </div>
-          <Dots index={index} />
+          <TypePlate lines={["UM TOM."]} fill="bg-magenta" ink="text-white" rotate="-rotate-3" />
         </div>
       );
     case "04-estilo-lata":
+      return (
+        <div className="relative h-full w-full bg-navy">
+          <Image
+            src="/images/ig-portfolio/bel-geladeira-lata.jpg"
+            alt={slide.title}
+            fill
+            sizes="(max-width: 768px) 90vw, 420px"
+            className="object-cover object-[center_55%] ken"
+          />
+          <Chrome index={4} onDark />
+          <span className="absolute top-[40%] left-4 z-10 -rotate-12 rounded-full border-4 border-navy bg-lime px-4 py-2 font-display text-sm font-extrabold text-navy">
+            produto na mão
+          </span>
+          <TypePlate lines={["SEM", "ESTÚDIO."]} />
+        </div>
+      );
     case "05-estilo-costas":
       return (
-        <div className="relative h-full w-full bg-navy text-white">
+        <div className="relative h-full w-full bg-navy">
           <Image
-            src={slide.photo ?? ""}
+            src="/images/ig-portfolio/bel-geladeira-costas.jpg"
             alt={slide.title}
             fill
             sizes="(max-width: 768px) 90vw, 420px"
             className="object-cover object-center ken"
           />
-          <div className="absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-navy via-navy/90 to-transparent" />
-          <Chrome index={slide.id === "04-estilo-lata" ? 4 : 5} onDark />
-          <div className="absolute inset-x-0 bottom-14 z-10 px-6 text-center">
-            <span className="inline-block rounded-full border-2 border-navy bg-lime px-3 py-1 font-display text-[11px] font-extrabold text-navy">
-              {slide.id === "04-estilo-lata" ? "lifestyle" : "moda · rua"}
-            </span>
-            <h2 className="mt-3 font-display text-4xl font-extrabold tracking-tight">{slide.title}</h2>
-            <p className="mt-2 text-sm text-yellow">{slide.body}</p>
-          </div>
-          <Dots index={index} />
+          <Chrome index={5} onDark />
+          <span className="absolute top-[40%] right-3 z-10 rotate-6 rounded-full border-4 border-navy bg-magenta px-4 py-2 font-display text-sm font-extrabold text-white">
+            a marca entra no dia
+          </span>
+          <TypePlate lines={["RUA.", "NÃO STUDIO."]} rotate="rotate-2" />
         </div>
       );
     case "06-formatos":
       return (
-        <div className="relative h-full w-full bg-offwhite px-6 pt-20 pb-12">
+        <div className="relative h-full w-full">
           <Chrome index={6} />
-          <p className="text-center text-[11px] font-bold tracking-[0.2em] text-magenta uppercase">Como eu falo</p>
-          <h2 className="mt-2 text-center font-display text-3xl font-extrabold leading-tight">
-            Ads, recado, unboxing, review.
-          </h2>
-          <div className="mt-8 space-y-3">
-            {FORMATS.map((f, i) => (
-              <div
-                key={f.k}
-                className={`flex items-center justify-between rounded-[1.4rem] border-2 border-navy px-4 py-4 ${f.bg} ${i % 2 ? "rotate-1" : "-rotate-1"}`}
-              >
-                <span className="text-[10px] font-bold tracking-[0.16em] uppercase">{f.k}</span>
-                <span className="font-display text-lg font-extrabold">{f.t}</span>
+          <div className="grid h-full grid-rows-4">
+            {FORMATS.map((f) => (
+              <div key={f.k} className={`flex flex-col justify-center px-6 ${f.bg}`}>
+                <p className="text-[10px] font-bold tracking-[0.2em] uppercase">{f.k}</p>
+                <p className="font-display text-[1.65rem] font-extrabold leading-none">{f.t}</p>
               </div>
             ))}
           </div>
-          <Dots index={index} />
         </div>
       );
     case "07-marcas":
       return (
-        <div className="relative h-full w-full bg-offwhite px-6 pt-20 pb-12">
+        <div className="relative h-full w-full overflow-hidden bg-yellow px-5 pt-20 pb-6">
           <Chrome index={7} />
-          <p className="text-center text-[11px] font-bold tracking-[0.2em] text-magenta uppercase">
-            Quem já criou comigo
-          </p>
-          <h2 className="mt-2 text-center font-display text-3xl font-extrabold">Marcas no palco.</h2>
+          <p className="font-display text-[6.2rem] font-extrabold leading-[0.8] tracking-tight">35+</p>
+          <p className="mt-2 font-display text-[2.6rem] font-extrabold leading-none text-magenta">MARCAS.</p>
           <div className="mt-8 grid grid-cols-2 gap-3">
-            {BRANDS.map((b, i) => (
+            {BRANDS.slice(0, 4).map((b, i) => (
               <div
                 key={b.name}
-                className={`flex h-24 items-center justify-center rounded-[1.4rem] border-2 border-navy px-3 ${b.plate} ${i % 2 ? "rotate-2" : "-rotate-2"}`}
+                className={`flex h-24 items-center justify-center rounded-[1.4rem] border-[5px] border-navy px-3 hard-shadow ${b.plate} ${i % 2 ? "rotate-2" : "-rotate-2"}`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={b.src} alt={b.name} className="h-10 max-w-[8.5rem] object-contain" />
               </div>
             ))}
           </div>
-          <Dots index={index} />
         </div>
       );
     case "08-processo":
       return (
-        <div className="relative h-full w-full bg-navy px-6 pt-20 pb-12 text-white">
-          <Chrome index={8} onDark />
-          <p className="text-center text-[11px] font-bold tracking-[0.2em] text-yellow uppercase">Como eu trabalho</p>
-          <h2 className="mt-2 text-center font-display text-[1.7rem] font-extrabold leading-tight">
-            Briefing a sério. Prazo de verdade.
+        <div className="relative h-full w-full overflow-hidden bg-lime px-5 pt-24">
+          <Chrome index={8} />
+          <h2 className="font-display text-[3.4rem] font-extrabold leading-[0.85] tracking-tight">
+            BRIEFING
+            <br />
+            A SÉRIO.
           </h2>
-          <div className="mt-6 space-y-2">
-            {STEPS.map((s) => (
-              <div
-                key={s.n}
-                className={`flex items-center gap-4 rounded-[1.2rem] border-2 border-navy px-4 py-3 ${s.bg}`}
-              >
-                <span className="font-display text-lg font-extrabold">{s.n}</span>
-                <div>
-                  <p className="font-display text-lg font-extrabold leading-none">{s.t}</p>
-                  <p className="text-xs opacity-80">{s.d}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <Dots index={index} />
+          <span className="mt-10 inline-block -rotate-6 rounded-full border-4 border-navy bg-navy px-5 py-2 font-display text-lg font-extrabold text-yellow">
+            prazo de verdade
+          </span>
         </div>
       );
     case "09-pacotes":
       return (
-        <div className="relative h-full w-full bg-navy px-5 pt-20 pb-12 text-white">
-          <Chrome index={9} onDark />
-          <p className="text-center text-[11px] font-bold tracking-[0.2em] text-yellow uppercase">Investimento</p>
-          <h2 className="mt-2 text-center font-display text-2xl font-extrabold">Dois pacotes. Sem surpresa.</h2>
-          <div className="mt-8 grid grid-cols-2 gap-3">
-            <div className="hard-shadow -rotate-2 rounded-[1.6rem] border-[3px] border-navy bg-white p-4 text-navy">
-              <p className="font-display text-lg font-extrabold">Experimentar</p>
-              <p className="mt-1 text-xs text-muted">Um vídeo pra testar o fit</p>
-              <p className="mt-3 font-display text-3xl font-extrabold">R$ 200</p>
-              <p className="mt-2 text-[11px]">1 UGC · revisão · ads 3 meses</p>
+        <div className="relative h-full w-full overflow-hidden">
+          <Chrome index={9} />
+          <div className="grid h-full grid-cols-2">
+            <div className="flex flex-col items-center justify-center bg-white px-3 text-navy">
+              <p className="font-display text-sm font-extrabold">Experimentar</p>
+              <p className="mt-4 font-display text-[2.6rem] font-extrabold leading-none">R$ 200</p>
+              <p className="mt-2 text-sm text-muted">1 vídeo</p>
             </div>
-            <div className="hard-shadow rotate-2 rounded-[1.6rem] border-[3px] border-navy bg-magenta p-4">
-              <span className="inline-block rounded-full bg-yellow px-2 py-0.5 font-display text-[10px] font-extrabold text-navy">
+            <div className="flex flex-col items-center justify-center bg-magenta px-3 text-white">
+              <span className="rounded-full bg-yellow px-2 py-0.5 font-display text-[10px] font-extrabold text-navy">
                 mais popular
               </span>
-              <p className="mt-2 font-display text-lg font-extrabold">Professional</p>
-              <p className="mt-1 text-xs text-white/80">Três vídeos + roteiro</p>
-              <p className="mt-3 font-display text-3xl font-extrabold">R$ 500</p>
-              <p className="mt-2 text-[11px]">3 UGC · ads 6 meses</p>
+              <p className="mt-3 font-display text-sm font-extrabold">Professional</p>
+              <p className="mt-4 font-display text-[2.6rem] font-extrabold leading-none">R$ 500</p>
+              <p className="mt-2 text-sm text-white/80">3 vídeos</p>
             </div>
           </div>
-          <Dots index={index} />
         </div>
       );
     default:
       return (
         <div className="relative h-full w-full overflow-hidden bg-magenta text-white">
-          <div className="absolute -top-10 -left-10 h-48 w-48 rounded-full bg-yellow/60 blob" />
-          <div className="absolute -right-8 -bottom-10 h-40 w-40 rounded-full bg-lime/50 blob-slow" />
+          <div className="absolute -top-8 -left-10 h-36 w-36 rounded-[2rem] bg-yellow" />
+          <Image
+            src="/images/creator-bel-fullbody.png"
+            alt=""
+            width={280}
+            height={420}
+            className="absolute -right-6 bottom-0 h-[78%] w-auto"
+          />
           <Chrome index={10} onDark />
-          <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-            <p className="text-[11px] font-bold tracking-[0.2em] text-yellow uppercase">Próximo passo</p>
-            <h2 className="mt-4 font-display text-6xl font-extrabold tracking-tight">Me chama.</h2>
-            <p className="mt-8 rounded-full bg-navy px-5 py-3 font-display text-sm font-extrabold">
+          <div className="relative z-10 flex h-full flex-col justify-center px-5">
+            <h2 className="font-display text-[3.6rem] font-extrabold leading-[0.82] tracking-tight">
+              VAMO
+              <br />
+              GRAVAR.
+            </h2>
+            <p className="mt-8 inline-flex w-fit rounded-full bg-navy px-5 py-3 font-display text-sm font-extrabold">
               WhatsApp · {INSTAGRAM_HANDLE}
             </p>
-            <p className="mt-4 text-sm font-bold text-navy">belconteudos.com</p>
           </div>
-          <Dots index={index} />
         </div>
       );
   }
@@ -371,7 +325,7 @@ export default function IgMiniPortfolio({videos}: {videos: Record<string, boolea
                         {slide.title}
                       </video>
                     ) : (
-                      <SlideFace slide={slide} index={index} />
+                      <SlideFace slide={slide} />
                     )}
                   </motion.div>
                 </AnimatePresence>

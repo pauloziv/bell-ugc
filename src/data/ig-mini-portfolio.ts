@@ -5,14 +5,16 @@ export const IG_CARD = {
   fps: 30,
 } as const;
 
-export const IG_PORTFOLIO_CAPTION = `Vamos criar juntas?
+export const IG_PORTFOLIO_CAPTION = `Não é anúncio. É indicação.
 
-Oi, eu sou a Creator Bel — UGC pra marcas que querem indicação, não anúncio.
+Recado de amiga. Não comercial.
 
-Swipe: quem eu sou, estilo na rua, formatos, marcas, processo e pacotes.
+Rua, não studio. 120+ vídeos. 35+ marcas.
 
-Site: belconteudos.com
+R$ 200 ou R$ 500. Sem surpresa.
+
 WhatsApp no link da bio
+belconteudos.com
 
 #ugc #ugccreator #ugcbrasil #creatordemarketing #reels`;
 
@@ -30,34 +32,35 @@ export const IG_SLIDES: IgSlide[] = [
   {
     id: "01-cover",
     file: "01-cover.mp4",
-    kicker: "Mini portfólio",
-    title: "Vamos criar juntas?",
-    body: "Creator Bel — UGC que parece recado de amiga.",
+    kicker: "Capa",
+    title: "Não é anúncio.",
+    body: "É indicação.",
     onDark: true,
     photo: "/images/ig-portfolio/bel-geladeira-lata.jpg",
   },
   {
     id: "02-quem",
     file: "02-quem.mp4",
-    kicker: "Quem sou",
-    title: "Conteúdo real, resultado real.",
-    body: "Moda, casa, estética, NY, mãe. Dois lados do briefing.",
-    onDark: false,
+    kicker: "Quem",
+    title: "Recado de amiga.",
+    body: "Não comercial.",
+    onDark: true,
+    photo: "/images/creator-bel-hero.jpg",
   },
   {
     id: "03-nichos",
     file: "03-nichos.mp4",
     kicker: "Nichos",
-    title: "Olhar amplo. Entrega cirúrgica.",
-    body: "Nove territórios. Um tom.",
+    title: "Um tom.",
+    body: "Moda. NY. Mãe.",
     onDark: false,
   },
   {
     id: "04-estilo-lata",
     file: "04-estilo-lata.mp4",
     kicker: "Estilo",
-    title: "Produto na vida real.",
-    body: "Geladeira, jaqueta, lata na mão. Sem mesa de estúdio.",
+    title: "Sem estúdio.",
+    body: "Produto na mão.",
     onDark: true,
     photo: "/images/ig-portfolio/bel-geladeira-lata.jpg",
   },
@@ -65,8 +68,8 @@ export const IG_SLIDES: IgSlide[] = [
     id: "05-estilo-costas",
     file: "05-estilo-costas.mp4",
     kicker: "Estilo",
-    title: "Rua, não studio.",
-    body: "Costas, clip, couro. A marca entra no dia.",
+    title: "Rua. Não studio.",
+    body: "A marca entra no dia.",
     onDark: true,
     photo: "/images/ig-portfolio/bel-geladeira-costas.jpg",
   },
@@ -74,40 +77,40 @@ export const IG_SLIDES: IgSlide[] = [
     id: "06-formatos",
     file: "06-formatos.mp4",
     kicker: "Formatos",
-    title: "Ads, recado, unboxing, review.",
-    body: "O tom muda. A Bel continua a mesma.",
+    title: "O tom muda.",
+    body: "Ads, recado, unboxing, review.",
     onDark: false,
   },
   {
     id: "07-marcas",
     file: "07-marcas.mp4",
     kicker: "Prova",
-    title: "Marcas que já criaram comigo",
-    body: "Creamy, Skelt, Sander, Dove e mais.",
+    title: "35+ marcas.",
+    body: "Creamy, Skelt, Dove, Natura.",
     onDark: false,
   },
   {
     id: "08-processo",
     file: "08-processo.mp4",
     kicker: "Processo",
-    title: "Briefing a sério. Prazo de verdade.",
-    body: "Cinco etapas. Arquivo pronto pra publicar.",
-    onDark: true,
+    title: "Briefing a sério.",
+    body: "Prazo de verdade.",
+    onDark: false,
   },
   {
     id: "09-pacotes",
     file: "09-pacotes.mp4",
     kicker: "Investimento",
-    title: "Dois pacotes. Sem surpresa.",
-    body: "Experimentar R$ 200 · Professional R$ 500.",
+    title: "R$ 200 · R$ 500",
+    body: "Sem surpresa.",
     onDark: true,
   },
   {
     id: "10-cta",
     file: "10-cta.mp4",
-    kicker: "Próximo passo",
-    title: "Me chama.",
-    body: "@bel.conteudos · belconteudos.com",
+    kicker: "Agora",
+    title: "Vamo gravar.",
+    body: "@bel.conteudos",
     onDark: true,
   },
 ];

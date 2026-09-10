@@ -1,16 +1,16 @@
-import {Circle, Layout, Rect, Txt} from '@motion-canvas/2d';
-import {C, FONT_BODY, FONT_DISPLAY} from './theme';
+import {Layout, Rect, Txt} from '@motion-canvas/2d';
+import {C, FONT_DISPLAY} from './theme';
 
-export function BrandMark({onDark = false, x = -400, y = -602}: {onDark?: boolean; x?: number; y?: number}) {
+export function BrandMark({onDark = false, x = -390, y = -605}: {onDark?: boolean; x?: number; y?: number}) {
   const ink = onDark ? C.white : C.navy;
   return (
     <Layout layout x={x} y={y} alignItems={'center'} gap={10}>
-      <Txt text={'Bel'} fontFamily={FONT_DISPLAY} fontWeight={800} fontSize={40} fill={ink} />
+      <Txt text={'Bel'} fontFamily={FONT_DISPLAY} fontWeight={800} fontSize={36} fill={ink} />
       <Rect
         fill={C.lime}
         radius={40}
         padding={[8, 14]}
-        lineWidth={3}
+        lineWidth={4}
         stroke={C.navy}
         layout
         alignItems={'center'}
@@ -29,34 +29,26 @@ export function BrandMark({onDark = false, x = -400, y = -602}: {onDark?: boolea
   );
 }
 
-export function SlideIndex({index, onDark = false}: {index: number; onDark?: boolean}) {
+export function IndexStamp({index}: {index: number}) {
   return (
-    <Txt
+    <Rect
       x={400}
-      y={-602}
-      text={`${String(index).padStart(2, '0')} / 10`}
-      fontFamily={FONT_BODY}
-      fontWeight={700}
-      fontSize={22}
-      fill={onDark ? C.white : C.navy}
-      letterSpacing={2}
-    />
-  );
-}
-
-export function Dots({index, onDark = false}: {index: number; onDark?: boolean}) {
-  return (
-    <Layout layout y={618} gap={10} alignItems={'center'}>
-      {Array.from({length: 10}, (_, i) => (
-        <Circle
-          width={i === index - 1 ? 18 : 11}
-          height={i === index - 1 ? 18 : 11}
-          fill={i === index - 1 ? C.lime : onDark ? '#ffffff44' : '#1A1A2E22'}
-          stroke={C.navy}
-          lineWidth={2}
-        />
-      ))}
-    </Layout>
+      y={-605}
+      fill={C.lime}
+      radius={18}
+      padding={[10, 22]}
+      lineWidth={4}
+      stroke={C.navy}
+      layout
+    >
+      <Txt
+        text={String(index).padStart(2, '0')}
+        fontFamily={FONT_DISPLAY}
+        fontWeight={800}
+        fontSize={32}
+        fill={C.navy}
+      />
+    </Rect>
   );
 }
 
@@ -66,12 +58,16 @@ export function Sticker({
   x,
   y,
   rotation = 8,
+  ink = C.navy,
+  fontSize = 28,
 }: {
   text: string;
   fill: string;
   x: number;
   y: number;
   rotation?: number;
+  ink?: string;
+  fontSize?: number;
 }) {
   return (
     <Rect
@@ -79,9 +75,9 @@ export function Sticker({
       y={y}
       rotation={rotation}
       fill={fill}
-      radius={28}
-      padding={[12, 22]}
-      lineWidth={3}
+      radius={32}
+      padding={[16, 28]}
+      lineWidth={4}
       stroke={C.navy}
       layout
       alignItems={'center'}
@@ -91,8 +87,8 @@ export function Sticker({
         text={text}
         fontFamily={FONT_DISPLAY}
         fontWeight={800}
-        fontSize={22}
-        fill={C.navy}
+        fontSize={fontSize}
+        fill={ink}
       />
     </Rect>
   );

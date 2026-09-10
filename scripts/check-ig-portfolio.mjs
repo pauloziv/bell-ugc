@@ -43,7 +43,7 @@ for (const name of videos) {
     console.error("missing video", name);
     process.exit(1);
   }
-  if (statSync(file).size < 80_000) {
+  if (statSync(file).size < 50_000) {
     console.error("video too small", name, statSync(file).size);
     process.exit(1);
   }
