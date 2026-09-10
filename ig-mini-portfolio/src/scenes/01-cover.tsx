@@ -1,24 +1,22 @@
 import {Img, Node, makeScene2D} from '@motion-canvas/2d';
 import {createRef, linear} from '@motion-canvas/core';
+import smile from '../assets/work/kit-smile.jpg';
 import lata from '../assets/bel-geladeira-lata.jpg';
-import {BrandMark, IndexStamp} from '../chrome';
-import {HardSticker, PhotoBleed, TypePlate} from '../poster';
-import {C, CARD_SECONDS} from '../theme';
+import {Cursor, Folder, Polaroid} from '../kit';
+import {CARD_SECONDS} from '../theme';
 
 export default makeScene2D(function* (view) {
   yield document.fonts.ready;
   const photo = createRef<Img>();
 
-  view.fill(C.navy);
   view.add(
     <Node>
-      <PhotoBleed src={lata} imgRef={photo} width={1300} height={2311} y={50} />
-      <BrandMark onDark />
-      <IndexStamp index={1} />
-      <HardSticker text={'é indicação'} fill={C.lime} x={-240} y={80} />
-      <TypePlate lines={['NÃO É', 'ANÚNCIO.']} fontSize={108} y={410} />
+      <Img ref={photo} src={smile} width={1480} height={1860} y={40} />
+      <Folder handle={'@bel.conteudos'} />
+      <Polaroid src={lata} x={-390} y={430} rotation={-14} />
+      <Cursor x={430} y={560} />
     </Node>,
   );
 
-  yield* photo().scale(1.1, CARD_SECONDS, linear);
+  yield* photo().scale(1.08, CARD_SECONDS, linear);
 });

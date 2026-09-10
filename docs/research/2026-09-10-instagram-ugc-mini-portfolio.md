@@ -1,6 +1,6 @@
 # Instagram UGC mini-portfólio (carrossel)
 
-Pesquisa para o carrossel de 10 cards da Bel. Só afirmação com fonte. O que o Instagram bloqueou, fica marcado como não visto.
+Pesquisa para o carrossel de 10 cards da Bel. Só afirmação com fonte.
 
 ## 1. O que é esse formato
 
@@ -14,11 +14,13 @@ Fontes:
 
 No mercado hispano-americano o gancho de capa costuma ser **“¿Trabajamos juntos?”** — pitch direto para marca, não tutorial para seguidor.
 
+**Atenção:** IMH descreve um kit completo (métrica + menu de preço). O **post de referência** não faz isso. Seguir o post, não o artigo.
+
 ## 2. Exemplo pedido — o que deu para verificar
 
 URL: `https://www.instagram.com/p/DcI8cWtlskr/?img_index=5`
 
-**Visto (embed público do Instagram, 10 set 2026):**
+**Metadados (embed público, 10 set 2026):**
 
 | Campo | Valor verificado |
 | --- | --- |
@@ -27,12 +29,21 @@ URL: `https://www.instagram.com/p/DcI8cWtlskr/?img_index=5`
 | Perfil no embed | 866 posts · 95K followers |
 | Caption | `Trabajamos juntooos?❤️ Obvio me inspire de @estefanymina_ x @axhlymendoza` |
 | Likes no embed | 2,220 |
-| Tipo de mídia | Carrossel. Cover = vídeo (`CAROUSEL_ITEM` + `video_default_cover_frame`). Outro item vídeo + item `regular_photo` (xpids 3024) |
-| `img_index=5` | Query oficial de slide; o post tem **no mínimo 5** itens |
+| Tipo de mídia | Carrossel. 7 itens. Capa em vídeo. |
 
-**Não visto (login wall / embed só entrega cover + thumbs):** layout tipográfico de cada slide, paleta, copy interna, tarifas. Não inventar esses slides.
+**Slides internos (frames `display_url` do carrossel, 10 set 2026). Zero tarifas.**
 
-Leitura segura do exemplo: **carrossel misto vídeo+foto**, capa em vídeo, gancho “trabalhamos juntos?”, crédito a outras UGC (Estefany Mina, Axhly Mendoza). Padrão LatAm de mini-portfólio no feed.
+| # | Papel | O que está na arte |
+| --- | --- | --- |
+| 1 | Capa | Rosto sorrindo olhando câmera. Pasta gráfica: *mini* **PORTAFOLIO** + `@daniielarosales`. Polaroid, cursor. Sem preço. |
+| 2 | Marcas | “Algunas marcas con las que he trabajado”. Produtos colados + grade de logos. Sem métrica, sem preço. |
+| 3 | Trabalho | Header **Belleza**. 3 celulares com UGC real. Logos embaixo. Rodapé gigante **content**. |
+| 4 | Trabalho | **Recomendaciones** + 3 celulares + logos + **content**. |
+| 5 | Trabalho | **Moda** + 3 celulares + logos + **content**. |
+| 6 | Trabalho | **Videos Ads** + 3 celulares + logos + **content**. |
+| 7 | CTA | Handles, “CALL ME!” / “contact me!”, “Creadora de contenido”. Sem preço. |
+
+Comunicação do exemplo: convite + **mostrar o trabalho no celular**, agrupado por nicho, contato no fim. **Não é tarifário.** Não copiar renda/renda/lace — só a estrutura. Paleta Bel = Bold Pop.
 
 ## 3. Regras oficiais Meta / Instagram (não blog)
 
@@ -63,21 +74,22 @@ Leitura segura do exemplo: **carrossel misto vídeo+foto**, capa em vídeo, ganc
 
 Blogs 2026 que falam 3:4 (1080×1440) ou “20 slides no app vs 10 na API” **não substituem** o spec 4:5 da Graph para imagem. App permite 20; API 10. Entrega: **10**, funciona nos dois.
 
-## 4. Arquitetura de slides que as fontes descrevem
+## 4. Arquitetura de slides (seguir o exemplo, não o tarifário IMH)
 
-Não copiar um template Canva. Combinar o que as fontes primárias/setoriais pedem:
+O exemplo **não** tem processo, briefing, métrica 35+, nem menu de preço. IMH descreve media kit completo; **este post** é pasta + trabalho + me chama. Bel adapta a estrutura, 10 cards (limite Graph), extras = mais trabalho, **nunca** preço.
 
-| # | Papel | Por quê | Fonte |
-| --- | --- | --- | --- |
-| 1 | Capa / gancho (“vamos criar juntas?”) | Capa decide swipe. Completions 7–10 slides. | Help Center (1º item = crop); Canvora (hook + valor + CTA; 7–10); exemplo daniielarosales |
-| 2 | Quem sou + o que faço | Marca decide relevância em segundos | IMH §1 |
-| 3 | Nicho / identidade visual | Niche > follower count | IMH Step 2 |
-| 4–5 | Prova visual (lifestyle, product-in-use) | 6–12 exemplos; foto UGC = lifestyle / produto no uso | IMH §2; ContentCreators table (Lifestyle Integration) |
-| 6 | Formatos (demo, unboxing, review, recado) | Marca quer versatilidade de formato | IMH; ContentCreators formats |
-| 7 | Marcas / social proof | Collabs visíveis | Metricool; ContentCreators “past collaborations” |
-| 8 | Processo | Reduz risco operacional | IMH “professionalism”; tarifário UGC LatAm (YouTube guia 2026: prazo + briefing) |
-| 9 | Menu / pacotes | Menu baixo atrito | IMH §4; guia UGC 2026 (tarifario PDF, pacotes, ads rights) |
-| 10 | CTA + contato | Email/WhatsApp/handle clicável no kit; aqui vira handle + site | IMH §5 |
+| # | Papel Bel | Espelho do exemplo |
+| --- | --- | --- |
+| 1 | Capa pasta: mini PORTFÓLIO + @bel.conteudos + rosto | Slide 1 pasta |
+| 2 | Algumas marcas com quem eu já gravei + logos | Slide 2 |
+| 3 | Beleza · 3 celulares + content | Slide 3 Belleza |
+| 4 | Indicações · geladeira lata/costas | Slide 4 Recomendaciones |
+| 5 | Moda · 3 celulares + content | Slide 5 Moda |
+| 6 | Video ads · 3 celulares + content | Slide 6 Videos Ads |
+| 7 | Salão · 3 celulares + content | Extra: nicho real da Bel |
+| 8 | Vida real · 3 celulares + content | Extra: mais trabalho |
+| 9 | Na rua · 3 celulares + content | Extra: fotos pedidas |
+| 10 | Me chama · @bel.conteudos | Slide 7 CALL ME / contact me |
 
 Vídeo em **todo** slide: o exemplo usa vídeo na capa; Meta deixa mix. Pedido da Bel: 10 cards em Motion Canvas (vídeo). Instagram **loopa** vídeo de feed ([ads media: endless loop](https://developers.facebook.com/docs/instagram/ads-api/reference/media-requirements/)).
 
@@ -88,8 +100,9 @@ Do design system Bold Pop e do site:
 - Cores: magenta `#E91E8C`, yellow `#FFD23F`, lime `#7BED4F`, navy `#1A1A2E`, offwhite `#FAFAFA`
 - Tipo: Cabinet Grotesk + Satoshi
 - Tom PT-BR, sticker, hard-shadow, squircle
-- Copy já publicada: “Creator Bel”, “Vamos criar juntos?”, 120+ vídeos, 35+ marcas, 98%, nichos, pacotes R$ 200 / R$ 500
-- Fotos novas (anexo): geladeira Coca-Cola, jaqueta de couro — product-in-use / lifestyle. Entram nos slides 4 e 5 (e polaroid na capa)
+- Copy do **site** (não deste carrossel): “Creator Bel”, 120+ vídeos, 35+ marcas, 98%, R$ 200 / R$ 500
+- Copy deste carrossel: convite (“Vamos juntas?”), trabalho, me chama. **Sem R$.**
+- Fotos geladeira Coca-Cola: slides 4 e 9 (e polaroid na capa)
 
 ## 6. Spec de produção
 
@@ -100,14 +113,14 @@ Do design system Bold Pop e do site:
 
 ## 7. Fontes consultadas (não fabricadas)
 
-1. Instagram Help Center — carrossel até 20, orientação única, vídeo ≠ Reel  
-2. Meta IG User Media v26 — children ≤10, mix, Reels fora, JPEG 4:5–1.91:1  
-3. Meta Content Publishing 30 jun 2026 — CAROUSEL, crop pelo 1º item  
-4. Meta Ads Media Requirements — 4:5, vídeo 3–60 s, loop  
-5. Embed Instagram `p/DcI8cWtlskr` — metadados da seção 2  
-6. Influencer Marketing Hub — UGC portfolio 29 dez 2025  
-7. Metricool Creator Marketplace  
-8. ContentCreators.com UGC Portfolio Builder  
+1. Instagram Help Center — carrossel até 20, orientação única, vídeo ≠ Reel
+2. Meta IG User Media v26 — children ≤10, mix, Reels fora, JPEG 4:5–1.91:1
+3. Meta Content Publishing 30 jun 2026 — CAROUSEL, crop pelo 1º item
+4. Meta Ads Media Requirements — 4:5, vídeo 3–60 s, loop
+5. Frames `display_url` do post `p/DcI8cWtlskr` — 7 slides da seção 2
+6. Influencer Marketing Hub — UGC portfolio 29 dez 2025 (contexto; **não** ditou este carrossel)
+7. Metricool Creator Marketplace
+8. ContentCreators.com UGC Portfolio Builder
 9. VideoZero/skills README + SKILL.md Motion Canvas (clone 10 set 2026)
 
-**Não usado como fato:** blogs que afirmam 3:4 “oficial 2026” sem Help Center; conteúdo interno dos slides do exemplo (não renderizou).
+**Não usado como fato:** blogs que afirmam 3:4 “oficial 2026” sem Help Center; tarifário IMH como se fosse o post de referência.

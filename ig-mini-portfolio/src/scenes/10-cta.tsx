@@ -1,52 +1,104 @@
-import {Img, Node, Rect, Txt, makeScene2D} from '@motion-canvas/2d';
-import {all, createRef, linear, waitFor} from '@motion-canvas/core';
-import fullbody from '../../../public/images/creator-bel-fullbody.png';
-import {BrandMark, IndexStamp} from '../chrome';
-import {C, CARD_SECONDS, FONT_DISPLAY} from '../theme';
+import {Circle, Node, Rect, Txt, makeScene2D} from '@motion-canvas/2d';
+import {createRef, linear} from '@motion-canvas/core';
+import {Cursor, Dots} from '../kit';
+import {C, CARD_SECONDS, FONT_BODY, FONT_DISPLAY} from '../theme';
 
 export default makeScene2D(function* (view) {
   yield document.fonts.ready;
-  const bel = createRef<Img>();
+  const stamp = createRef<Rect>();
 
-  view.fill(C.magenta);
+  view.fill(C.offwhite);
   view.add(
     <Node>
-      <Rect x={-430} y={-600} width={420} height={420} fill={C.yellow} radius={36} />
-      <Img ref={bel} src={fullbody} x={340} y={80} width={820} height={1220} />
-      <BrandMark onDark />
-      <IndexStamp index={10} />
+      <Dots fill={C.magenta} opacity={0.22} />
       <Txt
-        x={-140}
-        y={-80}
-        width={640}
-        textAlign={'left'}
-        text={'VAMO\nGRAVAR.'}
+        y={-540}
+        text={'@bel.conteudos'}
         fontFamily={FONT_DISPLAY}
         fontWeight={800}
-        fontSize={120}
-        fill={C.white}
-        lineHeight={114}
+        fontSize={42}
+        fill={C.navy}
+      />
+      <Txt
+        y={-480}
+        text={'@bel.conteudos'}
+        fontFamily={FONT_DISPLAY}
+        fontWeight={800}
+        fontSize={36}
+        fill={C.magenta}
       />
       <Rect
-        y={280}
-        x={-160}
+        y={-40}
+        width={780}
+        height={720}
+        fill={C.white}
+        radius={8}
+        lineWidth={5}
+        stroke={C.navy}
+      />
+      <Txt
+        y={-280}
+        text={'criadora de conteúdo'}
+        fontFamily={FONT_BODY}
+        fontWeight={500}
+        fontSize={32}
         fill={C.navy}
-        radius={48}
-        padding={[24, 40]}
+      />
+      <Rect
+        ref={stamp}
+        y={-80}
+        rotation={-6}
+        width={560}
+        height={140}
+        fill={C.yellow}
+        radius={12}
+        lineWidth={5}
+        stroke={C.navy}
         layout
-        shadowColor={C.navy}
-        shadowOffset={[8, 8]}
+        justifyContent={'center'}
+        alignItems={'center'}
       >
         <Txt
-          text={'WhatsApp  ·  @bel.conteudos'}
+          text={'ME CHAMA!'}
           fontFamily={FONT_DISPLAY}
           fontWeight={800}
-          fontSize={28}
+          fontSize={72}
+          fill={C.navy}
+        />
+      </Rect>
+      <Rect
+        y={160}
+        width={420}
+        height={88}
+        fill={C.magenta}
+        radius={40}
+        lineWidth={5}
+        stroke={C.navy}
+        layout
+        justifyContent={'center'}
+        alignItems={'center'}
+      >
+        <Txt
+          text={'me chama'}
+          fontFamily={FONT_DISPLAY}
+          fontWeight={800}
+          fontSize={40}
           fill={C.white}
         />
       </Rect>
+      <Txt
+        y={320}
+        text={'whatsapp no link'}
+        fontFamily={FONT_BODY}
+        fontWeight={700}
+        fontSize={28}
+        fill={C.navy}
+      />
+      <Circle x={-420} y={-380} width={36} fill={C.lime} lineWidth={4} stroke={C.navy} />
+      <Rect x={430} y={-200} width={54} height={54} fill={C.navy} rotation={45} />
+      <Cursor x={400} y={480} />
     </Node>,
   );
 
-  yield* all(bel().y(40, CARD_SECONDS, linear), waitFor(CARD_SECONDS));
+  yield* stamp().rotation(4, CARD_SECONDS, linear);
 });

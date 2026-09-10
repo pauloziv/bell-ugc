@@ -10,22 +10,22 @@ const files = [
   "src/data/ig-mini-portfolio.ts",
   "src/app/mini-portfolio/page.tsx",
   "ig-mini-portfolio/src/scenes/01-cover.tsx",
-  "ig-mini-portfolio/src/scenes/04-estilo-lata.tsx",
-  "ig-mini-portfolio/src/scenes/05-estilo-costas.tsx",
+  "ig-mini-portfolio/src/scenes/04-indicacoes.tsx",
+  "ig-mini-portfolio/src/scenes/09-rua.tsx",
   "ig-mini-portfolio/src/scenes/10-cta.tsx",
   "docs/research/2026-09-10-instagram-ugc-mini-portfolio.md",
 ];
 
 const videos = [
   "01-cover.mp4",
-  "02-quem.mp4",
-  "03-nichos.mp4",
-  "04-estilo-lata.mp4",
-  "05-estilo-costas.mp4",
-  "06-formatos.mp4",
-  "07-marcas.mp4",
-  "08-processo.mp4",
-  "09-pacotes.mp4",
+  "02-marcas.mp4",
+  "03-beleza.mp4",
+  "04-indicacoes.mp4",
+  "05-moda.mp4",
+  "06-ads.mp4",
+  "07-salao.mp4",
+  "08-vida.mp4",
+  "09-rua.mp4",
   "10-cta.mp4",
 ];
 
@@ -34,6 +34,36 @@ const hashes = new Set();
 const missing = files.filter((f) => !existsSync(path.join(process.cwd(), f)));
 if (missing.length) {
   console.error("missing files", missing);
+  process.exit(1);
+}
+
+const copy = readFileSync(path.join(process.cwd(), "src/data/ig-mini-portfolio.ts"), "utf8");
+if (copy.includes("R$") || copy.includes("pacotes") || copy.includes("Briefing")) {
+  console.error("carousel copy still looks like a rate card");
+  process.exit(1);
+}
+
+for (const scene of [
+  "ig-mini-portfolio/src/scenes/01-cover.tsx",
+  "ig-mini-portfolio/src/scenes/04-indicacoes.tsx",
+  "ig-mini-portfolio/src/scenes/09-rua.tsx",
+  "ig-mini-portfolio/src/scenes/10-cta.tsx",
+]) {
+  const text = readFileSync(path.join(process.cwd(), scene), "utf8");
+  if (text.includes("R$")) {
+    console.error("price leaked into", scene);
+    process.exit(1);
+  }
+}
+
+const lata = readFileSync(path.join(process.cwd(), "ig-mini-portfolio/src/scenes/04-indicacoes.tsx"), "utf8");
+const rua = readFileSync(path.join(process.cwd(), "ig-mini-portfolio/src/scenes/09-rua.tsx"), "utf8");
+if (!lata.includes("bel-geladeira-lata") || !lata.includes("bel-geladeira-costas")) {
+  console.error("fridge photos missing from 04-indicacoes");
+  process.exit(1);
+}
+if (!rua.includes("bel-geladeira-lata") || !rua.includes("bel-geladeira-costas")) {
+  console.error("fridge photos missing from 09-rua");
   process.exit(1);
 }
 

@@ -8,7 +8,7 @@ import {SITE_URL} from "@/lib/site";
 export const metadata: Metadata = {
   title: "Mini portfólio Instagram",
   description:
-    "10 cards em vídeo 4:5 — mini portfólio UGC da Creator Bel para o feed.",
+    "Mini portfólio UGC no feed: capa, marcas, trabalhos no celular. Sem tarifário.",
   alternates: {
     canonical: `${SITE_URL}/mini-portfolio`,
   },
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/mini-portfolio`,
     title: "Mini portfólio Instagram | Creator Bel",
     description:
-      "10 cards em vídeo 4:5 — mini portfólio UGC da Creator Bel para o feed.",
+      "Mini portfólio UGC no feed: capa, marcas, trabalhos no celular. Sem tarifário.",
   },
 };
 

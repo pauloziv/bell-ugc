@@ -13,14 +13,14 @@ const outDir = path.join(root, "output");
 const destDir = path.resolve(root, "../public/ig-portfolio");
 const NAMES = [
   "01-cover",
-  "02-quem",
-  "03-nichos",
-  "04-estilo-lata",
-  "05-estilo-costas",
-  "06-formatos",
-  "07-marcas",
-  "08-processo",
-  "09-pacotes",
+  "02-marcas",
+  "03-beleza",
+  "04-indicacoes",
+  "05-moda",
+  "06-ads",
+  "07-salao",
+  "08-vida",
+  "09-rua",
   "10-cta",
 ];
 
