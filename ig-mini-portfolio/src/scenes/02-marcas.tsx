@@ -6,22 +6,27 @@ import smile from '../assets/work/kit-smile.jpg';
 import {Dots, LogoPlate} from '../kit';
 import {C, CARD_SECONDS, FONT_BODY, FONT_DISPLAY} from '../theme';
 
-const LOGOS = [
-  ['Creamy', 'Skelt', 'Natura'],
-  ['Farm', 'Granado', 'Boticário'],
-  ['Havaianas', 'Muvon', 'Ferrari'],
+const PLATES: {name: string; x: number; y: number}[] = [
+  {name: 'Creamy', x: -310, y: 210},
+  {name: 'Skelt', x: 0, y: 210},
+  {name: 'Natura', x: 310, y: 210},
+  {name: 'Farm', x: -310, y: 310},
+  {name: 'Granado', x: 0, y: 310},
+  {name: 'Boticário', x: 310, y: 310},
+  {name: 'Havaianas', x: -310, y: 410},
+  {name: 'Muvon', x: 0, y: 410},
+  {name: 'Ferrari', x: 310, y: 410},
 ];
 
 export default makeScene2D(function* (view) {
-  yield document.fonts.ready;
   const collage = createRef<Node>();
 
   view.fill(C.offwhite);
   view.add(
     <Node ref={collage}>
-      <Dots fill={C.navy} opacity={0.12} />
-      {Array.from({length: 11}, (_, i) => (
-        <Circle x={-510} y={-600 + i * 120} width={28} fill={C.navy} />
+      <Dots fill={C.navy} opacity={0.14} />
+      {Array.from({length: 12}, (_, i) => (
+        <Circle x={-500} y={-620 + i * 110} width={26} height={26} fill={C.navy} />
       ))}
       <Txt
         y={-560}
@@ -32,7 +37,7 @@ export default makeScene2D(function* (view) {
         fill={C.navy}
       />
       <Txt
-        y={-480}
+        y={-478}
         text={'com quem eu já gravei'}
         fontFamily={FONT_BODY}
         fontWeight={500}
@@ -40,53 +45,9 @@ export default makeScene2D(function* (view) {
         fill={C.magenta}
       />
       <Rect
-        x={-360}
-        y={-280}
+        x={-340}
+        y={-250}
         rotation={-8}
-        width={200}
-        height={240}
-        radius={16}
-        clip
-        lineWidth={5}
-        stroke={C.navy}
-      >
-        <Img src={beleza} width={240} height={280} />
-      </Rect>
-      <Rect
-        x={360}
-        y={-300}
-        rotation={7}
-        width={180}
-        height={220}
-        radius={16}
-        clip
-        lineWidth={5}
-        stroke={C.navy}
-      >
-        <Img src={creamy} width={220} height={260} />
-      </Rect>
-      <Rect
-        y={20}
-        width={640}
-        height={320}
-        radius={18}
-        fill={C.offwhite}
-        lineWidth={8}
-        stroke={C.navy}
-      />
-      <Rect x={-210} y={-80} width={8} height={220} fill={C.navy} />
-      <Rect x={210} y={-80} width={8} height={220} fill={C.navy} />
-      <Rect x={0} y={-80} width={420} height={8} fill={C.navy} />
-      <Rect x={0} y={40} width={420} height={8} fill={C.navy} />
-      <Rect x={0} y={140} width={420} height={8} fill={C.navy} />
-      {LOGOS.map((row, r) =>
-        row.map((name, c) => (
-          <LogoPlate name={name} x={-300 + c * 300} y={300 + r * 92} />
-        )),
-      )}
-      <Rect
-        x={400}
-        y={140}
         width={220}
         height={260}
         radius={18}
@@ -94,8 +55,36 @@ export default makeScene2D(function* (view) {
         lineWidth={5}
         stroke={C.navy}
       >
-        <Img src={smile} width={280} height={320} y={20} />
+        <Img src={beleza} width={260} height={300} />
       </Rect>
+      <Rect
+        x={340}
+        y={-270}
+        rotation={8}
+        width={200}
+        height={240}
+        radius={18}
+        clip
+        lineWidth={5}
+        stroke={C.navy}
+      >
+        <Img src={creamy} width={240} height={280} />
+      </Rect>
+      <Rect
+        x={0}
+        y={-40}
+        width={240}
+        height={280}
+        radius={18}
+        clip
+        lineWidth={5}
+        stroke={C.navy}
+      >
+        <Img src={smile} width={280} height={340} y={20} />
+      </Rect>
+      {PLATES.map((p) => (
+        <LogoPlate name={p.name} x={p.x} y={p.y} />
+      ))}
     </Node>,
   );
 

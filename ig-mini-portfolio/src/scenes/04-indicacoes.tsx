@@ -7,7 +7,6 @@ import {WorkCard} from '../kit';
 import {CARD_SECONDS} from '../theme';
 
 export default makeScene2D(function* (view) {
-  yield document.fonts.ready;
   const a = createRef<Img>();
   const b = createRef<Img>();
   const c = createRef<Img>();

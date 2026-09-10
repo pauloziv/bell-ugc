@@ -4,7 +4,7 @@ import {C, FONT_BODY, FONT_DISPLAY} from './theme';
 
 export function Dots({
   fill = C.yellow,
-  opacity = 0.32,
+  opacity = 0.4,
   originY = -620,
 }: {
   fill?: string;
@@ -18,7 +18,8 @@ export function Dots({
         <Circle
           x={-480 + c * 120}
           y={originY + r * 140}
-          width={18}
+          width={22}
+          height={22}
           fill={fill}
           opacity={opacity}
         />,
@@ -56,9 +57,6 @@ export function Phone({
     >
       <Img ref={imgRef} src={src} width={360} height={640} y={10} />
       <Rect y={-248} width={72} height={8} radius={4} fill={'#ffffff'} opacity={0.88} />
-      <Circle x={118} y={40} width={26} fill={'#ffffff'} opacity={0.92} />
-      <Circle x={118} y={92} width={26} fill={'#ffffff'} opacity={0.92} />
-      <Circle x={118} y={144} width={26} fill={'#ffffff'} opacity={0.92} />
       <Rect y={242} width={150} height={6} radius={3} fill={'#ffffff'} opacity={0.75} />
     </Rect>
   );
@@ -77,8 +75,8 @@ export function WorkCard({
     <Node>
       <Rect width={1080} height={1350} fill={C.offwhite} />
       <Rect width={1080} height={520} y={-415} fill={C.navy} />
-      <Dots fill={C.yellow} opacity={0.34} originY={-640} />
-      <Dots fill={C.magenta} opacity={0.16} originY={80} />
+      <Dots fill={C.yellow} opacity={0.42} originY={-640} />
+      <Dots fill={C.magenta} opacity={0.18} originY={80} />
       <Txt
         y={-430}
         text={title}
@@ -126,66 +124,67 @@ export function Folder({handle}: {handle: string}) {
       dots.push(
         <Circle
           x={-320 + c * 80}
-          y={-210 + r * 72}
-          width={16}
+          y={-180 + r * 72}
+          width={18}
+          height={22}
           fill={C.magenta}
-          opacity={0.38}
+          opacity={0.42}
         />,
       );
     }
   }
   return (
-    <Node y={90}>
-      <Rect y={-318} width={720} height={90} fill={C.offwhite} radius={10} />
-      <Rect y={-338} x={18} width={700} height={90} fill={'#FFF6C8'} radius={10} />
+    <Node y={280}>
+      <Rect y={-278} width={700} height={80} fill={C.offwhite} radius={10} />
+      <Rect y={-298} x={16} width={680} height={80} fill={'#FFF6C8'} radius={10} />
       <Rect
-        x={-250}
-        y={-292}
-        width={230}
-        height={74}
+        x={-240}
+        y={-252}
+        width={220}
+        height={70}
         fill={C.yellow}
         radius={16}
         lineWidth={6}
         stroke={C.navy}
       />
-      <Circle x={-318} y={-292} width={28} fill={C.offwhite} lineWidth={5} stroke={C.navy} />
-      <Rect width={820} height={640} fill={C.yellow} radius={20} lineWidth={6} stroke={C.navy} clip>
+      <Circle x={-308} y={-252} width={28} height={28} fill={C.offwhite} lineWidth={5} stroke={C.navy} />
+      <Rect width={800} height={560} fill={C.yellow} radius={20} lineWidth={6} stroke={C.navy} clip>
         <Node>{dots}</Node>
       </Rect>
       <Txt
-        y={-70}
+        y={-90}
         rotation={-8}
         text={'mini'}
         fontFamily={FONT_DISPLAY}
         fontWeight={800}
-        fontSize={64}
+        fontSize={58}
         fill={C.magenta}
       />
       <Txt
-        y={50}
+        y={20}
         text={'PORT'}
         fontFamily={FONT_DISPLAY}
         fontWeight={800}
-        fontSize={108}
+        fontSize={100}
         fill={C.navy}
       />
       <Txt
-        y={150}
+        y={112}
         text={'FÓLIO'}
         fontFamily={FONT_DISPLAY}
         fontWeight={800}
-        fontSize={108}
+        fontSize={100}
         fill={C.navy}
       />
       <Txt
-        y={240}
+        y={198}
         text={handle}
         fontFamily={FONT_DISPLAY}
         fontWeight={800}
-        fontSize={34}
+        fontSize={32}
         fill={C.navy}
       />
-      <Rect y={330} width={520} height={64} fill={C.white} radius={40} lineWidth={5} stroke={C.navy} />
+      <Rect y={270} width={480} height={56} fill={C.white} radius={40} lineWidth={5} stroke={C.navy} />
     </Node>
   );
 }
@@ -254,8 +253,8 @@ export function LogoPlate({
     <Rect
       x={x}
       y={y}
-      width={200}
-      height={72}
+      width={210}
+      height={76}
       fill={C.white}
       radius={40}
       lineWidth={4}

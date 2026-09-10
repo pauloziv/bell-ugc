@@ -4,7 +4,6 @@ import {Cursor, Dots} from '../kit';
 import {C, CARD_SECONDS, FONT_BODY, FONT_DISPLAY} from '../theme';
 
 export default makeScene2D(function* (view) {
-  yield document.fonts.ready;
   const stamp = createRef<Rect>();
 
   view.fill(C.offwhite);
@@ -28,9 +27,9 @@ export default makeScene2D(function* (view) {
         fill={C.magenta}
       />
       <Rect
-        y={-40}
+        y={-80}
         width={780}
-        height={720}
+        height={620}
         fill={C.white}
         radius={8}
         lineWidth={5}
@@ -87,7 +86,7 @@ export default makeScene2D(function* (view) {
         />
       </Rect>
       <Txt
-        y={320}
+        y={430}
         text={'whatsapp no link'}
         fontFamily={FONT_BODY}
         fontWeight={700}

@@ -3,7 +3,7 @@
  * Split a 60s Motion Canvas render into 10 Instagram cards.
  * 1080×1350, 6.00s, 30fps, H.264 yuv420p + AAC silence.
  */
-import {spawn} from "node:child_process";
+import {spawn, execFileSync} from "node:child_process";
 import {existsSync, mkdirSync, readdirSync} from "node:fs";
 import path from "node:path";
 import {fileURLToPath} from "node:url";
@@ -49,8 +49,22 @@ if (!existsSync(src)) throw new Error(`missing ${src}`);
 mkdirSync(destDir, {recursive: true});
 mkdirSync(outDir, {recursive: true});
 
+let sourceDuration = NAMES.length * 6;
+try {
+  const probed = execFileSync(
+    "ffprobe",
+    ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", src],
+    {encoding: "utf8"},
+  );
+  const d = Number(probed.trim());
+  if (Number.isFinite(d) && d > 50) sourceDuration = d;
+} catch {
+  /* keep 60s fallback */
+}
+const sceneSeconds = sourceDuration / NAMES.length;
+
 for (let i = 0; i < NAMES.length; i++) {
-  const start = (i * 6).toFixed(3);
+  const start = (i * sceneSeconds).toFixed(3);
   const tmp = path.join(outDir, `card-${String(i).padStart(2, "0")}.mp4`);
   const dst = path.join(destDir, `${NAMES[i]}.mp4`);
   console.log(`card ${i + 1}/10  t=${start}s  → ${NAMES[i]}.mp4`);
