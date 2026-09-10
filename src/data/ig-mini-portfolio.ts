@@ -1,3 +1,5 @@
+import {EMAIL} from "@/lib/site";
+
 export const IG_CARD = {
   width: 1080,
   height: 1350,
@@ -11,6 +13,7 @@ Mini portfólio. Trabalhos que eu já gravei — beleza, indicações, moda, ads
 
 Me chama.
 
+${EMAIL}
 WhatsApp no link da bio
 belconteudos.com
 

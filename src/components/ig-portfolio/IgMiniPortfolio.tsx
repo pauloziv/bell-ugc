@@ -6,7 +6,7 @@ import Link from "next/link";
 import {AnimatePresence, motion, useReducedMotion} from "framer-motion";
 import {ArrowLeft, CaretLeft, CaretRight, Copy, DownloadSimple} from "@phosphor-icons/react";
 import {IG_PORTFOLIO_CAPTION, IG_SLIDES, type IgSlide} from "@/data/ig-mini-portfolio";
-import {INSTAGRAM_HANDLE, SITE_URL, whatsappUrl} from "@/lib/site";
+import {INSTAGRAM_HANDLE, EMAIL, SITE_URL, whatsappUrl} from "@/lib/site";
 import BrandLogo from "@/components/ui/BrandLogo";
 
 const BRANDS = [
@@ -246,12 +246,20 @@ export default function IgMiniPortfolio({videos}: {videos: Record<string, boolea
           Site
         </Link>
         <BrandLogo compact />
-        <a
-          href={whatsappUrl("Oi Bel! Vi o mini portfólio do Instagram e quero gravar juntas.")}
-          className="inline-flex min-h-11 items-center rounded-full bg-magenta px-4 font-display text-sm font-bold text-white"
-        >
-          WhatsApp
-        </a>
+        <div className="flex flex-wrap items-center justify-end gap-2">
+          <a
+            href={`mailto:${EMAIL}`}
+            className="inline-flex min-h-11 items-center rounded-full border-2 border-navy bg-white px-3 font-display text-xs font-bold"
+          >
+            {EMAIL}
+          </a>
+          <a
+            href={whatsappUrl("Oi Bel! Vi o mini portfólio do Instagram e quero gravar juntas.")}
+            className="inline-flex min-h-11 items-center rounded-full bg-magenta px-4 font-display text-sm font-bold text-white"
+          >
+            WhatsApp
+          </a>
+        </div>
       </header>
 
       <div className="mx-auto grid max-w-[1100px] grid-cols-1 items-start gap-10 px-4 md:px-8 lg:grid-cols-[minmax(0,26rem)_1fr]">
