@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import RevealObserver from "@/components/ui/RevealObserver";
 import { EMAIL, SITE_URL } from "@/lib/site";
@@ -88,6 +89,7 @@ export default function RootLayout({
         />
         <RevealObserver />
         {children}
+        <Analytics />
       </body>
     </html>
   );
